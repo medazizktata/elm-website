@@ -507,7 +507,8 @@ a:hover {
   margin-bottom: 40px;
 }
 .side-widget .logo img {
-  height: 40px;
+  height: 48px;
+  width: auto;
 }
 .side-widget .show-mobile {
   display: none;
@@ -762,7 +763,8 @@ a:hover {
   margin: 0;
 }
 .navbar .logo a img {
-  height: 40px;
+  height: 48px;
+  width: auto;
 }
 .navbar .languages {
   display: inline-block;
@@ -3077,7 +3079,8 @@ a:hover {
   margin-bottom: 30px;
 }
 .footer-bar .logo img {
-  height: 50px;
+  height: 56px;
+  width: auto;
 }
 .footer-bar h2 {
   font-size: 60px;
