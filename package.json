@@ -7,6 +7,7 @@
     "dev": "vite",
     "build": "vite build && node scripts/copy-static.mjs",
     "wrap": "node scripts/wrap-partials.mjs",
+    "images:placeholders": "node scripts/fetch-placeholders.mjs",
     "preview": "vite preview",
     "sass": "sass scss/style.scss css/style.css --no-source-map"
   },

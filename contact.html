@@ -7,109 +7,82 @@
 <body>
 {{> chrome year="2026"}}
 
-<header class="page-header">
-  <div class="container">
-    <h1>CONTACT</h1>
-	  <h6>Small Programs Perfect For Beginners To Get Started With Personal Growth</h6>
-	  <ul>
-	  	<li><a href="#">HOME</a></li>
-	  	<li>CONTACT</li>
-	  </ul>
-  </div>
-  <!-- end container --> 
-</header>
-<!-- end page-header -->
+{{> page-header title="CONTACT" subtitle="30-minute briefing · Facility tour · 72-hour RFQ response" crumb="Contact"}}
+
 <section class="content-section">
   <div class="container">
     <div class="row">
       <div class="col-lg-4 col-md-6">
-        <div class="contact-box"> 
-			<figure><img src="images/icon-global.png" alt="Image"></figure>
-          <h6>Head Office</h6>
-          	<p>228 Cardigan Road, Leeds<br>
-Geneva Switzerland</p>
-		 
+        <div class="contact-box">
+          <figure><img src="images/icon-global.png" alt="Dubai office location"></figure>
+          <h6>Dubai HQ</h6>
+          <p>Dubai, United Arab Emirates</p>
         </div>
-        <!-- end contact-box --> 
       </div>
-      <!-- end col-4 -->
       <div class="col-lg-4 col-md-6">
-        <div class="contact-box"> 
-			<figure><img src="images/icon-phone.png" alt="Image"></figure>
-          <h6>Phones</h6>
-           <p>+1 (850) 344 0 66 <br>Dial #20</p>
+        <div class="contact-box">
+          <figure><img src="images/icon-phone.png" alt="Phone contact"></figure>
+          <h6>Phone</h6>
+          <p><a href="tel:+971564663334">+971 56 466 3334</a></p>
         </div>
-        <!-- end contact-box --> 
       </div>
-      <!-- end col-4 -->
       <div class="col-lg-4 col-md-6">
-        <div class="contact-box"> 	
-			<figure><img src="images/icon-email.png" alt="Image"></figure>
-          <h6>Write Us</h6>
-          <p><a href="#">info@consto.co.uk</a><br>for all purpose</p>
+        <div class="contact-box">
+          <figure><img src="images/icon-email.png" alt="Email contact"></figure>
+          <h6>Email</h6>
+          <p><a href="mailto:amin@letsadsmedia.com">amin@letsadsmedia.com</a></p>
         </div>
-        <!-- end contact-box --> 
       </div>
-      <!-- end col-4 -->
     </div>
-    <!-- end row --> 
   </div>
-  <!-- end container --> 
 </section>
-<!-- end content-section -->
-	<section class="content-section no-spacing">
+
+<section class="content-section no-spacing" id="consultation-form">
   <div class="container">
     <div class="row">
       <div class="col-lg-6">
-	  <div class="section-title text-left">
-          <h6>OUR HISTORY</h6>
-          <h2>Quality & Passion With<br>
-            Our Services</h2>
+        <div class="section-title text-left">
+          <h6>REQUEST CONSULTATION</h6>
+          <h2>Start Your LFAM<br>Programme</h2>
         </div>
-        <!-- end section-title --> 
+        <p>Tell us about your project — building type, timeline, component scope and any compliance requirements. We respond to qualified commercial enquiries within <strong>72 hours</strong> with a structured capability profile and next steps.</p>
+        <p>Engagement includes a <strong>30-minute technical briefing</strong> and optional facility tour.</p>
       </div>
-      <!-- end col-6 -->
       <div class="col-lg-6">
-	 <form class="contact-form">
-		  	<div class="form-group">
-		 	<span>Full Name</span>
-				<input type="text"></input>
-		 </div>
-		 <!-- end form-group -->
-		  	<div class="form-group">
-		 	<span>Your E-mail</span>
-				<input type="text"></input>
-		 </div>
-		 <!-- end form-group -->
-		  	<div class="form-group">
-		 	<span>Subject</span>
-				<input type="text"></input>
-		 </div>
-		 <!-- end form-group -->
-		  	<div class="form-group">
-		 	<span>Your Message</span>
-				<textarea></textarea>
-		 </div>
-		 <!-- end form-group -->
-		  	<div class="form-group">
-		 	<input type="submit" value="Send Now">
-		 </div>
-		 <!-- end form-group -->
-		  </form>
-		  <!-- end contact-form -->
+        <form class="contact-form">
+          <div class="form-group">
+            <span>Full Name</span>
+            <input type="text" name="name" required>
+          </div>
+          <div class="form-group">
+            <span>Work Email</span>
+            <input type="email" name="email" required>
+          </div>
+          <div class="form-group">
+            <span>Phone</span>
+            <input type="tel" name="phone">
+          </div>
+          <div class="form-group">
+            <span>Project Type</span>
+            <input type="text" name="subject" placeholder="e.g. Hospitality facade, Government installation">
+          </div>
+          <div class="form-group">
+            <span>Project Requirements</span>
+            <textarea name="message" rows="4"></textarea>
+          </div>
+          <div class="form-group">
+            <input type="submit" value="REQUEST CONSULTATION">
+          </div>
+        </form>
       </div>
-      <!-- end col-6 -->
     </div>
-    <!-- end row --> 
   </div>
-  <!-- end container --> 
 </section>
-<!-- end content-section -->
-		<section class="content-section no-spacing">
-  <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2280.946732017157!2d6.139779638725402!3d46.19997236441594!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x478c652ab04e9aaf%3A0xf17a439abec4708d!2sSkatepark%20of%20Plainpalais!5e0!3m2!1str!2str!4v1592672296075!5m2!1str!2str" frameborder="0" class="google-maps" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+
+<section class="content-section no-spacing">
+  <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3610.178509744889!2d55.2708!3d25.2048!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3e5f43496ad9c645%3A0xbde66e5084295162!2sDubai%20-%20United%20Arab%20Emirates!5e0!3m2!1sen!2sae!4v1710000000000!5m2!1sen!2sae" frameborder="0" class="google-maps" allowfullscreen="" aria-hidden="false" tabindex="0" title="ELM Media Design — Dubai, UAE"></iframe>
 </section>
-<!-- end content-section -->
- 
+
 {{> footer year="2026"}}
 {{> scripts}}
 </body>
