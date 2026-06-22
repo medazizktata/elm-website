@@ -3,12 +3,14 @@
   "version": "1.0.0",
   "private": true,
   "type": "module",
+  "packageManager": "pnpm@10.13.1",
   "scripts": {
     "dev": "vite",
     "build": "vite build && node scripts/copy-static.mjs",
     "wrap": "node scripts/wrap-partials.mjs",
     "fonts:setup": "node scripts/setup-fonts.mjs",
     "images:placeholders": "node scripts/fetch-placeholders.mjs",
+    "favicons:generate": "node scripts/generate-favicons.mjs",
     "preview": "vite preview",
     "sass": "sass scss/style.scss css/style.css --no-source-map"
   },

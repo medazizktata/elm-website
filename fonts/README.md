@@ -7,10 +7,10 @@
 | AR H1 | Almarai Bold | 700 | `almarai/almarai-*-700-normal.woff2` |
 | AR body/H2 | Almarai Regular | 400 | `almarai/almarai-*-400-normal.woff2` |
 
-Refresh after `npm install`:
+Refresh after `pnpm install`:
 
 ```bash
-npm run fonts:setup
+pnpm run fonts:setup
 ```
 
 Sources: `@tamagui/font-nohemi` (Nohemi, freeware/commercial per Rajesh Rajput), `@fontsource/almarai` (SIL OFL).

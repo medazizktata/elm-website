@@ -1,5 +1,7 @@
-# --- Dependencies (Vite / npm when added) ---
+# --- Dependencies (pnpm) ---
 node_modules/
+package-lock.json
+npm-shrinkwrap.json
 
 # --- Build / compile ---
 dist/

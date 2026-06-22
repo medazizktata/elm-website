@@ -9,11 +9,11 @@ const nohemiOut = resolve(root, "fonts/nohemi");
 const almaraiOut = resolve(root, "fonts/almarai");
 
 if (!existsSync(nohemiSrc)) {
-  console.error("Run npm install first — @tamagui/font-nohemi missing");
+  console.error("Run pnpm install first — @tamagui/font-nohemi missing");
   process.exit(1);
 }
 if (!existsSync(almaraiSrc)) {
-  console.error("Run npm install first — @fontsource/almarai missing");
+  console.error("Run pnpm install first — @fontsource/almarai missing");
   process.exit(1);
 }
 

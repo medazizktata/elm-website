@@ -73,7 +73,7 @@
       $('.page-transition').toggleClass("active");
       setTimeout(function () {
         window.location = url;
-      }, 1000);
+      }, 450);
     });
 
 
@@ -155,8 +155,11 @@
   rangeSlider();
 
 
+  var SWIPER_SPEED = 220;
+
   // OUR HISTORY
   var swiper = new Swiper('.our-history', {
+    speed: SWIPER_SPEED,
     slidesPerView: 5,
     spaceBetween: 0,
     pagination: {
@@ -186,6 +189,7 @@
 
   // TESTIMONIALS SLIDER
   var swiper = new Swiper('.testimonials-slider', {
+    speed: SWIPER_SPEED,
     slidesPerView: 2,
     spaceBetween: 30,
     loop: true,
@@ -212,6 +216,7 @@
 
   // PROJECT SLIDER
   var swiper = new Swiper('.project-slider', {
+    speed: SWIPER_SPEED,
     loop: true,
     slidesPerView: "auto",
     spaceBetween: 30,
@@ -239,6 +244,7 @@
 
   // SLIDER
   var mainslider = new Swiper('.slider-main', {
+    speed: SWIPER_SPEED,
     spaceBetween: 0,
     autoplay: {
       delay: 9500,
@@ -256,6 +262,7 @@
 
   // SLIDER CONTENT
   var slidercontent = new Swiper('.slider-content', {
+    speed: SWIPER_SPEED,
     spaceBetween: 10,
     centeredSlides: true,
     slidesPerView: 1,
@@ -278,19 +285,22 @@
   } else {}
 
 
-  // DATA BACKGROUND IMAGE
-  var pageSection = $("*");
-  pageSection.each(function (indx) {
-    if ($(this).attr("data-background")) {
-      $(this).css("background", "url(" + $(this).data("background") + ")");
-    }
-  });
-
-  // DATA BACKGROUND COLOR
-  var pageSection = $("*");
-  pageSection.each(function (indx) {
-    if ($(this).attr("data-background")) {
-      $(this).css("background", $(this).data("background"));
+  // DATA BACKGROUND (color or photo + black overlay min 50%)
+  var bgOverlay = "linear-gradient(180deg, rgba(18,18,18,0.6) 0%, rgba(18,18,18,0.5) 100%)";
+  $("[data-background]").each(function () {
+    var bg = $(this).attr("data-background");
+    if (!bg) return;
+    var isColor = bg.charAt(0) === "#" || bg.indexOf("rgb") === 0;
+    if (isColor) {
+      $(this).css("background", bg);
+    } else {
+      $(this).addClass("bg-photo");
+      $(this).css({
+        backgroundColor: "#121212",
+        backgroundImage: bgOverlay + ", url(" + bg + ")",
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+      });
     }
   });
 
@@ -310,51 +320,12 @@
   });
 
 
-  // STICKY NAVBAR
-  $(window).on("scroll touchmove", function () {
-    $('.navbar').toggleClass('sticky', $(document).scrollTop() > 0);
-
-  });
-
-
-  // STICKY UP DOWN
-  var didScroll;
-  var lastScrollTop = 0;
-  var delta = 0;
-  var navbarHeight = $('.navbar').outerHeight();
-
-  $(window).scroll(function (event) {
-    didScroll = true;
-  });
-
-  setInterval(function () {
-    if (didScroll) {
-      hasScrolled();
-      didScroll = true;
-    }
-  }, 0);
-
-  function hasScrolled() {
-    var st = $(this).scrollTop();
-
-    // Make sure they scroll more than delta
-    if (Math.abs(lastScrollTop - st) <= delta)
-      return;
-
-    // If they scrolled down and are past the navbar, add class .nav-up.
-    // This is necessary so you never see what is "behind" the navbar.
-    if (st > lastScrollTop && st > navbarHeight) {
-      // Scroll Down
-      $('.navbar').removeClass('nav-down').addClass('nav-up');
-    } else {
-      // Scroll Up
-      if (st + $(window).height() < $(document).height()) {
-        $('.navbar').removeClass('nav-up').addClass('nav-down');
-      }
-    }
-
-    lastScrollTop = st;
-  };
+  // STICKY NAVBAR — transparent at top, solid bg on scroll
+  function updateNavbar() {
+    $('.navbar').toggleClass('sticky', $(document).scrollTop() > 20);
+  }
+  $(window).on('scroll touchmove', updateNavbar);
+  updateNavbar();
 
   // FORM CALCULATOR (legacy Consto mortgage widget — skip if removed)
   $(".form.calculator-form").change(function () {

@@ -44,14 +44,14 @@ From `Docs/branding elm.pdf`:
 
 | Token | Hex |
 |-------|-----|
-| Black | `#000000` |
+| Dark | `#121212` |
 | Magenta (primary) | `#BD1F71` |
 | Blue | `#0A76B5` |
 | Purple | `#592C7B` |
 | Cream (background) | `#ECEBE4` |
 | White | `#FFFFFF` |
 
-**Typography:** Nohemi Bold / SemiBold (EN) · Almarai Bold / Regular (AR) — `npm run fonts:setup` after install.
+**Typography:** Nohemi Bold / SemiBold (EN) · Almarai Bold / Regular (AR) — `pnpm run fonts:setup` after install.
 
 Edit brand tokens in `scss/style.scss` (`$color-dark`, `$color-main`, etc.), then recompile.
 
@@ -59,18 +59,13 @@ Edit brand tokens in `scss/style.scss` (`$color-dark`, `$color-main`, etc.), the
 
 ## Local development
 
-### Preview
-
 ```bash
-npx serve .
-```
-
-Open `http://localhost:3000` (or the port shown).
-
-### Compile SCSS
-
-```bash
-npx sass scss/style.scss css/style.css --no-source-map
+pnpm install
+pnpm run fonts:setup   # first time / after font deps update
+pnpm dev               # http://localhost:5173
+pnpm run build         # dist/
+pnpm run sass          # compile SCSS
+pnpm run images:placeholders
 ```
 
 ---

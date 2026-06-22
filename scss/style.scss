@@ -95,7 +95,7 @@ theme.
 	transition: all .25s ease-in-out;}
 
 
-$color-dark : #000000;
+$color-dark : #121212;
 $color-main : #BD1F71;
 $color-secondary : #0A76B5;
 $color-accent : #592C7B;
@@ -103,6 +103,23 @@ $color-bg : #ECEBE4;
 $color-white : #FFFFFF;
 $color-border : darken($color-bg, 9%);
 
+$gradient-brand: linear-gradient(135deg, $color-main 0%, $color-accent 50%, $color-secondary 100%);
+$bg-photo-overlay: linear-gradient(180deg, rgba($color-dark, 0.6) 0%, rgba($color-dark, 0.5) 100%);
+$bg-photo-overlay-heavy: linear-gradient(180deg, rgba($color-dark, 0.75) 0%, rgba($color-dark, 0.55) 100%);
+
+@mixin brand-bg($image, $overlay: $bg-photo-overlay) {
+  background-color: $color-dark;
+  background-image: $overlay, url($image);
+  background-position: center;
+  background-size: cover;
+}
+
+$on-rose: $color-white;
+
+@mixin rose-bg {
+  background-color: $color-main;
+  color: $on-rose;
+}
 $font-en: 'Nohemi', sans-serif;
 $font-ar: 'Almarai', $font-en;
 
@@ -192,16 +209,51 @@ img{max-width: 100%;}
 figure{margin-bottom: 20px;}
 
 /* FORM ELEMENTS */
-input[type="text"], input[type="email"], input[type="search"], input[type="password"] {width: 420px; max-width: 100%; height: 68px; border: 2px solid #e8e8e8; padding: 0 30px;}
+input[type="text"], input[type="email"], input[type="search"], input[type="password"], input[type="tel"], textarea {
+  width: 420px; max-width: 100%; border: 2px solid $color-border; background-color: $color-bg; color: $color-dark;
+  &::placeholder{color: rgba($color-dark, 0.45);}
+}
+input[type="text"], input[type="email"], input[type="search"], input[type="password"], input[type="tel"] {height: 68px; padding: 0 30px;}
+textarea{height: 128px; padding: 30px;}
 
-input[type="submit"], input[type="button"], button[type="button"], button[type="submit"] { height: 68px; border: none; background: $color-main; color: $color-dark; font-weight: 800; font-size: 13px; padding: 0 50px; letter-spacing: 1px;}
-
-textarea{width: 420px; max-width: 100%; height: 128px; border: 2px solid #e8e8e8; padding: 30px;}
+input[type="submit"], input[type="button"], button[type="button"], button[type="submit"] { height: 68px; border: none; @include rose-bg; font-weight: 800; font-size: 13px; padding: 0 50px; letter-spacing: 1px;}
 
 
 /* LINKS */
-a{color: $color-dark;}
+a{color: $color-dark; cursor: pointer;}
 a:hover{text-decoration: underline; color: $color-secondary;}
+
+/* INTERACTIVE CURSORS */
+button,
+label[for],
+input[type="submit"],
+input[type="button"],
+input[type="reset"],
+select,
+.custom-button,
+.navbar-button,
+.sector-box,
+.play-btn,
+.scroll-top,
+.button-prev,
+.button-next,
+.fancybox-close-small,
+.swiper-pagination-bullet,
+.isotope-filter li,
+.tab-left li a,
+.side-widget .site-menu li i,
+.accordion .card-header a,
+.icon-content a,
+.project-box,
+.recent-news .content h3 a,
+.news-box .content h3 a,
+.footer-bar .button,
+.cta-box-yellow .button,
+.services-list-box .button,
+.pagination .page-link,
+.logo a {
+  cursor: pointer;
+}
 
 
 
@@ -209,8 +261,14 @@ a:hover{text-decoration: underline; color: $color-secondary;}
 .overflow{overflow: hidden;}
 
 /* SPACINGS */
-.no-spacing{ margin: 0 !important; padding: 0 !important;}
+$section-padding-y: 56px;
+$section-padding-y-tight: 40px;
+$section-whitespace: 56px;
+
+.no-spacing{margin: 0 !important; padding: $section-padding-y-tight 0 !important;}
 .no-bottom-spacing{margin-bottom: 0 !important; padding-bottom: 0 !important;}
+.no-top-spacing{margin-top: 0 !important; padding-top: 0 !important;}
+.content-section + .content-section{padding-top: $section-padding-y-tight;}
 
 /* CUSTOM CONTAINER */
 @media (min-width: 1170px) { .container { max-width: 1100px; } }
@@ -275,18 +333,19 @@ a:hover{text-decoration: underline; color: $color-secondary;}
 
 
 /* SEARCH BOX */
-.search-box{width: 100%; height: 100vh; display: flex; flex-wrap: wrap; align-items: center; justify-content: center; position: fixed; left: 0; top: 0; z-index: 3; background: $color-dark; @include transition-cubic; opacity: 0; visibility: hidden; color: #fff;
+.search-box{width: 100%; height: 100vh; display: flex; flex-wrap: wrap; align-items: center; justify-content: center; position: fixed; left: 0; top: 0; z-index: 3; background: $gradient-brand; @include transition-cubic; opacity: 0; visibility: hidden; color: #fff;
 	.inner{width: 50vw; max-width: 700px; margin: 0 auto; text-align: center;
 		form{width: 100%; display: block;
-			input[type="search"]{ width: 100%; height: 70px; border:none; border-bottom: 4px solid $color-accent; background: none; font-size: 20px; margin-bottom: 30px; color: #fff;}
-			input[type="submit"]{ height: 70px; background: $color-main; border:none; font-weight: 600; padding: 0 60px;}}}
+			input[type="search"]{ width: 100%; height: 70px; border: none; border-bottom: 4px solid $color-border; background: $color-bg; color: $color-dark; font-size: 20px; margin-bottom: 30px;
+				&::placeholder{color: rgba($color-dark, 0.45);}}
+			input[type="submit"]{ height: 70px; @include rose-bg; border:none; font-weight: 600; padding: 0 60px;}}}
 	&.active{opacity: 1; visibility: visible;}}
 
 
 
 
 /* SIDE WIDGET */
-.side-widget{width: 400px; height: 100vh; max-width: 100%; display: flex; flex-wrap: wrap; align-items: center; position: fixed; left: -100%; top: 0; @include transition-cubic; background: $color-accent; background-image: url("../images/header-pattern.png"); background-position: center; background-size: cover; z-index: 5; box-shadow: 0 0 60px rgba($color-dark, 0.4); padding:20px 30px; color: #fff;
+.side-widget{width: 400px; height: 100vh; max-width: 100%; display: flex; flex-wrap: wrap; align-items: center; position: fixed; left: -100%; top: 0; @include transition-cubic; background-color: $color-dark; z-index: 5; box-shadow: 0 0 60px rgba($color-dark, 0.4); padding:20px 30px; color: #fff;
 	.inner{display: inline-block; overflow-y: auto;}
 	.logo{width: 100%; display: block; margin-bottom: 40px;
 		img{height: 48px; width: auto;}}
@@ -295,11 +354,15 @@ a:hover{text-decoration: underline; color: $color-secondary;}
 	.gallery{ display: flex; flex-wrap: wrap; margin-left: -3px; margin-right: -3px;
 		img{width: 50%; padding: 0 3px;}}
 	p{width: 100%; display: block;}
-	.widget-title{width: 100%; display: block; font-weight: 600; color: $color-accent; font-size: 13px; margin-bottom: 10px; margin-top: 20px;}
-	.address{width: 100%; display: block; margin-top: 20px;}
+	.widget-title{width: 100%; display: block; font-weight: 600; color: $color-main; font-size: 13px; margin-bottom: 10px; margin-top: 20px;}
+	.address{width: 100%; display: block; margin-top: 20px;
+		p{color: #fff;}
+		a{color: #fff; font-weight: 600;
+			&:hover{color: $color-secondary; text-decoration: none;}}}
 	.social-media{width: 100%; display: block; margin: 0; padding: 0;
 		li{display: inline-block; margin-right: 20px; padding: 0; list-style: none;
-			a{color: #fff; font-size: 13px; font-weight: 600;}}}
+			a{color: #fff; font-size: 13px; font-weight: 600;
+				&:hover{color: $color-secondary; text-decoration: none;}}}}
 	.languages{width: 100%; display: block; margin-bottom: 20px; margin-top: 20px;
 		ul{width: 100%; display: block; margin: 0; padding: 0;
 			li{display: inline-block; margin-right: 10px; padding: 0; list-style: none;
@@ -317,7 +380,7 @@ a:hover{text-decoration: underline; color: $color-secondary;}
 
 
 /* CUSTOM BUTTON */
-.custom-button{display: inline-block; height: 68px; line-height: 68px; padding: 0 40px; background: $color-main; color: $color-white; font-size: 13px; font-weight: 600; @include transition;
+.custom-button{display: inline-block; height: 68px; line-height: 68px; padding: 0 40px; @include rose-bg; font-size: 13px; font-weight: 600; @include transition;
 	i{display: inline-block; margin-left: 10px; font-size: 20px; transform: translateY(3px); @include transition;}
 	&:hover{background: $color-accent; color: $color-white; text-decoration: none;
 		i{margin-left: 20px;}}
@@ -331,30 +394,29 @@ a:hover{text-decoration: underline; color: $color-secondary;}
 
 /* WHITE SPACES */
 .white-space-top{ position: relative;
-	&:before{content: ""; width: 100vw; height: 148px; background: #fff; position: absolute; left: 0; top: 0;}}
+	&:before{content: ""; width: 100vw; height: $section-whitespace; background: $color-bg; position: absolute; left: 0; top: 0;}}
 .white-space-bottom{position: relative;
-	&:after{content: ""; width: 100%; height: 148px; background: #fff; position: absolute; left: 0; bottom: 0;}}
+	&:after{content: ""; width: 100%; height: $section-whitespace; background: $color-bg; position: absolute; left: 0; bottom: 0;}}
+.slider.white-space-bottom:after{height: $section-whitespace;}
 
 
 
 
 /* PAGE TRANSITION */
-.first-transition{width: 100%; height: 100%; position: fixed; z-index: 9; right: 0; top:0; background: $color-main; animation: first-transition 1s; animation-fill-mode: forwards;}
+.first-transition{width: 100%; height: 100%; position: fixed; z-index: 9; right: 0; top:0; background: $color-main; animation: first-transition 0.5s; animation-fill-mode: forwards;}
 @keyframes first-transition {
    from {right: 0;}
   to {right: -100%;}
 }
-.page-transition{width: 0; height: 100%; position: fixed; z-index: 9; left: 0; top:0; background: $color-main; transition: all ease 1s;
+.page-transition{width: 0; height: 100%; position: fixed; z-index: 9; left: 0; top:0; background: $color-main; transition: all ease 0.45s;
 	&.active{width: 100%;}}
 
 
 
 
 /* NAVBAR */
-.navbar{width: 100%; display: flex; flex-wrap: wrap; padding: 20px 0; position: fixed; left: 0; top: 0; z-index: 4; transition: top ease 1s;
-	&.sticky{background: $color-dark;}
-	&.nav-down{ top: 0;}
-	&.nav-up{ top: -100%;}
+.navbar{width: 100%; display: flex; flex-wrap: wrap; padding: 20px 0; position: fixed; left: 0; top: 0; z-index: 4; background-color: transparent; @include transition;
+	&.sticky{background-color: $color-dark; box-shadow: 0 8px 24px rgba($color-dark, 0.18);}
 	.logo{ margin-left:0;
 		a{display: block; margin: 0;
 			img{height: 48px; width: auto;}}}
@@ -391,11 +453,11 @@ a:hover{text-decoration: underline; color: $color-secondary;}
 
 
 /* SLIDER */
-.slider{width: 100%; height: 100vh; display: flex; flex-wrap: wrap; background-color:$color-dark; background-image: url("../images/header-pattern.png"); background-size: cover; position: relative;
+.slider{width: 100%; height: 100vh; display: flex; flex-wrap: wrap; @include brand-bg('../images/background/branding-elm-18.jpg'); position: relative;
 	.container{position: relative; padding-top: 150px; display: flex; flex-wrap: wrap;}
 	.slider-content{width: calc(50% - 120px); display: flex; flex-wrap:wrap; position: relative; overflow: hidden; margin: 0; margin-right: 40px;
 		.swiper-slide{ display: flex; align-items: center;}
-		.inner{width: 100%; display: block; color: #fff; padding-bottom: 100px;
+		.inner{width: 100%; display: block; color: #fff; padding-bottom: 64px;
 			h2{font-size: 60px; font-weight: 800;
 				b{-webkit-text-stroke: 1px #fff; text-stroke: 1px #fff; -webkit-text-fill-color: transparent; color: transparent;}}
 			p{margin-bottom: 70px;}
@@ -403,24 +465,20 @@ a:hover{text-decoration: underline; color: $color-secondary;}
 				i{display: inline-block; margin-left: 10px; font-size: 20px; transform: translateY(3px); @include transition;}
 				&:hover{text-decoration: none; box-shadow: 0 20px 20px #000;
 					i{margin-left: 20px;}}}}
-		.controls{width: 90%; display: flex; flex-wrap: wrap; align-items: center; position: absolute; left: 0; bottom: 0; z-index: 1; padding: 30px;
-		.swiper-pagination{width: auto; display: inline-block; position: static; font-size: 26px; color: #9a9a9a;
-			.swiper-pagination-current{font-size: 54px; color: $color-dark;}}
-			.button-prev{ width: 80px; height: 80px; line-height: 80px; display: inline-block; text-align: center; background: $color-bg; border-radius: 50%; color: $color-dark; @include transition; margin-left: auto;
+		.controls{width: 100%; max-width: 320px; display: flex; flex-wrap: nowrap; align-items: center; gap: 10px; position: absolute; left: 0; bottom: 0; z-index: 1; padding: 12px 0;
+		.swiper-pagination{width: auto; flex: 0 0 auto; display: inline-block; position: static; font-size: 13px; font-weight: 600; line-height: 1; color: rgba($color-dark, 0.45); letter-spacing: 0.04em;
+			.swiper-pagination-current{font-size: 28px; font-weight: 800; color: $color-dark; margin-right: 2px;}}
+			.button-prev,
+			.button-next{width: 44px; height: 44px; line-height: 44px; flex-shrink: 0; display: inline-flex; align-items: center; justify-content: center; text-align: center; background: $color-bg; border-radius: 50%; color: $color-dark; font-size: 14px; @include transition; margin: 0;
 				&:hover{background: $color-secondary; color: $color-white;}}
-			.button-next{ width: 80px; height: 80px; line-height: 80px; display: inline-block; text-align: center; background: $color-bg; border-radius: 50%; color: $color-dark; @include transition; margin-left: 2px; margin-right: 0;
-				&:hover{background: $color-secondary; color: $color-white;}}}}
+			.button-prev{margin-left: auto;}}}
 	.slider-main{width: calc(50vw + 80px); height: calc(100vh - 150px); overflow: hidden; margin: 0; position: absolute; left: calc(50% - 80px); top: 150px;
-		.slide-image{ width: 100%; height: 100%; display: inline-block; background-position: center !important; background-size: cover !important;}
-		.header-box{width: 160px; height: 180px; display: flex; flex-wrap: wrap; align-items: center; justify-content: center; text-align: center; background: $color-main; color: $color-white; position: absolute; left: 30px; bottom: 30px; z-index: 1;
-			&:after{content: ""; width: 0; height: 0; border-style: solid; border-width: 0 0 14px 14px; border-color: transparent transparent $color-accent transparent; position: absolute; right: 4px; bottom: 4px;}
-			b{font-size: 90px; height: 90px; line-height: 1; font-weight: 400; display: inline-block; transform: translateY(8px);}
-			small{display: inline-block; line-height: 1.2; font-weight: 600; letter-spacing: 2px; transform: translateY(-8px);}}}}
+		.slide-image{ width: 100%; height: 100%; display: inline-block; position: relative; background-position: center !important; background-size: cover !important;}}}
 
 
 
 /* PAGE HEADER */
-.page-header{width: 100%; height: 500px; display: flex; flex-wrap: wrap; align-items: center; background-color:$color-dark; background-image: url("../images/header-pattern.png"); background-size: cover; position: relative;
+.page-header{width: 100%; height: 500px; display: flex; flex-wrap: wrap; align-items: center; @include brand-bg('../images/background/bg_elm-1.jpg'); position: relative;
 	.container{position: relative; color: #fff; padding-top: 98px;
 		h6{ width: 100%; display: block; opacity: 0.7; margin-bottom: 50px;}
 		h1{ width: 100%; display: block; font-size: 7vw; font-weight: 800; line-height: 1;}
@@ -434,7 +492,8 @@ a:hover{text-decoration: underline; color: $color-secondary;}
 
 
 /* CONTENT SECTION */
-.content-section{width: 100%; display: block; padding: 80px 0; position: relative;
+.content-section{width: 100%; display: block; padding: $section-padding-y 0; position: relative;
+	&.bg-photo > .container{position: relative; z-index: 1;}
 	&.bg-cream{background-color: $color-bg;}}
 .section-note{width:100%; display: block; margin-top:30px; text-align: center; font-size: 14px;}
 
@@ -442,9 +501,8 @@ a:hover{text-decoration: underline; color: $color-secondary;}
 
 
 /* SECTION TITLE */
-.section-title{width: 100%; display: block; text-align: center; margin-bottom: 50px;
-	h6{ display: inline-block; position: relative; z-index: 1; font-weight: 800; letter-spacing: 3px; font-size: 18px; color: $color-accent;
-		&:before{content: ""; width: 100%; height: 6px; background: $color-main; position: absolute; left: 0; bottom: 0; z-index: -1; opacity: 0.85;}}
+.section-title{width: 100%; display: block; text-align: center; margin-bottom: 32px;
+	h6{ display: inline-block; font-weight: 800; letter-spacing: 3px; font-size: 18px; color: $color-accent;}
 	h2{width: 100%; display: block; margin-bottom: 0; font-size: 47px;}
 	p{width: 100%; display: block; margin-bottom: 0; margin-top: 20px;}}
 
@@ -459,7 +517,8 @@ a:hover{text-decoration: underline; color: $color-secondary;}
 	&:hover:after{content: ""; width: 30%; height: 70px; background: url("../images/pattern-dot.png"); background-size: 12px 12px;  position: absolute; right: -25px; bottom: -25px;}
 	&:hover:before{transform: scale(1.05); opacity: 1;}
 	figure{width: 100%; display: block; margin-bottom: 50px;
-		img{height: 70px;}}
+		img{height: 70px;}
+		i{font-size: 70px; line-height: 1; color: $color-main;}}
 	h3{ width: 100%; display: block; margin-bottom: 40px;}
 	small{width: 100%; display: block; margin-bottom: 70px; font-size: 16px;}
 	a{width: 50px; height: 50px; line-height: 50px; display: inline-block; background: $color-dark; color: #fff; text-align: center; font-size: 20px;
@@ -469,7 +528,10 @@ a:hover{text-decoration: underline; color: $color-secondary;}
 
 /* SIDE IMAGE */
 .side-image{width: 100%; display: block; margin: 0;
-	img{width: 100%;}}
+	img{width: 100%; display: block; object-fit: cover;}
+	&.side-image-collage{display: grid; grid-template-columns: 1.2fr 0.8fr; grid-template-rows: 1fr 1fr; gap: 12px; min-height: 420px;
+		.collage-main{grid-row: 1 / span 2; min-height: 420px;}
+		.collage-small{min-height: 204px;}}}
 
 
 /* SIDE CONTENT */
@@ -479,8 +541,7 @@ a:hover{text-decoration: underline; color: $color-secondary;}
 	h6{width: 100%; display: block; margin-top: 30px; font-weight: 600; margin-bottom: 2px;}
 	h5{font-weight: 600; margin-bottom: 20px; font-size: 22px;}
 	b{font-weight: 600;}
-	u{text-decoration: none; position: relative;
-		&:before{content: ""; width: 100%; height: 6px; background: $color-secondary; position: absolute; left: 0; bottom: 0; opacity: 0.35;}}
+	u{font-weight: 600; text-decoration: none;}
 	p{margin-bottom: 25px;}
 	small{width: 100%; display: block; font-size: 13px; opacity: 0.6;}}
 
@@ -489,12 +550,10 @@ a:hover{text-decoration: underline; color: $color-secondary;}
 .col-lg-3:nth-child(even) .counter-box{margin-top: 50%;}
 .counter-box{width:100%; display:block; border: 1px solid $color-border; padding: 30px; position: relative; @include transition;
 	&:hover{transform: translateY(-20px); box-shadow: 0 30px 30px rgba($color-accent, 0.12); border-color: $color-secondary;}
-	&:hover h6:before{width: 0;}
 	&:after{content: ""; width: 0; height: 0; border-style: solid; border-width: 0 0 14px 14px; border-color: transparent transparent $color-border transparent; position: absolute; right: 4px; bottom: 4px;}
 	.odometer{display: inline-block; font-size: 70px; color: $color-secondary;}
 	.value{font-size: 24px; color: $color-accent;}
-	h6{ display: inline-block; font-weight: 800; letter-spacing: 2px; position: relative; color: $color-accent;
-		&:before{content: ""; width: 100%; height: 6px; background: $color-main; position: absolute; left: 0; bottom: 0; opacity: 0.5; @include transition;}}
+	h6{ display: inline-block; font-weight: 800; letter-spacing: 2px; color: $color-accent;}
 	p{font-size: 13px; padding-right: 5%;}}
 
 
@@ -503,20 +562,17 @@ a:hover{text-decoration: underline; color: $color-secondary;}
 /* CONTACT BOX */
 .contact-box{width:100%; display:block; border: 1px solid #e8e8e8; padding: 30px; position: relative; @include transition;
 	&:hover{transform: translateY(-20px); box-shadow: 0 30px 30px #eee;}
-	&:hover h6:before{width: 0;}
 	&:after{content: ""; width: 0; height: 0; border-style: solid; border-width: 0 0 14px 14px; border-color: transparent transparent #e8e8e8 transparent; position: absolute; right: 4px; bottom: 4px;}
 	figure{width: 100%; display: block; margin-bottom:20px;
 		img{height: 80px;}}
-	h6{ display: inline-block; font-weight: 800; letter-spacing: 2px; position: relative;
-		&:before{content: ""; width: 100%; height: 6px; background: $color-main; position: absolute; left: 0; bottom: 0; mix-blend-mode: multiply; @include transition;}}
+	h6{ display: inline-block; font-weight: 800; letter-spacing: 2px;}
 	p{font-size: 20px; padding-right: 5%;}}
 
 
 /* GOOGLE MAPS */
 .google-maps{width: 100%; height: 520px; display: block; border: none;}
-.contact-form{width: 100%; display: block; padding:50px; background: #fff; position: relative; z-index: 1; margin-bottom: -70%; box-shadow: 0 0 30px rgba(0,0,0,0.1);
-	input[type="text"]{width: 100%;}
-	textarea{width: 100%;}
+.contact-form{width: 100%; display: block; padding:50px; background: $color-bg; position: relative; z-index: 1; margin-bottom: -70%; box-shadow: 0 0 30px rgba(0,0,0,0.1);
+	input[type="text"], input[type="email"], input[type="tel"], textarea{width: 100%; background-color: $color-white; border-color: $color-border;}
 	.form-group:last-child{margin-bottom: 0;}}
 
 
@@ -538,7 +594,7 @@ a:hover{text-decoration: underline; color: $color-secondary;}
 	li{width: 50%; display: inline-block; margin-bottom: 50px; padding: 0 30px; list-style: none;
 		.project-box{width: 100%; display: flex; flex-wrap: wrap; margin: 0; padding-bottom: 50px; position: relative;
 			&:hover img{filter: grayscale(0);}
-			&:hover figcaption{background: $color-main; color: $color-dark;}
+			&:hover figcaption{@include rose-bg;}
 			img{width: 100%; display: block; filter: grayscale(1); @include transition;}
 			figcaption{width: 70%; position: absolute; left: 30px; bottom: 15px; padding: 30px; background: $color-dark; color: #fff; @include transition;
 				&:after{content: ""; width: 20%; height: 55px; background: url("../images/pattern-dot.png"); background-size: 12px 12px;  position: absolute; right: -25px; bottom: -25px;}
@@ -557,20 +613,20 @@ a:hover{text-decoration: underline; color: $color-secondary;}
 .project-slider{width: 100%; display: block; position: relative; overflow: hidden;
 	.swiper-slide{max-width: 50vw;
 		&.swiper-slide-active .project-box figcaption{opacity: 1;}
-		.project-box{width: 100%; display: flex; flex-wrap: wrap; margin: 0; padding-bottom: 50px; position: relative;
+		.project-box{width: 100%; display: flex; flex-wrap: wrap; margin: 0; padding-bottom: 24px; position: relative;
 			&:hover img{filter: grayscale(0);}
 			img{width: 100%; display: block; filter: grayscale(1); @include transition;}
-			figcaption{width: 70%; position: absolute; left: 30px; bottom: 15px; padding: 30px; background: $color-main; color: $color-dark; @include transition; opacity: 0;
+			figcaption{width: 70%; position: absolute; left: 30px; bottom: 15px; padding: 24px; @include rose-bg; @include transition; opacity: 0;
 				&:after{content: ""; width: 20%; height: 55px; background: url("../images/pattern-dot.png"); background-size: 12px 12px;  position: absolute; right: -25px; bottom: -25px;}
 				h5{ display: block; font-size: 30px; font-weight: 800;}
 				p{width: 100%; display: block; margin: 0;}}}}
-	.swiper-pagination{ width: 100%; float: left; position: static;  margin-top: 20px;}}
+	.swiper-pagination{ width: 100%; float: left; position: static; margin-top: 8px;}}
 
 
 
 
 /* SECTOR BOX */
-.sector-box{width: 100%; display: flex; flex-wrap: wrap; padding: 40px; box-shadow: 1px 0 0 0 $color-border, 0 1px 0 0 $color-border, 1px 1px 0 0 $color-border, 1px 0 0 0 $color-border inset, 0 1px 0 0 $color-border inset; position: relative; color: $color-dark; @include transition;
+.sector-box{width: 100%; display: flex; flex-wrap: wrap; padding: 28px 32px; box-shadow: 1px 0 0 0 $color-border, 0 1px 0 0 $color-border, 1px 1px 0 0 $color-border, 1px 0 0 0 $color-border inset, 0 1px 0 0 $color-border inset; position: relative; color: $color-dark; @include transition;
 	&:hover{ box-shadow: none; z-index: 1; text-decoration: none; background: $color-secondary; color: $color-white; }
 	&:hover i{opacity: 1;}
 	span{font-weight: 600;}
@@ -581,7 +637,7 @@ a:hover{text-decoration: underline; color: $color-secondary;}
 
 
 /* CALCULATOR */
-.calculator{background-color:$color-dark; background-image: url("../images/header-pattern.png"); background-position: center; background-size: cover; margin-top: 80px;
+.calculator{@include brand-bg('../images/background/bg_elm-4.jpg'); margin-top: 80px;
 	.section-title{color: #fff;}
 	.bg-image{width: 40%; height: 100%; position: absolute; right: 0; top: 0; background-size: cover;}
 	.form{width: 100%; display: block; padding: 50px; background: #fff; color: $color-dark; position: relative;
@@ -590,10 +646,10 @@ a:hover{text-decoration: underline; color: $color-secondary;}
 		select{ width: 300px; max-width: 100%; height: 58px; border: 1px solid #e5e5e5; padding: 0 20px;}
 		.custom-checkbox{ height: 58px; line-height: 58px; border: 1px solid #e5e5e5; cursor: pointer; padding: 0 30px; margin-right: 5px;}
 		input[type="checkbox"]{display: none;}
-		input[type="checkbox"]:checked + .custom-checkbox{border-color:$color-main; background: $color-main; color: $color-dark;}
+		input[type="checkbox"]:checked + .custom-checkbox{border-color:$color-main; @include rose-bg;}
 		.info-box{width: 65%; float: left; margin-top: 50px;}
 		.info-box i{color: #4cd964; font-size: 20px; transform: translateY(2px);}
-		.price-box{  float: right; background: $color-main; padding:30px 50px; margin-right: -50px; margin-bottom: -50px;
+		.price-box{  float: right; @include rose-bg; padding:30px 50px; margin-right: -50px; margin-bottom: -50px;
 			small{width: 100%; display: block; font-weight: 600; margin-bottom: 5px;}
 			span{font-size: 50px; font-weight: 800; line-height: 1;}}}}
 
@@ -605,16 +661,15 @@ a:hover{text-decoration: underline; color: $color-secondary;}
 	&:hover .image img{filter: grayscale(0);}
 	&:hover:after{content: ""; width: 40%; height: 65px; background: url("../images/pattern-dot.png"); background-size: 12px 12px;  position: absolute; right: -25px; bottom: -25px; z-index: 0;}
 	&:hover .content{bottom: 0;}
-	&:hover .content h6:before{width: 0;}
 	*{@include transition;}
 	.image{width: 100%; display: block; padding-right: 30px;
 		img{width: 100%; filter: grayscale(1);}}
 	.content{width: 80%; position: absolute; right: 0; bottom: -30px; z-index: 1; background: #fff; padding: 40px; box-shadow: 0 0 50px rgba(0,0,0,0.1);
 		.icon{width: 100%; display: block; margin-bottom: 20px;
-			img{height: 70px;}}
+			img{height: 70px;}
+			i{font-size: 70px; line-height: 1; color: $color-main;}}
 		span{position: absolute; right: 30px; top: 30px; font-weight: 800; opacity: 0.5; font-size: 19px; color: $color-secondary;}
-		h6{ display: inline-block; font-weight: 800; letter-spacing: 2px; position: relative; margin-bottom: 20px; color: $color-accent;
-			&:before{content: ""; width: 100%; height: 6px; background: $color-main; position: absolute; left: 0; bottom: 0; opacity: 0.5; @include transition;}}
+		h6{ display: inline-block; font-weight: 800; letter-spacing: 2px; margin-bottom: 20px; color: $color-accent;}
 		p{width: 100%; display: block; margin: 0; opacity: 0.7;}}}
 
 
@@ -628,7 +683,7 @@ a:hover{text-decoration: underline; color: $color-secondary;}
 
 
 /* CTA BOX YELLOW */
-.cta-box-yellow{width: calc(100% - 50px); display: block; background: $color-main; color: $color-dark; padding: 50px; position: relative; margin-bottom: 148px;
+.cta-box-yellow{width: calc(100% - 50px); display: block; @include rose-bg; padding: 50px; position: relative; margin-bottom: 64px;
 	h4{width: 100%; display: block; font-weight: 800; margin-bottom: 20px; font-size: 44px;}
 	p{width: 100%; margin-bottom: 25px;}
 	.button{display: inline-block; height: 68px; line-height: 68px; padding: 0 40px; background: $color-dark; color: $color-main; font-size: 13px; font-weight: 600; @include transition;
@@ -637,13 +692,13 @@ a:hover{text-decoration: underline; color: $color-secondary;}
 
 
 /* SERVICE LIST BOX */
-.services-list-box{width: 100%; display: block; background: #fff; padding: 50px; transform: translateY(100px); margin-bottom: 100px;
+.services-list-box{width: 100%; display: block; background: #fff; padding: 50px; transform: translateY(48px); margin-bottom: 48px;
 	h4{font-size: 50px; font-weight: 800;}
 	p{width: 100%; display: block; margin-bottom: 20px;}
 	ul{width: 100%; display: block; padding-left: 20px; margin-bottom: 30px;
 		li{margin: 10px 0;}}
 	.button{display: inline-block; height: 68px; line-height: 68px; padding: 0 40px; background: $color-dark; color: #fff; font-size: 13px; font-weight: 600; @include transition;
-		&:hover{text-decoration: none; background: $color-main; color: $color-dark; }}}
+		&:hover{text-decoration: none; @include rose-bg; }}}
 
 
 /* CUSTOM LIST */
@@ -658,7 +713,7 @@ a:hover{text-decoration: underline; color: $color-secondary;}
 
 /* CERTIFICATE */
 .certificate{width: 100%; display: block; margin: 0;
-	img{border: 1px solid #e8e8e8; margin-bottom: 20px;}
+	img{width: 100%; aspect-ratio: 4/5; object-fit: cover; border: 1px solid #e8e8e8; margin-bottom: 20px;}
 	figcaption{font-size: 14px;}}
 
 
@@ -685,12 +740,10 @@ a:hover{text-decoration: underline; color: $color-secondary;}
 /* CORE VALUES BOX */
 .core-values-box{width:100%; display:block; border: 1px solid #e8e8e8; padding: 30px; position: relative; @include transition; margin: 15px 0;
 	&:hover{transform: translateY(-20px); box-shadow: 0 30px 30px #eee;}
-	&:hover h6:before{width: 0;}
 	&:after{content: ""; width: 0; height: 0; border-style: solid; border-width: 0 0 14px 14px; border-color: transparent transparent #e8e8e8 transparent; position: absolute; right: 4px; bottom: 4px;}
 	figure{width: 100%; display: block; margin-bottom:20px;
 		img{height: 80px;}}
-	h6{ display: inline-block; font-weight: 800; letter-spacing: 2px; position: relative;
-		&:before{content: ""; width: 100%; height: 6px; background: $color-main; position: absolute; left: 0; bottom: 0; mix-blend-mode: multiply; @include transition;}}
+	h6{ display: inline-block; font-weight: 800; letter-spacing: 2px;}
 	p{font-size: 20px; padding-right: 5%;}}
 
 
@@ -699,12 +752,10 @@ a:hover{text-decoration: underline; color: $color-secondary;}
 /* DIRECTOR TEAM */
 .director-team{width:100%; display:flex; flex-wrap: wrap; align-items: center; border: 1px solid #e8e8e8; position: relative; @include transition; margin: 15px 0;
 	&:hover{transform: translateY(-20px); box-shadow: 0 30px 30px #eee;}
-	&:hover h6:before{width: 0;}
 	&:after{content: ""; width: 0; height: 0; border-style: solid; border-width: 0 0 14px 14px; border-color: transparent transparent #e8e8e8 transparent; position: absolute; right: 4px; bottom: 4px;}
 	figure{width: 45%; display: block; margin: 0;}
 	.content{width: 55%; display: inline-block; padding: 0 30px;}
-	h6{ display: inline-block; font-weight: 800; letter-spacing: 2px; position: relative;
-		&:before{content: ""; width: 100%; height: 6px; background: $color-main; position: absolute; left: 0; bottom: 0; mix-blend-mode: multiply; @include transition;}}
+	h6{ display: inline-block; font-weight: 800; letter-spacing: 2px;}
 	small{ width: 100%; display: block; font-size: 20px; margin-bottom: 10px;}
 	b{width: 100%; display: block; font-weight: 600;}}
 
@@ -713,7 +764,7 @@ a:hover{text-decoration: underline; color: $color-secondary;}
 
 /* SALES TEAM */
 .sales-team{width: 100%; display: block; @include transition; position: relative;
-	&:hover {background: $color-main; transform: translateY(-20px); box-shadow: 0 30px 30px #eee; z-index: 1;}
+	&:hover {background: $color-main; color: $on-rose; transform: translateY(-20px); box-shadow: 0 30px 30px #eee; z-index: 1;}
 	&:hover:after{content: ""; width: 80px; height: 70px; background: url("../images/pattern-dot.png"); background-size: 12px 12px;  position: absolute; left: -30px; top: 30px;}
 	&:hover .infos:after{content: ""; width: 0; height: 0; border-style: solid; border-width: 0 0 14px 14px; border-color: transparent transparent $color-dark transparent; position: absolute; right: 4px; bottom: 4px;}
 	&:hover figure img{mix-blend-mode: multiply;}
@@ -747,10 +798,10 @@ a:hover{text-decoration: underline; color: $color-secondary;}
 
 
 /* VIDEO BOX */
-.video-box{width: 100%; display: block; margin: 0; background: $color-dark; position: relative;
-	.play-btn{width: 70px; height: 70px; line-height: 66px; display: inline-block; position: absolute; right: 50px; top: 100px; z-index: 1; text-align: center; border-radius: 50%; border: 2px solid #fff; color: #fff; font-size: 20px; text-indent: 2px;
-		&:hover{background: $color-main; border-color: $color-main; color: $color-dark;}}
-	video{width: 100%; display: block; margin: 0; opacity: 0.5; filter: grayscale(1);}}
+.video-box{width: 100%; display: block; margin: 0; background: $color-dark; position: relative; overflow: hidden; min-height: 480px;
+	.play-btn{width: 70px; height: 70px; line-height: 66px; display: inline-block; position: absolute; right: 50px; top: 100px; z-index: 2; text-align: center; border-radius: 50%; border: 2px solid #fff; color: #fff; font-size: 20px; text-indent: 2px;
+		&:hover{background: $color-main; border-color: $color-main; color: $on-rose;}}
+	video{width: 100%; min-height: 480px; display: block; margin: 0; object-fit: cover; opacity: 0.85; filter: grayscale(0.35);}}
 
 
 
@@ -760,14 +811,14 @@ a:hover{text-decoration: underline; color: $color-secondary;}
 	.controls{ display: inline-block; position: static;  margin-top: 30px;
 		.swiper-pagination{width: auto; display: inline-block; position: static; font-size: 26px; color: #9a9a9a;
 			.swiper-pagination-current{font-size: 54px; color: $color-dark;}}
-			.button-prev{ width: 80px; height: 80px; line-height: 80px; display: inline-block; text-align: center; background: $color-main; border-radius: 50%; color: $color-dark; @include transition; margin-left: auto;
-				&:hover{background: $color-dark; color: #fff;}}
-			.button-next{ width: 80px; height: 80px; line-height: 80px; display: inline-block; text-align: center; background: $color-main; border-radius: 50%; color: $color-dark; @include transition; margin-left: 2px; margin-right: 0;
-				&:hover{background: $color-dark; color: #fff;}}}
+			.button-prev{ width: 80px; height: 80px; line-height: 80px; display: inline-block; text-align: center; @include rose-bg; border-radius: 50%; @include transition; margin-left: auto;
+				&:hover{background: $color-dark; color: $color-white;}}
+			.button-next{ width: 80px; height: 80px; line-height: 80px; display: inline-block; text-align: center; @include rose-bg; border-radius: 50%; @include transition; margin-left: 2px; margin-right: 0;
+				&:hover{background: $color-dark; color: $color-white;}}}
 	.testimonial{width: 100%; float: left; padding: 30px; background: #fff; position: relative;
 		&:after{content: ""; width: 0; height: 0; border-style: solid; border-width: 0 20px 20px 0; border-color: transparent #fff transparent transparent; position: absolute; bottom: -20px; right: 30px;}
 		p{width: 100%; display: block; margin-bottom: 30px; color: #565656;}
-		i{width: 60px; height: 60px; line-height: 60px; float: left; background: $color-main; color: $color-dark; text-align: center; font-size: 30px; margin-right: 20px; margin-top: -8px;}
+		i{width: 60px; height: 60px; line-height: 60px; float: left; @include rose-bg; text-align: center; font-size: 30px; margin-right: 20px; margin-top: -8px;}
 		h6{font-weight: 600; margin-bottom: 0;}}}
 
 
@@ -789,7 +840,7 @@ a:hover{text-decoration: underline; color: $color-secondary;}
 	figure{width: 100%; max-height: 220px;  display: block; margin: 0; position: relative; overflow: hidden; background: $color-main;
 		img{ width: 100%; max-width: inherit; min-height: 220px; filter: grayscale(1); }}
 	.content{ width: 100%; height: 100%; display: block; padding: 30px; background: #fff; border: 1px solid #e8e8e8; border-top: none;
-		small{display: inline-block; padding: 4px 8px; background: $color-main; margin-bottom: 20px; color: $color-dark;}
+		small{display: inline-block; padding: 4px 8px; @include rose-bg; margin-bottom: 20px;}
 		h3{width: 100%; display: block; margin-bottom: 30px; font-size: 26px; line-height: 1.4;
 			a{display: inline; background-image: -moz-linear-gradient(rgba(0,0,0,0) calc(99% - 1px),$color-dark 1px);
     background-image: -webkit-linear-gradient(rgba(0,0,0,0) calc(99% - 1px),$color-dark 1px);
@@ -811,7 +862,7 @@ a:hover{text-decoration: underline; color: $color-secondary;}
 	figure{width: 100%; display: block; margin: 0; position: relative; overflow: hidden; background: $color-main;
 		img{ width: 100%; max-width: inherit;  }}
 	.content{ width: 100%; height: 100%; display: block; padding: 30px; background: #fff; border: 1px solid #e8e8e8; border-top: none;
-		small{display: inline-block; padding: 4px 8px; background: $color-main; margin-bottom: 20px; color: $color-dark;}
+		small{display: inline-block; padding: 4px 8px; @include rose-bg; margin-bottom: 20px;}
 		h3{width: 100%; display: block; margin-bottom: 30px; font-size: 38px; line-height: 1.4;
 			a{display: inline; background-image: -moz-linear-gradient(rgba(0,0,0,0) calc(99% - 1px),$color-dark 1px);
     background-image: -webkit-linear-gradient(rgba(0,0,0,0) calc(99% - 1px),$color-dark 1px);
@@ -825,7 +876,7 @@ a:hover{text-decoration: underline; color: $color-secondary;}
 		h6{font-size: 24px; line-height: 1.7; margin: 30px 0;}
 		strong{font-weight: 600;}
 		figure{margin: 30px 0;}
-		blockquote{width: 100%; display: block; padding: 40px; background: $color-main; color: $color-dark; font-size: 19px;}
+		blockquote{width: 100%; display: block; padding: 40px; @include rose-bg; font-size: 19px;}
 		ul{padding-left: 20px;
 			li{margin: 4px 0;}}
 		}}
@@ -836,8 +887,7 @@ a:hover{text-decoration: underline; color: $color-secondary;}
 .sidebar{width: 100%; display: block; padding-left: 30px;
 	.widget{width: 100%; display: block; border: 1px solid #e8e8e8; padding: 50px; margin-bottom: 50px;
 		&:last-child{margin-bottom: 0;}
-		.widget-title{ width: 100%; display: block; position: relative; z-index: 1; font-weight: 800; letter-spacing: 3px; font-size: 18px; margin-bottom: 30px; padding-bottom: 30px;
-		&:before{content: ""; width: 100%; height: 6px; background: $color-main; position: absolute; left: 0; bottom: 0; z-index: -1; mix-blend-mode: difference;}}
+		.widget-title{ width: 100%; display: block; font-weight: 800; letter-spacing: 3px; font-size: 18px; margin-bottom: 30px; padding-bottom: 0;}
 		form{width:100%; display: block;
 			input[type="submit"]{margin-top: 10px; background: $color-dark; color: #fff;}}
 		.categories{width: 100%; display: block; margin: 0; padding: 0;
@@ -856,12 +906,13 @@ a:hover{text-decoration: underline; color: $color-secondary;}
 
 
 /* FOOTER BAR */
-.footer-bar{width: 100%; display: block; padding: 80px 0; position: relative; overflow: hidden; color: #fff; background-color: $color-accent; background-image: url("../images/header-pattern.png"); background-position: center; background-size: cover;
+.footer-bar{width: 100%; display: block; padding: 80px 0; position: relative; overflow: hidden; color: #fff; @include brand-bg('../images/background/branding-elm-7.jpg', $bg-photo-overlay-heavy);
 	.logo{width: 100%; display: block; margin-bottom: 30px;
 		img{height: 56px; width: auto;}}
 	h2{font-size: 60px; font-weight: 800; padding-right: 20%; margin-bottom: 50px;
-				b{-webkit-text-stroke: 1px $color-main; text-stroke: 1px $color-main; -webkit-text-fill-color: transparent; color: transparent;}}
-	.button{display: inline-block; float: left; height: 68px; line-height: 68px; padding: 0 40px; background: $color-main; color: $color-dark; font-size: 13px; font-weight: 600; @include transition;
+		b{color: $color-white; @include transition; cursor: default;
+			&:hover{color: $color-main;}}}
+	.button{display: inline-block; float: left; height: 68px; line-height: 68px; padding: 0 40px; @include rose-bg; font-size: 13px; font-weight: 600; @include transition;
 				i{display: inline-block; margin-left: 10px; font-size: 20px; transform: translateY(3px); @include transition;}
 				&:hover{text-decoration: none;
 					i{margin-left: 20px;}}}
@@ -876,16 +927,20 @@ a:hover{text-decoration: underline; color: $color-secondary;}
 
 /* FOOTER */
 .footer{width: 100%; display: block; background-color:$color-dark; position: relative; padding-top: 80px; color: #fff;
-	.scroll-top{width: 100px; background: $color-main; position: absolute; right: 30px; top: -30px; z-index: 1; color: $color-dark; text-align: center; padding: 15px 0;
+	.scroll-top{width: 100px; @include rose-bg; position: absolute; right: 30px; top: -30px; z-index: 1; text-align: center; padding: 15px 0;
 		small{width: 100%; display: block;}}
 	.widget-title{width: 100%; display: block; margin-bottom: 20px; font-weight: 600; color: $color-main; letter-spacing: 2px;}
+	p a{display: inline-block; color: #fff; font-weight: 600; font-size: 13px; border-bottom: 3px solid $color-secondary; margin-top: 10px;
+		&:hover{text-decoration: none; border-color: #fff;}}
 	address{width: 100%; display: block; margin: 0;
 		p{width: 100%; display: block;}
 		a{display: inline-block; color: #fff; font-weight: 600; font-size: 13px; border-bottom: 3px solid $color-secondary;
 			&:hover{text-decoration: none; border-color: #fff;}}}
 	form{width: 100%; display: block;
-		input[type="email"]{width: 100%; height: 68px; border: none; background: darken($color-accent, 6%); padding: 30px; color: #fff; margin-bottom: 15px;}
-		input[type="submit"]{height: 60px; background: $color-main; border: none; padding: 0 40px; font-size: 13px; font-weight: 600;}}
+		input[type="email"]{width: 100%; height: 68px; border: none; background: $color-bg; color: $color-dark; padding: 30px; margin-bottom: 15px;
+			&::placeholder{color: rgba($color-dark, 0.45);}}
+		input[type="submit"]{width: 100%; height: 60px; background: $color-main; color: $color-white; border: none; padding: 0 40px; font-size: 13px; font-weight: 600; cursor: pointer;
+			&:hover{background: $color-secondary;}}}
 	.footer-bottom{width: 100%; display: block; margin-top: 50px; border-top: 1px dotted rgba(255,255,255,0.2); padding: 40px 0;
 		span{opacity: 0.7; font-size: 13px;}
 		ul{ float: right; margin: 0; padding: 0;
@@ -925,7 +980,7 @@ a:hover{text-decoration: underline; color: $color-secondary;}
 .range-slider__range::-moz-range-thumb { width: 20px; height: 20px; border: 0; border-radius: 50%; background: $color-main; cursor: pointer; -moz-transition: background .15s ease-in-out; transition: background .15s ease-in-out;}
 .range-slider__range:active::-moz-range-thumb {  background: $color-main;}
 .range-slider__range:focus::-webkit-slider-thumb {  box-shadow: 0 0 0 3px #fff, 0 0 0 6px $color-main;}
-.range-slider__value {   position: relative;  width: 60px;  color: $color-dark;  line-height: 20px;  text-align: center;  background: $color-main;  padding: 5px 10px;}
+.range-slider__value {   position: relative;  width: 60px;  line-height: 20px;  text-align: center;  @include rose-bg;  padding: 5px 10px;}
 ::-moz-range-track {  background: $color-main;  border: 0;}
 input::-moz-focus-inner, input::-moz-focus-outer {  border: 0;}
 
@@ -971,11 +1026,14 @@ input::-moz-focus-inner, input::-moz-focus-outer {  border: 0;}
 	.slider {height: auto;}
 	.slider .container{ padding-top:120px;}
 	.slider .slider-main{width: 100%; height:600px; position: static; margin-bottom:40px;}
-	.slider .slider-content{width: 100%; margin-right: 0; padding-bottom:50px;}
+	.slider .slider-content{width: 100%; margin-right: 0; padding-bottom: 24px;}
 	.slider .slider-content .inner{padding-bottom:0;}
 	.slider .slider-content .swiper-slide{ align-items: flex-start; height:auto;}
-	.slider .slider-content .controls .swiper-pagination .swiper-pagination-current{color: #fff;}
-	.slider .slider-content .controls{ width:100%; display:flex; padding:0; position:static; transform: translateY(-100%);}
+	.slider .slider-content .controls{max-width: none; width: 100%; display: flex; padding: 16px 0 0; position: static; transform: none; gap: 8px;
+		.swiper-pagination{font-size: 12px; color: rgba($color-dark, 0.5);
+			.swiper-pagination-current{font-size: 22px; color: $color-dark;}}
+		.button-prev,
+		.button-next{width: 38px; height: 38px; line-height: 38px; font-size: 12px;}}
 	.slider.white-space-bottom:after{display:none;}
 	.icon-content{margin: 15px 0;}
 	.side-content{padding-left: 0; margin-top: 30px;}
@@ -1000,11 +1058,12 @@ input::-moz-focus-inner, input::-moz-focus-outer {  border: 0;}
 	.navbar .navbar-button span{display: none;}
 	.navbar .languages{display: none;}
 	.navbar .navbar-button{margin-left: 0;}
-	.slider .slider-content {margin-bottom: 30px;}
-	.slider .slider-content .controls{padding: 0; width: 100%; }
-	.slider .slider-content .controls .button-prev{order:1; margin: 0;}
-	.slider .slider-content .controls .swiper-pagination{ margin:0 auto; order:2;}
-	.slider .slider-content .controls .button-next{order:3;}
+	.slider .slider-content {margin-bottom: 16px;}
+	.slider .slider-content .controls{padding: 12px 0 0; gap: 6px;
+		.swiper-pagination{font-size: 11px;
+			.swiper-pagination-current{font-size: 18px;}}
+		.button-prev,
+		.button-next{width: 34px; height: 34px; line-height: 34px; font-size: 11px;}}
 	.slider .slider-content .inner{padding-bottom: 30px;}
 	.slider .slider-content .inner h2{font-size: 40px;}
 	.slider .slider-content .inner p{margin-bottom: 30px;}
