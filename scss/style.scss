@@ -103,43 +103,69 @@ $color-bg : #ECEBE4;
 $color-white : #FFFFFF;
 $color-border : darken($color-bg, 9%);
 
+$font-en: 'Nohemi', sans-serif;
+$font-ar: 'Almarai', $font-en;
 
-/* CUSTOM FONTS */
 
+/* ELM brand fonts */
 @font-face {
-    font-family: 'Museo Sans';
-    src: url('../fonts/MuseoSans-300.eot');
-    src: url('../fonts/MuseoSans-300.eot?#iefix') format('embedded-opentype'),
-        url('../fonts/MuseoSans-300.woff2') format('woff2'),
-        url('../fonts/MuseoSans-300.woff') format('woff'),
-        url('../fonts/MuseoSans-300.ttf') format('truetype');
-    font-weight: 400;
-    font-style: normal;
-    font-display: swap;
+  font-family: 'Nohemi';
+  src: url('../fonts/nohemi/Nohemi-SemiBold.ttf') format('truetype');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
 }
 
 @font-face {
-    font-family: 'Museo Sans';
-    src: url('../fonts/MuseoSans-700.eot');
-    src: url('../fonts/MuseoSans-700.eot?#iefix') format('embedded-opentype'),
-        url('../fonts/MuseoSans-700.woff2') format('woff2'),
-        url('../fonts/MuseoSans-700.woff') format('woff'),
-        url('../fonts/MuseoSans-700.ttf') format('truetype');
-    font-weight: 600;
-    font-style: normal;
-    font-display: swap;
+  font-family: 'Nohemi';
+  src: url('../fonts/nohemi/Nohemi-Bold.ttf') format('truetype');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
 }
 
 @font-face {
-    font-family: 'Museo Sans';
-    src: url('../fonts/MuseoSans-900.eot');
-    src: url('../fonts/MuseoSans-900.eot?#iefix') format('embedded-opentype'),
-        url('../fonts/MuseoSans-900.woff2') format('woff2'),
-        url('../fonts/MuseoSans-900.woff') format('woff'),
-        url('../fonts/MuseoSans-900.ttf') format('truetype');
-    font-weight: 800;
-    font-style: normal;
-    font-display: swap;
+  font-family: 'Nohemi';
+  src: url('../fonts/nohemi/Nohemi-Bold.ttf') format('truetype');
+  font-weight: 800;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Almarai';
+  src: url('../fonts/almarai/almarai-latin-400-normal.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+  font-family: 'Almarai';
+  src: url('../fonts/almarai/almarai-arabic-400-normal.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+  unicode-range: U+0600-06FF, U+0750-077F, U+08A0-08FF, U+FB50-FDFF, U+FE70-FEFF;
+}
+
+@font-face {
+  font-family: 'Almarai';
+  src: url('../fonts/almarai/almarai-latin-700-normal.woff2') format('woff2');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+  font-family: 'Almarai';
+  src: url('../fonts/almarai/almarai-arabic-700-normal.woff2') format('woff2');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+  unicode-range: U+0600-06FF, U+0750-077F, U+08A0-08FF, U+FB50-FDFF, U+FE70-FEFF;
 }
 
 
@@ -147,8 +173,18 @@ $color-border : darken($color-bg, 9%);
 
 
 *{outline: none !important;}
-body{margin: 0; padding: 0; font-family: 'Nohemi', 'Museo Sans', 'Helvetica Neue', Arial, sans-serif; font-size: 17px; color: $color-dark; background-color: $color-bg; @include font-smoothing; overflow-x: hidden;}
+body{margin: 0; padding: 0; font-family: $font-en; font-weight: 600; font-size: 17px; color: $color-dark; background-color: $color-bg; @include font-smoothing; overflow-x: hidden;}
 ::selection{background: $color-main; color: $color-white;}
+
+h1, .h1{font-family: $font-en; font-weight: 700;}
+h2, h3, h4, h5, h6{font-family: $font-en; font-weight: 600;}
+
+[lang="ar"], .lang-ar{
+  font-family: $font-ar;
+  font-weight: 400;
+  h1, .h1{font-weight: 700;}
+  h2, h3, h4, h5, h6{font-weight: 400;}
+}
 
 
 /* HTML TAGS */

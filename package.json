@@ -7,11 +7,14 @@
     "dev": "vite",
     "build": "vite build && node scripts/copy-static.mjs",
     "wrap": "node scripts/wrap-partials.mjs",
+    "fonts:setup": "node scripts/setup-fonts.mjs",
     "images:placeholders": "node scripts/fetch-placeholders.mjs",
     "preview": "vite preview",
     "sass": "sass scss/style.scss css/style.css --no-source-map"
   },
   "devDependencies": {
+    "@fontsource/almarai": "^5.2.8",
+    "@tamagui/font-nohemi": "^2.3.2",
     "glob": "^11.0.2",
     "sass": "^1.89.0",
     "vite": "^7.3.1",

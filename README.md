@@ -51,7 +51,7 @@ From `Docs/branding elm.pdf`:
 | Cream (background) | `#ECEBE4` |
 | White | `#FFFFFF` |
 
-**Typography:** Nohemi (EN) — font files to be added when available.
+**Typography:** Nohemi Bold / SemiBold (EN) · Almarai Bold / Regular (AR) — `npm run fonts:setup` after install.
 
 Edit brand tokens in `scss/style.scss` (`$color-dark`, `$color-main`, etc.), then recompile.
 
