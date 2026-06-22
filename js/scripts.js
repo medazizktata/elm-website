@@ -356,8 +356,8 @@
     lastScrollTop = st;
   };
 
-  // FORM CALCULATOR
-  $(".form").change(function () {
+  // FORM CALCULATOR (legacy Consto mortgage widget — skip if removed)
+  $(".form.calculator-form").change(function () {
     var totalPrice = parseFloat($('#value1').val()) + parseFloat($('#value2').val()) + parseFloat($('#value3').val()) + parseFloat($('#value4').val()),
       values = [];
 
@@ -373,7 +373,7 @@
 
   });
 
-  $(".form").change(function () {
+  $(".form.calculator-form").change(function () {
     total = 0;
     totalPrice();
   }).trigger("change");

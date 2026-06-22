@@ -59,21 +59,25 @@ const pageMeta = {
     title: "Leadership | ELM Media Design",
     description: "ELM Media Design leadership team.",
     ogPath: "leadership.html",
+    noindex: true,
   },
   "offices.html": {
     title: "Offices | ELM Media Design",
     description: "ELM Media Design office locations.",
     ogPath: "offices.html",
+    noindex: true,
   },
   "news.html": {
     title: "News | ELM Media Design",
     description: "News and insights from ELM Media Design.",
     ogPath: "news.html",
+    noindex: true,
   },
   "news-single.html": {
     title: "Article | ELM Media Design",
     description: "ELM Media Design news article.",
     ogPath: "news-single.html",
+    noindex: true,
   },
 };
 
@@ -96,11 +100,12 @@ for (const file of globSync("*.html")) {
 
   const body = html.slice(navEnd + "<!-- end navbar -->".length, footerStart);
   const meta = pageMeta[file] ?? defaultMeta;
+  const noindexAttr = meta.noindex ? " noindex=true" : "";
 
   const wrapped = `<!doctype html>
 <html lang="en">
 <head>
-{{> meta title="${meta.title}" description="${meta.description}" ogPath="${meta.ogPath}"}}
+{{> meta title="${meta.title}" description="${meta.description}" ogPath="${meta.ogPath}"${noindexAttr}}}
 {{> head-css}}
 </head>
 <body>
