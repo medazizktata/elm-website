@@ -580,7 +580,6 @@ $section-whitespace: 80px;
 .page-header,
 .calculator,
 .footer-bar,
-.tab-left,
 .info-box-dark,
 .side-widget,
 .content-section[data-background],
@@ -891,14 +890,14 @@ $section-whitespace: 80px;
 
 
 /* TAB CONTENT */
-.tab-left{width: 100%; display: block; background: $color-dark; color: #fff; padding: 50px;
-	h2{ width: 100%; display: block; font-size: 40px; font-weight: 800; margin-bottom: 30px;}
-	ul{width: 100%; display: block; margin-bottom: 50px; padding: 0;
-		li{width: 100%; display: block; margin: 0; padding: 8px 0; list-style: none;
+.tab-left{width: 100%; display: block; background: var(--elm-bg-surface); color: var(--elm-text); border: 1px solid var(--elm-border); padding: 36px 32px;
+	h2{ width: 100%; display: block; font-size: clamp(28px, 3vw, 36px); font-weight: 800; margin-bottom: 24px; line-height: 1.12; color: var(--elm-text);}
+	ul{width: 100%; display: block; margin-bottom: 28px; padding: 0;
+		li{width: 100%; display: block; margin: 0; padding: 6px 0; list-style: none;
 			&.active a{color: $color-main;}
-			a{color: #fff; font-size: 22px; font-weight: 800; display: inline-block; @include transition;
+			a{color: var(--elm-text); font-size: 20px; font-weight: 800; display: inline-block; @include transition;
 				&:hover{text-decoration: none; color: $color-main;}}}}
-	p{width: 100%; display: block; margin: 0;}}
+	p{width: 100%; display: block; margin: 0; font-size: 15px; line-height: 1.55; color: var(--elm-text-muted);}}
 .tab-right{width: 100%; display: block;
 	.tab-item{display: none;
 		img{width: 100%;}
@@ -1122,6 +1121,7 @@ input::-moz-focus-inner, input::-moz-focus-outer {  border: 0;}
 	.accordion{padding-right: 0;}
 	.cta-box-yellow{width: 100%;}
 	.custom-list{margin-top: 30px;}
+	.tab-left{padding: 28px 24px; margin-bottom: 20px;}
 	.certificate{margin: 15px 0;}
 	.projects li{width: 100%;}
 	.project-specifications{width: 100%; margin-top: 30px; margin-left: 0;}

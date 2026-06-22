@@ -128,6 +128,7 @@ theme.
 [data-theme=dark] .recent-news,
 [data-theme=dark] .news-box .content,
 [data-theme=dark] .tab-content .tab-item,
+[data-theme=dark] .tab-left,
 [data-theme=dark] .accordion .card,
 [data-theme=dark] .sales-team .infos,
 [data-theme=dark] .contact-form {
@@ -2016,8 +2017,6 @@ select,
 .calculator .sectors-grid__intro h6,
 .footer-bar .section-title h6,
 .footer-bar .sectors-grid__intro h6,
-.tab-left .section-title h6,
-.tab-left .sectors-grid__intro h6,
 .info-box-dark .section-title h6,
 .info-box-dark .sectors-grid__intro h6,
 .side-widget .section-title h6,
@@ -3444,36 +3443,39 @@ select,
 .tab-left {
   width: 100%;
   display: block;
-  background: #121212;
-  color: #fff;
-  padding: 50px;
+  background: var(--elm-bg-surface);
+  color: var(--elm-text);
+  border: 1px solid var(--elm-border);
+  padding: 36px 32px;
 }
 .tab-left h2 {
   width: 100%;
   display: block;
-  font-size: 40px;
+  font-size: clamp(28px, 3vw, 36px);
   font-weight: 800;
-  margin-bottom: 30px;
+  margin-bottom: 24px;
+  line-height: 1.12;
+  color: var(--elm-text);
 }
 .tab-left ul {
   width: 100%;
   display: block;
-  margin-bottom: 50px;
+  margin-bottom: 28px;
   padding: 0;
 }
 .tab-left ul li {
   width: 100%;
   display: block;
   margin: 0;
-  padding: 8px 0;
+  padding: 6px 0;
   list-style: none;
 }
 .tab-left ul li.active a {
   color: #BD1F71;
 }
 .tab-left ul li a {
-  color: #fff;
-  font-size: 22px;
+  color: var(--elm-text);
+  font-size: 20px;
   font-weight: 800;
   display: inline-block;
   -webkit-transition: all 0.25s ease-in-out;
@@ -3490,6 +3492,9 @@ select,
   width: 100%;
   display: block;
   margin: 0;
+  font-size: 15px;
+  line-height: 1.55;
+  color: var(--elm-text-muted);
 }
 
 .tab-right {
@@ -4509,6 +4514,10 @@ input::-moz-focus-inner, input::-moz-focus-outer {
   }
   .custom-list {
     margin-top: 30px;
+  }
+  .tab-left {
+    padding: 28px 24px;
+    margin-bottom: 20px;
   }
   .certificate {
     margin: 15px 0;
