@@ -101,6 +101,7 @@ $color-secondary : #0A76B5;
 $color-accent : #592C7B;
 $color-bg : #ECEBE4;
 $color-white : #FFFFFF;
+$color-border : darken($color-bg, 9%);
 
 
 /* CUSTOM FONTS */
@@ -147,6 +148,7 @@ $color-white : #FFFFFF;
 
 *{outline: none !important;}
 body{margin: 0; padding: 0; font-family: 'Nohemi', 'Museo Sans', 'Helvetica Neue', Arial, sans-serif; font-size: 17px; color: $color-dark; background-color: $color-bg; @include font-smoothing; overflow-x: hidden;}
+::selection{background: $color-main; color: $color-white;}
 
 
 /* HTML TAGS */
@@ -163,7 +165,7 @@ textarea{width: 420px; max-width: 100%; height: 128px; border: 2px solid #e8e8e8
 
 /* LINKS */
 a{color: $color-dark;}
-a:hover{text-decoration: underline; color:$color-dark;}
+a:hover{text-decoration: underline; color: $color-secondary;}
 
 
 
@@ -240,7 +242,7 @@ a:hover{text-decoration: underline; color:$color-dark;}
 .search-box{width: 100%; height: 100vh; display: flex; flex-wrap: wrap; align-items: center; justify-content: center; position: fixed; left: 0; top: 0; z-index: 3; background: $color-dark; @include transition-cubic; opacity: 0; visibility: hidden; color: #fff;
 	.inner{width: 50vw; max-width: 700px; margin: 0 auto; text-align: center;
 		form{width: 100%; display: block;
-			input[type="search"]{ width: 100%; height: 70px; border:none; border-bottom: 4px solid #232222; background: none; font-size: 20px; margin-bottom: 30px; color: #fff;}
+			input[type="search"]{ width: 100%; height: 70px; border:none; border-bottom: 4px solid $color-accent; background: none; font-size: 20px; margin-bottom: 30px; color: #fff;}
 			input[type="submit"]{ height: 70px; background: $color-main; border:none; font-weight: 600; padding: 0 60px;}}}
 	&.active{opacity: 1; visibility: visible;}}
 
@@ -248,7 +250,7 @@ a:hover{text-decoration: underline; color:$color-dark;}
 
 
 /* SIDE WIDGET */
-.side-widget{width: 400px; height: 100vh; max-width: 100%; display: flex; flex-wrap: wrap; align-items: center; position: fixed; left: -100%; top: 0; @include transition-cubic; background: #232222; background-image: url("../images/header-pattern.png"); background-position: center; background-size: cover; z-index: 5; box-shadow: 0 0 60px #000; padding:20px 30px; color: #fff;
+.side-widget{width: 400px; height: 100vh; max-width: 100%; display: flex; flex-wrap: wrap; align-items: center; position: fixed; left: -100%; top: 0; @include transition-cubic; background: $color-accent; background-image: url("../images/header-pattern.png"); background-position: center; background-size: cover; z-index: 5; box-shadow: 0 0 60px rgba($color-dark, 0.4); padding:20px 30px; color: #fff;
 	.inner{display: inline-block; overflow-y: auto;}
 	.logo{width: 100%; display: block; margin-bottom: 40px;
 		img{height: 40px;}}
@@ -257,7 +259,7 @@ a:hover{text-decoration: underline; color:$color-dark;}
 	.gallery{ display: flex; flex-wrap: wrap; margin-left: -3px; margin-right: -3px;
 		img{width: 50%; padding: 0 3px;}}
 	p{width: 100%; display: block;}
-	.widget-title{width: 100%; display: block; font-weight: 600; color: $color-main; font-size: 13px; margin-bottom: 10px; margin-top: 20px;}
+	.widget-title{width: 100%; display: block; font-weight: 600; color: $color-accent; font-size: 13px; margin-bottom: 10px; margin-top: 20px;}
 	.address{width: 100%; display: block; margin-top: 20px;}
 	.social-media{width: 100%; display: block; margin: 0; padding: 0;
 		li{display: inline-block; margin-right: 20px; padding: 0; list-style: none;
@@ -279,10 +281,12 @@ a:hover{text-decoration: underline; color:$color-dark;}
 
 
 /* CUSTOM BUTTON */
-.custom-button{display: inline-block; height: 68px; line-height: 68px; padding: 0 40px; background: $color-main; color: $color-dark; font-size: 13px; font-weight: 600; @include transition;
-				i{display: inline-block; margin-left: 10px; font-size: 20px; transform: translateY(3px); @include transition;}
-				&:hover{text-decoration: none;
-					i{margin-left: 20px;}}
+.custom-button{display: inline-block; height: 68px; line-height: 68px; padding: 0 40px; background: $color-main; color: $color-white; font-size: 13px; font-weight: 600; @include transition;
+	i{display: inline-block; margin-left: 10px; font-size: 20px; transform: translateY(3px); @include transition;}
+	&:hover{background: $color-accent; color: $color-white; text-decoration: none;
+		i{margin-left: 20px;}}
+	&.secondary{background: $color-secondary;
+		&:hover{background: $color-accent;}}
 	&.top-spacing{margin-top: 30px;}}
 
 
@@ -330,11 +334,11 @@ a:hover{text-decoration: underline; color:$color-dark;}
 	.site-menu{display: inline-block; margin: 0 20px;
 		ul{display: block; margin: 0; padding: 0;
 			li{ display: inline-block; margin: 0 10px; padding: 0; list-style: none; position: relative;
-				ul{ display: none; position: absolute; left: -30px; top: calc(100% + 20px); background: $color-main; padding: 30px;
+				ul{ display: none; position: absolute; left: -30px; top: calc(100% + 20px); background: $color-accent; padding: 30px;
 					&:before{content: ""; width: 100%; height: 20px; position: absolute; left: 0; top: -20px;}
 					li{width: 100%; display: block; margin: 0; margin-bottom: 10px; white-space: nowrap;
 						&:last-child{margin-bottom: 0;}
-						a{color: $color-dark; display: block; padding: 0;}}}
+						a{color: $color-white; display: block; padding: 0;}}}
 				&:hover ul{display: block;}
 					a{ display:inline-block; color: #fff;  position: relative;
 						&:hover{ text-decoration: none;}
@@ -344,7 +348,7 @@ a:hover{text-decoration: underline; color:$color-dark;}
 						&:hover:after { width: 100%; background: transparent; transition: all 0s ease;}}}}}
 	.search{display: inline-block; color: #fff; font-size: 24px; cursor: pointer;}
 	.hamburger{display: inline-block; color: #fff;}
-	.navbar-button{height: 58px; line-height: 58px; padding: 0 40px; color:$color-dark; background: $color-main; font-size: 13px; font-weight: 600;
+	.navbar-button{height: 58px; line-height: 58px; padding: 0 40px; color:$color-white; background: $color-main; font-size: 13px; font-weight: 600;
 		i{font-size: 20px; display: inline-block; transform: translateY(3px); margin-right: 5px; }
 		&:hover{text-decoration: none;}}}
 
@@ -359,21 +363,21 @@ a:hover{text-decoration: underline; color:$color-dark;}
 			h2{font-size: 60px; font-weight: 800;
 				b{-webkit-text-stroke: 1px #fff; text-stroke: 1px #fff; -webkit-text-fill-color: transparent; color: transparent;}}
 			p{margin-bottom: 70px;}
-			a{display: inline-block; height: 68px; line-height: 68px; padding: 0 40px; background: $color-main; color: $color-dark; font-size: 13px; font-weight: 600; @include transition;
+			a{display: inline-block; height: 68px; line-height: 68px; padding: 0 40px; background: $color-main; color: $color-white; font-size: 13px; font-weight: 600; @include transition;
 				i{display: inline-block; margin-left: 10px; font-size: 20px; transform: translateY(3px); @include transition;}
 				&:hover{text-decoration: none; box-shadow: 0 20px 20px #000;
 					i{margin-left: 20px;}}}}
 		.controls{width: 90%; display: flex; flex-wrap: wrap; align-items: center; position: absolute; left: 0; bottom: 0; z-index: 1; padding: 30px;
 		.swiper-pagination{width: auto; display: inline-block; position: static; font-size: 26px; color: #9a9a9a;
 			.swiper-pagination-current{font-size: 54px; color: $color-dark;}}
-			.button-prev{ width: 80px; height: 80px; line-height: 80px; display: inline-block; text-align: center; background: #f2f3f5; border-radius: 50%; color: $color-dark; @include transition; margin-left: auto;
-				&:hover{background: $color-main;}}
-			.button-next{ width: 80px; height: 80px; line-height: 80px; display: inline-block; text-align: center; background: #f2f3f5; border-radius: 50%; color: $color-dark; @include transition; margin-left: 2px; margin-right: 0;
-				&:hover{background: $color-main;}}}}
+			.button-prev{ width: 80px; height: 80px; line-height: 80px; display: inline-block; text-align: center; background: $color-bg; border-radius: 50%; color: $color-dark; @include transition; margin-left: auto;
+				&:hover{background: $color-secondary; color: $color-white;}}
+			.button-next{ width: 80px; height: 80px; line-height: 80px; display: inline-block; text-align: center; background: $color-bg; border-radius: 50%; color: $color-dark; @include transition; margin-left: 2px; margin-right: 0;
+				&:hover{background: $color-secondary; color: $color-white;}}}}
 	.slider-main{width: calc(50vw + 80px); height: calc(100vh - 150px); overflow: hidden; margin: 0; position: absolute; left: calc(50% - 80px); top: 150px;
 		.slide-image{ width: 100%; height: 100%; display: inline-block; background-position: center !important; background-size: cover !important;}
-		.header-box{width: 160px; height: 180px; display: flex; flex-wrap: wrap; align-items: center; justify-content: center; text-align: center; background: $color-main; position: absolute; left: 30px; bottom: 30px; z-index: 1;
-			&:after{content: ""; width: 0; height: 0; border-style: solid; border-width: 0 0 14px 14px; border-color: transparent transparent $color-dark transparent; position: absolute; right: 4px; bottom: 4px;}
+		.header-box{width: 160px; height: 180px; display: flex; flex-wrap: wrap; align-items: center; justify-content: center; text-align: center; background: $color-main; color: $color-white; position: absolute; left: 30px; bottom: 30px; z-index: 1;
+			&:after{content: ""; width: 0; height: 0; border-style: solid; border-width: 0 0 14px 14px; border-color: transparent transparent $color-accent transparent; position: absolute; right: 4px; bottom: 4px;}
 			b{font-size: 90px; height: 90px; line-height: 1; font-weight: 400; display: inline-block; transform: translateY(8px);}
 			small{display: inline-block; line-height: 1.2; font-weight: 600; letter-spacing: 2px; transform: translateY(-8px);}}}}
 
@@ -394,7 +398,8 @@ a:hover{text-decoration: underline; color:$color-dark;}
 
 
 /* CONTENT SECTION */
-.content-section{width: 100%; display: block; padding: 80px 0; position: relative;}
+.content-section{width: 100%; display: block; padding: 80px 0; position: relative;
+	&.bg-cream{background-color: $color-bg;}}
 .section-note{width:100%; display: block; margin-top:30px; text-align: center; font-size: 14px;}
 
 
@@ -402,17 +407,19 @@ a:hover{text-decoration: underline; color:$color-dark;}
 
 /* SECTION TITLE */
 .section-title{width: 100%; display: block; text-align: center; margin-bottom: 50px;
-	h6{ display: inline-block; position: relative; z-index: 1; font-weight: 800; letter-spacing: 3px; font-size: 18px;
-		&:before{content: ""; width: 100%; height: 6px; background: $color-main; position: absolute; left: 0; bottom: 0; z-index: -1; mix-blend-mode: difference;}}
+	h6{ display: inline-block; position: relative; z-index: 1; font-weight: 800; letter-spacing: 3px; font-size: 18px; color: $color-accent;
+		&:before{content: ""; width: 100%; height: 6px; background: $color-main; position: absolute; left: 0; bottom: 0; z-index: -1; opacity: 0.85;}}
 	h2{width: 100%; display: block; margin-bottom: 0; font-size: 47px;}
 	p{width: 100%; display: block; margin-bottom: 0; margin-top: 20px;}}
 
 
 
 /* ICON CONTENT */
-.icon-content{width: 100%; display: flex; flex-wrap: wrap; border: 1px solid #e8e8e8; padding:45px 30px; /* box-shadow: 7px 7px 0 #f9f9f9; */ position: relative;
-	&:before{content: ""; width: 100%; height: 100%; background: $color-main; position: absolute; left: 0; top: 0; @include transition; opacity: 0; z-index: -1; box-shadow: 0 30px 30px #eee;}
-	&:hover{ border-color: $color-main;}
+.icon-content{width: 100%; display: flex; flex-wrap: wrap; border: 1px solid $color-border; padding:45px 30px; position: relative;
+	&:before{content: ""; width: 100%; height: 100%; background: $color-accent; position: absolute; left: 0; top: 0; @include transition; opacity: 0; z-index: -1; box-shadow: 0 30px 30px rgba($color-accent, 0.15);}
+	&:hover{ border-color: $color-main; color: $color-white;
+		h3, small, a{color: $color-white;}
+		a{background: $color-main;}}
 	&:hover:after{content: ""; width: 30%; height: 70px; background: url("../images/pattern-dot.png"); background-size: 12px 12px;  position: absolute; right: -25px; bottom: -25px;}
 	&:hover:before{transform: scale(1.05); opacity: 1;}
 	figure{width: 100%; display: block; margin-bottom: 50px;
@@ -437,21 +444,21 @@ a:hover{text-decoration: underline; color:$color-dark;}
 	h5{font-weight: 600; margin-bottom: 20px; font-size: 22px;}
 	b{font-weight: 600;}
 	u{text-decoration: none; position: relative;
-		&:before{content: ""; width: 100%; height: 6px; background: $color-main; position: absolute; left: 0; bottom: 0; mix-blend-mode: multiply;}}
+		&:before{content: ""; width: 100%; height: 6px; background: $color-secondary; position: absolute; left: 0; bottom: 0; opacity: 0.35;}}
 	p{margin-bottom: 25px;}
 	small{width: 100%; display: block; font-size: 13px; opacity: 0.6;}}
 
 
 /* COUNTER BOX */
 .col-lg-3:nth-child(even) .counter-box{margin-top: 50%;}
-.counter-box{width:100%; display:block; border: 1px solid #e8e8e8; padding: 30px; position: relative; @include transition;
-	&:hover{transform: translateY(-20px); box-shadow: 0 30px 30px #eee;}
+.counter-box{width:100%; display:block; border: 1px solid $color-border; padding: 30px; position: relative; @include transition;
+	&:hover{transform: translateY(-20px); box-shadow: 0 30px 30px rgba($color-accent, 0.12); border-color: $color-secondary;}
 	&:hover h6:before{width: 0;}
-	&:after{content: ""; width: 0; height: 0; border-style: solid; border-width: 0 0 14px 14px; border-color: transparent transparent #e8e8e8 transparent; position: absolute; right: 4px; bottom: 4px;}
-	.odometer{display: inline-block; font-size: 70px;}
-	.value{font-size: 24px;}
-	h6{ display: inline-block; font-weight: 800; letter-spacing: 2px; position: relative;
-		&:before{content: ""; width: 100%; height: 6px; background: $color-main; position: absolute; left: 0; bottom: 0; mix-blend-mode: multiply; @include transition;}}
+	&:after{content: ""; width: 0; height: 0; border-style: solid; border-width: 0 0 14px 14px; border-color: transparent transparent $color-border transparent; position: absolute; right: 4px; bottom: 4px;}
+	.odometer{display: inline-block; font-size: 70px; color: $color-secondary;}
+	.value{font-size: 24px; color: $color-accent;}
+	h6{ display: inline-block; font-weight: 800; letter-spacing: 2px; position: relative; color: $color-accent;
+		&:before{content: ""; width: 100%; height: 6px; background: $color-main; position: absolute; left: 0; bottom: 0; opacity: 0.5; @include transition;}}
 	p{font-size: 13px; padding-right: 5%;}}
 
 
@@ -527,8 +534,8 @@ a:hover{text-decoration: underline; color:$color-dark;}
 
 
 /* SECTOR BOX */
-.sector-box{width: 100%; display: flex; flex-wrap: wrap; padding: 40px; box-shadow: 1px 0 0 0 #eee, 0 1px 0 0 #eee, 1px 1px 0 0 #eee, 1px 0 0 0 #eee inset, 0 1px 0 0 #eee inset; position: relative; color: $color-dark; @include transition;
-	&:hover{ box-shadow: none; z-index: 1; text-decoration: none; background: $color-main; }
+.sector-box{width: 100%; display: flex; flex-wrap: wrap; padding: 40px; box-shadow: 1px 0 0 0 $color-border, 0 1px 0 0 $color-border, 1px 1px 0 0 $color-border, 1px 0 0 0 $color-border inset, 0 1px 0 0 $color-border inset; position: relative; color: $color-dark; @include transition;
+	&:hover{ box-shadow: none; z-index: 1; text-decoration: none; background: $color-secondary; color: $color-white; }
 	&:hover i{opacity: 1;}
 	span{font-weight: 600;}
 	i{ margin-left: auto; opacity: 0.4; transform: translateY(3px);}}
@@ -569,9 +576,9 @@ a:hover{text-decoration: underline; color:$color-dark;}
 	.content{width: 80%; position: absolute; right: 0; bottom: -30px; z-index: 1; background: #fff; padding: 40px; box-shadow: 0 0 50px rgba(0,0,0,0.1);
 		.icon{width: 100%; display: block; margin-bottom: 20px;
 			img{height: 70px;}}
-		span{position: absolute; right: 30px; top: 30px; font-weight: 800; opacity: 0.3; font-size: 19px;}
-		h6{ display: inline-block; font-weight: 800; letter-spacing: 2px; position: relative; margin-bottom: 20px;
-			&:before{content: ""; width: 100%; height: 6px; background: $color-main; position: absolute; left: 0; bottom: 0; mix-blend-mode: multiply; @include transition;}}
+		span{position: absolute; right: 30px; top: 30px; font-weight: 800; opacity: 0.5; font-size: 19px; color: $color-secondary;}
+		h6{ display: inline-block; font-weight: 800; letter-spacing: 2px; position: relative; margin-bottom: 20px; color: $color-accent;
+			&:before{content: ""; width: 100%; height: 6px; background: $color-main; position: absolute; left: 0; bottom: 0; opacity: 0.5; @include transition;}}
 		p{width: 100%; display: block; margin: 0; opacity: 0.7;}}}
 
 
@@ -606,9 +613,9 @@ a:hover{text-decoration: underline; color:$color-dark;}
 /* CUSTOM LIST */
 .custom-list{width: 100%; display: block; margin: 0; padding: 0;
 	li{width: 100%; display: block; margin: 0; padding:20px 0; list-style: none; font-size: 20px; font-weight: 600; position: relative;
-		&:hover:before{background: $color-main; width: 100%;}
-		&:before{content: ""; width: 30%; height: 1px; background: #eee; position: absolute; left: 0; bottom: 0; @include transition;}
-		i{font-size: 14px; display: inline-block; margin-right: 8px;}}}
+		&:hover:before{background: $color-secondary; width: 100%;}
+		&:before{content: ""; width: 30%; height: 1px; background: $color-border; position: absolute; left: 0; bottom: 0; @include transition;}
+		i{font-size: 14px; display: inline-block; margin-right: 8px; color: $color-secondary;}}}
 
 
 
@@ -623,7 +630,7 @@ a:hover{text-decoration: underline; color:$color-dark;}
 /* OUR HISTORY */
 .our-history{width: 100%; display: block; overflow: hidden; position: relative;
 	.swiper-pagination{position: absolute; height: 1px; left:0; top: 50px; background: #eee;}
-	.swiper-pagination-progressbar-fill{background: $color-main;}
+	.swiper-pagination-progressbar-fill{background: $color-secondary;}
 	.swiper-slide:hover b:after{background: $color-main;}
 	.swiper-slide{z-index: 1;}
 	figure{width: 100%; padding: 0 15px;}
@@ -631,10 +638,10 @@ a:hover{text-decoration: underline; color:$color-dark;}
 	b{ width: 100%; height: 50px; display: inline-block; margin-bottom: 20px; text-align: center; position: relative;
 		&:after{content: ""; width: 12px; height: 12px; background: #eee; border-radius: 50%; position: absolute; left:calc(50% - 6px); bottom: -6px;}}
 	.controls{width: 100%; display: flex; flex-wrap: wrap; align-items: center; justify-content: center; text-align: center; margin-top: 30px;
-			.button-prev{ width: 80px; height: 80px; line-height: 80px; display: inline-block; text-align: center; background: #f2f3f5; border-radius: 50%; color: $color-dark; @include transition; margin: 0 2px;
-				&:hover{background: $color-main;}}
-			.button-next{ width: 80px; height: 80px; line-height: 80px; display: inline-block; text-align: center; background: #f2f3f5; border-radius: 50%; color: $color-dark; @include transition; margin: 0 2px; margin-right: 0;
-				&:hover{background: $color-main;}}}}
+			.button-prev{ width: 80px; height: 80px; line-height: 80px; display: inline-block; text-align: center; background: $color-bg; border-radius: 50%; color: $color-dark; @include transition; margin: 0 2px;
+				&:hover{background: $color-secondary; color: $color-white;}}
+			.button-next{ width: 80px; height: 80px; line-height: 80px; display: inline-block; text-align: center; background: $color-bg; border-radius: 50%; color: $color-dark; @include transition; margin: 0 2px; margin-right: 0;
+				&:hover{background: $color-secondary; color: $color-white;}}}}
 
 
 
@@ -813,11 +820,11 @@ a:hover{text-decoration: underline; color:$color-dark;}
 
 
 /* FOOTER BAR */
-.footer-bar{width: 100%; display: block; padding: 80px 0; position: relative; overflow: hidden; color: #fff; background-color:#232222; background-image: url("../images/header-pattern.png"); background-position: center; background-size: cover;
+.footer-bar{width: 100%; display: block; padding: 80px 0; position: relative; overflow: hidden; color: #fff; background-color: $color-accent; background-image: url("../images/header-pattern.png"); background-position: center; background-size: cover;
 	.logo{width: 100%; display: block; margin-bottom: 30px;
 		img{height: 50px;}}
 	h2{font-size: 60px; font-weight: 800; padding-right: 20%; margin-bottom: 50px;
-				b{-webkit-text-stroke: 1px #fff; text-stroke: 1px #fff; -webkit-text-fill-color: transparent; color: transparent;}}
+				b{-webkit-text-stroke: 1px $color-main; text-stroke: 1px $color-main; -webkit-text-fill-color: transparent; color: transparent;}}
 	.button{display: inline-block; float: left; height: 68px; line-height: 68px; padding: 0 40px; background: $color-main; color: $color-dark; font-size: 13px; font-weight: 600; @include transition;
 				i{display: inline-block; margin-left: 10px; font-size: 20px; transform: translateY(3px); @include transition;}
 				&:hover{text-decoration: none;
@@ -835,13 +842,13 @@ a:hover{text-decoration: underline; color:$color-dark;}
 .footer{width: 100%; display: block; background-color:$color-dark; position: relative; padding-top: 80px; color: #fff;
 	.scroll-top{width: 100px; background: $color-main; position: absolute; right: 30px; top: -30px; z-index: 1; color: $color-dark; text-align: center; padding: 15px 0;
 		small{width: 100%; display: block;}}
-	.widget-title{width: 100%; display: block; margin-bottom: 20px; font-weight: 600; opacity: 0.7; letter-spacing: 2px;}
+	.widget-title{width: 100%; display: block; margin-bottom: 20px; font-weight: 600; color: $color-main; letter-spacing: 2px;}
 	address{width: 100%; display: block; margin: 0;
 		p{width: 100%; display: block;}
-		a{display: inline-block; color: #fff; font-weight: 600; font-size: 13px; border-bottom: 3px solid $color-main;
+		a{display: inline-block; color: #fff; font-weight: 600; font-size: 13px; border-bottom: 3px solid $color-secondary;
 			&:hover{text-decoration: none; border-color: #fff;}}}
 	form{width: 100%; display: block;
-		input[type="email"]{width: 100%; height: 68px; border: none; background: #232222; padding: 30px; color: #fff; margin-bottom: 15px;}
+		input[type="email"]{width: 100%; height: 68px; border: none; background: darken($color-accent, 6%); padding: 30px; color: #fff; margin-bottom: 15px;}
 		input[type="submit"]{height: 60px; background: $color-main; border: none; padding: 0 40px; font-size: 13px; font-weight: 600;}}
 	.footer-bottom{width: 100%; display: block; margin-top: 50px; border-top: 1px dotted rgba(255,255,255,0.2); padding: 40px 0;
 		span{opacity: 0.7; font-size: 13px;}
