@@ -7,18 +7,7 @@
 <body>
 {{> chrome year="2026"}}
 
-<header class="page-header">
-  <div class="container">
-    <h1>SERVICES</h1>
-    <h6>Small Programs Perfect For Beginners To Get Started With Personal Growth</h6>
-    <ul>
-      <li><a href="#">HOME</a></li>
-      <li>SERVICES</li>
-    </ul>
-  </div>
-  <!-- end container --> 
-</header>
-<!-- end page-header -->
+{{> page-header title="TECHNOLOGIES" subtitle="Robotic concrete 3D printing, polymer LFAM and architectural manufacturing" crumb="Technologies"}}
 <section class="content-section">
   <div class="container">
     <div class="row">
@@ -68,7 +57,7 @@
             <li>Repairing Building</li>
             <li>Renovation</li>
           </ul>
-          <a href="#" class="button">GET AN ESTIMATE</a> </div>
+          <a href="contact.html#consultation-form" class="button">GET AN ESTIMATE</a> </div>
         <!-- end services-list-box --> 
       </div>
       <!-- end col-6 --> 
@@ -78,38 +67,37 @@
   <!-- end container --> 
 </section>
 <!-- end content-section -->
-<section class="content-section ">
+<section class="content-section stats-row">
   <div class="container">
     <div class="row">
       <div class="col-lg-3 col-md-6">
-        <div class="counter-box"> <span class="odometer" data-count="33" data-status="yes">0</span> <span class="value">%</span>
+        <div class="counter-box">
+          <div class="counter-box__figure"><span class="odometer" data-count="33" data-status="yes">0</span><span class="value">%</span></div>
           <h6>Mortgage Credit</h6>
           <p>Out interested acceptance our reasonable companions an</p>
         </div>
-        <!-- end counter-box --> 
       </div>
-      <!-- end col-3 -->
       <div class="col-lg-3 col-md-6">
-        <div class="counter-box"> <span class="odometer" data-count="2021" data-status="yes">0</span> <span class="value">#</span>
+        <div class="counter-box">
+          <div class="counter-box__figure"><span class="odometer" data-count="2021" data-status="yes">0</span><span class="value">#</span></div>
           <h6>Estimated Time</h6>
           <p>Out interested acceptance our reasonable companions an</p>
         </div>
-        <!-- end counter-box --> 
       </div>
-      <!-- end col-3 -->
       <div class="col-lg-3 col-md-6">
-        <div class="counter-box"> <span class="odometer" data-count="247" data-status="yes">0</span> <span class="value">m²</span>
+        <div class="counter-box">
+          <div class="counter-box__figure"><span class="odometer" data-count="247" data-status="yes">0</span><span class="value">m²</span></div>
           <h6>XXL Size of Flats</h6>
           <p>Out interested acceptance our reasonable companions an</p>
         </div>
-        <!-- end counter-box --> 
       </div>
-      <!-- end col-3 -->
       <div class="col-lg-3 col-md-6">
-        <div class="counter-box"> <span class="odometer" data-count="529" data-status="yes">0</span> <span class="value">+</span>
+        <div class="counter-box">
+          <div class="counter-box__figure"><span class="odometer" data-count="529" data-status="yes">0</span><span class="value">+</span></div>
           <h6>Monthly Payment</h6>
           <p>Out interested acceptance our reasonable companions an</p>
         </div>
+      </div>
         <!-- end counter-box --> 
       </div>
       <!-- end col-3 --> 
@@ -119,7 +107,7 @@
   <!-- end container --> 
 </section>
 <!-- end content-section -->
-<section class="content-section" data-background="#ECEBE4">
+<section class="content-section">
   <div class="container">
     <div class="row">
       <div class="col-lg-7">
@@ -219,40 +207,7 @@
   <!-- end container --> 
 </section>
 <!-- end content-section -->
-<section class="content-section">
-  <div class="container">
-    <div class="row no-gutters">
-      <div class="col-12">
-        <div class="section-title text-left">
-          <h6>ESTIMATIED PRICE</h6>
-          <h2>Sectors We Work In</h2>
-        </div>
-        <!-- end section-title --> 
-      </div>
-      <!-- end col-12 -->
-      <div class="col-lg-4 col-md-6"> <a href="#" class="sector-box"> <span>Commercial</span> <i class="lni lni-arrow-right"></i> </a> </div>
-      <!-- end col-4 -->
-      
-      <div class="col-lg-4 col-md-6"> <a href="#" class="sector-box"> <span>Apartments</span> <i class="lni lni-arrow-right"></i> </a> </div>
-      <!-- end col-4 -->
-      
-      <div class="col-lg-4 col-md-6"> <a href="#" class="sector-box"> <span>Flats</span> <i class="lni lni-arrow-right"></i> </a> </div>
-      <!-- end col-4 -->
-      
-      <div class="col-lg-4 col-md-6"> <a href="#" class="sector-box"> <span>Villas</span> <i class="lni lni-arrow-right"></i> </a> </div>
-      <!-- end col-4 -->
-      
-      <div class="col-lg-4 col-md-6"> <a href="#" class="sector-box"> <span>Medical</span> <i class="lni lni-arrow-right"></i> </a> </div>
-      <!-- end col-4 -->
-      
-      <div class="col-lg-4 col-md-6"> <a href="#" class="sector-box"> <span>Industrial</span> <i class="lni lni-arrow-right"></i> </a> </div>
-      <!-- end col-4 --> 
-    </div>
-    <!-- end row --> 
-  </div>
-  <!-- end container --> 
-</section>
-<!-- end content-section -->
+{{> sectors-grid label="APPLICATIONS" title="Sectors We Work In" subtitle="Where robotic concrete printing and polymer LFAM deliver measurable value."}}
 
 {{> footer year="2026"}}
 {{> scripts}}
