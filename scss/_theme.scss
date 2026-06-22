@@ -80,7 +80,13 @@
 
   .contact-box:hover figure img { opacity: 1; }
 
-  .step-box .content { box-shadow: 0 0 50px var(--elm-shadow); }
+  .step-box .content {
+    border-top-color: rgba($color-main, 0.35);
+    span { color: var(--elm-text-muted); }
+    h6 { color: var(--elm-text); }
+    p { color: var(--elm-text-muted); }
+    .icon i { color: $color-main; }
+  }
 
   .project-specifications { box-shadow: 0 0 30px var(--elm-shadow); }
 

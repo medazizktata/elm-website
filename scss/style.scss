@@ -771,13 +771,16 @@ $section-whitespace: 80px;
 	*{@include transition;}
 	.image{width: 100%; display: block; padding-right: 30px;
 		img{width: 100%; filter: grayscale(1);}}
-	.content{width: 80%; position: absolute; right: 0; bottom: -20px; z-index: 1; background: var(--elm-bg-surface); padding: 22px 24px; box-shadow: 0 0 32px var(--elm-shadow); color: var(--elm-text);
+	.content{width: 80%; position: absolute; right: 0; bottom: -20px; z-index: 1; background: var(--elm-bg-surface); padding: 22px 24px; box-shadow: 0 0 32px var(--elm-shadow); color: var(--elm-text); border-top: 2px solid rgba($color-main, 0.45);
 		.icon{width: 100%; display: block; margin-bottom: 12px;
 			img{height: 48px;}
-			i{font-size: 48px; line-height: 1; color: $color-main;}}
-		span{position: absolute; right: 20px; top: 20px; font-weight: 800; opacity: 0.5; font-size: 16px; color: $color-secondary;}
-		h6{ display: inline-block; font-weight: 800; letter-spacing: 0.1em; font-size: 11px; text-transform: uppercase; margin-bottom: 10px; color: var(--elm-label);}
-		p{width: 100%; display: block; margin: 0; font-size: 14px; line-height: 1.5; opacity: 0.7;}}}
+			i{font-size: 44px; line-height: 1; color: $color-main; @include transition;}}
+		span{position: absolute; right: 20px; top: 20px; font-weight: 700; opacity: 0.45; font-size: 13px; letter-spacing: 0.06em; color: var(--elm-text-muted);}
+		h6{ display: inline-block; font-weight: 700; letter-spacing: 0.1em; font-size: 11px; text-transform: uppercase; margin-bottom: 10px; color: var(--elm-text);}
+		p{width: 100%; display: block; margin: 0; font-size: 14px; line-height: 1.5; color: var(--elm-text-muted); opacity: 1;}}
+	&:hover .content{
+		border-top-color: $color-main;
+		.icon i{color: $color-main;}}}
 
 
 
