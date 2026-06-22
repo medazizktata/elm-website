@@ -13,6 +13,6 @@ Run `npm run images:placeholders` to refresh stock photos from **Pexels / Unspla
 | `section-bg01–02.jpg` | Pexels | Dark section backgrounds |
 | `tab01–05.jpg` | Pexels | Technology gallery (B4) |
 | `author01.jpg` | Unsplash | Contact avatar |
-| `logo.png` | `ico/logo/logo_ELM.png` (541 KB source) | Nav, footer, OG, favicon |
+| `logo.png` | `ico/logo/logo_ELMx1.png` (web) · master `logo_ELM.png` | Nav, footer, OG, favicon |
 
 Template PNGs (`icon01–03`, `certificate01–04`, `side-image01`) remain until custom assets arrive.
