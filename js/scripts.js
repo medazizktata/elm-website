@@ -1,4 +1,15 @@
 (function ($) {
+  function scrollToHash() {
+    var hash = window.location.hash;
+    if (!hash) return;
+    var $target = $(hash);
+    if (!$target.length) return;
+    var offset = ($('.navbar').outerHeight() || 80) + 24;
+    $('html, body').stop(true).animate({
+      scrollTop: $target.offset().top - offset
+    }, 600);
+  }
+
   $(document).ready(function () {
     "use strict";
 
@@ -29,19 +40,20 @@
     });
 
 
-    // SEARCH BOX
-    $('.navbar .search').on('click', function (e) {
-      $(this).toggleClass('open');
-      $(".search-box").toggleClass('active');
-      $("body").toggleClass("overflow");
+    // HAMBURGER MENU
+    function setSideWidgetOpen(open) {
+      $('.hamburger').toggleClass('open', open);
+      $('.side-widget').toggleClass('active', open);
+      $('body').toggleClass('overflow', open);
+    }
+
+    $('.hamburger').on('click', function (e) {
+      setSideWidgetOpen(!$('.side-widget').hasClass('active'));
     });
 
-
-    // HAMBURGER MENU
-    $('.hamburger').on('click', function (e) {
-      $(this).toggleClass('open');
-      $(".side-widget").toggleClass('active');
-      $("body").toggleClass("overflow");
+    $('.side-widget-close').on('click', function (e) {
+      e.preventDefault();
+      setSideWidgetOpen(false);
     });
 
 
@@ -53,6 +65,23 @@
       return false;
     });
 
+
+    $('a[href*="#"]').on('click', function (e) {
+      var href = this.getAttribute('href');
+      if (!href || href.charAt(0) === '#') return;
+      var hashIndex = href.indexOf('#');
+      if (hashIndex === -1) return;
+      var path = href.slice(0, hashIndex) || window.location.pathname.split('/').pop();
+      var hash = href.slice(hashIndex);
+      var current = window.location.pathname.split('/').pop() || 'index.html';
+      if (path !== current) return;
+      var $target = $(hash);
+      if (!$target.length) return;
+      e.preventDefault();
+      if (typeof $(this).data('fancybox') !== 'undefined') return;
+      history.pushState(null, '', hash);
+      scrollToHash();
+    });
 
     // PAGE TRANSITION
     $('body a').on('click', function (e) {
@@ -68,6 +97,14 @@
       }
       if (/^https?:\/\//i.test(url)) {
         return;
+      }
+      var hashIndex = url.indexOf('#');
+      if (hashIndex !== -1) {
+        var path = url.slice(0, hashIndex) || window.location.pathname.split('/').pop();
+        var current = window.location.pathname.split('/').pop() || 'index.html';
+        if (path === current) {
+          return;
+        }
       }
       e.preventDefault();
       $('.page-transition').toggleClass("active");
@@ -92,6 +129,12 @@
 
   });
   // END DOCUMENT READY
+
+  $(window).on('load', function () {
+    if (window.location.hash) {
+      setTimeout(scrollToHash, 350);
+    }
+  });
 
 
   // MASONRY
@@ -163,12 +206,12 @@
     slidesPerView: 5,
     spaceBetween: 0,
     pagination: {
-      el: '.swiper-pagination',
+      el: '.our-history .swiper-pagination',
       type: 'progressbar',
     },
     navigation: {
-      nextEl: '.button-next',
-      prevEl: '.button-prev',
+      nextEl: '.our-history .button-next',
+      prevEl: '.our-history .button-prev',
     },
     breakpoints: {
       640: {
@@ -193,9 +236,13 @@
     slidesPerView: 2,
     spaceBetween: 30,
     loop: true,
+    pagination: {
+      el: '.testimonials-slider .swiper-pagination',
+      type: 'fraction',
+    },
     navigation: {
-      nextEl: '.button-next',
-      prevEl: '.button-prev',
+      nextEl: '.testimonials-slider .button-next',
+      prevEl: '.testimonials-slider .button-prev',
     },
     breakpoints: {
       640: {
@@ -269,14 +316,6 @@
     touchRatio: 0,
     slideToClickedSlide: true,
     loop: true,
-    navigation: {
-      nextEl: '.button-next',
-      prevEl: '.button-prev',
-    },
-    pagination: {
-      el: '.swiper-pagination',
-      type: 'fraction',
-    },
   });
 
   if ($(".slider-main")[0]) {
@@ -285,22 +324,32 @@
   } else {}
 
 
-  // DATA BACKGROUND (color or photo + black overlay min 50%)
+  // DATA BACKGROUND (color or photo + overlay — hero slides stay clean)
   var bgOverlay = "linear-gradient(180deg, rgba(18,18,18,0.6) 0%, rgba(18,18,18,0.5) 100%)";
   $("[data-background]").each(function () {
     var bg = $(this).attr("data-background");
     if (!bg) return;
     var isColor = bg.charAt(0) === "#" || bg.indexOf("rgb") === 0;
     if (isColor) {
+      if (/^#ecebe4$/i.test(bg)) return;
       $(this).css("background", bg);
     } else {
-      $(this).addClass("bg-photo");
-      $(this).css({
-        backgroundColor: "#121212",
-        backgroundImage: bgOverlay + ", url(" + bg + ")",
-        backgroundSize: "cover",
-        backgroundPosition: "center",
-      });
+      var isHeroSlide = $(this).closest(".slider-main").length > 0;
+      if (isHeroSlide) {
+        $(this).css({
+          backgroundImage: "url(" + bg + ")",
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+        });
+      } else {
+        $(this).addClass("bg-photo");
+        $(this).css({
+          backgroundColor: "#121212",
+          backgroundImage: bgOverlay + ", url(" + bg + ")",
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+        });
+      }
     }
   });
 
