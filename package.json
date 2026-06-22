@@ -6,11 +6,12 @@
   "packageManager": "pnpm@10.13.1",
   "scripts": {
     "dev": "vite",
-    "build": "vite build && node scripts/copy-static.mjs",
+    "build": "node scripts/build-search-index.mjs && vite build && node scripts/copy-static.mjs",
     "wrap": "node scripts/wrap-partials.mjs",
     "fonts:setup": "node scripts/setup-fonts.mjs",
     "images:placeholders": "node scripts/fetch-placeholders.mjs",
     "favicons:generate": "node scripts/generate-favicons.mjs",
+    "search:index": "node scripts/build-search-index.mjs",
     "preview": "vite preview",
     "sass": "sass scss/style.scss css/style.css --no-source-map"
   },

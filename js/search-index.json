@@ -1,0 +1,311 @@
+{
+  "version": 1,
+  "generated": "2026-06-22T22:19:40.475Z",
+  "items": [
+    {
+      "id": "services",
+      "title": "Technologies | ELM Media Design",
+      "heading": "SERVICES",
+      "subtitle": "",
+      "description": "Robotic concrete 3D printing, polymer LFAM and architectural manufacturing in Dubai.",
+      "excerpt": "Out interested acceptance our reasonable companions an Out interested acceptance our reasonable companions an Out interested acceptance our reasonable companions an",
+      "url": "services.html",
+      "category": "Technologies",
+      "keywords": [
+        "technologies",
+        "robotic concrete",
+        "polymer",
+        "LFAM",
+        "manufacturing",
+        "capabilities"
+      ],
+      "noindex": false
+    },
+    {
+      "id": "projects",
+      "title": "Projects | ELM Media Design",
+      "heading": "PROJECTS",
+      "subtitle": "",
+      "description": "LFAM portfolio and case studies from ELM Media Design, UAE.",
+      "excerpt": "LFAM portfolio and case studies from ELM Media Design, UAE.",
+      "url": "projects.html",
+      "category": "Projects",
+      "keywords": [
+        "portfolio",
+        "case studies",
+        "LFAM projects"
+      ],
+      "noindex": false
+    },
+    {
+      "id": "project-1",
+      "title": "Quark Life Homes",
+      "heading": "Quark Life Homes",
+      "description": "LFAM project in the ELM portfolio.",
+      "url": "project-single.html",
+      "category": "Project",
+      "keywords": [
+        "project",
+        "portfolio",
+        "LFAM",
+        "quark life homes"
+      ]
+    },
+    {
+      "id": "project-2",
+      "title": "River Life Residence",
+      "heading": "River Life Residence",
+      "description": "LFAM project in the ELM portfolio.",
+      "url": "project-single.html",
+      "category": "Project",
+      "keywords": [
+        "project",
+        "portfolio",
+        "LFAM",
+        "river life residence"
+      ]
+    },
+    {
+      "id": "project-3",
+      "title": "Orgue Shopping Mall",
+      "heading": "Orgue Shopping Mall",
+      "description": "LFAM project in the ELM portfolio.",
+      "url": "project-single.html",
+      "category": "Project",
+      "keywords": [
+        "project",
+        "portfolio",
+        "LFAM",
+        "orgue shopping mall"
+      ]
+    },
+    {
+      "id": "project-4",
+      "title": "Green Socks Villas",
+      "heading": "Green Socks Villas",
+      "description": "LFAM project in the ELM portfolio.",
+      "url": "project-single.html",
+      "category": "Project",
+      "keywords": [
+        "project",
+        "portfolio",
+        "LFAM",
+        "green socks villas"
+      ]
+    },
+    {
+      "id": "project-5",
+      "title": "Prensten Hudson's",
+      "heading": "Prensten Hudson's",
+      "description": "LFAM project in the ELM portfolio.",
+      "url": "project-single.html",
+      "category": "Project",
+      "keywords": [
+        "project",
+        "portfolio",
+        "LFAM",
+        "prensten hudson's"
+      ]
+    },
+    {
+      "id": "project-6",
+      "title": "York Education Center",
+      "heading": "York Education Center",
+      "description": "LFAM project in the ELM portfolio.",
+      "url": "project-single.html",
+      "category": "Project",
+      "keywords": [
+        "project",
+        "portfolio",
+        "LFAM",
+        "york education center"
+      ]
+    },
+    {
+      "id": "project-7",
+      "title": "Miamy Beach House",
+      "heading": "Miamy Beach House",
+      "description": "LFAM project in the ELM portfolio.",
+      "url": "project-single.html",
+      "category": "Project",
+      "keywords": [
+        "project",
+        "portfolio",
+        "LFAM",
+        "miamy beach house"
+      ]
+    },
+    {
+      "id": "project-8",
+      "title": "All Life Resorts",
+      "heading": "All Life Resorts",
+      "description": "LFAM project in the ELM portfolio.",
+      "url": "project-single.html",
+      "category": "Project",
+      "keywords": [
+        "project",
+        "portfolio",
+        "LFAM",
+        "all life resorts"
+      ]
+    },
+    {
+      "id": "project-single",
+      "title": "Project Case Study | ELM Media Design",
+      "heading": "PROJECTS",
+      "subtitle": "",
+      "description": "Detailed LFAM project case study from ELM Media Design.",
+      "excerpt": "At Consto Construction our team specializing in building repurposing, or adaptive reuse, respects the history of a building and believes in letting a structure’s story help determine its future. From vacant historic warehouses to luxury boutique hotels and event venues, when it comes to the talent of this group the possibilities are endless. And they aren’t just focused on the end result, they are focused on doing what is right every single step of the way. Anim pariatur cliche reprehenderit , enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch.",
+      "url": "project-single.html",
+      "category": "Projects",
+      "keywords": [
+        "case study",
+        "project detail"
+      ],
+      "noindex": false
+    },
+    {
+      "id": "our-history",
+      "title": "Our Story | ELM Media Design",
+      "heading": "OUR STORY",
+      "subtitle": "From European LFAM expertise to UAE commercial capability",
+      "description": "How ELM Media Design was founded to close the UAE LFAM capability gap.",
+      "excerpt": "European LFAM track record established — landmark retail and infrastructure projects including Recarlo Milan and Bergamo Airport components. UAE market analysis identifies accelerating demand for commercial-scale 3D printing aligned with Dubai's construction transformation agenda. ELM Media Design concept formed — bridging European LFAM engineering depth with Dubai-based execution for regional developers and government.",
+      "url": "our-history.html",
+      "category": "About",
+      "keywords": [
+        "story",
+        "timeline",
+        "founding",
+        "Europe",
+        "UAE capability"
+      ],
+      "noindex": false
+    },
+    {
+      "id": "index",
+      "title": "Industrial 3D Printing Dubai | ELM Media Design",
+      "heading": "Industrial 3D Printing at Scale",
+      "subtitle": "",
+      "description": "Commercial-scale LFAM in UAE. Robotic concrete and polymer 3D printing for buildings, facades, hospitality and government projects.",
+      "excerpt": "Commercial LFAM for buildings, facades, hospitality and government projects across the UAE. Design-to-manufacturing for architectural components — from pilot structures to production runs. ICV-certified delivery supporting UAE 3D printing strategy, Net Zero 2050 and Dubai 2040.",
+      "url": "index.html",
+      "category": "Home",
+      "keywords": [
+        "LFAM",
+        "3D printing",
+        "Dubai",
+        "UAE",
+        "facades",
+        "hospitality",
+        "government",
+        "concrete",
+        "polymer",
+        "robotic",
+        "consultation"
+      ],
+      "noindex": false
+    },
+    {
+      "id": "core-values",
+      "title": "Why ELM | ELM Media Design",
+      "heading": "WHY ELM",
+      "subtitle": "What sets commercial LFAM apart from conventional construction and small-scale 3D printing",
+      "description": "Agile manufacturing, sustainability, and UAE policy alignment with Dubai 2030 3D printing mandates.",
+      "excerpt": "Most regional offerings stop at prototypes or decorative pieces. ELM is built for commercial programmes — the scale, compliance and delivery discipline that developers and government entities require. To make large-format additive manufacturing a credible, commercially viable construction method in the UAE — enabling architects and developers to build faster, with less waste, and with forms that conventional methods cannot economically produce. We measure success by components installed on site, not renders in a portfolio.",
+      "url": "core-values.html",
+      "category": "About",
+      "keywords": [
+        "why ELM",
+        "differentiators",
+        "sustainability",
+        "agile"
+      ],
+      "noindex": false
+    },
+    {
+      "id": "contact",
+      "title": "Contact | ELM Media Design Dubai",
+      "heading": "CONTACT",
+      "subtitle": "30-minute briefing · Facility tour · 72-hour RFQ response",
+      "description": "Request a consultation. 30-minute briefing, facility tour, and 72-hour RFQ response.",
+      "excerpt": "Tell us about your project — building type, timeline, component scope and any compliance requirements. We respond to qualified commercial enquiries within 72 hours with a structured capability profile and next steps. Engagement includes a 30-minute technical briefing and optional facility tour.",
+      "url": "contact.html",
+      "category": "Contact",
+      "keywords": [
+        "consultation",
+        "RFQ",
+        "phone",
+        "email",
+        "facility tour",
+        "Dubai HQ",
+        "+971"
+      ],
+      "noindex": false
+    },
+    {
+      "id": "certificates",
+      "title": "UAE Compliance | ELM Media Design",
+      "heading": "UAE COMPLIANCE",
+      "subtitle": "Policy alignment for government, ICV and sustainability mandates",
+      "description": "Dubai 3D Printing Strategy 2030, ICV certification, Net Zero 2050 and Dubai 2040 alignment.",
+      "excerpt": "ELM Media Design structures delivery around the policy frameworks shaping UAE construction — so LFAM is not a novelty, but a compliant pathway to programme goals. Government and semi-government programmes increasingly require demonstrable alignment with national industrial and sustainability strategies. ELM documents how LFAM delivery supports:",
+      "url": "certificates.html",
+      "category": "About",
+      "keywords": [
+        "compliance",
+        "ICV",
+        "Dubai 2030",
+        "Net Zero",
+        "Dubai 2040",
+        "policy"
+      ],
+      "noindex": false
+    },
+    {
+      "id": "about-company",
+      "title": "Who We Are | ELM Media Design",
+      "heading": "WHO WE ARE",
+      "subtitle": "Commercial large-format additive manufacturing for the UAE built environment",
+      "description": "ELM Media Design delivers industrial 3D printing at architectural scale in Dubai, UAE.",
+      "excerpt": "ELM Media Design was established to close a critical gap in the UAE market: commercial-scale large-format additive manufacturing (LFAM) delivered with the rigour of European engineering and the speed demanded by regional development programmes. We are not a prototyping bureau. We partner with developers, contractors, government entities and hospitality brands to move architectural components from digital model through robotic fabrication to on-site installation. Our capability spans robotic concrete 3D printing and polymer LFAM — technologies suited to facades, landscape elements, structural components and bespoke architectural features that conventional methods struggle to deliver at pace.",
+      "url": "about-company.html",
+      "category": "About",
+      "keywords": [
+        "who we are",
+        "LFAM",
+        "fabrication",
+        "engagement",
+        "architectural scale"
+      ],
+      "noindex": false
+    }
+  ],
+  "quickLinks": [
+    {
+      "title": "Technologies & LFAM",
+      "url": "services.html",
+      "category": "Quick link"
+    },
+    {
+      "title": "View Projects",
+      "url": "projects.html",
+      "category": "Quick link"
+    },
+    {
+      "title": "Request Consultation",
+      "url": "contact.html",
+      "category": "Quick link"
+    },
+    {
+      "title": "Who We Are",
+      "url": "about-company.html",
+      "category": "Quick link"
+    },
+    {
+      "title": "UAE Compliance",
+      "url": "certificates.html",
+      "category": "Quick link"
+    }
+  ]
+}
