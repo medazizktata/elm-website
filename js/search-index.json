@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generated": "2026-06-22T23:38:34.533Z",
+  "generated": "2026-06-22T23:59:03.895Z",
   "items": [
     {
       "id": "technology-robotic-concrete",
@@ -204,6 +204,62 @@
       ]
     },
     {
+      "id": "project-4",
+      "title": "Oval Digital Billboard",
+      "heading": "Oval Digital Billboard",
+      "description": "LFAM project in the ELM portfolio.",
+      "url": "projects.html",
+      "category": "Project",
+      "keywords": [
+        "project",
+        "portfolio",
+        "LFAM",
+        "oval digital billboard"
+      ]
+    },
+    {
+      "id": "project-5",
+      "title": "Dubai Eagle",
+      "heading": "Dubai Eagle",
+      "description": "LFAM project in the ELM portfolio.",
+      "url": "projects.html",
+      "category": "Project",
+      "keywords": [
+        "project",
+        "portfolio",
+        "LFAM",
+        "dubai eagle"
+      ]
+    },
+    {
+      "id": "project-6",
+      "title": "The Flouka",
+      "heading": "The Flouka",
+      "description": "LFAM project in the ELM portfolio.",
+      "url": "projects.html",
+      "category": "Project",
+      "keywords": [
+        "project",
+        "portfolio",
+        "LFAM",
+        "the flouka"
+      ]
+    },
+    {
+      "id": "project-7",
+      "title": "Dubai Watch",
+      "heading": "Dubai Watch",
+      "description": "LFAM project in the ELM portfolio.",
+      "url": "projects.html",
+      "category": "Project",
+      "keywords": [
+        "project",
+        "portfolio",
+        "LFAM",
+        "dubai watch"
+      ]
+    },
+    {
       "id": "project-single",
       "title": "Project Case Study | ELM Media Design",
       "heading": "CASE STUDY",
@@ -278,7 +334,7 @@
       "heading": "Industrial 3D Printing at Scale",
       "subtitle": "",
       "description": "Commercial-scale LFAM in UAE. Robotic concrete and polymer 3D printing for buildings, facades, hospitality and government projects.",
-      "excerpt": "Commercial LFAM for buildings, facades, hospitality and government projects across the UAE. Design-to-manufacturing for architectural components — from pilot structures to production runs. ICV-certified delivery supporting UAE 3D printing strategy, Net Zero 2050 and Dubai 2040.",
+      "excerpt": "Where innovation meets precision — commercial LFAM for buildings, facades, hospitality and government projects across the UAE. Design-to-manufacturing for architectural components — from pilot structures to production runs. ICV-certified delivery supporting UAE 3D printing strategy, Net Zero 2050 and Dubai 2040.",
       "url": "index.html",
       "category": "Home",
       "keywords": [
@@ -319,7 +375,7 @@
       "heading": "CONTACT",
       "subtitle": "30-minute briefing · Facility tour · 72-hour RFQ response",
       "description": "Request a consultation. 30-minute briefing, facility tour, and 72-hour RFQ response.",
-      "excerpt": "Tell us about your project — building type, timeline, component scope and any compliance requirements. We respond to qualified commercial enquiries within 72 hours with a structured capability profile and next steps. Engagement includes a 30-minute technical briefing and optional facility tour.",
+      "excerpt": "Office 203, API Business Suites Dubai, UAE We're ready to explore how LFAM can elevate your programme — from technical briefing through fabrication to site delivery. Engagement includes a 30-minute technical briefing and optional facility tour.",
       "url": "contact.html",
       "category": "Contact",
       "keywords": [
@@ -358,7 +414,7 @@
       "heading": "WHO WE ARE",
       "subtitle": "Commercial large-format additive manufacturing for the UAE built environment",
       "description": "ELM Media Design delivers industrial 3D printing at architectural scale in Dubai, UAE.",
-      "excerpt": "ELM Media Design was established to close a critical gap in the UAE market: commercial-scale large-format additive manufacturing (LFAM) delivered with the rigour of European engineering and the speed demanded by regional development programmes. We are not a prototyping bureau. We partner with developers, contractors, government entities and hospitality brands to move architectural components from digital model through robotic fabrication to on-site installation. Our capability spans robotic concrete 3D printing and polymer LFAM — technologies suited to facades, landscape elements, structural components and bespoke architectural features that conventional methods struggle to deliver at pace.",
+      "excerpt": "Commercial LFAM in Dubai — robotic concrete and polymer printing for developers, government and hospitality programmes that need site-ready delivery, not prototypes. Every project follows a disciplined path from technical scoping through fabrication to site-ready delivery — with transparent milestones and UAE policy alignment throughout. 30-minute briefing, feasibility review, digital modelling and material specification for your programme.",
       "url": "about-company.html",
       "category": "About",
       "keywords": [

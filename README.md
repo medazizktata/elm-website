@@ -98,7 +98,7 @@ Template ships with placeholder images. Replace files in `images/` with ELM phot
 ## Contact (business)
 
 - **Phone:** +971 56 466 3334
-- **Email:** amin@letsadsmedia.com
+- **Email:** info@elmmdesign.com
 - **Location:** Dubai, UAE
 
 ---
