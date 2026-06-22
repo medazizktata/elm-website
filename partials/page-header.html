@@ -1,5 +1,6 @@
 <header class="page-header">
   <div class="container">
+    <h1>{{title}}</h1>
     <nav class="page-breadcrumb" aria-label="Breadcrumb">
       <ul>
         <li><a href="index.html">Home</a></li>
@@ -7,7 +8,6 @@
         <li aria-current="page">{{crumb}}</li>
       </ul>
     </nav>
-    <h1>{{title}}</h1>
-    <h6>{{subtitle}}</h6>
+    {{#if subtitle}}<h6>{{subtitle}}</h6>{{/if}}
   </div>
 </header>

@@ -96,6 +96,7 @@
   <!-- end container --> 
 </section>
 <!-- end content-section -->
+{{> tech-cards compact=true hideCta=true}}
 <section class="content-section">
   <div class="container">
     <div class="row align-items-center">
@@ -166,7 +167,8 @@
     </div>
   </div>
 </section>
-<section class="content-section">
+{{> lfam-comparison}}
+<section class="content-section project-showcase">
   <div class="container">
     <div class="row">
       <div class="col-lg-7">
@@ -188,7 +190,7 @@
   <div class="swiper-container project-slider">
     <div class="swiper-wrapper">
       <div class="swiper-slide">
-        <figure class="project-box"> <a href="project-single.html"><img src="images/slide04.jpg" alt="Recarlo Milan LFAM installation"></a>
+        <figure class="project-box"> <a href="project-recarlo-milan.html"><img src="images/slide04.jpg" alt="Recarlo Milan LFAM installation"></a>
           <figcaption>
             <h5>Recarlo Milan</h5>
             <p>Large-format printed architectural elements for a landmark retail environment</p>
@@ -197,7 +199,7 @@
       </div>
       <!-- end swiper-slide -->
       <div class="swiper-slide">
-        <figure class="project-box"> <a href="project-single.html"><img src="images/slide06.jpg" alt="Bergamo Airport LFAM project"></a>
+        <figure class="project-box"> <a href="project-bergamo-airport.html"><img src="images/slide06.jpg" alt="Bergamo Airport LFAM project"></a>
           <figcaption>
             <h5>Bergamo Airport</h5>
             <p>Structural and facade components produced via robotic concrete LFAM</p>
@@ -217,6 +219,7 @@
     </div>
     <!-- Add Pagination -->
     <div class="swiper-pagination"></div>
+    {{> project-slider-arrows}}
   </div>
   <!-- end project-slider --> 
 </section>

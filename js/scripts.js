@@ -1,4 +1,15 @@
 (function ($) {
+  function currentPageName() {
+    return window.location.pathname.split('/').pop() || 'index.html';
+  }
+
+  function pageNameFromHref(href) {
+    if (!href) return '';
+    var path = href.split('#')[0].split('?')[0].trim();
+    if (!path || path === '/') return 'index.html';
+    return path.split('/').pop() || 'index.html';
+  }
+
   function scrollToHash() {
     var hash = window.location.hash;
     if (!hash) return;
@@ -71,10 +82,8 @@
       if (!href || href.charAt(0) === '#') return;
       var hashIndex = href.indexOf('#');
       if (hashIndex === -1) return;
-      var path = href.slice(0, hashIndex) || window.location.pathname.split('/').pop();
       var hash = href.slice(hashIndex);
-      var current = window.location.pathname.split('/').pop() || 'index.html';
-      if (path !== current) return;
+      if (pageNameFromHref(href) !== currentPageName()) return;
       var $target = $(hash);
       if (!$target.length) return;
       e.preventDefault();
@@ -98,13 +107,21 @@
       if (/^https?:\/\//i.test(url)) {
         return;
       }
-      var hashIndex = url.indexOf('#');
-      if (hashIndex !== -1) {
-        var path = url.slice(0, hashIndex) || window.location.pathname.split('/').pop();
-        var current = window.location.pathname.split('/').pop() || 'index.html';
-        if (path === current) {
-          return;
+      if (pageNameFromHref(url) === currentPageName()) {
+        e.preventDefault();
+        var hashIndex = url.indexOf('#');
+        var hash = hashIndex !== -1 ? url.slice(hashIndex) : '';
+        if (hash.length > 1 && $(hash).length) {
+          history.pushState(null, '', hash);
+          scrollToHash();
+        } else {
+          $('html, body').stop(true).animate({ scrollTop: 0 }, 600);
+          history.pushState(null, '', window.location.pathname);
         }
+        if ($('.side-widget').hasClass('active')) {
+          setSideWidgetOpen(false);
+        }
+        return;
       }
       e.preventDefault();
       $('.page-transition').toggleClass("active");
@@ -262,30 +279,37 @@
 
 
   // PROJECT SLIDER
-  var swiper = new Swiper('.project-slider', {
-    speed: SWIPER_SPEED,
-    loop: true,
-    slidesPerView: "auto",
-    spaceBetween: 30,
-    centeredSlides: true,
-    pagination: {
-      el: '.swiper-pagination',
-      clickable: true,
-    },
-    breakpoints: {
-      640: {
-        slidesPerView: 1,
-        spaceBetween: 0,
+  $(".project-slider").each(function () {
+    var $slider = $(this);
+    new Swiper(this, {
+      speed: SWIPER_SPEED,
+      loop: true,
+      slidesPerView: "auto",
+      spaceBetween: 30,
+      centeredSlides: true,
+      navigation: {
+        nextEl: $slider.find(".project-slider__arrow--next")[0],
+        prevEl: $slider.find(".project-slider__arrow--prev")[0],
       },
-      768: {
-        slidesPerView: 1,
-        spaceBetween: 30,
+      pagination: {
+        el: $slider.find(".swiper-pagination")[0],
+        clickable: true,
       },
-      1024: {
-        slidesPerView: 1,
-        spaceBetween: 30,
+      breakpoints: {
+        640: {
+          slidesPerView: 1,
+          spaceBetween: 0,
+        },
+        768: {
+          slidesPerView: 1,
+          spaceBetween: 30,
+        },
+        1024: {
+          slidesPerView: 1,
+          spaceBetween: 30,
+        },
       },
-    }
+    });
   });
 
 

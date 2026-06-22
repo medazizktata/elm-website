@@ -12,7 +12,18 @@ const categoryByFile = {
   "core-values.html": "About",
   "certificates.html": "About",
   "services.html": "Technologies",
+  "technology-robotic-concrete.html": "Technologies",
+  "technology-polymer-lfam.html": "Technologies",
+  "technology-architectural-manufacturing.html": "Technologies",
+  "solutions.html": "Solutions",
+  "solution-property-infrastructure.html": "Solutions",
+  "solution-industrial-mobility.html": "Solutions",
+  "solution-ooh-the-loop.html": "Solutions",
+  "solution-hospitality-leisure.html": "Solutions",
+  "solution-creative-culture.html": "Solutions",
   "projects.html": "Projects",
+  "project-recarlo-milan.html": "Projects",
+  "project-bergamo-airport.html": "Projects",
   "project-single.html": "Projects",
   "contact.html": "Contact",
   "leadership.html": "About",
@@ -40,7 +51,11 @@ const keywordExtras = {
   "core-values.html": ["why ELM", "differentiators", "sustainability", "agile"],
   "certificates.html": ["compliance", "ICV", "Dubai 2030", "Net Zero", "Dubai 2040", "policy"],
   "services.html": ["technologies", "robotic concrete", "polymer", "LFAM", "manufacturing", "capabilities"],
-  "projects.html": ["portfolio", "case studies", "LFAM projects"],
+  "solutions.html": ["solutions", "industries", "verticals", "THE LOOP", "hospitality", "infrastructure"],
+  "solution-ooh-the-loop.html": ["THE LOOP", "OOH", "out of home", "robotic media", "LED", "kinetic"],
+  "projects.html": ["portfolio", "case studies", "LFAM projects", "Recarlo", "Bergamo"],
+  "project-recarlo-milan.html": ["Recarlo", "Milan", "retail", "polymer", "Caracol"],
+  "project-bergamo-airport.html": ["Bergamo", "airport", "concrete", "WASP", "infrastructure"],
   "project-single.html": ["case study", "project detail"],
   "contact.html": ["consultation", "RFQ", "phone", "email", "facility tour", "Dubai HQ", "+971"],
   "leadership.html": ["team", "leadership", "management"],
@@ -49,6 +64,8 @@ const keywordExtras = {
 
 const quickLinks = [
   { title: "Technologies & LFAM", url: "services.html", category: "Quick link" },
+  { title: "Industry Solutions", url: "solutions.html", category: "Quick link" },
+  { title: "THE LOOP OOH", url: "solution-ooh-the-loop.html", category: "Quick link" },
   { title: "View Projects", url: "projects.html", category: "Quick link" },
   { title: "Request Consultation", url: "contact.html", category: "Quick link" },
   { title: "Who We Are", url: "about-company.html", category: "Quick link" },
@@ -112,12 +129,17 @@ function extractParagraphs(content) {
 
 function extractProjects(content, file) {
   if (file !== "projects.html") return [];
+  const urlByTitle = {
+    "Recarlo Milan": "project-recarlo-milan.html",
+    "Bergamo Airport": "project-bergamo-airport.html",
+    "UAE Commercial LFAM": "contact.html#consultation-form",
+  };
   return [...content.matchAll(/<h5>([^<]+)<\/h5>/g)].map((m, i) => ({
     id: `project-${i + 1}`,
     title: m[1].trim(),
     heading: m[1].trim(),
     description: "LFAM project in the ELM portfolio.",
-    url: "project-single.html",
+    url: urlByTitle[m[1].trim()] || "projects.html",
     category: "Project",
     keywords: ["project", "portfolio", "LFAM", m[1].trim().toLowerCase()],
   }));

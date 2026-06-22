@@ -230,11 +230,12 @@ figure{margin-bottom: 20px;}
 
 /* FORM ELEMENTS */
 input[type="text"], input[type="email"], input[type="search"], input[type="password"], input[type="tel"], textarea {
-  width: 420px; max-width: 100%; border: 2px solid var(--elm-border); background-color: var(--elm-input-bg); color: var(--elm-text);
+  width: 420px; max-width: 100%; border: 1px solid var(--elm-border); background-color: var(--elm-input-bg); color: var(--elm-text); font-size: 14px; @include transition;
   &::placeholder{color: var(--elm-text-muted);}
+  &:focus{border-color: var(--elm-text); outline: none;}
 }
-input[type="text"], input[type="email"], input[type="search"], input[type="password"], input[type="tel"] {height: 68px; padding: 0 30px;}
-textarea{height: 128px; padding: 30px;}
+input[type="text"], input[type="email"], input[type="search"], input[type="password"], input[type="tel"] {height: 48px; padding: 0 16px;}
+textarea{height: 96px; padding: 12px 16px; resize: vertical;}
 
 input[type="submit"], input[type="button"], button[type="button"], button[type="submit"] {@include elm-btn; border: none; @include rose-bg; cursor: pointer; padding: 0 26px;}
 
@@ -258,6 +259,7 @@ select,
 .scroll-top,
 .button-prev,
 .button-next,
+.project-slider__arrow,
 .fancybox-close-small,
 .swiper-pagination-bullet,
 .isotope-filter li,
@@ -285,7 +287,7 @@ select,
 $section-padding-y: 80px;
 $section-padding-y-compact: 48px;
 $section-padding-y-tight: 40px;
-$section-whitespace: 80px;
+$section-whitespace: 120px;
 
 .no-spacing{margin: 0 !important; padding: $section-padding-y-compact 0 !important;}
 .no-bottom-spacing{margin-bottom: 0 !important; padding-bottom: $section-padding-y-compact !important;}
@@ -455,9 +457,9 @@ $section-whitespace: 80px;
 
 /* WHITE SPACES — gradient blends, not hard color blocks */
 .white-space-top{position: relative;
-	&:before{content: ""; width: 100vw; height: $section-whitespace; background: linear-gradient(180deg, var(--elm-bg-page) 0%, transparent 100%); position: absolute; left: 0; top: 0; z-index: 1; pointer-events: none;}}
+	&:before{content: ""; width: 100vw; height: var(--elm-feather-h-md); background: var(--elm-feather-top); position: absolute; left: 0; top: 0; z-index: 1; pointer-events: none;}}
 .white-space-bottom{position: relative;
-	&:after{content: ""; width: 100%; height: $section-whitespace; background: linear-gradient(0deg, var(--elm-bg-page) 0%, transparent 100%); position: absolute; left: 0; bottom: 0; z-index: 1; pointer-events: none;}}
+	&:after{content: ""; width: 100%; height: var(--elm-feather-h-md); background: var(--elm-feather-bottom); position: absolute; left: 0; bottom: 0; z-index: 1; pointer-events: none;}}
 .slider.white-space-bottom:after{display: none;}
 
 
@@ -476,8 +478,21 @@ $section-whitespace: 80px;
 
 
 /* NAVBAR */
-.navbar{width: 100%; position: fixed; left: 0; top: 0; z-index: 4; padding: 20px 0; background: linear-gradient(180deg, rgba($color-dark, 0.62) 0%, rgba($color-dark, 0) 100%); @include transition-cubic;
-	&.sticky{padding: 12px 0; background: rgba($color-dark, 0.78); backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px); border-bottom: 1px solid rgba(#fff, 0.07); box-shadow: 0 8px 32px rgba(0, 0, 0, 0.14);}
+.navbar{width: 100%; position: fixed; left: 0; top: 0; z-index: 4; padding: 20px 0; background: transparent; border-bottom: 1px solid transparent; @include transition-cubic;
+	&.sticky{padding: 12px 0; background: var(--elm-navbar-sticky-bg); backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px); border-bottom-color: var(--elm-navbar-sticky-border); box-shadow: 0 8px 32px var(--elm-shadow);
+		.logo a:hover img{filter: none; opacity: 0.72;}
+		.site-menu ul li > a{color: rgba($color-dark, 0.76);
+			&:hover{color: $color-dark; background: rgba($color-dark, 0.06);}}
+		.site-menu ul li ul{background: var(--elm-bg-surface); border-color: var(--elm-border); box-shadow: 0 18px 48px var(--elm-shadow);
+			li a{color: var(--elm-text-muted);
+				&:hover{color: var(--elm-text); background: rgba($color-main, 0.1);}}}
+		.theme-toggle,
+		.search{color: rgba($color-dark, 0.76); background: rgba($color-dark, 0.04);
+			&:hover{color: $color-dark; background: rgba($color-dark, 0.08);}}
+		.hamburger{color: $color-dark; background: rgba($color-dark, 0.04);
+			span{background: $color-dark;}}
+		.languages ul li a{color: rgba($color-dark, 0.76);
+			&:hover{color: $color-dark;}}}
 	.container{display: flex; align-items: center; gap: 20px;}
 	.logo{flex-shrink: 0; margin-left: 0;
 		a{display: block; margin: 0;
@@ -516,9 +531,9 @@ $section-whitespace: 80px;
 
 
 /* SLIDER */
-.slider{width: 100%; height: 100vh; display: flex; flex-wrap: wrap; position: relative; background-color: $color-dark;
-	&::before{content: ""; position: absolute; left: 0; top: 0; bottom: 0; width: 58%; z-index: 0; pointer-events: none; background-color: $color-dark; background-image: $bg-photo-overlay, url('../images/background/branding-elm-18.jpg'); background-position: center; background-size: cover;}
-	&::after{content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 140px; background: linear-gradient(to bottom, transparent, var(--elm-bg-page)); pointer-events: none; z-index: 2;}
+.slider{width: 100%; height: 100vh; display: flex; flex-wrap: wrap; position: relative; background-color: $color-dark; overflow: hidden;
+	&::before{content: ""; position: absolute; inset: 0; z-index: 0; pointer-events: none; background-color: $color-dark; background-image: $bg-photo-overlay, url('../images/background/branding-elm-18.jpg'); background-position: center; background-size: cover;}
+	&::after{content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: var(--elm-feather-h-lg); background: var(--elm-feather-bottom); pointer-events: none; z-index: 2;}
 	.container{position: relative; z-index: 1; padding-top: 150px; display: flex; flex-wrap: wrap;}
 	.slider-content{width: calc(50% - 120px); display: flex; flex-wrap:wrap; position: relative; overflow: hidden; margin: 0; margin-right: 40px; z-index: 2;
 		.swiper-slide{ display: flex; align-items: center;}
@@ -529,24 +544,25 @@ $section-whitespace: 80px;
 			a{@include elm-btn; background: $color-main; color: $color-white; border: 1px solid rgba(#fff, 0.08);
 				&:hover{box-shadow: 0 10px 28px rgba(0, 0, 0, 0.35); background: lighten($color-main, 4%);}}}
 	}
-	.slider-main{width: calc(50vw + 80px); height: calc(100vh - 150px); overflow: hidden; margin: 0; position: absolute; left: calc(50% - 80px); top: 150px; z-index: 1;
-		.slide-image{width: 100%; height: 100%; display: inline-block; position: relative; background-position: center !important; background-size: cover !important; background-color: transparent;}}}
+	.slider-main{width: calc(50vw + 80px); height: 100vh; overflow: hidden; margin: 0; position: absolute; left: calc(50% - 80px); top: 0; z-index: 1;
+		.slide-image{width: 100%; height: 100%; display: inline-block; position: relative; background-position: center !important; background-size: cover !important; background-color: transparent;
+			&::after{content: ""; position: absolute; left: 0; top: 0; bottom: 0; width: var(--elm-feather-hero-edge-w); background: var(--elm-feather-hero-edge); pointer-events: none; z-index: 1;}}}}
 
 
 
 /* PAGE HEADER */
 .page-header{width: 100%; height: 500px; display: flex; flex-wrap: wrap; align-items: center; @include brand-bg('../images/background/bg_elm-1.jpg'); position: relative;
-	&::after{content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 100px; background: linear-gradient(to bottom, transparent, var(--elm-bg-page)); pointer-events: none; z-index: 1;}
+	&::after{content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: var(--elm-feather-h-md); background: var(--elm-feather-bottom); pointer-events: none; z-index: 1;}
 	.container{position: relative; z-index: 2; color: #fff; padding-top: 98px;
-		h1{ width: 100%; display: block; font-size: 7vw; font-weight: 800; line-height: 1; margin: 0 0 16px;}
-		h6{ width: 100%; display: block; opacity: 0.75; margin: 0; max-width: 640px; line-height: 1.5; font-size: clamp(15px, 1.6vw, 18px);}
-		.page-breadcrumb{display: block; margin: 0 0 20px; padding: 0; background: none; border-radius: 0;
+		h1{ width: 100%; display: block; font-size: 7vw; font-weight: 800; line-height: 1; margin: 0;}
+		h6{ width: 100%; display: block; opacity: 0.75; margin: 16px 0 0; max-width: 640px; line-height: 1.5; font-size: clamp(15px, 1.6vw, 18px);}
+		.page-breadcrumb{display: block; margin: 14px 0 0; padding: 0; background: none; border-radius: 0;
 			ul{display: block; margin: 0; padding: 0; list-style: none;
-				li{display: inline; margin: 0; padding: 0; font-size: 13px; font-weight: 600; color: $color-main;
+				li{display: inline; margin: 0; padding: 0; font-size: 15px; font-weight: 700; letter-spacing: 0.02em; color: #fff;
 					&:last-child:after{display: none;}
-					&:after{content: "/"; display: inline-block; margin: 0 14px; color: rgba(#fff, 0.45);}
-					a{color: rgba(#fff, 0.85); text-decoration: none;
-						&:hover{color: #fff; text-decoration: none;}}}}}}}
+					&:after{content: ">"; display: inline-block; margin: 0 10px; color: $color-main; font-weight: 700;}
+					a{color: #fff; text-decoration: none;
+						&:hover{color: rgba(#fff, 0.75); text-decoration: none;}}}}}}}
 
 
 
@@ -554,22 +570,25 @@ $section-whitespace: 80px;
 /* CONTENT SECTION */
 .content-section{width: 100%; display: block; padding: $section-padding-y 0; position: relative; background: transparent;
 	&.bg-photo{
-		&::before{content: ""; position: absolute; left: 0; right: 0; top: 0; height: 72px; background: linear-gradient(to bottom, var(--elm-bg-page), transparent); pointer-events: none; z-index: 0;}
-		&::after{content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 100px; background: linear-gradient(to bottom, transparent, var(--elm-bg-page)); pointer-events: none; z-index: 0;}
+		&::before{content: ""; position: absolute; left: 0; right: 0; top: 0; height: var(--elm-feather-h-sm); background: var(--elm-feather-top); pointer-events: none; z-index: 0;}
+		&::after{content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: var(--elm-feather-h-md); background: var(--elm-feather-bottom); pointer-events: none; z-index: 0;}
 		> .container{position: relative; z-index: 1;}}
 	&[data-background]:has(+ .footer-bar)::after,
 	&[data-background]:has(+ .content-section[data-background])::after{display: none;}
 	&[data-background] + .content-section[data-background]::before{display: none;}
 	&[data-background].white-space-top:has(+ .footer-bar)::before{display: none;}}
 .content-section[data-background] + .footer-bar::before{display: none;}
-.slider + .content-section{padding-top: calc(#{$section-padding-y} + 8px);}
+.slider + .content-section{padding-top: 48px;}
+.content-section + .content-section{padding-top: 32px;}
+.content-section:has(+ .content-section){padding-bottom: 32px;}
+.content-section:has(.icon-content) .row{align-items: flex-start;}
 .section-note{width:100%; display: block; margin-top:30px; text-align: center; font-size: 14px;}
 
 
 
 
 /* SECTION TITLE */
-.section-title{width: 100%; display: block; text-align: center; margin-bottom: 32px;
+.section-title{width: 100%; display: block; text-align: center; margin-bottom: 24px;
 	h6{ display: inline-block; font-weight: 800; letter-spacing: 3px; font-size: 18px; color: var(--elm-label);}
 	h2{width: 100%; display: block; margin-bottom: 0; font-size: 47px;}
 	p{width: 100%; display: block; margin-bottom: 0; margin-top: 20px;}
@@ -590,27 +609,30 @@ $section-whitespace: 80px;
 
 
 /* ENGAGEMENT SECTION */
-.content-section.section-compact:has(+ .engagement-section){padding-bottom: 44px !important;}
+.content-section:has(.sectors-grid){padding-bottom: 56px !important;}
+.content-section:has(.sectors-grid) + .engagement-section{padding-top: 72px !important;}
+.content-section.section-compact:has(+ .engagement-section){padding-bottom: 72px !important;}
 .engagement-section{
-	&.section-compact{padding-top: 32px !important;}
+	&.section-compact{padding-top: 72px !important;}
 	&__head{margin-bottom: 24px;}
 	&__lede{margin: 0; font-size: 16px; line-height: 1.5; color: var(--elm-text-muted); font-weight: 600;}}
 
 
 
 /* ICON CONTENT */
-.icon-content{width: 100%; display: flex; flex-wrap: wrap; border: 1px solid var(--elm-border); padding: 24px 20px; position: relative; background: var(--elm-bg-surface); overflow: hidden; @include transition;
+.icon-content{width: 100%; display: flex; flex-wrap: wrap; align-content: flex-start; border: 1px solid var(--elm-border); padding: 18px 16px; position: relative; background: var(--elm-bg-surface); overflow: hidden; @include transition;
 	figure, h3, small, a{position: relative; z-index: 1;}
 	&:hover{background: var(--elm-card-hover-bg); border-color: $color-main; color: var(--elm-on-accent); box-shadow: 0 16px 32px var(--elm-card-hover-shadow);
 		h3, small{color: var(--elm-on-accent);}
 		figure i{color: var(--elm-on-accent);}
-		a{background: $color-main; color: var(--elm-on-accent);}}
-	figure{width: 100%; display: block; margin-bottom: 16px;
-		img{height: 48px;}
-		i{font-size: 48px; line-height: 1; color: $color-main; @include transition;}}
-	h3{ width: 100%; display: block; margin-bottom: 12px; font-size: 20px; line-height: 1.25;}
-	small{width: 100%; display: block; margin-bottom: 20px; font-size: 14px; line-height: 1.5;}
-	a{width: 40px; height: 40px; line-height: 40px; display: inline-block; background: $color-dark; color: var(--elm-on-accent); text-align: center; font-size: 16px; @include transition;
+		a{background: #fff; color: $color-main;
+			&:hover{background: $color-dark; color: #fff;}}}
+	figure{width: 100%; display: block; margin-bottom: 12px;
+		img{height: 40px;}
+		i{font-size: 40px; line-height: 1; color: $color-main; @include transition;}}
+	h3{ width: 100%; display: block; margin-bottom: 8px; font-size: 18px; line-height: 1.25;}
+	small{width: 100%; display: block; margin-bottom: 14px; font-size: 13px; line-height: 1.45;}
+	a{width: 36px; height: 36px; display: inline-flex; align-items: center; justify-content: center; padding: 0; line-height: 1; background: $color-dark; color: var(--elm-on-accent); text-align: center; font-size: 18px; font-weight: 400; @include transition;
 		&:hover{text-decoration: none; background: $color-main;}}}
 
 
@@ -639,13 +661,13 @@ $section-whitespace: 80px;
 .stats-row .row{align-items: stretch;}
 .stats-row .col-lg-3,
 .stats-row .col-md-6{margin-bottom: 16px;}
-.counter-box{width:100%; height: 100%; display: flex; flex-direction: column; padding: 20px 18px; position: relative; @include transition; background: var(--elm-bg-surface); border: 1px solid var(--elm-border); border-top: 3px solid $color-main;
+.counter-box{width:100%; min-height: 172px; height: 100%; display: flex; flex-direction: column; padding: 32px 28px; position: relative; @include transition; background: var(--elm-bg-surface); border: 1px solid var(--elm-border); border-top: 4px solid $color-main;
 	&:hover{transform: translateY(-3px); box-shadow: 0 12px 28px var(--elm-shadow); border-top-color: $color-secondary;}
-	&__figure{display: flex; align-items: baseline; gap: 2px; margin-bottom: 10px; line-height: 1;}
-	.odometer{display: inline-block; font-size: 40px; font-weight: 800; color: var(--elm-text);}
-	.value{font-size: 18px; font-weight: 700; color: $color-main;}
-	h6{display: block; width: 100%; margin: 0 0 6px; font-size: 11px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: $color-main;}
-	p{margin: 0; margin-top: auto; font-size: 13px; line-height: 1.45; color: var(--elm-text-muted);}}
+	&__figure{display: flex; align-items: baseline; gap: 4px; margin-bottom: 14px; line-height: 1;}
+	.odometer{display: inline-block; font-size: 56px; font-weight: 800; color: var(--elm-text);}
+	.value{font-size: 22px; font-weight: 700; color: $color-main;}
+	h6{display: block; width: 100%; margin: 0 0 10px; font-size: 12px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: $color-main;}
+	p{margin: 0; margin-top: auto; font-size: 14px; line-height: 1.5; color: var(--elm-text-muted);}}
 
 
 
@@ -665,9 +687,11 @@ $section-whitespace: 80px;
 
 /* GOOGLE MAPS */
 .google-maps{width: 100%; height: 520px; display: block; border: none;}
-.contact-form{width: 100%; display: block; padding:50px; background: var(--elm-bg-page); position: relative; z-index: 1; margin-bottom: -70%; box-shadow: 0 0 30px var(--elm-shadow);
+.contact-form{width: 100%; display: block; padding:36px; background: var(--elm-bg-page); position: relative; z-index: 1; margin-bottom: -70%; box-shadow: 0 0 30px var(--elm-shadow);
 	input[type="text"], input[type="email"], input[type="tel"], textarea{width: 100%; background-color: var(--elm-bg-surface); border-color: var(--elm-border); color: var(--elm-text);}
-	.form-group:last-child{margin-bottom: 0;}}
+	.form-group{margin-bottom: 18px;
+		> span{display: block; margin-bottom: 10px; font-size: 11px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--elm-text-muted);}
+		&:last-child{margin-bottom: 0;}}}
 
 
 
@@ -703,7 +727,17 @@ $section-whitespace: 80px;
 
 
 /* PROJECT SLIDER */
+.project-showcase{
+	padding-bottom: 32px !important;
+	> .container{padding-bottom: 40px;}
+	.project-slider{margin-top: 16px;}
+	+ .content-section.section-compact{padding-top: 24px !important;}}
 .project-slider{width: 100%; display: block; position: relative; overflow: hidden;
+	&__arrow{position: absolute; top: 38%; transform: translateY(-50%); z-index: 3; width: 52px; height: 52px; display: inline-flex; align-items: center; justify-content: center; padding: 0; border: 1px solid var(--elm-border); background: var(--elm-bg-surface); color: var(--elm-text); font-size: 20px; line-height: 1; cursor: pointer; box-shadow: 0 8px 28px var(--elm-shadow); @include transition;
+		&:hover{background: $color-main; border-color: $color-main; color: #fff;}
+		&.swiper-button-disabled{opacity: 0.35; pointer-events: none;}
+		&--prev{left: clamp(12px, 2.5vw, 32px);}
+		&--next{right: clamp(12px, 2.5vw, 32px);}}
 	.swiper-slide{max-width: 50vw;
 		&.swiper-slide-active .project-box figcaption{opacity: 1;}
 		.project-box{width: 100%; display: flex; flex-wrap: wrap; margin: 0; padding-bottom: 24px; position: relative;
@@ -749,8 +783,8 @@ $section-whitespace: 80px;
 	.form{width: 100%; display: block; padding: 50px; background: #fff; color: $color-dark; position: relative;
 		.form-group{position: static; margin-bottom: 35px;}
 		.form-group:last-child{margin-bottom: 0;}
-		select{ width: 300px; max-width: 100%; height: 58px; border: 1px solid #e5e5e5; padding: 0 20px;}
-		.custom-checkbox{ height: 58px; line-height: 58px; border: 1px solid #e5e5e5; cursor: pointer; padding: 0 30px; margin-right: 5px;}
+		select{ width: 300px; max-width: 100%; height: 44px; border: 1px solid #e5e5e5; padding: 0 16px; font-size: 14px;}
+		.custom-checkbox{ height: 44px; line-height: 44px; border: 1px solid #e5e5e5; cursor: pointer; padding: 0 20px; margin-right: 5px; font-size: 14px;}
 		input[type="checkbox"]{display: none;}
 		input[type="checkbox"]:checked + .custom-checkbox{border-color:$color-main; @include rose-bg;}
 		.info-box{width: 65%; float: left; margin-top: 50px;}
@@ -763,23 +797,26 @@ $section-whitespace: 80px;
 
 
 /* STEP BOX */
-.step-box{ width: 100%; display: block; position: relative; z-index: 1;
+.steps-row{margin-top: 8px; align-items: stretch;
+	> [class*="col-"]{display: flex; margin-bottom: 0;}}
+.step-box{ width: 100%; display: flex; flex-direction: column; position: relative; z-index: 1;
 	&:hover .image img{filter: grayscale(0);}
-	&:hover:after{content: ""; width: 40%; height: 65px; background: url("../images/pattern-dot.png"); background-size: 12px 12px;  position: absolute; right: -25px; bottom: -25px; z-index: 0;}
-	&:hover .content{bottom: 0;}
+	&:hover:after{content: ""; width: 40%; height: 65px; background: url("../images/pattern-dot.png"); background-size: 12px 12px; position: absolute; right: -25px; bottom: 8px; z-index: 0;}
+	&:hover .content{transform: translateY(4px);}
 	*{@include transition;}
-	.image{width: 100%; display: block; padding-right: 30px;
-		img{width: 100%; filter: grayscale(1);}}
-	.content{width: 80%; position: absolute; right: 0; bottom: -20px; z-index: 1; background: var(--elm-bg-surface); padding: 22px 24px; box-shadow: 0 0 32px var(--elm-shadow); color: var(--elm-text); border-top: 2px solid rgba($color-main, 0.45);
+	.image{width: 100%; height: 360px; display: block; padding-right: 10px; overflow: hidden; flex-shrink: 0;
+		img{width: 100%; height: 100%; object-fit: cover; display: block; filter: grayscale(1);}}
+	.content{width: 74%; position: relative; margin: -88px 0 0 auto; z-index: 1; min-height: 172px; display: flex; flex-direction: column; background: var(--elm-bg-surface); padding: 22px 24px; box-shadow: 0 0 32px var(--elm-shadow); color: var(--elm-text); border-top: 2px solid rgba($color-main, 0.45);
 		.icon{width: 100%; display: block; margin-bottom: 12px;
 			img{height: 48px;}
 			i{font-size: 44px; line-height: 1; color: $color-main; @include transition;}}
 		span{position: absolute; right: 20px; top: 20px; font-weight: 700; opacity: 0.45; font-size: 13px; letter-spacing: 0.06em; color: var(--elm-text-muted);}
 		h6{ display: inline-block; font-weight: 700; letter-spacing: 0.1em; font-size: 11px; text-transform: uppercase; margin-bottom: 10px; color: var(--elm-text);}
-		p{width: 100%; display: block; margin: 0; font-size: 14px; line-height: 1.5; color: var(--elm-text-muted); opacity: 1;}}
+		p{width: 100%; display: block; margin: 0; margin-top: auto; font-size: 14px; line-height: 1.5; color: var(--elm-text-muted); opacity: 1;}}
 	&:hover .content{
 		border-top-color: $color-main;
 		.icon i{color: $color-main;}}}
+.content-section:has(.steps-row){padding-bottom: 40px;}
 
 
 
@@ -1007,13 +1044,13 @@ $section-whitespace: 80px;
 
 
 /* FOOTER BAR */
-.footer-bar{width: 100%; display: block; padding: 48px 0; position: relative; overflow: hidden; color: #fff; @include brand-bg('../images/background/branding-elm-7.jpg', $bg-photo-overlay-heavy);
-	&::before{content: ""; position: absolute; left: 0; right: 0; top: 0; height: 72px; background: linear-gradient(to bottom, var(--elm-bg-page), transparent); pointer-events: none; z-index: 1;}
+.footer-bar{width: 100%; display: block; padding: 88px 0; position: relative; overflow: hidden; color: #fff; @include brand-bg('../images/background/branding-elm-7.jpg', $bg-photo-overlay-heavy);
+	&::before{content: ""; position: absolute; left: 0; right: 0; top: 0; height: var(--elm-feather-h-sm); background: var(--elm-feather-top); pointer-events: none; z-index: 1;}
 	.container{position: relative; z-index: 2;}
-	&__row{row-gap: 20px;}
-	.logo{width: 100%; display: block; margin-bottom: 16px;
-		img{height: 38px; width: auto;}}
-	h2{font-size: clamp(28px, 3.5vw, 40px); font-weight: 800; line-height: 1.12; padding-right: 0; margin-bottom: 0;
+	&__row{align-items: center; row-gap: 24px;}
+	.logo{width: 100%; display: block; margin-bottom: 20px;
+		img{height: 42px; width: auto;}}
+	h2{font-size: clamp(32px, 4vw, 48px); font-weight: 800; line-height: 1.1; padding-right: 0; margin-bottom: 0;
 		b{color: $color-white; @include transition; cursor: default;
 			&:hover{color: $color-main;}}}
 	.button{@include elm-btn; @include rose-bg;
@@ -1051,8 +1088,8 @@ $section-whitespace: 80px;
 
 
 /* SALES SPECIALIST FORM */
-#sales-specialist-form{width: 500px; max-width: 100%; display: none; padding:40px;
-	.form-group span{display: inline-block; margin-left: 12px; background: #fff; padding: 0 6px; transform: translateY(14px); color: rgba(139,139,139,1.00); font-size: 15px;}
+#sales-specialist-form{width: 500px; max-width: 100%; display: none; padding:32px;
+	.form-group span{display: inline-block; margin: 0 0 0 12px; background: #fff; padding: 0 6px; transform: translateY(10px); color: rgba(139,139,139,1.00); font-size: 13px;}
 	.form-group:last-child{ margin: 0;}}
 .fancybox-close-small{transform: scale(1.5); top: 10px; right: 10px;}
 
@@ -1095,12 +1132,12 @@ input::-moz-focus-inner, input::-moz-focus-outer {  border: 0;}
 	.navbar .navbar-button span{display: none;}
 	.slider .slider-content .inner h1,
 	.slider .slider-content .inner h2{font-size: 64px;}
-	.counter-box .odometer{font-size: 44px;}
+	.counter-box .odometer{font-size: 48px;}
 	.project-slider .swiper-slide{max-width: 70vw;}
 	.calculator .form .info-box{width: 60%;}
 	.logo-item{padding: 0 15px;}
 	.footer-bar h2{padding: 0;}
-	.footer-bar__row{align-items: flex-end;}
+	.footer-bar__row{align-items: center;}
 	.sectors-grid__cards{grid-template-columns: repeat(2, 1fr);}
 	.engagement-section__head .custom-button{white-space: nowrap;}
 }
@@ -1115,9 +1152,9 @@ input::-moz-focus-inner, input::-moz-focus-outer {  border: 0;}
 	.contact-box p{font-size: 15px;}
 	.contact-form{margin-bottom: -10%;}
 	.counter-box .value{margin-right: 20px;}
-	.step-box {margin: 15px 0;}
-	.step-box .image{padding-right: 0;}
-	.step-box .content{bottom: 30px; right: 30px;}
+	.step-box {margin: 0;}
+	.step-box .image{height: 300px; padding-right: 0;}
+	.step-box .content{margin-top: -72px; width: 82%; min-height: 160px;}
 	.accordion{padding-right: 0;}
 	.cta-box-yellow{width: 100%;}
 	.custom-list{margin-top: 30px;}
@@ -1129,6 +1166,7 @@ input::-moz-focus-inner, input::-moz-focus-outer {  border: 0;}
 	.navbar .site-menu{display: none;}
 	.navbar .navbar-button span{display: inline;}
 	.slider {height: auto;}
+	.slider::before{display: none;}
 	.slider .container{ padding-top:120px;}
 	.slider .slider-main{width: 100%; height:600px; position: static; margin-bottom:40px;}
 	.slider .slider-content{width: 100%; margin-right: 0; padding-bottom: 0;}
@@ -1177,12 +1215,12 @@ input::-moz-focus-inner, input::-moz-focus-outer {  border: 0;}
 	.page-header{height: auto; min-height: 360px; padding-bottom: 48px;}
 	.page-header .container{padding-top: 88px;}
 	.page-header .container h1{font-size: 36px;}
-	.page-header .page-breadcrumb{margin-bottom: 14px;}
+	.page-header .page-breadcrumb{margin-top: 10px;}
 	.sectors-grid__intro{margin-bottom: 24px;}
 	.sectors-grid__cards{grid-template-columns: 1fr; gap: 10px;}
 	.sector-card{padding: 14px 16px; gap: 10px;}
 	.engagement-section{
-		&.section-compact{padding-top: 24px !important;}
+		&.section-compact{padding-top: 56px !important;}
 		&__head{margin-bottom: 18px;}
 		&__lede{font-size: 15px;}}
 	.engagement-section__head .col-lg-4.text-lg-right{text-align: left !important; margin-top: 12px;}
@@ -1196,9 +1234,11 @@ input::-moz-focus-inner, input::-moz-focus-outer {  border: 0;}
 	.slider .slider-main { height:400px; margin-bottom:15px;}
 	.icon-content{width: 100%; margin: 12px 0; padding: 20px 18px;}
 	.icon-content small{margin-bottom: 16px;}
-	.counter-box{padding: 18px 16px;
-		.odometer{font-size: 34px;}
-		.value{font-size: 16px;}}
+	.counter-box{padding: 24px 20px; min-height: 148px;
+		.odometer{font-size: 42px;}
+		.value{font-size: 18px;}}
+	.step-box .image{height: 260px;}
+	.step-box .content{margin-top: -64px; width: 88%; min-height: 152px;}
 	.project-slider .swiper-slide .project-box figcaption{width: 100%; position: static; }
 	.project-slider .swiper-slide .project-box figcaption h5{font-size: 22px;}
 	.project-slider .swiper-slide .project-box figcaption:after{bottom: 0;}
@@ -1218,7 +1258,7 @@ input::-moz-focus-inner, input::-moz-focus-outer {  border: 0;}
 	.cta-box-yellow{padding: 30px;}
 	.cta-box-yellow h4{font-size: 34px;}
 	.calculator .form{padding: 30px;}
-	.footer-bar{padding: 36px 0;
+	.footer-bar{padding: 56px 0;
 		h2{font-size: clamp(24px, 7vw, 30px);}
 		.logo{margin-bottom: 12px;
 			img{height: 32px;}}

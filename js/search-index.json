@@ -1,14 +1,136 @@
 {
   "version": 1,
-  "generated": "2026-06-22T22:19:40.475Z",
+  "generated": "2026-06-22T23:38:34.533Z",
   "items": [
+    {
+      "id": "technology-robotic-concrete",
+      "title": "Robotic Concrete 3D Printing | ELM Media Design",
+      "heading": "ROBOTIC CONCRETE",
+      "subtitle": "Layer-by-layer structural printing without conventional formwork",
+      "description": "Commercial robotic concrete 3D printing in Dubai — structural and decorative LFAM without conventional formwork, up to 60% waste reduction.",
+      "excerpt": "An industrial robotic arm extrudes concrete layer by layer — structural or decorative, depending on programme requirements. No formwork means complex geometry becomes buildable, often on-site, in days rather than months. Our lime-based structural mortars actively absorb CO₂ during curing — a measurable sustainability advantage for ESG reporting and UAE Net Zero 2050 alignment. Eliminates conventional formwork for bespoke elements. Reduces material waste by up to 60% compared to standard methods. Enables on-site production with portable systems.",
+      "url": "technology-robotic-concrete.html",
+      "category": "Technologies",
+      "keywords": [],
+      "noindex": false
+    },
+    {
+      "id": "technology-polymer-lfam",
+      "title": "Polymer Large-Format 3D Printing | ELM Media Design",
+      "heading": "POLYMER LFAM",
+      "subtitle": "Industrial 6-axis robotic extrusion for facades, lighting and retail installations",
+      "description": "Industrial 6-axis polymer LFAM in Dubai — facades, lighting, retail installations and architectural features with zero geometric constraints.",
+      "excerpt": "A multi-axis robotic arm extrudes polymer in precise layers — building facades, furniture, branded installations and lighting fixtures straight from a digital file. No mould, no formwork, no geometric constraint. We primarily use recycled and bio-based materials including rPET-G, recycled polypropylene and PLA bioplastics. Build volume scales from a single statement piece to an entire floor fit-out. Design changes are file updates — no new tooling, no programme delay. Near-zero off-cuts because the robot deposits exactly what's needed.",
+      "url": "technology-polymer-lfam.html",
+      "category": "Technologies",
+      "keywords": [],
+      "noindex": false
+    },
+    {
+      "id": "technology-architectural-manufacturing",
+      "title": "Architectural Manufacturing | ELM Media Design",
+      "heading": "ARCHITECTURAL MANUFACTURING",
+      "subtitle": "End-to-end custom fabrication from digital design to rapid site installation",
+      "description": "End-to-end architectural manufacturing in Dubai — digital design, LFAM fabrication and rapid site installation for landmark projects.",
+      "excerpt": "Some programmes demand more than a single technology route. Architectural Manufacturing is ELM's end-to-end service — digital design, material selection, robotic fabrication and on-site installation under one commercial contract. We move from approved digital model to site-ready components in days, providing UAE-ready solutions for landmark hospitality, luxury retail, government and cultural projects. We measure success by components installed on site — not renders in a portfolio. Every engagement follows a disciplined scope → fabricate → deliver path.",
+      "url": "technology-architectural-manufacturing.html",
+      "category": "Technologies",
+      "keywords": [],
+      "noindex": false
+    },
+    {
+      "id": "solutions",
+      "title": "Solutions | ELM Media Design",
+      "heading": "SOLUTIONS",
+      "subtitle": "Commercial LFAM tailored to industry verticals across the UAE built environment",
+      "description": "LFAM solutions for property, infrastructure, hospitality, OOH media, industrial and cultural projects across the UAE.",
+      "excerpt": "ELM Media Design delivers large-format additive manufacturing where procurement dynamics differ — but the requirement is the same: components that reach site, on schedule, in compliance with UAE policy. From Dubai 2030 structural mandates to five-star hospitality interiors and kinetic OOH media, we match technology route to vertical. Every vertical starts with a 30-minute technical briefing. We scope feasibility, recommend concrete vs polymer vs hybrid fabrication, and document alignment with ICV, Dubai 2030 and Net Zero reporting where required.",
+      "url": "solutions.html",
+      "category": "Solutions",
+      "keywords": [
+        "solutions",
+        "industries",
+        "verticals",
+        "THE LOOP",
+        "hospitality",
+        "infrastructure"
+      ],
+      "noindex": false
+    },
+    {
+      "id": "solution-property-infrastructure",
+      "title": "Property & Infrastructure | ELM Media Design",
+      "heading": "PROPERTY & INFRASTRUCTURE",
+      "subtitle": "On-site printing, custom facades and urban assets for developers and government",
+      "description": "On-site 3D printing, custom facades, smart-city installations and urban assets — LFAM for property and infrastructure in the UAE.",
+      "excerpt": "Dubai Municipality enforces 3D printing requirements for new buildings — an active, non-optional procurement rule. Developers and contractors who haven't started planning compliance will face tender evaluators asking for it by name. ELM prints bespoke architectural features for show villas and flagship developments — custom concrete formworks faster and cheaper than traditional mould-making, landscape elements, community seating and full-service buildings on-site in days. Property and infrastructure programmes where LFAM replaces long lead times and high tooling costs.",
+      "url": "solution-property-infrastructure.html",
+      "category": "Solutions",
+      "keywords": [],
+      "noindex": false
+    },
+    {
+      "id": "solution-ooh-the-loop",
+      "title": "THE LOOP | Out-of-Home Media | ELM Media Design",
+      "heading": "THE LOOP",
+      "subtitle": "UAE's first robotic out-of-home media concept — kinetic digital robotics for high-footfall locations",
+      "description": "THE LOOP — UAE's first robotic OOH media concept. Kinetic digital robotics with synchronized LED screens on 6-axis arms for high-footfall locations.",
+      "excerpt": "THE LOOP is ELM's proprietary out-of-home media concept — synchronized LED screens mounted on industrial 6-axis robotic arms. It combines ELM's heritage in urban advertising with advanced LFAM engineering. Deployable at Dubai's highest-footfall locations including Downtown, DIFC, Palm Jumeirah and City Walk. Portable units for exhibitions and event activations — fully operational within 24 hours. Static billboards can't compete with kinetic, programmable media in premium locations. THE LOOP delivers motion, sync and spectacle — with the deployment speed event and media buyers require.",
+      "url": "solution-ooh-the-loop.html",
+      "category": "Solutions",
+      "keywords": [
+        "THE LOOP",
+        "OOH",
+        "out of home",
+        "robotic media",
+        "LED",
+        "kinetic"
+      ],
+      "noindex": false
+    },
+    {
+      "id": "solution-industrial-mobility",
+      "title": "Industrial, Mobility & Energy | ELM Media Design",
+      "heading": "INDUSTRIAL & MOBILITY",
+      "subtitle": "Automotive, aerospace, marine and energy infrastructure LFAM programmes",
+      "description": "LFAM for automotive, aerospace, marine mock-ups, R&D prototyping and energy infrastructure in the UAE.",
+      "excerpt": "Industrial and mobility clients need high-precision mock-ups, marine-grade interior fit-outs and rapid R&amp;D iteration — without the tooling delays of conventional fabrication. Polymer LFAM delivers complex geometry with recycled materials, while robotic concrete supports energy infrastructure in remote and Net Zero environments. Advanced engineering programmes where LFAM accelerates iteration and reduces waste.",
+      "url": "solution-industrial-mobility.html",
+      "category": "Solutions",
+      "keywords": [],
+      "noindex": false
+    },
+    {
+      "id": "solution-hospitality-leisure",
+      "title": "Hospitality & Leisure | ELM Media Design",
+      "heading": "HOSPITALITY & LEISURE",
+      "subtitle": "High-end commercial pieces, luxury retail and iconic lobby centerpieces",
+      "description": "Luxury hospitality LFAM — lobby centerpieces, high-end retail installations and bespoke interior fit-outs in Dubai and the UAE.",
+      "excerpt": "In hospitality, walking through the door is the experience. Five-star properties in Dubai compete on design — and enormous pressure falls on whoever translates architect intent into built reality. ELM removes that pressure: a custom lobby sculpture that would take weeks in conventional fabrication ships from our facility in a fraction of the time. Late-stage design changes are file updates, not new tooling. Recycled polymers with genuinely high finish quality — output that looks exactly like what was specified.",
+      "url": "solution-hospitality-leisure.html",
+      "category": "Solutions",
+      "keywords": [],
+      "noindex": false
+    },
+    {
+      "id": "solution-creative-culture",
+      "title": "Creative & Culture | ELM Media Design",
+      "heading": "CREATIVE & CULTURE",
+      "subtitle": "Public art, immersive environments and advanced facade systems",
+      "description": "Large-scale public art, immersive environments, complex canopies and scenic production for museums and theme parks in the UAE.",
+      "excerpt": "ELM enables large-scale public art and immersive environments for museums and theme parks. Our technology supports advanced facade systems, complex canopies and scenic event productions that conventional methods struggle to deliver economically. From government monuments to theme park scenography — LFAM gives curators and creative directors forms that were previously considered impossible at programme speed. Cultural programmes where geometry, narrative and public impact define the brief.",
+      "url": "solution-creative-culture.html",
+      "category": "Solutions",
+      "keywords": [],
+      "noindex": false
+    },
     {
       "id": "services",
       "title": "Technologies | ELM Media Design",
-      "heading": "SERVICES",
-      "subtitle": "",
-      "description": "Robotic concrete 3D printing, polymer LFAM and architectural manufacturing in Dubai.",
-      "excerpt": "Out interested acceptance our reasonable companions an Out interested acceptance our reasonable companions an Out interested acceptance our reasonable companions an",
+      "heading": "TECHNOLOGIES",
+      "subtitle": "Industrial 3D printing at architectural scale — robotic concrete, polymer LFAM and end-to-end architectural manufacturing",
+      "description": "Robotic concrete 3D printing, polymer LFAM and architectural manufacturing at commercial scale in Dubai, UAE.",
+      "excerpt": "ELM Media Design runs multi-axis robotic systems that share the same underlying logic: digital-first design, precision deposition, and on-demand production at scales conventional fabrication cannot match. We deploy proven LFAM platforms including Caracol AM Heron AM and WASP Crane systems — the same technology behind landmark projects from Milan retail to Bergamo Airport. Up to 60% less material waste vs conventional bespoke fabrication",
       "url": "services.html",
       "category": "Technologies",
       "keywords": [
@@ -25,135 +147,67 @@
       "id": "projects",
       "title": "Projects | ELM Media Design",
       "heading": "PROJECTS",
-      "subtitle": "",
-      "description": "LFAM portfolio and case studies from ELM Media Design, UAE.",
-      "excerpt": "LFAM portfolio and case studies from ELM Media Design, UAE.",
+      "subtitle": "Commercial LFAM case studies from landmark retail to regulated airport infrastructure",
+      "description": "LFAM portfolio — Recarlo Milan, Bergamo Airport and commercial large-format additive manufacturing case studies.",
+      "excerpt": "Global technology proof points deployed via Caracol AM and WASP platforms — the same engineering standards ELM brings to the UAE.",
       "url": "projects.html",
       "category": "Projects",
       "keywords": [
         "portfolio",
         "case studies",
-        "LFAM projects"
+        "LFAM projects",
+        "Recarlo",
+        "Bergamo"
       ],
       "noindex": false
     },
     {
       "id": "project-1",
-      "title": "Quark Life Homes",
-      "heading": "Quark Life Homes",
+      "title": "Recarlo Milan",
+      "heading": "Recarlo Milan",
       "description": "LFAM project in the ELM portfolio.",
-      "url": "project-single.html",
+      "url": "project-recarlo-milan.html",
       "category": "Project",
       "keywords": [
         "project",
         "portfolio",
         "LFAM",
-        "quark life homes"
+        "recarlo milan"
       ]
     },
     {
       "id": "project-2",
-      "title": "River Life Residence",
-      "heading": "River Life Residence",
+      "title": "Bergamo Airport",
+      "heading": "Bergamo Airport",
       "description": "LFAM project in the ELM portfolio.",
-      "url": "project-single.html",
+      "url": "project-bergamo-airport.html",
       "category": "Project",
       "keywords": [
         "project",
         "portfolio",
         "LFAM",
-        "river life residence"
+        "bergamo airport"
       ]
     },
     {
       "id": "project-3",
-      "title": "Orgue Shopping Mall",
-      "heading": "Orgue Shopping Mall",
+      "title": "UAE Commercial LFAM",
+      "heading": "UAE Commercial LFAM",
       "description": "LFAM project in the ELM portfolio.",
-      "url": "project-single.html",
+      "url": "contact.html#consultation-form",
       "category": "Project",
       "keywords": [
         "project",
         "portfolio",
         "LFAM",
-        "orgue shopping mall"
-      ]
-    },
-    {
-      "id": "project-4",
-      "title": "Green Socks Villas",
-      "heading": "Green Socks Villas",
-      "description": "LFAM project in the ELM portfolio.",
-      "url": "project-single.html",
-      "category": "Project",
-      "keywords": [
-        "project",
-        "portfolio",
-        "LFAM",
-        "green socks villas"
-      ]
-    },
-    {
-      "id": "project-5",
-      "title": "Prensten Hudson's",
-      "heading": "Prensten Hudson's",
-      "description": "LFAM project in the ELM portfolio.",
-      "url": "project-single.html",
-      "category": "Project",
-      "keywords": [
-        "project",
-        "portfolio",
-        "LFAM",
-        "prensten hudson's"
-      ]
-    },
-    {
-      "id": "project-6",
-      "title": "York Education Center",
-      "heading": "York Education Center",
-      "description": "LFAM project in the ELM portfolio.",
-      "url": "project-single.html",
-      "category": "Project",
-      "keywords": [
-        "project",
-        "portfolio",
-        "LFAM",
-        "york education center"
-      ]
-    },
-    {
-      "id": "project-7",
-      "title": "Miamy Beach House",
-      "heading": "Miamy Beach House",
-      "description": "LFAM project in the ELM portfolio.",
-      "url": "project-single.html",
-      "category": "Project",
-      "keywords": [
-        "project",
-        "portfolio",
-        "LFAM",
-        "miamy beach house"
-      ]
-    },
-    {
-      "id": "project-8",
-      "title": "All Life Resorts",
-      "heading": "All Life Resorts",
-      "description": "LFAM project in the ELM portfolio.",
-      "url": "project-single.html",
-      "category": "Project",
-      "keywords": [
-        "project",
-        "portfolio",
-        "LFAM",
-        "all life resorts"
+        "uae commercial lfam"
       ]
     },
     {
       "id": "project-single",
       "title": "Project Case Study | ELM Media Design",
-      "heading": "PROJECTS",
-      "subtitle": "",
+      "heading": "CASE STUDY",
+      "subtitle": "Large-format additive manufacturing in practice",
       "description": "Detailed LFAM project case study from ELM Media Design.",
       "excerpt": "At Consto Construction our team specializing in building repurposing, or adaptive reuse, respects the history of a building and believes in letting a structure’s story help determine its future. From vacant historic warehouses to luxury boutique hotels and event venues, when it comes to the talent of this group the possibilities are endless. And they aren’t just focused on the end result, they are focused on doing what is right every single step of the way. Anim pariatur cliche reprehenderit , enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch.",
       "url": "project-single.html",
@@ -161,6 +215,42 @@
       "keywords": [
         "case study",
         "project detail"
+      ],
+      "noindex": false
+    },
+    {
+      "id": "project-recarlo-milan",
+      "title": "Recarlo Milan | ELM Media Design",
+      "heading": "RECARLO MILAN",
+      "subtitle": "Luxury retail LFAM — architectural wall panels at flagship scale",
+      "description": "Case study: large-format polymer LFAM wall panels for Recarlo flagship boutique, Milan — delivered by Caracol AM Heron AM 400.",
+      "excerpt": "Large architectural wall panels for the flagship Milan store — designed as a story-telling surface carrying the brand's identity through form, texture and colour. Delivered by Caracol AM (Italy) using the Heron AM 400 platform. High-finish luxury fabrication at a quality level directly applicable to UAE five-star hospitality and premium retail. Create a bespoke architectural surface at luxury retail finish standard — complex geometry, brand narrative and high visual impact — without conventional mould tooling delays.",
+      "url": "project-recarlo-milan.html",
+      "category": "Projects",
+      "keywords": [
+        "Recarlo",
+        "Milan",
+        "retail",
+        "polymer",
+        "Caracol"
+      ],
+      "noindex": false
+    },
+    {
+      "id": "project-bergamo-airport",
+      "title": "Bergamo Airport | ELM Media Design",
+      "heading": "BERGAMO AIRPORT",
+      "subtitle": "Robotic concrete LFAM inside a live airport logistics zone",
+      "description": "Case study: first 3D-printed building inside an operating airport — robotic concrete LFAM service module at Milan Bergamo, delivered by WASP.",
+      "excerpt": "A service and rest module for Milan Bergamo Airport — concrete walls printed layer by layer inside a live airport logistics zone, with no conventional formwork. Delivered by WASP (Italy) for SACBO Airport Authority. The first 3D-printed building constructed inside an operating airport. If it works there, it works in the UAE's most regulated environments. Deliver a functional service building inside an active airport environment — meeting strict regulatory requirements while eliminating conventional formwork and reducing programme time.",
+      "url": "project-bergamo-airport.html",
+      "category": "Projects",
+      "keywords": [
+        "Bergamo",
+        "airport",
+        "concrete",
+        "WASP",
+        "infrastructure"
       ],
       "noindex": false
     },
@@ -285,6 +375,16 @@
     {
       "title": "Technologies & LFAM",
       "url": "services.html",
+      "category": "Quick link"
+    },
+    {
+      "title": "Industry Solutions",
+      "url": "solutions.html",
+      "category": "Quick link"
+    },
+    {
+      "title": "THE LOOP OOH",
+      "url": "solution-ooh-the-loop.html",
       "category": "Quick link"
     },
     {
