@@ -56,23 +56,24 @@
 
     // PAGE TRANSITION
     $('body a').on('click', function (e) {
-      if (typeof $(this).data('fancybox') == 'undefined') {
-        e.preventDefault();
-        var url = this.getAttribute("href");
-        if (url.indexOf('#') != -1) {
-          var hash = url.substring(url.indexOf('#'));
-          if ($('body ' + hash).length != 0) {
-            $('.page-transition').removeClass("active");
-            $(".sandiwch").toggleClass("open");
-            $(".site-menavigation").removeClass("active");
-          }
-        } else {
-          $('.page-transition').toggleClass("active");
-          setTimeout(function () {
-            window.location = url;
-          }, 1000);
-        }
+      if (typeof $(this).data('fancybox') != 'undefined') {
+        return;
       }
+      var url = this.getAttribute("href");
+      if (!url || url.charAt(0) === '#') {
+        return;
+      }
+      if (/^(mailto:|tel:|javascript:)/i.test(url)) {
+        return;
+      }
+      if (/^https?:\/\//i.test(url)) {
+        return;
+      }
+      e.preventDefault();
+      $('.page-transition').toggleClass("active");
+      setTimeout(function () {
+        window.location = url;
+      }, 1000);
     });
 
 
