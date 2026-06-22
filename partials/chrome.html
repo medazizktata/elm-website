@@ -1,14 +1,33 @@
 <div class="first-transition"></div>
 <div class="page-transition"></div>
-<div class="search-box">
-  <div class="inner">
-    <form>
-      <input type="search" placeholder="Search">
-      <input type="submit" value="SEARCH">
-    </form>
+<div class="search-box" id="site-search" role="dialog" aria-modal="true" aria-label="Search" aria-hidden="true">
+  <div class="search-backdrop" tabindex="-1"></div>
+  <div class="search-panel">
+    <div class="search-panel__top">
+      <div class="search-field">
+        <i class="lni lni-search-alt" aria-hidden="true"></i>
+        <input type="search" id="site-search-input" autocomplete="off" spellcheck="false" placeholder="Search pages, projects…" aria-controls="site-search-results" aria-autocomplete="list">
+        <button type="button" class="search-clear" hidden aria-label="Clear search"><i class="lni lni-close" aria-hidden="true"></i></button>
+      </div>
+      <button type="button" class="search-close" aria-label="Close search"><i class="lni lni-close" aria-hidden="true"></i></button>
+    </div>
+    <div class="search-results" id="site-search-results" role="listbox" aria-label="Search results"></div>
+    <p class="search-empty" id="site-search-empty" hidden>No results. Try “LFAM” or “consultation”.</p>
+    <div class="search-panel__foot">
+      <p class="search-status" id="site-search-status">Popular pages</p>
+      <div class="search-shortcuts">
+        <button type="button" class="search-shortcuts__trigger" aria-label="Keyboard shortcuts"><i class="lni lni-keyboard" aria-hidden="true"></i></button>
+        <div class="search-shortcuts__popup" role="tooltip">
+          <p><kbd>Ctrl</kbd>+<kbd>K</kbd> toggle</p>
+          <p><kbd>↑</kbd><kbd>↓</kbd> navigate</p>
+          <p><kbd>Enter</kbd> open · <kbd>Esc</kbd> close</p>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
 <aside class="side-widget">
+  <button type="button" class="side-widget-close" aria-label="Close menu"><i class="lni lni-close" aria-hidden="true"></i></button>
   <div class="inner">
     <div class="logo"><a href="index.html"><img src="images/logo.svg" alt="ELM Media Design"></a></div>
     <div class="hide-mobile">
@@ -65,11 +84,17 @@
         <li><a href="contact.html">Contact</a></li>
       </ul>
     </div>
-    <div class="search"><i class="lni lni-search-alt"></i></div>
-    <div class="hamburger">
-      <div id="hamburger"><span></span><span></span><span></span></div>
-      <div id="cross"><span></span><span></span></div>
+    <div class="navbar__tools">
+      <button type="button" class="theme-toggle" aria-pressed="false" aria-label="Switch to dark mode">
+        <i class="lni lni-sun theme-icon-light" aria-hidden="true"></i>
+        <i class="lni lni-night theme-icon-dark" hidden aria-hidden="true"></i>
+      </button>
+      <button type="button" class="search search-toggle" aria-label="Open search" aria-expanded="false" aria-controls="site-search"><i class="lni lni-search-alt" aria-hidden="true"></i></button>
+      <div class="hamburger">
+        <div id="hamburger"><span></span><span></span><span></span></div>
+        <div id="cross"><span></span><span></span></div>
+      </div>
+      <a href="contact.html#consultation-form" class="navbar-button"><span>Consultation</span><i class="lni lni-arrow-right" aria-hidden="true"></i></a>
     </div>
-    <a href="contact.html" class="navbar-button"><i class="lni lni-mobile"></i> <span>REQUEST CONSULTATION</span></a>
   </div>
 </nav>
