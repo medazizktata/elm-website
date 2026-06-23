@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generated": "2026-06-22T23:59:03.895Z",
+  "generated": "2026-06-23T00:00:55.048Z",
   "items": [
     {
       "id": "technology-robotic-concrete",
@@ -149,7 +149,7 @@
       "heading": "PROJECTS",
       "subtitle": "Commercial LFAM case studies from landmark retail to regulated airport infrastructure",
       "description": "LFAM portfolio — Recarlo Milan, Bergamo Airport and commercial large-format additive manufacturing case studies.",
-      "excerpt": "Global technology proof points deployed via Caracol AM and WASP platforms — the same engineering standards ELM brings to the UAE.",
+      "excerpt": "Global LFAM proof points and UAE creative portfolio — from landmark retail and airport infrastructure to THE LOOP OOH installations.",
       "url": "projects.html",
       "category": "Projects",
       "keywords": [
@@ -157,7 +157,9 @@
         "case studies",
         "LFAM projects",
         "Recarlo",
-        "Bergamo"
+        "Bergamo",
+        "OOH",
+        "THE LOOP"
       ],
       "noindex": false
     },
@@ -208,7 +210,7 @@
       "title": "Oval Digital Billboard",
       "heading": "Oval Digital Billboard",
       "description": "LFAM project in the ELM portfolio.",
-      "url": "projects.html",
+      "url": "solution-ooh-the-loop.html",
       "category": "Project",
       "keywords": [
         "project",
@@ -222,7 +224,7 @@
       "title": "Dubai Eagle",
       "heading": "Dubai Eagle",
       "description": "LFAM project in the ELM portfolio.",
-      "url": "projects.html",
+      "url": "solution-ooh-the-loop.html",
       "category": "Project",
       "keywords": [
         "project",
@@ -236,7 +238,7 @@
       "title": "The Flouka",
       "heading": "The Flouka",
       "description": "LFAM project in the ELM portfolio.",
-      "url": "projects.html",
+      "url": "solution-ooh-the-loop.html",
       "category": "Project",
       "keywords": [
         "project",
@@ -250,7 +252,7 @@
       "title": "Dubai Watch",
       "heading": "Dubai Watch",
       "description": "LFAM project in the ELM portfolio.",
-      "url": "projects.html",
+      "url": "solution-ooh-the-loop.html",
       "category": "Project",
       "keywords": [
         "project",
@@ -258,21 +260,6 @@
         "LFAM",
         "dubai watch"
       ]
-    },
-    {
-      "id": "project-single",
-      "title": "Project Case Study | ELM Media Design",
-      "heading": "CASE STUDY",
-      "subtitle": "Large-format additive manufacturing in practice",
-      "description": "Detailed LFAM project case study from ELM Media Design.",
-      "excerpt": "At Consto Construction our team specializing in building repurposing, or adaptive reuse, respects the history of a building and believes in letting a structure’s story help determine its future. From vacant historic warehouses to luxury boutique hotels and event venues, when it comes to the talent of this group the possibilities are endless. And they aren’t just focused on the end result, they are focused on doing what is right every single step of the way. Anim pariatur cliche reprehenderit , enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch.",
-      "url": "project-single.html",
-      "category": "Projects",
-      "keywords": [
-        "case study",
-        "project detail"
-      ],
-      "noindex": false
     },
     {
       "id": "project-recarlo-milan",

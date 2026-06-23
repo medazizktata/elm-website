@@ -22,8 +22,7 @@
         <figure class="project-box"><img src="images/slide05.jpg" alt="Airport infrastructure LFAM"></figure>
       </div>
     </div>
-    <div class="swiper-pagination"></div>
-    {{> project-slider-arrows}}
+    {{> project-slider-controls}}
   </div>
 </section>
 
@@ -73,13 +72,30 @@
   </div>
 </section>
 
-<section class="content-section section-compact">
+<section class="content-section">
   <div class="container">
-    <div class="row"><div class="col-12 text-center">
-      <p><a href="solution-property-infrastructure.html">Infrastructure Solutions</a> · <a href="technology-robotic-concrete.html">Robotic Concrete</a> · <a href="projects.html">All Projects</a></p>
-    </div></div>
+    <div class="section-title text-left">
+      <h6>MORE PROJECTS</h6>
+      <h2>Related Case Studies</h2>
+    </div>
+    <div class="row">
+      <div class="col-md-6">
+        <figure class="project-box">
+          <a href="project-recarlo-milan.html"><img src="images/slide04.jpg" alt="Recarlo Milan LFAM wall panels"></a>
+          <figcaption><h5>Recarlo Milan</h5><p>Luxury retail LFAM — architectural wall panels at flagship scale</p></figcaption>
+        </figure>
+      </div>
+      <div class="col-md-6">
+        <figure class="project-box">
+          <a href="solution-ooh-the-loop.html"><img src="images/slide05.jpg" alt="Oval Digital Billboard OOH"></a>
+          <figcaption><h5>Oval Digital Billboard</h5><p>THE LOOP — kinetic OOH and immersive brand experiences</p></figcaption>
+        </figure>
+      </div>
+    </div>
   </div>
 </section>
+
+{{> also-explore link1Href="solution-property-infrastructure.html" link1Label="Infrastructure Solutions" link2Href="technology-robotic-concrete.html" link2Label="Robotic Concrete" linkAllHref="projects.html" linkAllLabel="All Projects"}}
 
 {{> footer year="2026"}}
 {{> scripts}}

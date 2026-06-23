@@ -24,7 +24,6 @@ const categoryByFile = {
   "projects.html": "Projects",
   "project-recarlo-milan.html": "Projects",
   "project-bergamo-airport.html": "Projects",
-  "project-single.html": "Projects",
   "contact.html": "Contact",
   "leadership.html": "About",
   "offices.html": "Contact",
@@ -53,10 +52,9 @@ const keywordExtras = {
   "services.html": ["technologies", "robotic concrete", "polymer", "LFAM", "manufacturing", "capabilities"],
   "solutions.html": ["solutions", "industries", "verticals", "THE LOOP", "hospitality", "infrastructure"],
   "solution-ooh-the-loop.html": ["THE LOOP", "OOH", "out of home", "robotic media", "LED", "kinetic"],
-  "projects.html": ["portfolio", "case studies", "LFAM projects", "Recarlo", "Bergamo"],
+  "projects.html": ["portfolio", "case studies", "LFAM projects", "Recarlo", "Bergamo", "OOH", "THE LOOP"],
   "project-recarlo-milan.html": ["Recarlo", "Milan", "retail", "polymer", "Caracol"],
   "project-bergamo-airport.html": ["Bergamo", "airport", "concrete", "WASP", "infrastructure"],
-  "project-single.html": ["case study", "project detail"],
   "contact.html": ["consultation", "RFQ", "phone", "email", "facility tour", "Dubai HQ", "+971"],
   "leadership.html": ["team", "leadership", "management"],
   "offices.html": ["office", "location", "Dubai"],
@@ -110,6 +108,8 @@ const junkPatterns = [
   /lorem ipsum/i,
   /compliment interested discretion/i,
   /to they four in love/i,
+  /Consto Construction/i,
+  /Life Science Center/i,
 ];
 
 function isJunkText(text) {
@@ -133,6 +133,10 @@ function extractProjects(content, file) {
     "Recarlo Milan": "project-recarlo-milan.html",
     "Bergamo Airport": "project-bergamo-airport.html",
     "UAE Commercial LFAM": "contact.html#consultation-form",
+    "Oval Digital Billboard": "solution-ooh-the-loop.html",
+    "Dubai Eagle": "solution-ooh-the-loop.html",
+    "The Flouka": "solution-ooh-the-loop.html",
+    "Dubai Watch": "solution-ooh-the-loop.html",
   };
   return [...content.matchAll(/<h5>([^<]+)<\/h5>/g)].map((m, i) => ({
     id: `project-${i + 1}`,

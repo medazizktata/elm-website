@@ -22,8 +22,7 @@
         <figure class="project-box"><img src="images/side-image03.jpg" alt="Architectural panel finish"></figure>
       </div>
     </div>
-    <div class="swiper-pagination"></div>
-    {{> project-slider-arrows}}
+    {{> project-slider-controls}}
   </div>
 </section>
 
@@ -74,13 +73,30 @@
   </div>
 </section>
 
-<section class="content-section section-compact">
+<section class="content-section">
   <div class="container">
-    <div class="row"><div class="col-12 text-center">
-      <p><a href="solution-hospitality-leisure.html">Hospitality Solutions</a> · <a href="technology-polymer-lfam.html">Polymer LFAM</a> · <a href="projects.html">All Projects</a></p>
-    </div></div>
+    <div class="section-title text-left">
+      <h6>MORE PROJECTS</h6>
+      <h2>Related Case Studies</h2>
+    </div>
+    <div class="row">
+      <div class="col-md-6">
+        <figure class="project-box">
+          <a href="project-bergamo-airport.html"><img src="images/slide06.jpg" alt="Bergamo Airport LFAM service building"></a>
+          <figcaption><h5>Bergamo Airport</h5><p>Robotic concrete LFAM inside a live airport logistics zone</p></figcaption>
+        </figure>
+      </div>
+      <div class="col-md-6">
+        <figure class="project-box">
+          <a href="solution-ooh-the-loop.html"><img src="images/slide05.jpg" alt="Oval Digital Billboard OOH"></a>
+          <figcaption><h5>Oval Digital Billboard</h5><p>THE LOOP — kinetic OOH and immersive brand experiences</p></figcaption>
+        </figure>
+      </div>
+    </div>
   </div>
 </section>
+
+{{> also-explore link1Href="solution-hospitality-leisure.html" link1Label="Hospitality Solutions" link2Href="technology-polymer-lfam.html" link2Label="Polymer LFAM" linkAllHref="projects.html" linkAllLabel="All Projects"}}
 
 {{> footer year="2026"}}
 {{> scripts}}
