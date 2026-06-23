@@ -145,8 +145,6 @@
       lastResults = (index && index.quickLinks) || [];
       html = lastResults.map(quickLinkHtml).join("");
       els.results.innerHTML = html;
-      els.status.textContent = "Popular pages";
-      els.empty.hidden = true;
       els.panel.classList.remove("has-query");
       return;
     }
@@ -158,10 +156,6 @@
 
     els.results.innerHTML = html;
     els.panel.classList.add("has-query");
-    els.empty.hidden = lastResults.length > 0;
-    els.status.textContent = lastResults.length
-      ? lastResults.length + " result" + (lastResults.length === 1 ? "" : "s")
-      : "No matches";
   }
 
   function setActive(indexValue) {
@@ -198,7 +192,6 @@
     els.trigger.setAttribute("aria-expanded", "false");
     document.body.classList.remove("overflow");
     els.input.value = "";
-    els.clear.hidden = true;
     activeIndex = -1;
     lastResults = [];
     els.trigger.focus();
@@ -215,12 +208,9 @@
   }
 
   function onInput() {
-    var value = els.input.value;
-    els.clear.hidden = !value;
-
     window.clearTimeout(debounceTimer);
     debounceTimer = window.setTimeout(function () {
-      renderResults(value);
+      renderResults(els.input.value);
     }, DEBOUNCE_MS);
   }
 
@@ -231,10 +221,7 @@
     els.trigger = $(".navbar .search-toggle");
     els.input = $("#site-search-input");
     els.results = $("#site-search-results");
-    els.empty = $("#site-search-empty");
-    els.status = $("#site-search-status");
     els.panel = $(".search-panel");
-    els.clear = $(".search-clear");
     els.close = $(".search-close");
     els.backdrop = $(".search-backdrop");
 
@@ -246,13 +233,6 @@
 
     els.close.addEventListener("click", closeSearch);
     els.backdrop.addEventListener("click", closeSearch);
-
-    els.clear.addEventListener("click", function () {
-      els.input.value = "";
-      els.clear.hidden = true;
-      renderResults("");
-      els.input.focus();
-    });
 
     els.input.addEventListener("input", onInput);
 
