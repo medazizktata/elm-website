@@ -14,6 +14,7 @@
     "search:index": "node scripts/build-search-index.mjs",
     "preview": "vite preview",
     "tunnel": "node scripts/tunnel.mjs",
+    "tunnel:1h": "node scripts/tunnel.mjs --timeout=1h",
     "sass": "sass scss/style.scss css/style.css --no-source-map"
   },
   "devDependencies": {

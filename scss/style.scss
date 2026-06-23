@@ -270,16 +270,11 @@ select,
 .fancybox-close-small,
 .swiper-pagination-bullet,
 .isotope-filter li,
-.tab-left li a,
 .side-widget .site-menu li i,
-.accordion .card-header a,
-.icon-content a,
 .project-box,
-.recent-news .content h3 a,
 .news-box .content h3 a,
 .footer-bar .button,
 .cta-box-yellow .button,
-.services-list-box .button,
 .pagination .page-link,
 .logo a {
   cursor: pointer;
@@ -372,19 +367,6 @@ $section-whitespace: 120px;
 
 
 
-/* ACCORDION */
-.accordion{ width: 100%; float: left; background: var(--elm-bg-surface); padding: 0; padding-right: 50px;
-	.card{ background: none; border-radius: 0; border:none;
-		.card-header{ background: none; padding:0;  border:none;
-			a{ width: 100%; float: left; font-weight: 600; padding: 30px 0; color: var(--elm-text); border-bottom:4px solid var(--elm-border); font-size: 19px;
-				i{float: right; color: $color-main; font-size: 18px; line-height: 1.4;}
-				&:hover{border-color: $color-main; color: var(--elm-text); text-decoration: none;}
-				&[aria-expanded="true"]{border-color: $color-main !important;}}}
-		.card-body{ width: 100%; line-height: 26px; padding: 20px 0; color: var(--elm-text-muted);}}}
-
-
-
-
 /* SEARCH BOX */
 .search-box{width: 100%; height: 100vh; position: fixed; inset: 0; z-index: 12; display: flex; align-items: flex-start; justify-content: center; padding: 12vh 16px 16px; opacity: 0; visibility: hidden; pointer-events: none; @include transition-cubic;
 	&.active{opacity: 1; visibility: visible; pointer-events: auto;
@@ -473,19 +455,6 @@ $section-whitespace: 120px;
 	&:before{content: ""; width: 100vw; height: var(--elm-feather-h-md); background: var(--elm-feather-top); position: absolute; left: 0; top: 0; z-index: 1; pointer-events: none;}}
 .white-space-bottom{position: relative;
 	&:after{content: ""; width: 100%; height: var(--elm-feather-h-md); background: var(--elm-feather-bottom); position: absolute; left: 0; bottom: 0; z-index: 1; pointer-events: none;}}
-.slider.white-space-bottom:after{display: none;}
-
-
-
-
-/* PAGE TRANSITION */
-.first-transition{width: 100%; height: 100%; position: fixed; z-index: 9; right: 0; top:0; background: $color-main; animation: first-transition 0.5s; animation-fill-mode: forwards;}
-@keyframes first-transition {
-   from {right: 0;}
-  to {right: -100%;}
-}
-.page-transition{width: 0; height: 100%; position: fixed; z-index: 9; left: 0; top:0; background: $color-main; transition: all ease 0.45s;
-	&.active{width: 100%;}}
 
 
 
@@ -543,26 +512,6 @@ $section-whitespace: 120px;
 
 
 
-/* SLIDER */
-.slider{width: 100%; height: 100vh; display: flex; flex-wrap: wrap; position: relative; background-color: $color-dark; overflow: hidden;
-	&::before{content: ""; position: absolute; inset: 0; z-index: 0; pointer-events: none; background-color: $color-dark; background-image: $bg-photo-overlay, url('../images/background/branding-elm-18.jpg'); background-position: center; background-size: cover;}
-	&::after{content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: var(--elm-feather-h-lg); background: var(--elm-feather-bottom); pointer-events: none; z-index: 2;}
-	.container{position: relative; z-index: 1; padding-top: 150px; display: flex; flex-wrap: wrap;}
-	.slider-content{width: calc(50% - 120px); display: flex; flex-wrap:wrap; position: relative; overflow: hidden; margin: 0; margin-right: 40px; z-index: 2;
-		.swiper-slide{ display: flex; align-items: center;}
-		.inner{width: 100%; display: block; color: #fff; padding-bottom: 0;
-			h1, h2{font-size: 82px; font-weight: 800; line-height: 1.05; margin-bottom: 28px;
-				b{-webkit-text-stroke: 1px #fff; text-stroke: 1px #fff; -webkit-text-fill-color: transparent; color: transparent;}}
-			p{margin-bottom: 48px; font-size: 20px; line-height: 1.6; max-width: 520px; opacity: 0.92;}
-			a{@include elm-btn; background: $color-main; color: $color-white; border: 1px solid rgba(#fff, 0.08);
-				&:hover{box-shadow: 0 10px 28px rgba(0, 0, 0, 0.35); background: lighten($color-main, 4%);}}}
-	}
-	.slider-main{width: calc(50vw + 80px); height: 100vh; overflow: hidden; margin: 0; position: absolute; left: calc(50% - 80px); top: 0; z-index: 1;
-		.slide-image{width: 100%; height: 100%; display: inline-block; position: relative; background-position: center !important; background-size: cover !important; background-color: transparent;
-			&::after{content: ""; position: absolute; left: 0; top: 0; bottom: 0; width: var(--elm-feather-hero-edge-w); background: var(--elm-feather-hero-edge); pointer-events: none; z-index: 1;}}}}
-
-
-
 /* PAGE HEADER */
 .page-header{width: 100%; min-height: 420px; height: auto; display: flex; flex-wrap: wrap; align-items: flex-end; padding-bottom: clamp(40px, 5vw, 56px); @include brand-bg('../images/background/bg_elm-1.jpg'); position: relative;
 	&::after{content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: var(--elm-feather-h-md); background: var(--elm-feather-bottom); pointer-events: none; z-index: 1;}
@@ -591,10 +540,8 @@ $section-whitespace: 120px;
 	&[data-background] + .content-section[data-background]::before{display: none;}
 	&[data-background].white-space-top:has(+ .footer-bar)::before{display: none;}}
 .content-section[data-background] + .footer-bar::before{display: none;}
-.slider + .content-section{padding-top: 48px;}
 .content-section + .content-section{padding-top: 32px;}
 .content-section:has(+ .content-section){padding-bottom: 32px;}
-.content-section:has(.icon-content) .row{align-items: flex-start;}
 .section-note{width:100%; display: block; margin-top:30px; text-align: center; font-size: 14px;}
 
 
@@ -606,7 +553,6 @@ $section-whitespace: 120px;
 	&.text-left{text-align: left;}}
 
 .page-header,
-.calculator,
 .footer-bar,
 .info-box-dark,
 .side-widget,
@@ -722,44 +668,6 @@ $section-whitespace: 120px;
 	.tech-preview-section{padding-top: 48px !important; padding-bottom: 48px !important;}}
 
 
-/* ICON CONTENT */
-.icon-content{width: 100%; display: flex; flex-wrap: wrap; align-content: flex-start; border: 1px solid var(--elm-border); padding: 18px 16px; position: relative; background: var(--elm-bg-surface); overflow: hidden; @include transition;
-	figure, h3, small, a{position: relative; z-index: 1;}
-	&:hover{background: var(--elm-card-hover-bg); border-color: $color-main; color: var(--elm-on-accent); box-shadow: 0 16px 32px var(--elm-card-hover-shadow);
-		h3, small{color: var(--elm-on-accent);}
-		figure i{color: var(--elm-on-accent);}
-		a{background: #fff; color: $color-main;
-			&:hover{background: $color-dark; color: #fff;}}}
-	figure{width: 100%; display: block; margin-bottom: 12px;
-		img{height: 40px;}
-		i{font-size: 40px; line-height: 1; color: $color-main; @include transition;}}
-	h3{ width: 100%; display: block; margin-bottom: 8px; font-size: 18px; line-height: 1.25;}
-	small{width: 100%; display: block; margin-bottom: 14px; font-size: 13px; line-height: 1.45;}
-	a{width: 36px; height: 36px; display: inline-flex; align-items: center; justify-content: center; padding: 0; line-height: 1; background: $color-dark; color: var(--elm-on-accent); text-align: center; font-size: 18px; font-weight: 400; @include transition;
-		&:hover{text-decoration: none; background: $color-main;}}}
-
-
-
-/* SIDE IMAGE */
-.side-image{width: 100%; display: block; margin: 0;
-	img{width: 100%; display: block; object-fit: cover;}
-	&.side-image-collage{display: grid; grid-template-columns: 1.2fr 0.8fr; grid-template-rows: 1fr 1fr; gap: 12px; min-height: 420px;
-		.collage-main{grid-row: 1 / span 2; min-height: 420px;}
-		.collage-small{min-height: 204px;}}}
-
-
-/* SIDE CONTENT — base; see _elm-refresh.scss page-split */
-.side-content{width: 100%; display: block; margin: 0; padding-left: 0;
-	figure{width: 100%; display: block; margin: 0;
-		img{height: 80px;}}
-	h6{width: 100%; display: block; margin-top: 30px; font-weight: 600; margin-bottom: 2px;}
-	h5{font-weight: 600; margin-bottom: 20px; font-size: 22px;}
-	b{font-weight: 600;}
-	u{font-weight: 600; text-decoration: none;}
-	p{margin-bottom: 25px;}
-	small{width: 100%; display: block; font-size: 13px; opacity: 0.6;}}
-
-
 /* COUNTER / STAT CARDS */
 .stats-row .row{align-items: stretch;}
 .stats-row .col-lg-3,
@@ -811,20 +719,6 @@ $section-whitespace: 120px;
 
 
 
-/* PROJECTS */
-.projects{width: calc(100% + 60px); display: flex; flex-wrap: wrap; margin: 0 -30px; padding: 0;
-	li{width: 50%; display: inline-block; margin-bottom: 28px; padding: 0 30px; list-style: none;
-		.project-box{width: 100%; display: flex; flex-wrap: wrap; margin: 0; padding-bottom: 28px; position: relative;
-			&:hover img{filter: grayscale(0);}
-			&:hover figcaption{@include rose-bg;}
-			img{width: 100%; display: block; filter: grayscale(1); @include transition;}
-			figcaption{width: 70%; position: absolute; left: 20px; bottom: 12px; padding: 18px 20px; background: $color-dark; color: #fff; @include transition;
-				&:after{content: ""; width: 20%; height: 55px; background: url("../images/pattern-dot.png"); background-size: 12px 12px;  position: absolute; right: -25px; bottom: -25px;}
-				h5{ display: block; font-size: 22px; font-weight: 800; margin: 0; line-height: 1.2;}
-				p{width: 100%; display: block; margin: 0; display: none;}}}}}
-
-
-
 /* PROJECT TEXT */
 .project-specifications{width: calc(100% - 40px); display: block; background: var(--elm-bg-surface); border: 1px solid var(--elm-border); box-shadow: 0 8px 24px var(--elm-shadow); padding: 50px; margin-left: 40px;}
 
@@ -835,17 +729,6 @@ $section-whitespace: 120px;
 	> .container{padding-bottom: 40px;}
 	.project-slider{margin-top: 16px;}
 	+ .content-section.section-compact{padding-top: 24px !important;}}
-.project-slider{width: 100%; display: block; position: relative; overflow: hidden;
-	&__controls{margin-top: 20px;}
-	.swiper-slide{max-width: 50vw;
-		&.swiper-slide-active .project-box figcaption{opacity: 1;}
-		.project-box{width: 100%; display: flex; flex-wrap: wrap; margin: 0; padding-bottom: 24px; position: relative;
-			&:hover img{filter: grayscale(0);}
-			img{width: 100%; display: block; filter: grayscale(1); @include transition;}
-			figcaption{width: 70%; position: absolute; left: 20px; bottom: 12px; padding: 16px 18px; @include rose-bg; @include transition; opacity: 0;
-				&:after{content: ""; width: 20%; height: 55px; background: url("../images/pattern-dot.png"); background-size: 12px 12px;  position: absolute; right: -25px; bottom: -25px;}
-				h5{ display: block; font-size: 22px; font-weight: 800; line-height: 1.2;}
-				p{width: 100%; display: block; margin: 0;}}}}}
 
 
 
@@ -879,25 +762,6 @@ $section-whitespace: 120px;
 	padding-bottom: 72px !important;
 	&__foot{margin-top: 36px; text-align: center;}}
 
-.solutions-grid{
-	display: grid;
-	grid-template-columns: repeat(3, 1fr);
-	gap: 20px;
-	align-items: stretch;
-	&__item{display: flex; min-height: 100%;
-		.icon-content{width: 100%; height: 100%; margin: 0; padding: 22px 20px 20px; flex-direction: column; align-content: flex-start;
-			figure{margin-bottom: 16px;}
-			h3{margin-bottom: 10px;}
-			small{flex: 1; margin-bottom: 20px;}
-			a{margin-top: auto; align-self: flex-start;}}}}
-
-@media (max-width: 991px){
-	.solutions-grid{grid-template-columns: repeat(2, 1fr); gap: 16px;}}
-
-@media (max-width: 767px){
-	.solutions-grid{grid-template-columns: 1fr; gap: 14px;
-		&__item .icon-content{padding: 20px 18px;}}}
-
 
 /* SECTORS GRID */
 .sectors-grid{
@@ -919,50 +783,6 @@ $section-whitespace: 120px;
 
 
 
-/* CALCULATOR */
-.calculator{@include brand-bg('../images/background/bg_elm-4.jpg'); margin-top: 80px;
-	.section-title{color: #fff;}
-	.bg-image{width: 40%; height: 100%; position: absolute; right: 0; top: 0; background-size: cover;}
-	.form{width: 100%; display: block; padding: 50px; background: #fff; color: $color-dark; position: relative;
-		.form-group{position: static; margin-bottom: 35px;}
-		.form-group:last-child{margin-bottom: 0;}
-		select{ width: 300px; max-width: 100%; height: 44px; border: 1px solid #e5e5e5; padding: 0 16px; font-size: 14px;}
-		.custom-checkbox{ height: 44px; line-height: 44px; border: 1px solid #e5e5e5; cursor: pointer; padding: 0 20px; margin-right: 5px; font-size: 14px;}
-		input[type="checkbox"]{display: none;}
-		input[type="checkbox"]:checked + .custom-checkbox{border-color:$color-main; @include rose-bg;}
-		.info-box{width: 65%; float: left; margin-top: 50px;}
-		.info-box i{color: #4cd964; font-size: 20px; transform: translateY(2px);}
-		.price-box{  float: right; @include rose-bg; padding:30px 50px; margin-right: -50px; margin-bottom: -50px;
-			small{width: 100%; display: block; font-weight: 600; margin-bottom: 5px;}
-			span{font-size: 50px; font-weight: 800; line-height: 1;}}}}
-
-
-
-
-/* STEP BOX */
-.steps-row{margin-top: 8px; align-items: stretch;
-	> [class*="col-"]{display: flex; margin-bottom: 0;}}
-.step-box{ width: 100%; display: flex; flex-direction: column; position: relative; z-index: 1;
-	&:hover .image img{filter: grayscale(0);}
-	&:hover:after{content: ""; width: 40%; height: 65px; background: url("../images/pattern-dot.png"); background-size: 12px 12px; position: absolute; right: -25px; bottom: 8px; z-index: 0;}
-	&:hover .content{transform: translateY(4px);}
-	*{@include transition;}
-	.image{width: 100%; height: 360px; display: block; padding-right: 10px; overflow: hidden; flex-shrink: 0;
-		img{width: 100%; height: 100%; object-fit: cover; display: block; filter: grayscale(1);}}
-	.content{width: 74%; position: relative; margin: -88px 0 0 auto; z-index: 1; min-height: 172px; display: flex; flex-direction: column; background: var(--elm-bg-surface); padding: 22px 24px; box-shadow: 0 0 32px var(--elm-shadow); color: var(--elm-text); border-top: 2px solid rgba($color-main, 0.45);
-		.icon{width: 100%; display: block; margin-bottom: 12px;
-			img{height: 48px;}
-			i{font-size: 44px; line-height: 1; color: $color-main; @include transition;}}
-		span{position: absolute; right: 20px; top: 20px; font-weight: 700; opacity: 0.45; font-size: 13px; letter-spacing: 0.06em; color: var(--elm-text-muted);}
-		h6{ display: inline-block; font-weight: 700; letter-spacing: 0.1em; font-size: 11px; text-transform: uppercase; margin-bottom: 10px; color: var(--elm-text);}
-		p{width: 100%; display: block; margin: 0; margin-top: auto; font-size: 14px; line-height: 1.5; color: var(--elm-text-muted); opacity: 1;}}
-	&:hover .content{
-		border-top-color: $color-main;
-		.icon i{color: $color-main;}}}
-.content-section:has(.steps-row){padding-bottom: 40px;}
-
-
-
 /* INFO BOX DARK */
 .info-box-dark{width: 100%; display: block; background: $color-dark; color: #fff; padding: 28px 24px; position: relative;
 	&:after{content: ""; width: 0; height: 0; border-style: solid; border-width: 0 25px 15px 0; border-color: transparent $color-dark transparent transparent; position: absolute; right: 10%; bottom: -15px;}
@@ -979,16 +799,6 @@ $section-whitespace: 120px;
 	.button{@include elm-btn; background: $color-dark; color: $color-main;
 		&:hover{color: $color-main;}}}
 
-
-
-/* SERVICE LIST BOX */
-.services-list-box{width: 100%; display: block; background: #fff; padding: 50px; transform: translateY(48px); margin-bottom: 48px;
-	h4{font-size: 50px; font-weight: 800;}
-	p{width: 100%; display: block; margin-bottom: 20px;}
-	ul{width: 100%; display: block; padding-left: 20px; margin-bottom: 30px;
-		li{margin: 10px 0;}}
-	.button{@include elm-btn; @include rose-bg; color: var(--elm-on-accent);
-		&:hover{background: lighten($color-main, 4%); box-shadow: 0 10px 28px rgba($color-main, 0.32);}}}
 
 
 /* CERTIFICATE */
@@ -1009,18 +819,6 @@ $section-whitespace: 120px;
 	b{ width: 100%; height: 50px; display: inline-block; margin-bottom: 20px; text-align: center; position: relative;
 		&:after{content: ""; width: 12px; height: 12px; background: #eee; border-radius: 0; position: absolute; left:calc(50% - 6px); bottom: -6px;}}
 	.slider-controls{margin-top: 28px;}}
-
-
-
-
-/* CORE VALUES BOX */
-.core-values-box{width:100%; display:block; border: 1px solid var(--elm-border); padding: 20px; position: relative; @include transition; margin: 10px 0; background: var(--elm-bg-surface);
-	&:hover{transform: translateY(-4px); box-shadow: 0 16px 32px var(--elm-shadow);}
-	&:after{content: ""; width: 0; height: 0; border-style: solid; border-width: 0 0 14px 14px; border-color: transparent transparent var(--elm-border) transparent; position: absolute; right: 4px; bottom: 4px;}
-	figure{width: 100%; display: block; margin-bottom: 12px;
-		img{height: 52px;}}
-	h6{ display: inline-block; font-weight: 800; letter-spacing: 0.1em; font-size: 11px; text-transform: uppercase; color: $color-main; margin-bottom: 6px;}
-	p{font-size: 15px; line-height: 1.5; padding-right: 0; margin: 0;}}
 
 
 
@@ -1056,23 +854,6 @@ $section-whitespace: 120px;
 			a{color: var(--elm-text); font-size: 13px; @include transition;}}}}
 
 
-/* TAB CONTENT */
-.tab-left{width: 100%; display: block; background: var(--elm-bg-surface); color: var(--elm-text); border: 1px solid var(--elm-border); padding: 36px 32px;
-	h2{ width: 100%; display: block; font-size: clamp(28px, 3vw, 36px); font-weight: 800; margin-bottom: 24px; line-height: 1.12; color: var(--elm-text);}
-	ul{width: 100%; display: block; margin-bottom: 28px; padding: 0;
-		li{width: 100%; display: block; margin: 0; padding: 6px 0; list-style: none;
-			&.active a{color: $color-main;}
-			a{color: var(--elm-text); font-size: 20px; font-weight: 800; display: inline-block; @include transition;
-				&:hover{text-decoration: none; color: $color-main;}}}}
-	p{width: 100%; display: block; margin: 0; font-size: 15px; line-height: 1.55; color: var(--elm-text-muted);}}
-.tab-right{width: 100%; display: block;
-	.tab-item{display: none;
-		img{width: 100%;}
-		&:first-child{display: block;}}}
-
-
-
-
 /* VIDEO BOX */
 .video-box{width: 100%; display: block; margin: 0; background: $color-dark; position: relative; overflow: hidden; min-height: 480px;
 	.play-btn{width: 70px; height: 70px; line-height: 66px; display: inline-block; position: absolute; right: 50px; top: 100px; z-index: 2; text-align: center; border-radius: 0; border: 2px solid #fff; color: #fff; font-size: 20px; text-indent: 2px;
@@ -1085,30 +866,6 @@ $section-whitespace: 120px;
 /* TESTIOMONIALS SLIDER — see _elm-refresh.scss */
 
 
-
-
-/* LOGO ITEMS */
-.logo-item{width: 100%; display: block; margin: 0; @include transition; padding: 0 30px;
-	img{width: 100%;}}
-
-
-
-
-/* RECENT NEWS */
-.recent-news{width: 100%; display: block; position: relative; @include transition;
-	&:hover{transform: translateY(-4px); box-shadow: 0 16px 32px var(--elm-shadow);}
-	&:hover figure img{ filter: none;}
-	figure{width: 100%; max-height: 160px;  display: block; margin: 0; position: relative; overflow: hidden; background: $color-main;
-		img{ width: 100%; max-width: inherit; min-height: 160px; filter: grayscale(1); @include transition;}}
-	.content{ width: 100%; height: 100%; display: block; padding: 18px 20px; background: var(--elm-bg-surface); border: 1px solid var(--elm-border); border-top: none;
-		small{display: inline-block; padding: 3px 7px; font-size: 10px; @include rose-bg; margin-bottom: 10px;}
-		h3{width: 100%; display: block; margin-bottom: 12px; font-size: 20px; line-height: 1.35;
-			a{display: inline; color: var(--elm-text); @include transition;
-				&:hover{text-decoration: none; color: var(--elm-link-hover);}}}
-		.author{width: 100%; display: block; margin-bottom: 0; font-size: 13px;
-			img{height: 50px; display: inline-block; border-radius: 0; margin-right: 15px;}
-			b{font-weight: 600;}}
-		}}
 
 
 /* NEWS BOX */
@@ -1204,40 +961,7 @@ $section-whitespace: 120px;
 					&:hover{opacity: 1; color: $color-main; text-decoration: none;}}}}}}
 
 
-/* SALES SPECIALIST FORM */
-#sales-specialist-form{width: 500px; max-width: 100%; display: none; padding:32px;
-	.form-group span{display: inline-block; margin: 0 0 0 12px; background: #fff; padding: 0 6px; transform: translateY(10px); color: rgba(139,139,139,1.00); font-size: 13px;}
-	.form-group:last-child{ margin: 0;}}
 .fancybox-close-small{transform: scale(1.5); top: 10px; right: 10px;}
-
-
-
-/* YES NO SWITCHER*/
-.yes-no{width: 100%; display: block; position: relative; background: $color-dark; border: 4px solid $color-dark;
-	.switch { width: 100%;  height: 50px;  text-align: center; @include transition;
-		span { position: absolute; width: 50%; height: 100%; top: 0; left: 0; background: $color-main; font-weight: 600; @include transition;}}
-	label { cursor: pointer; line-height: 50px; @include transition; font-weight: 600;}
-	label[for=yes] { position: absolute; z-index: 1; left: 0px; width: 50%; height: 100%; margin: 0; color: #fff;}
-	label[for=no] { position: absolute; width: 50%; height: 100%; right: 0px; z-index: 1; color: #fff; margin: 0;}
-	input[type=radio] {  display: none;}
-	#no:checked ~ .switch {  background: $color-main;}
-	#no:checked ~ .switch span {  background: $color-dark;}
-	#no:checked ~ .switch span:after {  background: none;}
-	#yes:checked ~ .switch label[for=yes] {  color: var(--elm-text);	font-weight: 600;}
-	#no:checked ~ .switch label[for=no] {  color: var(--elm-text);}}
-
-
-
-/* RANGE SLIDER */
-.range-slider { width: 100%; display: block;}
-.range-slider__range { -webkit-appearance: none; width: 100%; height: 10px; border-radius: 0; background: #f2f2f2; outline: none; padding: 0; margin: 0;}
-.range-slider__range::-webkit-slider-thumb { -webkit-appearance: none; appearance: none; width: 20px; height: 20px; border-radius: 0; background: $color-main; cursor: pointer; -webkit-transition: background .15s ease-in-out; transition: background .15s ease-in-out;}
-.range-slider__range::-moz-range-thumb { width: 20px; height: 20px; border: 0; border-radius: 0; background: $color-main; cursor: pointer; -moz-transition: background .15s ease-in-out; transition: background .15s ease-in-out;}
-.range-slider__range:active::-moz-range-thumb {  background: $color-main;}
-.range-slider__range:focus::-webkit-slider-thumb {  box-shadow: 0 0 0 3px #fff, 0 0 0 6px $color-main;}
-.range-slider__value {   position: relative;  width: 60px;  line-height: 20px;  text-align: center;  @include rose-bg;  padding: 5px 10px;}
-::-moz-range-track {  background: $color-main;  border: 0;}
-input::-moz-focus-inner, input::-moz-focus-outer {  border: 0;}
 
 
 
@@ -1247,12 +971,7 @@ input::-moz-focus-inner, input::-moz-focus-outer {  border: 0;}
 @media only screen and (max-width: 1199px), only screen and (max-device-width: 1199px) {
 	.navbar .navbar-button{padding: 0 16px;}
 	.navbar .navbar-button span{display: none;}
-	.slider .slider-content .inner h1,
-	.slider .slider-content .inner h2{font-size: 64px;}
 	.counter-box .odometer{font-size: 48px;}
-	.project-slider .swiper-slide{max-width: 70vw;}
-	.calculator .form .info-box{width: 60%;}
-	.logo-item{padding: 0 15px;}
 	.footer-bar h2{padding: 0;}
 	.footer-bar__row{align-items: center;}
 	.sectors-grid__cards{grid-template-columns: repeat(2, 1fr);}
@@ -1269,38 +988,15 @@ input::-moz-focus-inner, input::-moz-focus-outer {  border: 0;}
 	.contact-box p{font-size: 15px;}
 	.contact-form{margin-bottom: -10%;}
 	.counter-box .value{margin-right: 20px;}
-	.step-box {margin: 0;}
-	.step-box .image{height: 300px; padding-right: 0;}
-	.step-box .content{margin-top: -72px; width: 82%; min-height: 160px;}
-	.accordion{padding-right: 0;}
 	.cta-box-yellow{width: 100%;}
-	.tab-left{padding: 28px 24px; margin-bottom: 20px;}
 	.certificate{margin: 15px 0;}
-	.projects li{width: 100%;}
 	.project-specifications{width: 100%; margin-top: 30px; margin-left: 0;}
 	.sidebar{padding-left: 0; margin-top: 50px;}
 	.navbar .site-menu{display: none;}
 	.navbar .navbar-button span{display: inline;}
-	.slider {height: auto;}
-	.slider::before{display: none;}
-	.slider .container{ padding-top:120px;}
-	.slider .slider-main{width: 100%; height:600px; position: static; margin-bottom:40px;}
-	.slider .slider-content{width: 100%; margin-right: 0; padding-bottom: 0;}
-	.slider .slider-content .inner{padding-bottom:0;}
-	.slider .slider-content .swiper-slide{ align-items: flex-start; height:auto;}
-	.slider .slider-content .inner h1,
-	.slider .slider-content .inner h2{font-size: 52px;}
-	.slider .slider-content .inner p{font-size: 18px;}
-	.icon-content{margin: 15px 0;}
-	.side-content{padding-left: 0; margin-top: 30px;}
 	.counter-box{margin: 15px 0;}
-	.project-slider .swiper-slide{max-width: inherit;}
-	.calculator .form .info-box{width: 100%; margin-top: 0; margin-bottom: 30px;}
-	.calculator .form .price-box{width: calc(100% + 100px);}
 	.row.no-gutters .col{width: 33%; flex-basis: 33%; flex-grow: inherit; margin: 0 auto;}
 	.sales-team{margin: 15px 0;}
-	.logo-item{margin: 15px 0;}
-	.col-lg-5 .recent-news{margin-bottom: 30px;}
 	.footer-bar .sales-representive{margin-left: 0; margin-top: 20px; line-height: inherit;}
 	.footer-bar .sales-representive b{color: $color-main;}
 	.footer-bar .sales-representive figure{width: 100%;}
@@ -1344,37 +1040,20 @@ input::-moz-focus-inner, input::-moz-focus-outer {  border: 0;}
 	.video-box{min-height: 220px;
 		video{min-height: 220px;}
 		.play-btn{right: 20px; top: 50%; transform: translateY(-50%); width: 52px; height: 52px; line-height: 48px; font-size: 16px;}}
-	.slider .slider-content {margin-bottom: 16px;}
-	.slider .slider-content .inner h1,
-	.slider .slider-content .inner h2{font-size: 42px;}
-	.slider .slider-content .inner p{font-size: 17px; margin-bottom: 30px;}
-	.slider .slider-main { height:400px; margin-bottom:15px;}
-	.icon-content{width: 100%; margin: 12px 0; padding: 20px 18px;}
-	.icon-content small{margin-bottom: 16px;}
 	.counter-box{padding: 24px 20px; min-height: 148px;
 		.odometer{font-size: 42px;}
 		.value{font-size: 18px;}}
-	.step-box .image{height: 260px;}
-	.step-box .content{margin-top: -64px; width: 88%; min-height: 152px;}
-	.project-slider .swiper-slide .project-box figcaption{width: 100%; position: static; }
-	.project-slider .swiper-slide .project-box figcaption h5{font-size: 22px;}
-	.project-slider .swiper-slide .project-box figcaption:after{bottom: 0;}
-	.calculator .bg-image{display: none;}
 	.row.no-gutters .col{width: 80%; flex-basis: 80%; margin: 15px 10%;}
 	.testimonials-slider{width: 100%; margin: 0;}
 	.testimonials-slider .slider-controls{justify-content: center; margin-top: 24px;}
-	.recent-news{margin: 15px 0 !important;}
 	.contact-form{padding: 30px;}
 	.news-box .content h3{font-size: 26px;}
 	.sidebar .widget{padding: 30px;}
 	.isotope-filter li{font-size: 15px; margin-right: 20px;}
-	.projects li .project-box figcaption{width: calc(100% - 60px); left: 30px; padding: 20px;}
-	.projects li .project-box figcaption h5{font-size: 25px;}
 	.project-specifications{padding: 30px;}
 	.info-box-dark{padding: 30px;}
 	.cta-box-yellow{padding: 30px;}
 	.cta-box-yellow h4{font-size: 34px;}
-	.calculator .form{padding: 30px;}
 	.footer-bar{padding: 56px 0;
 		h2{font-size: clamp(24px, 7vw, 30px);}
 		.logo{margin-bottom: 12px;

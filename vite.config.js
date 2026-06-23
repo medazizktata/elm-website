@@ -7,12 +7,23 @@ const htmlInputs = sync("./*.html").filter(
   (file) => !file.includes("dist/") && !file.includes("node_modules/")
 );
 
+const SITE_NAME = "ELM Media Design";
+
 export default defineConfig({
   root: ".",
   publicDir: false,
   plugins: [
     handlebars({
       partialDirectory: resolve("./partials"),
+      context() {
+        return { siteName: SITE_NAME };
+      },
+      helpers: {
+        documentTitle(pageTitle) {
+          if (!pageTitle) return SITE_NAME;
+          return `${pageTitle} | ${SITE_NAME}`;
+        },
+      },
     }),
   ],
   build: {

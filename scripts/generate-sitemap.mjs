@@ -8,11 +8,11 @@ const outPath = resolve(root, "sitemap.xml");
 
 const priorityByFile = {
   "index.html": "1.0",
-  "services.html": "0.9",
+  "technologies.html": "0.9",
   "solutions.html": "0.9",
   "projects.html": "0.9",
   "contact.html": "0.9",
-  "about-company.html": "0.8",
+  "who-we-are.html": "0.8",
 };
 
 function isNoindex(content) {

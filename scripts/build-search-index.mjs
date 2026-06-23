@@ -7,11 +7,11 @@ const outPath = resolve(root, "js/search-index.json");
 
 const categoryByFile = {
   "index.html": "Home",
-  "about-company.html": "About",
-  "our-history.html": "About",
-  "core-values.html": "About",
-  "certificates.html": "About",
-  "services.html": "Technologies",
+  "who-we-are.html": "About",
+  "our-story.html": "About",
+  "why-elm.html": "About",
+  "uae-compliance.html": "About",
+  "technologies.html": "Technologies",
   "technology-robotic-concrete.html": "Technologies",
   "technology-polymer-lfam.html": "Technologies",
   "technology-architectural-manufacturing.html": "Technologies",
@@ -45,11 +45,11 @@ const keywordExtras = {
     "robotic",
     "consultation",
   ],
-  "about-company.html": ["who we are", "LFAM", "fabrication", "engagement", "architectural scale"],
-  "our-history.html": ["story", "timeline", "founding", "Europe", "UAE capability"],
-  "core-values.html": ["why ELM", "differentiators", "sustainability", "agile"],
-  "certificates.html": ["compliance", "ICV", "Dubai 2030", "Net Zero", "Dubai 2040", "policy"],
-  "services.html": ["technologies", "robotic concrete", "polymer", "LFAM", "manufacturing", "capabilities"],
+  "who-we-are.html": ["who we are", "LFAM", "fabrication", "engagement", "architectural scale"],
+  "our-story.html": ["story", "timeline", "founding", "Europe", "UAE capability"],
+  "why-elm.html": ["why ELM", "differentiators", "sustainability", "agile"],
+  "uae-compliance.html": ["compliance", "ICV", "Dubai 2030", "Net Zero", "Dubai 2040", "policy"],
+  "technologies.html": ["technologies", "robotic concrete", "polymer", "LFAM", "manufacturing", "capabilities"],
   "solutions.html": ["solutions", "industries", "verticals", "THE LOOP", "hospitality", "infrastructure"],
   "solution-ooh-the-loop.html": ["THE LOOP", "OOH", "out of home", "robotic media", "LED", "kinetic"],
   "projects.html": ["portfolio", "case studies", "LFAM projects", "Recarlo", "Bergamo", "OOH", "THE LOOP"],
@@ -61,13 +61,13 @@ const keywordExtras = {
 };
 
 const quickLinks = [
-  { title: "Technologies & LFAM", url: "services.html", category: "Quick link" },
+  { title: "Technologies & LFAM", url: "technologies.html", category: "Quick link" },
   { title: "Industry Solutions", url: "solutions.html", category: "Quick link" },
   { title: "THE LOOP OOH", url: "solution-ooh-the-loop.html", category: "Quick link" },
   { title: "View Projects", url: "projects.html", category: "Quick link" },
   { title: "Request Consultation", url: "contact.html", category: "Quick link" },
-  { title: "Who We Are", url: "about-company.html", category: "Quick link" },
-  { title: "UAE Compliance", url: "certificates.html", category: "Quick link" },
+  { title: "Who We Are", url: "who-we-are.html", category: "Quick link" },
+  { title: "UAE Compliance", url: "uae-compliance.html", category: "Quick link" },
 ];
 
 function stripHtml(text) {
@@ -75,9 +75,19 @@ function stripHtml(text) {
 }
 
 function extractMeta(content) {
-  const match = content.match(/\{\{>\s*meta\s+title="([^"]+)"\s+description="([^"]+)"/);
-  if (!match) return null;
-  return { title: match[1], description: match[2] };
+  const pageTitleMatch = content.match(/\bpageTitle="([^"]+)"/);
+  const legacyTitleMatch = content.match(/\btitle="([^"]+)"/);
+  const descMatch = content.match(/\bdescription="([^"]+)"/);
+  if (!descMatch) return null;
+
+  const title = pageTitleMatch
+    ? pageTitleMatch[1]
+    : legacyTitleMatch
+      ? legacyTitleMatch[1]
+      : null;
+  if (!title) return null;
+
+  return { title, description: descMatch[1] };
 }
 
 function extractHeading(content) {
@@ -166,7 +176,7 @@ for (const filePath of globSync("*.html", { cwd: root })) {
   items.push({
     id: file.replace(".html", ""),
     title: meta.title,
-    heading: heading || meta.title.split("|")[0].trim(),
+    heading: heading || meta.title,
     subtitle: cleanSubtitle,
     description: meta.description,
     excerpt,

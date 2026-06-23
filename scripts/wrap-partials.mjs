@@ -10,34 +10,34 @@ const pageMeta = {
       "Commercial-scale LFAM in UAE. Robotic concrete and polymer 3D printing for buildings, facades, hospitality and government projects.",
     ogPath: "",
   },
-  "about-company.html": {
+  "who-we-are.html": {
     title: "Who We Are | ELM Media Design",
     description:
       "ELM Media Design delivers industrial 3D printing at architectural scale in Dubai, UAE.",
-    ogPath: "about-company.html",
+    ogPath: "who-we-are.html",
   },
-  "our-history.html": {
+  "our-story.html": {
     title: "Our Story | ELM Media Design",
     description: "How ELM Media Design was founded to close the UAE LFAM capability gap.",
-    ogPath: "our-history.html",
+    ogPath: "our-story.html",
   },
-  "core-values.html": {
+  "why-elm.html": {
     title: "Why ELM | ELM Media Design",
     description:
       "Agile manufacturing, sustainability, and UAE policy alignment with Dubai 2030 3D printing mandates.",
-    ogPath: "core-values.html",
+    ogPath: "why-elm.html",
   },
-  "certificates.html": {
+  "uae-compliance.html": {
     title: "UAE Compliance | ELM Media Design",
     description:
       "Dubai 3D Printing Strategy 2030, ICV certification, Net Zero 2050 and Dubai 2040 alignment.",
-    ogPath: "certificates.html",
+    ogPath: "uae-compliance.html",
   },
-  "services.html": {
+  "technologies.html": {
     title: "Technologies | ELM Media Design",
     description:
       "Robotic concrete 3D printing, polymer LFAM and architectural manufacturing in Dubai.",
-    ogPath: "services.html",
+    ogPath: "technologies.html",
   },
   "projects.html": {
     title: "Projects | ELM Media Design",

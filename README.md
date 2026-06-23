@@ -74,8 +74,8 @@ pnpm run images:placeholders
 
 ```
 ├── index.html              # Home
-├── about-company.html      # About
-├── services.html           # Technologies (base template)
+├── who-we-are.html      # About
+├── technologies.html           # Technologies (base template)
 ├── projects.html           # Portfolio grid
 ├── project-recarlo-milan.html
 ├── project-bergamo-airport.html

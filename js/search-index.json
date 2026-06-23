@@ -1,10 +1,64 @@
 {
   "version": 1,
-  "generated": "2026-06-23T22:53:52.282Z",
+  "generated": "2026-06-23T23:12:08.580Z",
   "items": [
     {
+      "id": "why-elm",
+      "title": "Why ELM",
+      "heading": "WHY ELM",
+      "subtitle": "What sets commercial LFAM apart from conventional construction and small-scale 3D printing",
+      "description": "Agile manufacturing, sustainability, and UAE policy alignment with Dubai 2030 3D printing mandates.",
+      "excerpt": "Most regional offerings stop at prototypes or decorative pieces. ELM is built for commercial programmes — LFAM at architectural scale, with the compliance and delivery discipline developers and government entities require. To make large-format additive manufacturing a credible, commercially viable construction method in the UAE — enabling architects and developers to build faster, with less waste, and with forms that conventional methods cannot economically produce. We measure success by components installed on site, not renders in a portfolio.",
+      "url": "why-elm.html",
+      "category": "About",
+      "keywords": [
+        "why ELM",
+        "differentiators",
+        "sustainability",
+        "agile"
+      ],
+      "noindex": false
+    },
+    {
+      "id": "who-we-are",
+      "title": "Who We Are",
+      "heading": "WHO WE ARE",
+      "subtitle": "Commercial large-format additive manufacturing for the UAE built environment",
+      "description": "ELM Media Design delivers industrial 3D printing at architectural scale in Dubai, UAE.",
+      "excerpt": "Commercial LFAM in Dubai — robotic concrete and polymer printing for developers, government and hospitality programmes that need site-ready delivery, not prototypes. European engineering UAE delivery Every project follows a disciplined path from technical scoping through fabrication to site-ready delivery — with transparent milestones and UAE policy alignment throughout.",
+      "url": "who-we-are.html",
+      "category": "About",
+      "keywords": [
+        "who we are",
+        "LFAM",
+        "fabrication",
+        "engagement",
+        "architectural scale"
+      ],
+      "noindex": false
+    },
+    {
+      "id": "uae-compliance",
+      "title": "UAE Compliance",
+      "heading": "UAE COMPLIANCE",
+      "subtitle": "Policy alignment for government, ICV and sustainability mandates",
+      "description": "Dubai 3D Printing Strategy 2030, ICV certification, Net Zero 2050 and Dubai 2040 alignment.",
+      "excerpt": "ELM Media Design structures delivery around the policy frameworks shaping UAE construction — so LFAM is not a novelty, but a compliant pathway to programme goals. Government and semi-government programmes increasingly require demonstrable alignment with national industrial and sustainability strategies. ELM documents how LFAM delivery supports local manufacturing and Emiratisation pathways, reduced on-site waste vs conventional formwork, accelerated programme timelines for complex geometries, and innovation credits within tender evaluation frameworks.",
+      "url": "uae-compliance.html",
+      "category": "About",
+      "keywords": [
+        "compliance",
+        "ICV",
+        "Dubai 2030",
+        "Net Zero",
+        "Dubai 2040",
+        "policy"
+      ],
+      "noindex": false
+    },
+    {
       "id": "technology-robotic-concrete",
-      "title": "Robotic Concrete 3D Printing | ELM Media Design",
+      "title": "Robotic Concrete",
       "heading": "ROBOTIC CONCRETE",
       "subtitle": "Layer-by-layer structural printing without conventional formwork",
       "description": "Commercial robotic concrete 3D printing in Dubai — structural and decorative LFAM without conventional formwork, up to 60% waste reduction.",
@@ -16,7 +70,7 @@
     },
     {
       "id": "technology-polymer-lfam",
-      "title": "Polymer Large-Format 3D Printing | ELM Media Design",
+      "title": "Polymer LFAM",
       "heading": "POLYMER LFAM",
       "subtitle": "Industrial 6-axis robotic extrusion for facades, lighting and retail installations",
       "description": "Industrial 6-axis polymer LFAM in Dubai — facades, lighting, retail installations and architectural features with zero geometric constraints.",
@@ -28,7 +82,7 @@
     },
     {
       "id": "technology-architectural-manufacturing",
-      "title": "Architectural Manufacturing | ELM Media Design",
+      "title": "Architectural Manufacturing",
       "heading": "ARCHITECTURAL MANUFACTURING",
       "subtitle": "End-to-end custom fabrication from digital design to rapid site installation",
       "description": "End-to-end architectural manufacturing in Dubai — digital design, LFAM fabrication and rapid site installation for landmark projects.",
@@ -39,8 +93,27 @@
       "noindex": false
     },
     {
+      "id": "technologies",
+      "title": "Technologies",
+      "heading": "TECHNOLOGIES",
+      "subtitle": "Industrial 3D printing at architectural scale — robotic concrete, polymer LFAM and end-to-end architectural manufacturing",
+      "description": "Robotic concrete 3D printing, polymer LFAM and architectural manufacturing at commercial scale in Dubai, UAE.",
+      "excerpt": "Multi-axis robotic systems with one logic: digital-first design, precision deposition, and on-demand production at scales conventional fabrication cannot match. Caracol AM Heron AM and WASP Crane platforms — proven from Milan retail to Bergamo Airport. Up to 60% less material waste vs conventional bespoke fabrication",
+      "url": "technologies.html",
+      "category": "Technologies",
+      "keywords": [
+        "technologies",
+        "robotic concrete",
+        "polymer",
+        "LFAM",
+        "manufacturing",
+        "capabilities"
+      ],
+      "noindex": false
+    },
+    {
       "id": "solutions",
-      "title": "Solutions | ELM Media Design",
+      "title": "Solutions",
       "heading": "SOLUTIONS",
       "subtitle": "Commercial LFAM tailored to industry verticals across the UAE built environment",
       "description": "LFAM solutions for property, infrastructure, hospitality, OOH media, industrial and cultural projects across the UAE.",
@@ -59,7 +132,7 @@
     },
     {
       "id": "solution-property-infrastructure",
-      "title": "Property & Infrastructure | ELM Media Design",
+      "title": "Property & Infrastructure",
       "heading": "PROPERTY & INFRASTRUCTURE",
       "subtitle": "On-site printing, custom facades and urban assets for developers and government",
       "description": "On-site 3D printing, custom facades, smart-city installations and urban assets — LFAM for property and infrastructure in the UAE.",
@@ -71,7 +144,7 @@
     },
     {
       "id": "solution-ooh-the-loop",
-      "title": "THE LOOP | Out-of-Home Media | ELM Media Design",
+      "title": "THE LOOP",
       "heading": "THE LOOP",
       "subtitle": "UAE's first robotic out-of-home media concept — kinetic digital robotics for high-footfall locations",
       "description": "THE LOOP — UAE's first robotic OOH media concept. Kinetic digital robotics with synchronized LED screens on 6-axis arms for high-footfall locations.",
@@ -90,7 +163,7 @@
     },
     {
       "id": "solution-industrial-mobility",
-      "title": "Industrial, Mobility & Energy | ELM Media Design",
+      "title": "Industrial & Mobility",
       "heading": "INDUSTRIAL & MOBILITY",
       "subtitle": "Automotive, aerospace, marine and energy infrastructure LFAM programmes",
       "description": "LFAM for automotive, aerospace, marine mock-ups, R&D prototyping and energy infrastructure in the UAE.",
@@ -102,7 +175,7 @@
     },
     {
       "id": "solution-hospitality-leisure",
-      "title": "Hospitality & Leisure | ELM Media Design",
+      "title": "Hospitality & Leisure",
       "heading": "HOSPITALITY & LEISURE",
       "subtitle": "High-end commercial pieces, luxury retail and iconic lobby centerpieces",
       "description": "Luxury hospitality LFAM — lobby centerpieces, high-end retail installations and bespoke interior fit-outs in Dubai and the UAE.",
@@ -114,7 +187,7 @@
     },
     {
       "id": "solution-creative-culture",
-      "title": "Creative & Culture | ELM Media Design",
+      "title": "Creative & Culture",
       "heading": "CREATIVE & CULTURE",
       "subtitle": "Public art, immersive environments and advanced facade systems",
       "description": "Large-scale public art, immersive environments, complex canopies and scenic production for museums and theme parks in the UAE.",
@@ -125,27 +198,8 @@
       "noindex": false
     },
     {
-      "id": "services",
-      "title": "Technologies | ELM Media Design",
-      "heading": "TECHNOLOGIES",
-      "subtitle": "Industrial 3D printing at architectural scale — robotic concrete, polymer LFAM and end-to-end architectural manufacturing",
-      "description": "Robotic concrete 3D printing, polymer LFAM and architectural manufacturing at commercial scale in Dubai, UAE.",
-      "excerpt": "Multi-axis robotic systems with one logic: digital-first design, precision deposition, and on-demand production at scales conventional fabrication cannot match. Caracol AM Heron AM and WASP Crane platforms — proven from Milan retail to Bergamo Airport. Up to 60% less material waste vs conventional bespoke fabrication",
-      "url": "services.html",
-      "category": "Technologies",
-      "keywords": [
-        "technologies",
-        "robotic concrete",
-        "polymer",
-        "LFAM",
-        "manufacturing",
-        "capabilities"
-      ],
-      "noindex": false
-    },
-    {
       "id": "projects",
-      "title": "Projects | ELM Media Design",
+      "title": "Projects",
       "heading": "PROJECTS",
       "subtitle": "Commercial LFAM case studies from landmark retail to regulated airport infrastructure",
       "description": "LFAM portfolio — Recarlo Milan, Bergamo Airport and commercial large-format additive manufacturing case studies.",
@@ -263,7 +317,7 @@
     },
     {
       "id": "project-recarlo-milan",
-      "title": "Recarlo Milan | ELM Media Design",
+      "title": "Recarlo Milan",
       "heading": "RECARLO MILAN",
       "subtitle": "Luxury retail LFAM — architectural wall panels at flagship scale",
       "description": "Case study: large-format polymer LFAM wall panels for Recarlo flagship boutique, Milan — delivered by Caracol AM Heron AM 400.",
@@ -281,7 +335,7 @@
     },
     {
       "id": "project-bergamo-airport",
-      "title": "Bergamo Airport | ELM Media Design",
+      "title": "Bergamo Airport",
       "heading": "BERGAMO AIRPORT",
       "subtitle": "Robotic concrete LFAM inside a live airport logistics zone",
       "description": "Case study: first 3D-printed building inside an operating airport — robotic concrete LFAM service module at Milan Bergamo, delivered by WASP.",
@@ -298,13 +352,13 @@
       "noindex": false
     },
     {
-      "id": "our-history",
-      "title": "Our Story | ELM Media Design",
+      "id": "our-story",
+      "title": "Our Story",
       "heading": "OUR STORY",
       "subtitle": "From European LFAM expertise to UAE commercial capability",
       "description": "How ELM Media Design was founded to close the UAE LFAM capability gap.",
       "excerpt": "European LFAM track record established — landmark retail and infrastructure projects including Recarlo Milan and Bergamo Airport components. UAE market analysis identifies accelerating demand for commercial-scale 3D printing aligned with Dubai's construction transformation agenda. ELM Media Design concept formed — bridging European LFAM engineering depth with Dubai-based execution for regional developers and government.",
-      "url": "our-history.html",
+      "url": "our-story.html",
       "category": "About",
       "keywords": [
         "story",
@@ -317,7 +371,7 @@
     },
     {
       "id": "index",
-      "title": "Industrial 3D Printing Dubai | ELM Media Design",
+      "title": "Sectors We Serve",
       "heading": "Industrial 3D Printing at Scale",
       "subtitle": "",
       "description": "Commercial-scale LFAM in UAE. Robotic concrete and polymer 3D printing for buildings, facades, hospitality and government projects.",
@@ -340,25 +394,8 @@
       "noindex": false
     },
     {
-      "id": "core-values",
-      "title": "Why ELM | ELM Media Design",
-      "heading": "WHY ELM",
-      "subtitle": "What sets commercial LFAM apart from conventional construction and small-scale 3D printing",
-      "description": "Agile manufacturing, sustainability, and UAE policy alignment with Dubai 2030 3D printing mandates.",
-      "excerpt": "Most regional offerings stop at prototypes or decorative pieces. ELM is built for commercial programmes — LFAM at architectural scale, with the compliance and delivery discipline developers and government entities require. To make large-format additive manufacturing a credible, commercially viable construction method in the UAE — enabling architects and developers to build faster, with less waste, and with forms that conventional methods cannot economically produce. We measure success by components installed on site, not renders in a portfolio.",
-      "url": "core-values.html",
-      "category": "About",
-      "keywords": [
-        "why ELM",
-        "differentiators",
-        "sustainability",
-        "agile"
-      ],
-      "noindex": false
-    },
-    {
       "id": "contact",
-      "title": "Contact | ELM Media Design Dubai",
+      "title": "Contact",
       "heading": "CONTACT",
       "subtitle": "30-minute briefing · Facility tour · 72-hour RFQ response",
       "description": "Request a consultation. 30-minute briefing, facility tour, and 72-hour RFQ response.",
@@ -375,49 +412,12 @@
         "+971"
       ],
       "noindex": false
-    },
-    {
-      "id": "certificates",
-      "title": "UAE Compliance | ELM Media Design",
-      "heading": "UAE COMPLIANCE",
-      "subtitle": "Policy alignment for government, ICV and sustainability mandates",
-      "description": "Dubai 3D Printing Strategy 2030, ICV certification, Net Zero 2050 and Dubai 2040 alignment.",
-      "excerpt": "ELM Media Design structures delivery around the policy frameworks shaping UAE construction — so LFAM is not a novelty, but a compliant pathway to programme goals. Government and semi-government programmes increasingly require demonstrable alignment with national industrial and sustainability strategies. ELM documents how LFAM delivery supports local manufacturing and Emiratisation pathways, reduced on-site waste vs conventional formwork, accelerated programme timelines for complex geometries, and innovation credits within tender evaluation frameworks.",
-      "url": "certificates.html",
-      "category": "About",
-      "keywords": [
-        "compliance",
-        "ICV",
-        "Dubai 2030",
-        "Net Zero",
-        "Dubai 2040",
-        "policy"
-      ],
-      "noindex": false
-    },
-    {
-      "id": "about-company",
-      "title": "Who We Are | ELM Media Design",
-      "heading": "WHO WE ARE",
-      "subtitle": "Commercial large-format additive manufacturing for the UAE built environment",
-      "description": "ELM Media Design delivers industrial 3D printing at architectural scale in Dubai, UAE.",
-      "excerpt": "Commercial LFAM in Dubai — robotic concrete and polymer printing for developers, government and hospitality programmes that need site-ready delivery, not prototypes. European engineering UAE delivery Every project follows a disciplined path from technical scoping through fabrication to site-ready delivery — with transparent milestones and UAE policy alignment throughout.",
-      "url": "about-company.html",
-      "category": "About",
-      "keywords": [
-        "who we are",
-        "LFAM",
-        "fabrication",
-        "engagement",
-        "architectural scale"
-      ],
-      "noindex": false
     }
   ],
   "quickLinks": [
     {
       "title": "Technologies & LFAM",
-      "url": "services.html",
+      "url": "technologies.html",
       "category": "Quick link"
     },
     {
@@ -442,12 +442,12 @@
     },
     {
       "title": "Who We Are",
-      "url": "about-company.html",
+      "url": "who-we-are.html",
       "category": "Quick link"
     },
     {
       "title": "UAE Compliance",
-      "url": "certificates.html",
+      "url": "uae-compliance.html",
       "category": "Quick link"
     }
   ]

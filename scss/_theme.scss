@@ -100,23 +100,14 @@
     }
   }
 
-  .icon-content,
   .counter-box,
   .contact-box,
-  .core-values-box,
   .director-team,
   .certificate,
   .sidebar .widget,
-  .step-box .content,
-  .services-list-box,
   .project-specifications,
-  .calculator .form,
   .testimonials-slider .testimonial,
-  .recent-news,
   .news-box .content,
-  .tab-content .tab-item,
-  .tab-left,
-  .accordion .card,
   .sales-team .infos,
   .contact-form {
     background-color: var(--elm-bg-surface);
@@ -126,10 +117,8 @@
 
   .contact-box,
   .counter-box,
-  .core-values-box,
   .director-team,
-  .certificate,
-  .recent-news {
+  .certificate {
     &:hover { box-shadow: 0 16px 40px var(--elm-shadow); }
   }
 
@@ -139,14 +128,6 @@
   }
 
   .contact-box:hover figure img { opacity: 1; }
-
-  .step-box .content {
-    border-top-color: rgba($color-main, 0.35);
-    span { color: var(--elm-text-muted); }
-    h6 { color: var(--elm-text); }
-    p { color: var(--elm-text-muted); }
-    .icon i { color: $color-main; }
-  }
 
   .project-specifications { box-shadow: 0 0 30px var(--elm-shadow); }
 
@@ -166,37 +147,12 @@
 
   .sidebar .categories a { color: var(--elm-text); }
 
-  .calculator .form select,
-  .calculator .form .custom-checkbox {
-    border-color: var(--elm-border);
-    background: var(--elm-bg-page);
-    color: var(--elm-text);
-  }
-
-  .range-slider__range { background: var(--elm-border); }
-
-  #sales-specialist-form .form-group span {
-    background: var(--elm-bg-surface);
-    color: var(--elm-text-muted);
-  }
-
   .footer form input[type="email"] {
     background: var(--elm-bg-surface);
     border: 1px solid var(--elm-border);
     color: var(--elm-text);
     &::placeholder { color: var(--elm-text-muted); }
     &:focus { border-color: var(--elm-text); }
-  }
-
-  .accordion {
-    background: transparent;
-    padding-right: 50px;
-    .card-header a {
-      color: var(--elm-text);
-      border-bottom-color: var(--elm-border);
-      i { color: $color-main; }
-    }
-    .card-body { color: var(--elm-text-muted); }
   }
 
   .info-box-dark {
@@ -208,7 +164,6 @@
     p { opacity: 1; color: var(--elm-text-muted); }
   }
 
-  .recent-news .content,
   .news-box .content {
     background: var(--elm-bg-surface);
     border-color: var(--elm-border);

@@ -29,15 +29,15 @@
       return 'solutions.html';
     }
     if (current.indexOf('technology-') === 0) {
-      return 'services.html';
+      return 'technologies.html';
     }
     if (
-      current === 'our-history.html' ||
-      current === 'core-values.html' ||
-      current === 'certificates.html' ||
+      current === 'our-story.html' ||
+      current === 'why-elm.html' ||
+      current === 'uae-compliance.html' ||
       current === 'leadership.html'
     ) {
-      return 'about-company.html';
+      return 'who-we-are.html';
     }
     return current;
   }
@@ -184,20 +184,6 @@
       window.location = url;
     });
 
-
-    // LOGO HOVER
-    $(".logo-item").hover(function () {
-        $('.logo-item').not(this).css({
-          "opacity": "0.3"
-        });
-      },
-      function () {
-        $('.logo-item').not(this).css({
-          "opacity": "1"
-        });
-      });
-
-
   });
   // END DOCUMENT READY
 
@@ -245,28 +231,6 @@
     });
     return false;
   });
-
-
-  // RANGE SLIDER
-  var rangeSlider = function () {
-    var slider = $('.range-slider'),
-      range = $('.range-slider__range'),
-      value = $('.range-slider__value');
-
-    slider.each(function () {
-
-      value.each(function () {
-        var value = $(this).prev().attr('value');
-        $(this).html(value);
-      });
-
-      range.on('input', function () {
-        $(this).next(value).html(this.value);
-      });
-    });
-  };
-
-  rangeSlider();
 
 
   var SWIPER_SPEED = 220;
@@ -375,40 +339,7 @@
   });
 
 
-  // SLIDER (legacy template — only when present)
-  if ($('.slider-main').length && $('.slider-content').length) {
-    var slidercontent = new Swiper('.slider-content', {
-      speed: SWIPER_SPEED,
-      spaceBetween: 10,
-      centeredSlides: true,
-      slidesPerView: 1,
-      touchRatio: 0,
-      slideToClickedSlide: true,
-      loop: true,
-    });
-
-    var mainslider = new Swiper('.slider-main', {
-      speed: SWIPER_SPEED,
-      spaceBetween: 0,
-      autoplay: {
-        delay: 9500,
-        disableOnInteraction: false,
-      },
-      loop: true,
-      direction: 'vertical',
-      loopedSlides: 1,
-      touchRatio: 0,
-      thumbs: {
-        swiper: slidercontent
-      }
-    });
-
-    mainslider.controller.control = slidercontent;
-    slidercontent.controller.control = mainslider;
-  }
-
-
-  // DATA BACKGROUND (color or photo + overlay — hero slides stay clean)
+  // DATA BACKGROUND (color or photo + overlay)
   var bgOverlay = "linear-gradient(180deg, rgba(18,18,18,0.6) 0%, rgba(18,18,18,0.5) 100%)";
   $("[data-background]").each(function () {
     var bg = $(this).attr("data-background");
@@ -418,22 +349,13 @@
       if (/^#ecebe4$/i.test(bg)) return;
       $(this).css("background", bg);
     } else {
-      var isHeroSlide = $(this).closest(".slider-main").length > 0;
-      if (isHeroSlide) {
-        $(this).css({
-          backgroundImage: "url(" + bg + ")",
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-        });
-      } else {
-        $(this).addClass("bg-photo");
-        $(this).css({
-          backgroundColor: "#121212",
-          backgroundImage: bgOverlay + ", url(" + bg + ")",
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-        });
-      }
+      $(this).addClass("bg-photo");
+      $(this).css({
+        backgroundColor: "#121212",
+        backgroundImage: bgOverlay + ", url(" + bg + ")",
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+      });
     }
   });
 
@@ -459,28 +381,6 @@
   }
   $(window).on('scroll touchmove', updateNavbar);
   updateNavbar();
-
-  // FORM CALCULATOR (legacy Consto mortgage widget — skip if removed)
-  $(".form.calculator-form").change(function () {
-    var totalPrice = parseFloat($('#value1').val()) + parseFloat($('#value2').val()) + parseFloat($('#value3').val()) + parseFloat($('#value4').val()),
-      values = [];
-
-    $('input[type=checkbox], input[type=radio]').each(function () {
-      if ($(this).is(':checked')) {
-        values.push($(this).val());
-        totalPrice += parseInt($(this).val());
-      }
-    });
-
-    $("#result").text(totalPrice);
-
-
-  });
-
-  $(".form.calculator-form").change(function () {
-    total = 0;
-    totalPrice();
-  }).trigger("change");
 
 
 })(jQuery);
