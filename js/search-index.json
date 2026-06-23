@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generated": "2026-06-23T22:11:13.317Z",
+  "generated": "2026-06-23T22:53:52.282Z",
   "items": [
     {
       "id": "technology-robotic-concrete",
@@ -94,7 +94,7 @@
       "heading": "INDUSTRIAL & MOBILITY",
       "subtitle": "Automotive, aerospace, marine and energy infrastructure LFAM programmes",
       "description": "LFAM for automotive, aerospace, marine mock-ups, R&D prototyping and energy infrastructure in the UAE.",
-      "excerpt": "Industrial and mobility clients need high-precision mock-ups, marine-grade interior fit-outs and rapid R&amp;D iteration — without the tooling delays of conventional fabrication. Polymer LFAM delivers complex geometry with recycled materials, while robotic concrete supports energy infrastructure in remote and Net Zero environments. Advanced engineering programmes where LFAM accelerates iteration and reduces waste.",
+      "excerpt": "Industrial and mobility clients need high-precision mock-ups, marine-grade interior fit-outs and rapid R&amp;D iteration — without the tooling delays of conventional fabrication. Polymer LFAM delivers complex geometry with recycled materials, while robotic concrete supports energy infrastructure in remote and Net Zero environments. Advanced engineering where iteration speed, material efficiency and geometric freedom define procurement decisions.",
       "url": "solution-industrial-mobility.html",
       "category": "Solutions",
       "keywords": [],
@@ -106,7 +106,7 @@
       "heading": "HOSPITALITY & LEISURE",
       "subtitle": "High-end commercial pieces, luxury retail and iconic lobby centerpieces",
       "description": "Luxury hospitality LFAM — lobby centerpieces, high-end retail installations and bespoke interior fit-outs in Dubai and the UAE.",
-      "excerpt": "In hospitality, walking through the door is the experience. Five-star properties in Dubai compete on design — and enormous pressure falls on whoever translates architect intent into built reality. ELM removes that pressure: a custom lobby sculpture that would take weeks in conventional fabrication ships from our facility in a fraction of the time. Late-stage design changes are file updates, not new tooling. Recycled polymers with genuinely high finish quality — output that looks exactly like what was specified.",
+      "excerpt": "In hospitality, walking through the door is the experience. Five-star properties in Dubai compete on design — and enormous pressure falls on whoever translates architect intent into built reality. ELM removes that pressure: a custom lobby sculpture that would take weeks in conventional fabrication ships from our facility in a fraction of the time. Late-stage design changes are file updates, not new tooling. Recycled polymers with genuinely high finish quality — output that looks exactly like what was specified, at programme speed hospitality procurement demands.",
       "url": "solution-hospitality-leisure.html",
       "category": "Solutions",
       "keywords": [],
@@ -118,7 +118,7 @@
       "heading": "CREATIVE & CULTURE",
       "subtitle": "Public art, immersive environments and advanced facade systems",
       "description": "Large-scale public art, immersive environments, complex canopies and scenic production for museums and theme parks in the UAE.",
-      "excerpt": "ELM enables large-scale public art and immersive environments for museums and theme parks. Our technology supports advanced facade systems, complex canopies and scenic event productions that conventional methods struggle to deliver economically. From government monuments to theme park scenography — LFAM gives curators and creative directors forms that were previously considered impossible at programme speed. Cultural programmes where geometry, narrative and public impact define the brief.",
+      "excerpt": "ELM enables large-scale public art and immersive environments for museums and theme parks. Our technology supports advanced facade systems, complex canopies and scenic event productions that conventional methods struggle to deliver economically. From government monuments to theme park scenography — LFAM gives curators and creative directors forms that were previously considered impossible at programme speed. Geometry, narrative and public impact define the brief — LFAM delivers without the cost and schedule penalties of bespoke conventional fabrication.",
       "url": "solution-creative-culture.html",
       "category": "Solutions",
       "keywords": [],
@@ -130,7 +130,7 @@
       "heading": "TECHNOLOGIES",
       "subtitle": "Industrial 3D printing at architectural scale — robotic concrete, polymer LFAM and end-to-end architectural manufacturing",
       "description": "Robotic concrete 3D printing, polymer LFAM and architectural manufacturing at commercial scale in Dubai, UAE.",
-      "excerpt": "ELM Media Design runs multi-axis robotic systems that share the same underlying logic: digital-first design, precision deposition, and on-demand production at scales conventional fabrication cannot match. We deploy proven LFAM platforms including Caracol AM Heron AM and WASP Crane systems — the same technology behind landmark projects from Milan retail to Bergamo Airport. Up to 60% less material waste vs conventional bespoke fabrication",
+      "excerpt": "Multi-axis robotic systems with one logic: digital-first design, precision deposition, and on-demand production at scales conventional fabrication cannot match. Caracol AM Heron AM and WASP Crane platforms — proven from Milan retail to Bergamo Airport. Up to 60% less material waste vs conventional bespoke fabrication",
       "url": "services.html",
       "category": "Technologies",
       "keywords": [
@@ -321,7 +321,7 @@
       "heading": "Industrial 3D Printing at Scale",
       "subtitle": "",
       "description": "Commercial-scale LFAM in UAE. Robotic concrete and polymer 3D printing for buildings, facades, hospitality and government projects.",
-      "excerpt": "Robotic concrete and polymer LFAM for buildings, facades, hospitality and government projects — from concept to site installation. Structured quotation turnaround for qualified commercial enquiries Initial technical scoping session with our LFAM specialists",
+      "excerpt": "Robotic concrete and polymer LFAM for buildings, facades, hospitality and government projects — from concept to site installation. From landmark retail installations to airport infrastructure — commercial LFAM delivered with European engineering standards and UAE execution capability. 30-minute technical briefing · Facility tour · 72-hour RFQ response for qualified commercial enquiries.",
       "url": "index.html",
       "category": "Home",
       "keywords": [
@@ -401,7 +401,7 @@
       "heading": "WHO WE ARE",
       "subtitle": "Commercial large-format additive manufacturing for the UAE built environment",
       "description": "ELM Media Design delivers industrial 3D printing at architectural scale in Dubai, UAE.",
-      "excerpt": "Commercial LFAM in Dubai — robotic concrete and polymer printing for developers, government and hospitality programmes that need site-ready delivery, not prototypes. Every project follows a disciplined path from technical scoping through fabrication to site-ready delivery — with transparent milestones and UAE policy alignment throughout. 30-minute briefing, feasibility review, digital modelling and material specification for your programme.",
+      "excerpt": "Commercial LFAM in Dubai — robotic concrete and polymer printing for developers, government and hospitality programmes that need site-ready delivery, not prototypes. European engineering UAE delivery Every project follows a disciplined path from technical scoping through fabrication to site-ready delivery — with transparent milestones and UAE policy alignment throughout.",
       "url": "about-company.html",
       "category": "About",
       "keywords": [

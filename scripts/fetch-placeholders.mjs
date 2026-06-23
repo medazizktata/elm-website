@@ -32,8 +32,8 @@ const imageAssets = {
   },
   "slide02.jpg": {
     subject: "Robotic LFAM manufacturing facility",
-    source: "Pexels",
-    url: pexels(7728056, 1920),
+    source: "Unsplash",
+    url: unsplash("1581092160562-40aa08e78837", 1920),
   },
   "slide03.jpg": {
     subject: "Luxury retail display — Dubai Watch",
@@ -171,7 +171,7 @@ const imageAssets = {
   "video-poster01.jpg": {
     subject: "LFAM facility video poster frame",
     source: "Pexels",
-    url: pexels(886723, 1280, 720),
+    url: pexels(4489702, 1280, 720),
   },
 
   "author01.jpg": {

@@ -317,21 +317,32 @@
 
 
   // TESTIMONIALS SLIDER
-  var swiper = new Swiper('.testimonials-slider', {
-    speed: SWIPER_SPEED,
-    slidesPerView: 1,
-    spaceBetween: 0,
-    loop: true,
-    pagination: {
-      el: '.testimonials-slider .swiper-pagination',
-      type: 'fraction',
-    },
-    navigation: {
-      nextEl: '.testimonials-slider .button-next',
-      prevEl: '.testimonials-slider .button-prev',
-    },
-  });
-
+  var $testimonials = $(".engagement-section .testimonials-slider");
+  if ($testimonials.length) {
+    new Swiper($testimonials[0], {
+      speed: SWIPER_SPEED,
+      slidesPerView: 1,
+      spaceBetween: 16,
+      loop: true,
+      centeredSlides: true,
+      watchOverflow: true,
+      grabCursor: true,
+      navigation: {
+        nextEl: $testimonials.find(".button-next")[0],
+        prevEl: $testimonials.find(".button-prev")[0],
+      },
+      breakpoints: {
+        768: {
+          slidesPerView: 1.12,
+          spaceBetween: 20,
+        },
+        1100: {
+          slidesPerView: 1.18,
+          spaceBetween: 24,
+        },
+      },
+    });
+  }
 
   // PROJECT SLIDER
   $(".project-slider").each(function () {

@@ -17,7 +17,7 @@ Downloads subject-matched stock photos from **Pexels / Unsplash / Mixkit**, writ
 | File | Subject (use as `alt`) | Source |
 |------|------------------------|--------|
 | `slide01.jpg` | Industrial robotic LFAM system in production | Unsplash |
-| `slide02.jpg` | Robotic LFAM manufacturing facility | Pexels |
+| `slide02.jpg` | Robotic LFAM manufacturing facility | Unsplash |
 | `slide03.jpg` | Luxury retail display — Dubai Watch | Pexels |
 | `slide04.jpg` | Recarlo Milan LFAM architectural wall panels | Pexels |
 | `slide05.jpg` | Oval digital billboard — THE LOOP OOH | Pexels |
