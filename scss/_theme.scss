@@ -51,6 +51,18 @@
   );
   --elm-feather-hero-edge-w: min(34vw, 340px);
   color-scheme: light;
+
+  .page-header .container {
+    h1,
+    .page-breadcrumb li,
+    .page-breadcrumb a {
+      color: #fff;
+    }
+
+    .page-header__lede {
+      color: rgba(255, 255, 255, 0.82);
+    }
+  }
 }
 
 [data-theme="dark"] {
@@ -75,6 +87,18 @@
   --elm-navbar-sticky-bg: #{rgba(#121212, 0.94)};
   --elm-navbar-sticky-border: #2e2e2e;
   color-scheme: dark;
+
+  .page-header .container {
+    h1,
+    .page-breadcrumb li,
+    .page-breadcrumb a {
+      color: #fff;
+    }
+
+    .page-header__lede {
+      color: rgba(255, 255, 255, 0.82);
+    }
+  }
 
   .icon-content,
   .counter-box,
@@ -157,9 +181,11 @@
   }
 
   .footer form input[type="email"] {
-    background: var(--elm-bg-page);
+    background: var(--elm-bg-surface);
+    border: 1px solid var(--elm-border);
     color: var(--elm-text);
     &::placeholder { color: var(--elm-text-muted); }
+    &:focus { border-color: var(--elm-text); }
   }
 
   .accordion {
@@ -190,10 +216,6 @@
 
   .testimonials-slider {
     .swiper-pagination-current { color: $color-main; }
-    .testimonial {
-      p { color: var(--elm-text-muted); }
-      &:after { border-color: transparent var(--elm-bg-surface) transparent transparent; }
-    }
   }
 
   .our-history .button-prev,
@@ -262,5 +284,9 @@
         &:hover { color: #ecebe4; }
       }
     }
+  }
+
+  .google-maps {
+    filter: invert(1) hue-rotate(180deg) brightness(0.92) contrast(0.9);
   }
 }
