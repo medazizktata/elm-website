@@ -24,6 +24,10 @@ export default defineConfig({
     copyPublicDir: false,
   },
   server: {
+    host: true,
+    port: 5173,
+    strictPort: true,
+    allowedHosts: true,
     open: "/index.html",
   },
 });

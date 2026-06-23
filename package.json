@@ -13,6 +13,7 @@
     "favicons:generate": "node scripts/generate-favicons.mjs",
     "search:index": "node scripts/build-search-index.mjs",
     "preview": "vite preview",
+    "tunnel": "cloudflared tunnel --url http://localhost:5173",
     "sass": "sass scss/style.scss css/style.css --no-source-map"
   },
   "devDependencies": {
