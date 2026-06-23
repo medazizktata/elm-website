@@ -77,8 +77,12 @@ pnpm run images:placeholders
 ├── about-company.html      # About
 ├── services.html           # Technologies (base template)
 ├── projects.html           # Portfolio grid
-├── project-single.html     # Case study template
+├── project-recarlo-milan.html
+├── project-bergamo-airport.html
+├── project-single.html     # Redirect → projects (noindex)
 ├── contact.html
+├── robots.txt              # Crawl rules (copied to dist/)
+├── sitemap.xml             # Generated on build (19 indexable URLs)
 ├── css/                    # Compiled styles
 ├── scss/                   # Source styles (edit here)
 ├── js/                     # Scripts
@@ -97,9 +101,10 @@ Template ships with placeholder images. Replace files in `images/` with ELM phot
 
 ## Contact (business)
 
-- **Phone:** +971 56 466 3334
+- **Mobile:** +971 56 466 3334
+- **Office:** +971 4 422 1177
 - **Email:** info@elmmdesign.com
-- **Location:** Dubai, UAE
+- **Location:** Office 203, API Business Suites, Dubai, UAE
 
 ---
 
