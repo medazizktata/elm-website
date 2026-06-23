@@ -21,20 +21,21 @@
           <p><a href="tel:+971564663334">+971 56 466 3334</a></p>
           <p><a href="tel:+97144221177">+971 4 422 1177</a></p>
           <p><a href="mailto:info@elmmdesign.com">info@elmmdesign.com</a></p>
-          <a href="https://www.google.com/maps/search/?api=1&query=Office+203+API+Business+Suites+Al+Barsha+Dubai" data-fancybox data-width="640" data-height="360">FIND US ON MAP</a>
+          <a href="https://www.google.com/maps/search/?api=1&query=Office+203+API+Business+Suites+Al+Barsha+Dubai" class="footer__map-link" data-fancybox data-width="640" data-height="360"><i class="lni lni-map-marker" aria-hidden="true"></i> Find us on map</a>
         </address>
       </div>
       <div class="col-lg-4 col-md-6">
         <h6 class="widget-title">ENGAGEMENT</h6>
         <p>30-min consultation &middot; Facility tour &middot; 72h RFQ response &middot; Capability profile</p>
-        <a href="contact.html#consultation-form">Start a project</a>
+        <a href="contact.html#consultation-form" class="custom-button footer__cta">Start a project <i class="lni lni-arrow-right" aria-hidden="true"></i></a>
       </div>
       <div class="col-lg-4">
         <h6 class="widget-title">INQUIRY</h6>
         <p>Tell us about your project requirements.</p>
         <form action="contact.html#consultation-form" method="get">
-          <input type="email" placeholder="Work email">
-          <input type="submit" value="GET IN TOUCH">
+          <label class="visually-hidden" for="footer-email">Work email</label>
+          <input type="email" id="footer-email" name="email" autocomplete="email" spellcheck="false" placeholder="Work email…">
+          <input type="submit" value="Get in Touch">
         </form>
       </div>
       <div class="col-12">
@@ -49,5 +50,5 @@
       </div>
     </div>
   </div>
-  <a href="#" class="scroll-top"><i class="lni lni-arrow-up"></i> <small>Scroll Up</small></a>
+  <a href="#" class="scroll-top" aria-label="Scroll to top"><i class="lni lni-arrow-up" aria-hidden="true"></i> <small>Scroll Up</small></a>
 </footer>
