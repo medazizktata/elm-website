@@ -837,6 +837,7 @@ $section-whitespace: 120px;
 
 
 /* SALES TEAM */
+.social-x{display: inline-block; font-weight: 800; font-size: 14px; line-height: 1; letter-spacing: -0.04em;}
 .sales-team{width: 100%; display: block; @include transition; position: relative; background: var(--elm-bg-surface);
 	&:hover {background: $color-main; color: var(--elm-on-accent); transform: translateY(-8px); box-shadow: 0 24px 40px var(--elm-shadow); z-index: 1;
 		ul li a{color: var(--elm-on-accent);}}

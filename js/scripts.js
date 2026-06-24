@@ -308,6 +308,27 @@
     });
   }
 
+  // METRIC PROJECT SLIDER
+  $(".metric-showcase").each(function () {
+    var $section = $(this);
+    var $slider = $section.find(".metric-slider");
+    if (!$slider.length) return;
+    new Swiper($slider[0], {
+      speed: SWIPER_SPEED,
+      loop: true,
+      slidesPerView: 1,
+      spaceBetween: 24,
+      navigation: {
+        nextEl: $section.find(".metric-slider__arrow--next")[0],
+        prevEl: $section.find(".metric-slider__arrow--prev")[0],
+      },
+      pagination: {
+        el: $section.find(".metric-slider .swiper-pagination")[0],
+        clickable: true,
+      },
+    });
+  });
+
   // PROJECT SLIDER
   $(".project-slider").each(function () {
     var $slider = $(this);

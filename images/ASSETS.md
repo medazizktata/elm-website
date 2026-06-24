@@ -8,7 +8,9 @@ Replace template placeholders with final ELM media as it becomes available.
 pnpm run images:placeholders
 ```
 
-Downloads subject-matched stock photos from **Pexels / Unsplash / Mixkit**, writes `images/placeholders.json` (semantic alt text per file), and refreshes `images/background/` brand JPEGs.
+Downloads subject-matched stock photos and **ELM Wix portfolio** assets (`images/wix-portfolio.json`), writes `images/placeholders.json`, and refreshes `images/background/` brand JPEGs.
+
+Portfolio OOH / retail images (Dubai Watch, THE LOOP, Dubai Eagle, Flouka) are copied from `../../elm-wix-archive/media/` when available.
 
 **Replace all stock media before launch** with client-owned LFAM photography.
 
@@ -18,11 +20,11 @@ Downloads subject-matched stock photos from **Pexels / Unsplash / Mixkit**, writ
 |------|------------------------|--------|
 | `slide01.jpg` | Industrial robotic LFAM system in production | Unsplash |
 | `slide02.jpg` | Robotic LFAM manufacturing facility | Unsplash |
-| `slide03.jpg` | Luxury retail display — Dubai Watch | Pexels |
-| `slide04.jpg` | Recarlo Milan LFAM architectural wall panels | Pexels |
-| `slide05.jpg` | Oval digital billboard — THE LOOP OOH | Pexels |
-| `slide06.jpg` | Bergamo Airport LFAM service building | Pexels |
-| `slide07.jpg` | Dubai Eagle OOH installation skyline | Pexels |
+| `slide03.jpg` | Luxury retail display — Dubai Watch | ELM Wix portfolio |
+| `slide04.jpg` | Recarlo Milan LFAM architectural wall panels | Unsplash |
+| `slide05.jpg` | Oval digital billboard — THE LOOP OOH | ELM Wix portfolio |
+| `slide06.jpg` | Bergamo Airport LFAM service building | Unsplash |
+| `slide07.jpg` | Dubai Eagle OOH installation skyline | ELM Wix portfolio |
 | `slide08.jpg` | UAE commercial LFAM programme — Dubai Marina | Pexels |
 | `slide09.jpg` | The Flouka creative OOH installation | ELM Wix portfolio |
 | `side-image01.jpg` | Property and infrastructure LFAM facade | Pexels |
@@ -44,7 +46,7 @@ Downloads subject-matched stock photos from **Pexels / Unsplash / Mixkit**, writ
 | `team01–08.jpg` | Leadership team portraits (noindex page) | Pexels |
 | `videos/video01.mp4` | LFAM / 3D printing facility loop | Mixkit |
 
-Machine-readable registry: **`images/placeholders.json`**
+Machine-readable registry: **`images/placeholders.json`** · Wix project map: **`images/wix-portfolio.json`**
 
 ## Logo
 
