@@ -34,3 +34,6 @@ temp/
 
 # --- Local tooling ---
 .cursor/
+
+# --- Raw media extract (curated copies live in images/projects/) ---
+images/elm-source/

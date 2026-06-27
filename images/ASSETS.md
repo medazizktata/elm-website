@@ -20,16 +20,16 @@ Portfolio OOH / retail images (Dubai Watch, THE LOOP, Dubai Eagle, Flouka) are c
 |------|------------------------|--------|
 | `slide01.jpg` | Industrial robotic LFAM system in production | Unsplash |
 | `slide02.jpg` | Robotic LFAM manufacturing facility | Unsplash |
-| `slide03.jpg` | Luxury retail display — Dubai Watch | ELM Wix portfolio |
+| `slide03.jpg` | Luxury retail display — Dubai Watch | ELM client media |
 | `slide04.jpg` | Recarlo Milan LFAM architectural wall panels | Unsplash |
-| `slide05.jpg` | Oval digital billboard — THE LOOP OOH | ELM Wix portfolio |
+| `slide05.jpg` | Oval digital billboard — THE LOOP OOH | ELM client media |
 | `slide06.jpg` | Bergamo Airport LFAM service building | Unsplash |
-| `slide07.jpg` | Dubai Eagle OOH installation skyline | ELM Wix portfolio |
+| `slide07.jpg` | Dubai Eagle OOH installation skyline | ELM client media |
 | `slide08.jpg` | UAE commercial LFAM programme — Dubai Marina | Pexels |
-| `slide09.jpg` | The Flouka creative OOH installation | ELM Wix portfolio |
+| `slide09.jpg` | The Flouka creative OOH installation | ELM client media |
 | `side-image01.jpg` | Property and infrastructure LFAM facade | Pexels |
-| `side-image02.jpg` | Hospitality LFAM installation — luxury hotel | Pexels |
-| `side-image03.jpg` | Creative culture public art sculpture | Pexels |
+| `side-image02.jpg` | Dubai Watch luxury retail OOH display | ELM client media |
+| `side-image03.jpg` | The Flouka creative OOH monument | ELM client media |
 | `step01.jpg` | Digital design and material specification | Pexels |
 | `step02.jpg` | Robotic LFAM fabrication in progress | Pexels |
 | `step03.jpg` | On-site installation of printed component | Pexels |
@@ -41,10 +41,12 @@ Portfolio OOH / retail images (Dubai Watch, THE LOOP, Dubai Eagle, Flouka) are c
 | `tab04.jpg` | LFAM design workflow and technical scoping | Pexels |
 | `tab05.jpg` | Dubai development and urban growth | Pexels |
 | `certificate01–04.jpg` | UAE policy cards (Dubai 2030, ICV, Net Zero, 2040) | Pexels |
-| `video-poster01.jpg` | LFAM facility video poster frame | Pexels |
+| `video-poster01.jpg` | Oval Digital Billboard video poster | ELM client media |
 | `author01.jpg` | ELM editorial author | Unsplash |
 | `team01–08.jpg` | Leadership team portraits (noindex page) | Pexels |
-| `videos/video01.mp4` | LFAM / 3D printing facility loop | Mixkit |
+| `videos/video01.mp4` | LFAM / construction facility loop | ELM client media |
+
+Project galleries: **`images/projects/`** (`dubai-watch/`, `oval-digital-billboard/`, `dubai-eagle/`, `the-flouka/`). Raw zip extract kept locally in `images/elm-source/` (gitignored).
 
 Machine-readable registry: **`images/placeholders.json`** · Wix project map: **`images/wix-portfolio.json`**
 

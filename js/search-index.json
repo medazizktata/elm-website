@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generated": "2026-06-24T21:07:30.553Z",
+  "generated": "2026-06-27T14:59:23.956Z",
   "items": [
     {
       "id": "why-elm",
@@ -25,7 +25,7 @@
       "heading": "WHO WE ARE",
       "subtitle": "Commercial large-format additive manufacturing for the UAE built environment",
       "description": "ELM Media Design delivers industrial 3D printing at architectural scale in Dubai, UAE.",
-      "excerpt": "Commercial LFAM in Dubai — robotic concrete and polymer printing for developers, government and hospitality programmes that need site-ready delivery, not prototypes. European engineering UAE delivery Every project follows a disciplined path from technical scoping through fabrication to site-ready delivery — with transparent milestones and UAE policy alignment throughout.",
+      "excerpt": "Commercial LFAM in Dubai — robotic concrete and polymer printing for developers, government and hospitality programmes that need site-ready delivery, not prototypes. European engineering UAE delivery",
       "url": "who-we-are.html",
       "category": "About",
       "keywords": [
@@ -216,104 +216,6 @@
         "THE LOOP"
       ],
       "noindex": false
-    },
-    {
-      "id": "project-1",
-      "title": "Recarlo Milan",
-      "heading": "Recarlo Milan",
-      "description": "LFAM project in the ELM portfolio.",
-      "url": "project-recarlo-milan.html",
-      "category": "Project",
-      "keywords": [
-        "project",
-        "portfolio",
-        "LFAM",
-        "recarlo milan"
-      ]
-    },
-    {
-      "id": "project-2",
-      "title": "Bergamo Airport",
-      "heading": "Bergamo Airport",
-      "description": "LFAM project in the ELM portfolio.",
-      "url": "project-bergamo-airport.html",
-      "category": "Project",
-      "keywords": [
-        "project",
-        "portfolio",
-        "LFAM",
-        "bergamo airport"
-      ]
-    },
-    {
-      "id": "project-3",
-      "title": "UAE Commercial LFAM",
-      "heading": "UAE Commercial LFAM",
-      "description": "LFAM project in the ELM portfolio.",
-      "url": "contact.html#consultation-form",
-      "category": "Project",
-      "keywords": [
-        "project",
-        "portfolio",
-        "LFAM",
-        "uae commercial lfam"
-      ]
-    },
-    {
-      "id": "project-4",
-      "title": "Oval Digital Billboard",
-      "heading": "Oval Digital Billboard",
-      "description": "LFAM project in the ELM portfolio.",
-      "url": "solution-ooh-the-loop.html",
-      "category": "Project",
-      "keywords": [
-        "project",
-        "portfolio",
-        "LFAM",
-        "oval digital billboard"
-      ]
-    },
-    {
-      "id": "project-5",
-      "title": "Dubai Eagle",
-      "heading": "Dubai Eagle",
-      "description": "LFAM project in the ELM portfolio.",
-      "url": "solution-ooh-the-loop.html",
-      "category": "Project",
-      "keywords": [
-        "project",
-        "portfolio",
-        "LFAM",
-        "dubai eagle"
-      ]
-    },
-    {
-      "id": "project-6",
-      "title": "The Flouka",
-      "heading": "The Flouka",
-      "description": "LFAM project in the ELM portfolio.",
-      "url": "solution-ooh-the-loop.html",
-      "category": "Project",
-      "keywords": [
-        "project",
-        "portfolio",
-        "LFAM",
-        "the flouka"
-      ]
-    },
-    {
-      "id": "project-7",
-      "title": "Dubai Watch",
-      "heading": "Dubai Watch",
-      "description": "LFAM project in the ELM portfolio.",
-      "url": "solution-ooh-the-loop.html",
-      "category": "Project",
-      "keywords": [
-        "project",
-        "portfolio",
-        "LFAM",
-        "dubai watch"
-      ]
     },
     {
       "id": "project-recarlo-milan",
