@@ -17,7 +17,7 @@
       <img src="images/background/branding-elm-18.jpg" alt="" width="1920" height="1080" loading="lazy" decoding="async">
     </div>
     <div class="hero__slide">
-      <img src="images/slide02.jpg" alt="Robotic LFAM manufacturing facility" width="1920" height="1080" loading="lazy" decoding="async">
+      <img src="images/step02.jpg" alt="Robotic LFAM manufacturing facility" width="1920" height="1080" loading="lazy" decoding="async">
     </div>
     <div class="hero__slide">
       <img src="images/slide07.jpg" alt="Dubai Eagle OOH installation" width="1920" height="1080" loading="lazy" decoding="async">
@@ -59,12 +59,14 @@
         </div>
       </div>
     </div>
-    <div class="video-box">
-      <a href="videos/video01.mp4" data-fancybox data-width="1280" data-height="720" class="play-btn" aria-label="Play facility video"><i class="lni lni-play" aria-hidden="true"></i></a>
-      <video src="videos/video01.mp4" poster="images/video-poster01.jpg" autoplay muted loop playsinline></video>
-    </div>
-    <div class="swiper-container testimonials-slider">
-      <div class="swiper-wrapper">
+    <div class="engagement-showcase">
+      <div class="video-box">
+        <a href="videos/video01.mp4" data-fancybox data-width="1280" data-height="720" class="play-btn" aria-label="Play facility video"><i class="lni lni-play" aria-hidden="true"></i></a>
+        <video src="videos/video01.mp4" poster="images/video-poster01.jpg" autoplay muted loop playsinline></video>
+      </div>
+      <div class="engagement-showcase__body">
+        <div class="swiper-container testimonials-slider">
+          <div class="swiper-wrapper">
         <div class="swiper-slide">
           <blockquote class="testimonial">
             <p>ELM delivered exactly the LFAM capability we needed — technical depth, commercial discipline, and on-site execution aligned with our programme.</p>
@@ -101,8 +103,12 @@
             </footer>
           </blockquote>
         </div>
+          </div>
+        </div>
+        <div class="engagement-showcase__foot">
+          {{> testimonials-slider-controls}}
+        </div>
       </div>
-      {{> testimonials-slider-controls}}
     </div>
   </div>
 </section>

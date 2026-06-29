@@ -1,5 +1,21 @@
 # ELM image asset manifest
 
+Doc-driven placement (from `Docs/website_proposal.pdf`, corporate profile, presentation):
+
+| Site section | What docs require | Client zip assets | Status |
+|---|---|---|---|
+| **Home hero** | LFAM robots / printed structures | — (stock `slide01/02`) | Gap — no LFAM photos in zip |
+| **Home featured projects** | Case studies + impressive visuals | Recarlo/Bergamo stock; `slide07` Dubai Eagle OOH | Partial |
+| **Home video** | Facility / process footage | `53 - building…mp4` → `video01.mp4` | Done |
+| **THE LOOP** (`solution-ooh-the-loop`) | Kinetic OOH, high-footfall deployment | Oval Billboard hero + Eagle secondary + gallery | Done |
+| **Hospitality** | LFAM lobby/retail (Recarlo proof point) | `slide04` Recarlo only — not OOH kiosks | Fixed |
+| **Creative & Culture** | Public art, monuments, immersive | The Flouka gallery | Done |
+| **Projects grid** | Per-project cards with galleries | All 4 OOH + 2 LFAM case studies | Done — needs dedicated project pages |
+| **Technologies** | Robotic process imagery | — (stock) | Gap |
+| **Brand** | Logo, favicon, OG | `logo.svg` / `logo.png` from `ico/logo/` (not zip) | Correct |
+
+OOH units (Dubai Watch, Eagle, Flouka, Oval) = **LetsAd/ELM media heritage** → Projects + OOH solution only, not Hospitality LFAM.
+
 Replace template placeholders with final ELM media as it becomes available.
 
 ## Refresh placeholders
@@ -28,7 +44,7 @@ Portfolio OOH / retail images (Dubai Watch, THE LOOP, Dubai Eagle, Flouka) are c
 | `slide08.jpg` | UAE commercial LFAM programme — Dubai Marina | Pexels |
 | `slide09.jpg` | The Flouka creative OOH installation | ELM client media |
 | `side-image01.jpg` | Property and infrastructure LFAM facade | Pexels |
-| `side-image02.jpg` | Dubai Watch luxury retail OOH display | ELM client media |
+| `side-image02.jpg` | Recarlo Milan hospitality LFAM panels | Unsplash (Recarlo proxy) |
 | `side-image03.jpg` | The Flouka creative OOH monument | ELM client media |
 | `step01.jpg` | Digital design and material specification | Pexels |
 | `step02.jpg` | Robotic LFAM fabrication in progress | Pexels |

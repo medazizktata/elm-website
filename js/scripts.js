@@ -281,29 +281,24 @@
 
 
   // TESTIMONIALS SLIDER
-  var $testimonials = $(".engagement-section .testimonials-slider");
+  var $engagement = $(".engagement-section");
+  var $testimonials = $engagement.find(".testimonials-slider");
   if ($testimonials.length) {
     new Swiper($testimonials[0], {
       speed: SWIPER_SPEED,
       slidesPerView: 1,
-      spaceBetween: 16,
+      spaceBetween: 0,
       loop: true,
-      centeredSlides: true,
+      autoHeight: true,
       watchOverflow: true,
       grabCursor: true,
       navigation: {
-        nextEl: $testimonials.find(".button-next")[0],
-        prevEl: $testimonials.find(".button-prev")[0],
+        nextEl: $engagement.find(".button-next")[0],
+        prevEl: $engagement.find(".button-prev")[0],
       },
-      breakpoints: {
-        768: {
-          slidesPerView: 1.12,
-          spaceBetween: 20,
-        },
-        1100: {
-          slidesPerView: 1.18,
-          spaceBetween: 24,
-        },
+      pagination: {
+        el: $engagement.find(".testimonials-slider__pagination")[0],
+        clickable: true,
       },
     });
   }
@@ -316,8 +311,11 @@
     new Swiper($slider[0], {
       speed: SWIPER_SPEED,
       loop: true,
+      autoHeight: true,
       slidesPerView: 1,
       spaceBetween: 24,
+      observer: true,
+      observeParents: true,
       navigation: {
         nextEl: $section.find(".metric-slider__arrow--next")[0],
         prevEl: $section.find(".metric-slider__arrow--prev")[0],

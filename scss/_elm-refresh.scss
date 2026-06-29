@@ -1539,18 +1539,95 @@ body:has(.hero) .navbar {
     }
   }
 
+  .engagement-showcase {
+    border: 1px solid var(--elm-border);
+    background: var(--elm-bg-surface);
+    overflow: hidden;
+
+    .video-box {
+      min-height: 0;
+      aspect-ratio: 16 / 9;
+      border: none;
+      border-bottom: 1px solid var(--elm-border);
+
+      video {
+        width: 100%;
+        height: 100%;
+        min-height: 0;
+        object-fit: cover;
+      }
+
+      .play-btn {
+        top: 50%;
+        right: auto;
+        left: 50%;
+        transform: translate(-50%, -50%);
+      }
+    }
+
+    .testimonials-slider {
+      margin: 0;
+      max-width: none;
+      overflow: hidden;
+      height: auto !important;
+
+      .swiper-wrapper {
+        height: auto !important;
+      }
+
+      .swiper-slide {
+        height: auto !important;
+      }
+
+      .swiper-slide:not(.swiper-slide-active) .testimonial {
+        opacity: 1;
+      }
+    }
+
+    .testimonial {
+      min-height: 0;
+      padding: clamp(28px, 4vw, 44px);
+      border: none;
+      border-radius: 0;
+      box-shadow: none;
+      background: transparent;
+    }
+
+    &__foot {
+      display: flex;
+      justify-content: center;
+      padding: 14px 16px;
+      border-top: 1px solid var(--elm-border);
+      background: var(--elm-bg-page);
+    }
+
+    .testimonials-slider__controls {
+      position: static;
+      display: flex;
+      gap: 12px;
+      margin: 0;
+      pointer-events: auto;
+    }
+
+    .testimonials-slider__arrow {
+      position: static;
+      transform: none;
+      width: 44px;
+      height: 44px;
+    }
+  }
+
   .testimonials-slider {
-    margin-top: clamp(-96px, -8vw, -72px);
+    margin-top: clamp(28px, 4vw, 40px);
     position: relative;
-    z-index: 2;
-    max-width: min(100%, 1080px);
-    margin-left: auto;
-    margin-right: auto;
-    overflow: visible;
+    z-index: 1;
+    max-width: 100%;
+    margin-left: 0;
+    margin-right: 0;
+    overflow: hidden;
 
     @media (max-width: 767px) {
-      margin-top: 16px;
-      max-width: none;
+      margin-top: 28px;
     }
 
     .swiper-slide:not(.swiper-slide-active) .testimonial {
@@ -1605,6 +1682,22 @@ body:has(.hero) .navbar {
           right: 8px;
         }
       }
+    }
+  }
+
+  .engagement-showcase .testimonials-slider {
+    margin-top: 0;
+
+    &__controls,
+    &__arrow {
+      position: static;
+      transform: none;
+    }
+
+    &__arrow--prev,
+    &__arrow--next {
+      left: auto;
+      right: auto;
     }
   }
 
@@ -2075,6 +2168,33 @@ body:has(.hero) .navbar {
   margin-top: 28px;
 }
 
+.our-history {
+  .swiper-slide {
+    display: flex;
+    flex-direction: column;
+    height: auto;
+  }
+
+  figure {
+    margin: 0;
+    padding: 0 15px;
+    overflow: hidden;
+    aspect-ratio: 4 / 3;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+  }
+
+  p {
+    flex: 1;
+    margin-top: 16px;
+  }
+}
+
 /* CONTACT CARDS — equal dimensions in a row */
 .contact-cards {
   align-items: stretch;
@@ -2174,10 +2294,16 @@ body:has(.hero) .navbar {
 .metric-slider {
   position: relative;
   overflow: hidden;
-  padding-bottom: 48px;
+  height: auto !important;
+
+  .swiper-wrapper {
+    height: auto !important;
+    align-items: stretch;
+  }
 
   .swiper-slide {
-    height: auto;
+    height: auto !important;
+    display: flex;
   }
 
   &__controls {
@@ -2186,7 +2312,7 @@ body:has(.hero) .navbar {
     justify-content: center;
     align-items: center;
     gap: 16px;
-    margin-top: 28px;
+    margin-top: 20px;
     pointer-events: auto;
   }
 
@@ -2209,7 +2335,9 @@ body:has(.hero) .navbar {
   display: grid;
   grid-template-columns: minmax(0, 2fr) minmax(0, 3fr);
   gap: clamp(16px, 2vw, 24px);
-  min-height: clamp(320px, 42vw, 420px);
+  align-items: stretch;
+  --metric-slide-h: clamp(260px, 30vw, 380px);
+  width: 100%;
   text-decoration: none;
   color: inherit;
   @include elm-smooth-hover;
@@ -2222,6 +2350,7 @@ body:has(.hero) .navbar {
   &__panel {
     display: flex;
     flex-direction: column;
+    height: var(--metric-slide-h);
     gap: 16px;
     padding: clamp(24px, 3vw, 40px);
     background: linear-gradient(135deg, $color-dark 0%, color-mix(in srgb, $color-dark 72%, $color-accent) 100%);
@@ -2291,12 +2420,11 @@ body:has(.hero) .navbar {
   &__media {
     margin: 0;
     overflow: hidden;
-    position: relative;
+    height: var(--metric-slide-h);
 
     img {
       width: 100%;
       height: 100%;
-      min-height: clamp(280px, 38vw, 420px);
       object-fit: cover;
       display: block;
       @include elm-smooth-hover;
@@ -2554,22 +2682,25 @@ body:has(.hero) .navbar {
   display: flex;
   flex-direction: column;
   min-height: 100%;
-  padding: clamp(24px, 3vw, 32px);
+  padding: 0;
+  overflow: hidden;
   background: var(--elm-bg-surface);
   border: 1px solid var(--elm-border);
   @include elm-smooth-hover;
 
-  &:not(:last-child)::after {
-    content: "";
-    position: absolute;
-    top: 50%;
-    right: -12px;
-    width: 24px;
-    height: 1px;
-    background: linear-gradient(90deg, $color-main 0%, transparent 100%);
-    transform: translateY(-50%);
-    pointer-events: none;
-    z-index: 1;
+  &__media {
+    margin: 0;
+    aspect-ratio: 3 / 2;
+    overflow: hidden;
+    border-bottom: 1px solid var(--elm-border);
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      @include elm-smooth-hover;
+    }
   }
 
   &:hover {
@@ -2581,6 +2712,18 @@ body:has(.hero) .navbar {
       background: $color-main;
       color: #fff;
     }
+
+    .process-step__media img {
+      transform: scale(1.03);
+    }
+  }
+
+  &__top,
+  > h3,
+  > p,
+  &__list {
+    padding-left: clamp(20px, 2.5vw, 28px);
+    padding-right: clamp(20px, 2.5vw, 28px);
   }
 
   &__top {
@@ -2588,7 +2731,8 @@ body:has(.hero) .navbar {
     align-items: flex-start;
     justify-content: space-between;
     gap: 12px;
-    margin-bottom: 20px;
+    margin-bottom: 12px;
+    padding-top: clamp(20px, 2.5vw, 24px);
   }
 
   &__num {
@@ -2629,7 +2773,8 @@ body:has(.hero) .navbar {
 
   &__list {
     margin: auto 0 0;
-    padding: 16px 0 0;
+    padding-top: 16px;
+    padding-bottom: clamp(20px, 2.5vw, 28px);
     list-style: none;
     border-top: 1px solid var(--elm-border);
 
@@ -2648,6 +2793,19 @@ body:has(.hero) .navbar {
         font-size: 12px;
       }
     }
+  }
+
+  &:not(:last-child)::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    right: -12px;
+    width: 24px;
+    height: 1px;
+    background: linear-gradient(90deg, $color-main 0%, transparent 100%);
+    transform: translateY(-50%);
+    pointer-events: none;
+    z-index: 1;
   }
 }
 
@@ -2675,47 +2833,43 @@ body:has(.hero) .navbar {
 
 /* GLASS CHECKLIST PANEL */
 .glass-panel-section {
-  position: relative;
-  padding: clamp(80px, 10vw, 120px) 0 !important;
-  overflow: hidden;
+  padding-top: var(--elm-section-y-compact) !important;
+  padding-bottom: var(--elm-section-y) !important;
 
-  &__bg {
-    position: absolute;
-    inset: 0;
-    z-index: 0;
+  &__grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
+    gap: clamp(24px, 4vw, 48px);
+    align-items: stretch;
+  }
+
+  &__media {
+    margin: 0;
+    overflow: hidden;
+    min-height: 100%;
 
     img {
       width: 100%;
       height: 100%;
+      min-height: clamp(280px, 32vw, 420px);
       object-fit: cover;
       display: block;
     }
-
-    &::after {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(90deg, rgba($color-dark, 0.72) 0%, rgba($color-dark, 0.45) 55%, rgba($color-dark, 0.25) 100%);
-    }
-  }
-
-  > .container {
-    position: relative;
-    z-index: 1;
   }
 }
 
 .glass-panel {
-  max-width: 32rem;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
   padding: clamp(28px, 4vw, 48px);
-  background: rgba($color-dark, 0.55);
-  border: 1px solid rgba(#fff, 0.12);
-  backdrop-filter: blur(8px);
-  color: #fff;
+  background: var(--elm-bg-surface);
+  border: 1px solid var(--elm-border);
+  border-top: 3px solid $color-main;
+  color: var(--elm-text);
 
   &__eyebrow {
     @include elm-section-eyebrow;
-    color: $color-main;
     margin-bottom: 12px;
 
     &::after {
@@ -2726,14 +2880,14 @@ body:has(.hero) .navbar {
   h2 {
     @include elm-section-title;
     font-size: clamp(28px, 3.2vw, 36px);
-    color: #fff;
+    color: var(--elm-text);
     margin: 0 0 16px;
   }
 
   &__lede {
     font-size: var(--elm-section-lede-size);
     line-height: 1.6;
-    color: rgba(#fff, 0.78);
+    color: var(--elm-text-muted);
     margin: 0 0 24px;
   }
 
@@ -2749,7 +2903,7 @@ body:has(.hero) .navbar {
       padding: 8px 0;
       font-size: 15px;
       line-height: 1.5;
-      color: rgba(#fff, 0.88);
+      color: var(--elm-text);
 
       i {
         color: $color-main;
@@ -2761,19 +2915,21 @@ body:has(.hero) .navbar {
 
   .custom-button {
     margin-bottom: 28px;
+    align-self: flex-start;
   }
 
   &__trust {
     display: flex;
     align-items: center;
     gap: 14px;
+    margin-top: auto;
     padding-top: 20px;
-    border-top: 1px solid rgba(#fff, 0.12);
+    border-top: 1px solid var(--elm-border);
 
     p {
       margin: 0;
       font-size: 13px;
-      color: rgba(#fff, 0.65);
+      color: var(--elm-text-muted);
       line-height: 1.4;
     }
   }
@@ -2781,7 +2937,7 @@ body:has(.hero) .navbar {
   &__stars {
     display: flex;
     gap: 4px;
-    color: #fff;
+    color: $color-main;
     font-size: 14px;
     margin-bottom: 4px;
   }
@@ -2790,13 +2946,20 @@ body:has(.hero) .navbar {
 @media (max-width: 991px) {
   .metric-slide {
     grid-template-columns: 1fr;
+    gap: 10px;
 
     &__panel {
-      min-height: auto;
+      height: auto;
+      min-height: 0;
+      padding: clamp(16px, 3vw, 22px);
+      gap: 10px;
     }
 
-    &__media img {
-      min-height: 240px;
+    &__media {
+      width: 100%;
+      height: clamp(120px, 32vw, 180px);
+      max-height: none;
+      aspect-ratio: unset;
     }
   }
 
@@ -2849,26 +3012,8 @@ body:has(.hero) .navbar {
 }
 
 @media (max-width: 767px) {
-  .project-slider {
-    &::before,
-    &::after {
-      width: 48px;
-    }
-
-    .project-slider__arrow {
-      width: 32px;
-      height: 32px;
-      min-height: 32px;
-    }
-
-    .swiper-slide {
-      max-width: inherit;
-      width: auto;
-
-      .project-card img {
-        filter: blur(3px);
-      }
-    }
+  .project-slider .swiper-slide .project-card img {
+    filter: blur(3px);
   }
 
   .hero h1 {
@@ -2885,3 +3030,5 @@ body:has(.hero) .navbar {
     }
   }
 }
+
+@import 'elm-mobile';

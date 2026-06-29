@@ -977,6 +977,8 @@ $section-whitespace: 120px;
 	.footer-bar__row{align-items: center;}
 	.sectors-grid__cards{grid-template-columns: repeat(2, 1fr);}
 	.engagement-section__head .custom-button{white-space: nowrap;}
+	@media (max-width: 767px){
+		.engagement-section__head .custom-button{white-space: normal;}}
 }
 
 
@@ -988,6 +990,8 @@ $section-whitespace: 120px;
 	.contact-box{margin: 12px 0;}
 	.contact-box p{font-size: 15px;}
 	.contact-form{margin-bottom: -10%;}
+	@media (max-width: 767px){
+		.contact-form{margin-bottom: 0;}}
 	.counter-box .value{margin-right: 20px;}
 	.cta-box-yellow{width: 100%;}
 	.certificate{margin: 15px 0;}
