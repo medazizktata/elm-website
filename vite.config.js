@@ -8,8 +8,10 @@ const htmlInputs = sync("./*.html").filter(
 );
 
 const SITE_NAME = "ELM Media Design";
+const base = process.env.SITE_BASE || "/";
 
 export default defineConfig({
+  base,
   root: ".",
   publicDir: false,
   plugins: [
