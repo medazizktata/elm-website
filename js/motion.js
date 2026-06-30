@@ -21,7 +21,7 @@
 
   var ITEM_SELECTORS = [
     ".capability-card",
-    ".counter-box",
+    ".stats-row__item",
     ".sector-card",
     ".feature-cards > li",
     ".portfolio-card",
@@ -71,7 +71,7 @@
 
     var staggerParents = [
       ".capability-section__grid",
-      ".stats-row .row",
+      ".stats-row__grid",
       ".sectors-grid__grid",
       ".feature-cards",
       ".about-intro__facts",

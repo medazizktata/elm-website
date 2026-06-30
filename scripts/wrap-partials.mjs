@@ -24,13 +24,13 @@ const pageMeta = {
   "why-elm.html": {
     title: "Why ELM | ELM Media Design",
     description:
-      "Agile manufacturing, sustainability, and UAE policy alignment with Dubai 2030 3D printing mandates.",
+      "Agile manufacturing, up to 60% waste reduction, CO₂-absorbing curing, and UAE policy alignment with Dubai 2030 mandates.",
     ogPath: "why-elm.html",
   },
   "uae-compliance.html": {
     title: "UAE Compliance | ELM Media Design",
     description:
-      "Dubai 3D Printing Strategy 2030, ICV certification, Net Zero 2050 and Dubai 2040 alignment.",
+      "Dubai 3D Printing Strategy 2030, UAE Industrial Strategy 2031, ICV, Net Zero 2050 and Dubai 2040 alignment.",
     ogPath: "uae-compliance.html",
   },
   "technologies.html": {
@@ -55,28 +55,10 @@ const pageMeta = {
       "Request a consultation. 30-minute briefing, facility tour, and 72-hour RFQ response.",
     ogPath: "contact.html",
   },
-  "leadership.html": {
-    title: "Leadership | ELM Media Design",
-    description: "ELM Media Design leadership team.",
-    ogPath: "leadership.html",
-    noindex: true,
-  },
   "offices.html": {
     title: "Offices | ELM Media Design",
     description: "ELM Media Design office locations.",
     ogPath: "offices.html",
-    noindex: true,
-  },
-  "news.html": {
-    title: "News | ELM Media Design",
-    description: "News and insights from ELM Media Design.",
-    ogPath: "news.html",
-    noindex: true,
-  },
-  "news-single.html": {
-    title: "Article | ELM Media Design",
-    description: "ELM Media Design news article.",
-    ogPath: "news-single.html",
     noindex: true,
   },
 };

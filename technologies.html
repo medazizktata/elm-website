@@ -39,42 +39,44 @@
   </div>
 </section>
 
-<section class="content-section stats-row">
+<section class="content-section stats-row" aria-label="Technology metrics">
   <div class="container">
-    <div class="row">
-      <div class="col-lg-3 col-md-6">
-        <div class="counter-box">
-          <div class="counter-box__figure"><span class="odometer" data-count="60" data-status="yes">0</span><span class="value">%</span></div>
-          <h6>Waste Reduction</h6>
-          <p>Up to 60% less material waste vs conventional bespoke fabrication</p>
-        </div>
-      </div>
-      <div class="col-lg-3 col-md-6">
-        <div class="counter-box">
-          <div class="counter-box__figure"><span class="odometer" data-count="6" data-status="yes">0</span><span class="value">-axis</span></div>
-          <h6>Robotic Extrusion</h6>
-          <p>Industrial polymer LFAM with full geometric freedom</p>
-        </div>
-      </div>
-      <div class="col-lg-3 col-md-6">
-        <div class="counter-box">
-          <div class="counter-box__figure"><span class="odometer" data-count="2" data-status="yes">0</span><span class="value">wk</span></div>
-          <h6>Typical Lead Time</h6>
-          <p>Days to two weeks for bespoke architectural elements</p>
-        </div>
-      </div>
-      <div class="col-lg-3 col-md-6">
-        <div class="counter-box">
-          <div class="counter-box__figure"><span class="odometer" data-count="25" data-status="yes">0</span><span class="value">%</span></div>
-          <h6>Dubai 2030 Mandate</h6>
-          <p>3D printing requirement for new buildings — ELM is built to comply</p>
-        </div>
-      </div>
-    </div>
+    <ul class="stats-row__grid">
+      <li class="stats-row__item">
+        <article class="counter-box">
+          <div class="counter-box__figure"><span class="odometer" data-count="60" data-status="yes">0</span><span class="counter-box__unit">%</span></div>
+          <p class="counter-box__label">Waste Reduction</p>
+          <p class="counter-box__desc">Up to 60% less material waste vs conventional bespoke fabrication</p>
+        </article>
+      </li>
+      <li class="stats-row__item">
+        <article class="counter-box">
+          <div class="counter-box__figure"><span class="odometer" data-count="6" data-status="yes">0</span><span class="counter-box__unit">-axis</span></div>
+          <p class="counter-box__label">Robotic Extrusion</p>
+          <p class="counter-box__desc">Industrial polymer LFAM with full geometric freedom</p>
+        </article>
+      </li>
+      <li class="stats-row__item">
+        <article class="counter-box">
+          <div class="counter-box__figure"><span class="odometer" data-count="2" data-status="yes">0</span><span class="counter-box__unit">wk</span></div>
+          <p class="counter-box__label">Typical Lead Time</p>
+          <p class="counter-box__desc">Days to two weeks for bespoke architectural elements</p>
+        </article>
+      </li>
+      <li class="stats-row__item">
+        <article class="counter-box">
+          <div class="counter-box__figure"><span class="odometer" data-count="25" data-status="yes">0</span><span class="counter-box__unit">%</span></div>
+          <p class="counter-box__label">Dubai 2030 Mandate</p>
+          <p class="counter-box__desc">3D printing requirement for new buildings — ELM is built to comply</p>
+        </article>
+      </li>
+    </ul>
   </div>
 </section>
 
 {{> tech-process}}
+
+{{> tech-spec-cards}}
 
 {{> tech-sticky-stack}}
 

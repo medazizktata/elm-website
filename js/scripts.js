@@ -34,8 +34,7 @@
     if (
       current === 'our-story.html' ||
       current === 'why-elm.html' ||
-      current === 'uae-compliance.html' ||
-      current === 'leadership.html'
+      current === 'uae-compliance.html'
     ) {
       return 'who-we-are.html';
     }
@@ -299,27 +298,76 @@
     });
   }
 
-  // METRIC PROJECT SLIDER
+  // METRIC PROJECT STAGE
   $(".metric-showcase").each(function () {
     var $section = $(this);
-    var $slider = $section.find(".metric-slider");
-    if (!$slider.length) return;
-    new Swiper($slider[0], {
-      speed: SWIPER_SPEED,
-      loop: true,
-      autoHeight: true,
-      slidesPerView: 1,
-      spaceBetween: 24,
-      observer: true,
-      observeParents: true,
-      navigation: {
-        nextEl: $section.find(".metric-slider__arrow--next")[0],
-        prevEl: $section.find(".metric-slider__arrow--prev")[0],
-      },
-      pagination: {
-        el: $section.find(".metric-slider .swiper-pagination")[0],
-        clickable: true,
-      },
+    var $tabs = $section.find(".metric-index__item");
+    var $slides = $section.find(".metric-stage__slide");
+    if (!$tabs.length || !$slides.length) return;
+
+    var total = $tabs.length;
+
+    function activate(index) {
+      index = ((index % total) + total) % total;
+      $tabs.removeClass("is-active").attr("aria-selected", "false");
+      $tabs.eq(index).addClass("is-active").attr("aria-selected", "true");
+      $slides.removeClass("is-active is-entering").attr("hidden", true);
+      var $next = $slides.eq(index);
+      $next.addClass("is-active is-entering").removeAttr("hidden");
+      window.setTimeout(function () {
+        $next.removeClass("is-entering");
+      }, 1100);
+    }
+
+    $tabs.on("click", function () {
+      activate($(this).index());
+    });
+
+    $section.on("keydown", function (e) {
+      var current = $tabs.filter(".is-active").index();
+      if (e.key === "ArrowDown" || e.key === "ArrowRight") {
+        e.preventDefault();
+        activate(current + 1);
+      } else if (e.key === "ArrowUp" || e.key === "ArrowLeft") {
+        e.preventDefault();
+        activate(current - 1);
+      }
+    });
+
+    activate(0);
+  });
+
+  // VIDEO QUOTE TOGGLE
+  $(".video-quote").each(function () {
+    var $wrap = $(this);
+    var video = $wrap.find(".video-quote__video")[0];
+    var $btn = $wrap.find(".video-quote__toggle");
+    if (!video || !$btn.length) return;
+
+    $btn.on("click", function () {
+      if (video.paused) {
+        video.play();
+        $btn.attr("data-state", "playing").attr("aria-label", "Pause facility video");
+      } else {
+        video.pause();
+        $btn.attr("data-state", "paused").attr("aria-label", "Play facility video");
+      }
+    });
+  });
+
+  // QUOTE SWITCHER
+  $(".quote-switcher").each(function () {
+    var $root = $(this);
+    var $tabs = $root.find(".quote-switcher__tab");
+    var $panels = $root.find(".quote-switcher__panel");
+    if (!$tabs.length || !$panels.length) return;
+
+    $tabs.on("click", function () {
+      var index = $(this).index();
+      $tabs.removeClass("is-active").attr("aria-selected", "false");
+      $(this).addClass("is-active").attr("aria-selected", "true");
+      $panels.removeClass("is-active").attr("hidden", true);
+      $panels.eq(index).addClass("is-active").removeAttr("hidden");
     });
   });
 

@@ -1,79 +1,85 @@
-<section class="content-section metric-showcase">
+<section class="content-section metric-showcase" aria-label="LFAM project showcase">
   <div class="container">
-    <div class="metric-showcase__head">
-      <div>
-        <div class="section-title text-left">
-          <h6>SELECTED WORK</h6>
-          <h2>LFAM Projects</h2>
+    <div class="metric-stage__layout">
+      <aside class="metric-stage__rail">
+        <header class="metric-showcase__head">
+          <p class="metric-showcase__label">Selected work</p>
+          <h2 class="metric-showcase__title">LFAM Projects</h2>
+          <p class="metric-showcase__lede">From landmark retail installations to airport infrastructure — commercial LFAM with European engineering standards and UAE execution.</p>
+        </header>
+
+        <div class="metric-index" role="tablist" aria-label="Project index">
+          <button type="button" class="metric-index__item is-active" role="tab" aria-selected="true" aria-controls="metric-panel-0" id="metric-tab-0">
+            <span class="metric-index__num">01</span>
+            <span class="metric-index__body">
+              <span class="metric-index__title">Recarlo Milan</span>
+              <span class="metric-index__meta">Retail · Milan</span>
+            </span>
+          </button>
+          <button type="button" class="metric-index__item" role="tab" aria-selected="false" aria-controls="metric-panel-1" id="metric-tab-1">
+            <span class="metric-index__num">02</span>
+            <span class="metric-index__body">
+              <span class="metric-index__title">Bergamo Airport</span>
+              <span class="metric-index__meta">Infrastructure · Italy</span>
+            </span>
+          </button>
+          <button type="button" class="metric-index__item" role="tab" aria-selected="false" aria-controls="metric-panel-2" id="metric-tab-2">
+            <span class="metric-index__num">03</span>
+            <span class="metric-index__body">
+              <span class="metric-index__title">UAE Programme</span>
+              <span class="metric-index__meta">Commercial · UAE</span>
+            </span>
+          </button>
         </div>
-        <p class="metric-showcase__lede">From landmark retail installations to airport infrastructure — commercial LFAM with European engineering standards and UAE execution.</p>
-      </div>
-      <div class="metric-showcase__nav" aria-hidden="true">
-        <button type="button" class="slider-controls__btn metric-slider__arrow metric-slider__arrow--prev" aria-label="Previous project"><i class="lni lni-arrow-left" aria-hidden="true"></i></button>
-        <button type="button" class="slider-controls__btn metric-slider__arrow metric-slider__arrow--next" aria-label="Next project"><i class="lni lni-arrow-right" aria-hidden="true"></i></button>
-      </div>
-    </div>
-  </div>
-  <div class="container">
-    <div class="swiper-container metric-slider">
-      <div class="swiper-wrapper">
-        <div class="swiper-slide">
-          <a href="project-recarlo-milan.html" class="metric-slide">
-            <div class="metric-slide__panel">
-              <h3>Recarlo Milan — retail LFAM at landmark scale</h3>
-              <p>Large-format printed architectural elements for a premium retail environment — complex geometry delivered without conventional formwork.</p>
-              <div class="metric-slide__foot">
-                <div class="metric-slide__stat">
-                  <strong>LFAM</strong>
-                  <span>Retail · Milan</span>
-                </div>
-                <span class="metric-slide__link">View case study <i class="lni lni-arrow-right" aria-hidden="true"></i></span>
+      </aside>
+
+      <div class="metric-stage__viewport">
+        <div class="metric-stage__stack">
+          <article class="metric-stage__slide is-active is-entering" id="metric-panel-0" role="tabpanel" aria-labelledby="metric-tab-0" data-metric-index="0">
+            <a href="project-recarlo-milan.html" class="metric-stage__link">
+              <figure class="metric-stage__media">
+                <img src="images/slide04.jpg" alt="Recarlo Milan LFAM installation" width="1200" height="800" loading="lazy">
+              </figure>
+              <div class="metric-stage__shade" aria-hidden="true"></div>
+              <p class="metric-stage__watermark" aria-hidden="true">LFAM</p>
+              <div class="metric-stage__caption">
+                <span class="metric-stage__impact">LFAM</span>
+                <p class="metric-stage__copy">Large-format printed elements for a premium retail environment — complex geometry without conventional formwork.</p>
+                <span class="metric-stage__cta">View case study <i class="lni lni-arrow-right" aria-hidden="true"></i></span>
               </div>
-            </div>
-            <figure class="metric-slide__media">
-              <img src="images/slide04.jpg" alt="Recarlo Milan LFAM installation" width="960" height="640" loading="lazy">
-            </figure>
-          </a>
-        </div>
-        <div class="swiper-slide">
-          <a href="project-bergamo-airport.html" class="metric-slide">
-            <div class="metric-slide__panel">
-              <h3>Bergamo Airport — structural robotic concrete</h3>
-              <p>Facade and infrastructure components produced via robotic concrete LFAM in a regulated airport environment.</p>
-              <div class="metric-slide__foot">
-                <div class="metric-slide__stat">
-                  <strong>60%</strong>
-                  <span>Less waste vs formwork</span>
-                </div>
-                <span class="metric-slide__link">View case study <i class="lni lni-arrow-right" aria-hidden="true"></i></span>
+            </a>
+          </article>
+
+          <article class="metric-stage__slide" id="metric-panel-1" role="tabpanel" aria-labelledby="metric-tab-1" hidden data-metric-index="1">
+            <a href="project-bergamo-airport.html" class="metric-stage__link">
+              <figure class="metric-stage__media">
+                <img src="images/slide06.jpg" alt="Bergamo Airport LFAM project" width="1200" height="800" loading="lazy">
+              </figure>
+              <div class="metric-stage__shade" aria-hidden="true"></div>
+              <p class="metric-stage__watermark" aria-hidden="true"><span>100</span></p>
+              <div class="metric-stage__caption">
+                <span class="metric-stage__impact"><span>100</span> days</span>
+                <p class="metric-stage__copy">Robotic concrete service module inside a live airport logistics zone — concept to handover in 100 days.</p>
+                <span class="metric-stage__cta">View case study <i class="lni lni-arrow-right" aria-hidden="true"></i></span>
               </div>
-            </div>
-            <figure class="metric-slide__media">
-              <img src="images/slide06.jpg" alt="Bergamo Airport LFAM project" width="960" height="640" loading="lazy">
-            </figure>
-          </a>
-        </div>
-        <div class="swiper-slide">
-          <a href="contact.html#consultation-form" class="metric-slide">
-            <div class="metric-slide__panel">
-              <h3>UAE commercial LFAM programmes</h3>
-              <p>From hospitality facades to government installations — commercial-scale robotic fabrication delivered in Dubai.</p>
-              <div class="metric-slide__foot">
-                <div class="metric-slide__stat">
-                  <strong>LFAM</strong>
-                  <span>Dubai · UAE</span>
-                </div>
-                <span class="metric-slide__link">Request consultation <i class="lni lni-arrow-right" aria-hidden="true"></i></span>
+            </a>
+          </article>
+
+          <article class="metric-stage__slide" id="metric-panel-2" role="tabpanel" aria-labelledby="metric-tab-2" hidden data-metric-index="2">
+            <a href="contact.html#consultation-form" class="metric-stage__link">
+              <figure class="metric-stage__media">
+                <img src="images/background/branding-elm-18.jpg" alt="ELM LFAM manufacturing facility" width="1200" height="800" loading="lazy">
+              </figure>
+              <div class="metric-stage__shade" aria-hidden="true"></div>
+              <p class="metric-stage__watermark" aria-hidden="true">72h</p>
+              <div class="metric-stage__caption">
+                <span class="metric-stage__impact">72h</span>
+                <p class="metric-stage__copy">Pipeline programmes across hospitality, government and infrastructure — qualified RFQ response within 72 hours.</p>
+                <span class="metric-stage__cta">Request consultation <i class="lni lni-arrow-right" aria-hidden="true"></i></span>
               </div>
-            </div>
-            <figure class="metric-slide__media">
-              <img src="images/slide08.jpg" alt="UAE commercial LFAM programme" width="960" height="640" loading="lazy">
-            </figure>
-          </a>
+            </a>
+          </article>
         </div>
-      </div>
-      <div class="slider-controls metric-slider__controls">
-        <div class="swiper-pagination" aria-live="polite"></div>
       </div>
     </div>
   </div>

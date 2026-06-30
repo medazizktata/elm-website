@@ -1,21 +1,25 @@
 {
   "version": 1,
-  "generated": "2026-06-30T10:28:19.254Z",
+  "generated": "2026-06-30T21:01:31.146Z",
   "items": [
     {
       "id": "why-elm",
       "title": "Why ELM",
       "heading": "WHY ELM",
       "subtitle": "What sets commercial LFAM apart from conventional construction and small-scale 3D printing",
-      "description": "Agile manufacturing, sustainability, and UAE policy alignment with Dubai 2030 3D printing mandates.",
-      "excerpt": "Most regional offerings stop at prototypes or decorative pieces. ELM is built for commercial programmes — LFAM at architectural scale, with the compliance and delivery discipline developers and government entities require. Trusted by developers, contractors and government programmes across the UAE. To make large-format additive manufacturing a credible, commercially viable construction method in the UAE — enabling architects and developers to build faster, with less waste, and with forms that conventional methods cannot economically produce.",
+      "description": "Agile manufacturing, sustainability — up to 60% waste reduction and CO₂-absorbing curing — plus Dubai 2030, Industrial Strategy 2031 and ICV alignment.",
+      "excerpt": "Most regional offerings stop at prototypes or decorative pieces. ELM is built for commercial programmes — LFAM at architectural scale, with the compliance and delivery discipline developers and government entities require. Global LFAM proof points via Caracol AM and WASP platforms — Recarlo Milan retail panels and Bergamo Airport service module. To make large-format additive manufacturing a credible, commercially viable construction method in the UAE — enabling architects and developers to build faster, with less waste, and with forms that conventional methods cannot economically produce.",
       "url": "why-elm.html",
       "category": "About",
       "keywords": [
         "why ELM",
         "differentiators",
         "sustainability",
-        "agile"
+        "waste reduction",
+        "CO2",
+        "agile",
+        "Industrial Strategy 2031",
+        "ICV"
       ],
       "noindex": false
     },
@@ -25,7 +29,7 @@
       "heading": "WHO WE ARE",
       "subtitle": "Commercial large-format additive manufacturing for the UAE built environment",
       "description": "ELM Media Design delivers industrial 3D printing at architectural scale in Dubai, UAE.",
-      "excerpt": "Commercial LFAM in Dubai — robotic concrete and polymer printing for developers, government and hospitality programmes that need site-ready delivery, not prototypes. European engineering UAE delivery",
+      "excerpt": "Commercial LFAM in Dubai — robotic concrete and polymer printing for developers, government and hospitality programmes that need site-ready delivery, not prototypes. Our leadership combines expertise in urban advertising and advanced engineering — bridging ambitious design and architectural reality through local, agile manufacturing. European engineering UAE delivery",
       "url": "who-we-are.html",
       "category": "About",
       "keywords": [
@@ -41,15 +45,16 @@
       "id": "uae-compliance",
       "title": "UAE Compliance",
       "heading": "UAE COMPLIANCE",
-      "subtitle": "Policy alignment for government, ICV and sustainability mandates",
-      "description": "Dubai 3D Printing Strategy 2030, ICV certification, Net Zero 2050 and Dubai 2040 alignment.",
-      "excerpt": "ELM Media Design structures delivery around the policy frameworks shaping UAE construction — so LFAM is not a novelty, but a compliant pathway to programme goals. Government and semi-government programmes increasingly require demonstrable alignment with national industrial and sustainability strategies. ELM documents how LFAM delivery supports local manufacturing and Emiratisation pathways, reduced on-site waste vs conventional formwork, accelerated programme timelines for complex geometries, and innovation credits within tender evaluation frameworks.",
+      "subtitle": "Dubai 2030 · UAE Industrial Strategy 2031 · ICV · Net Zero 2050 · Dubai 2040",
+      "description": "Dubai 3D Printing Strategy 2030, UAE Industrial Strategy 2031, ICV, Net Zero 2050 and Dubai 2040 alignment.",
+      "excerpt": "ELM Media Design structures delivery around the five policy frameworks shaping UAE construction and industrial procurement — Dubai 3D Printing Strategy 2030, UAE Industrial Strategy 2031, In-Country Value (ICV), UAE Net Zero 2050 and Dubai 2040 Urban Master Plan — so LFAM is a compliant pathway to programme goals. Government and semi-government programmes increasingly require demonstrable alignment with national industrial and sustainability strategies — including UAE Industrial Strategy 2031, which classifies LFAM as advanced manufacturing. ELM documents how delivery supports local manufacturing and Emiratisation pathways, ICV licensing in progress for state tenders, reduced on-site waste vs conventional formwork, and accelerated programme timelines for complex geometries.",
       "url": "uae-compliance.html",
       "category": "About",
       "keywords": [
         "compliance",
         "ICV",
         "Dubai 2030",
+        "Industrial Strategy 2031",
         "Net Zero",
         "Dubai 2040",
         "policy"
@@ -136,7 +141,7 @@
       "heading": "PROPERTY & INFRASTRUCTURE",
       "subtitle": "On-site printing, custom facades and urban assets for developers and government",
       "description": "On-site 3D printing, custom facades, smart-city installations and urban assets — LFAM for property and infrastructure in the UAE.",
-      "excerpt": "Dubai Municipality enforces 3D printing requirements for new buildings — an active, non-optional procurement rule. Developers and contractors who haven't started planning compliance will face tender evaluators asking for it by name. ELM prints bespoke architectural features for show villas and flagship developments — custom concrete formworks faster and cheaper than traditional mould-making, landscape elements, community seating and full-service buildings on-site in days. Property and infrastructure programmes where LFAM replaces long lead times and high tooling costs.",
+      "excerpt": "Dubai's 3D Printing Strategy 2030 mandates 25% of new buildings to incorporate additive manufacturing. Dubai Municipality enforces 3D printing requirements for new buildings — an active, non-optional procurement rule. Developers and contractors who haven't started planning compliance will face tender evaluators asking for it by name. ELM prints bespoke architectural features for show villas and flagship developments — custom concrete formworks faster and cheaper than traditional mould-making, landscape elements, community seating and full-service buildings on-site in days. Property and infrastructure programmes where LFAM replaces long lead times and high tooling costs.",
       "url": "solution-property-infrastructure.html",
       "category": "Solutions",
       "keywords": [],
@@ -163,11 +168,11 @@
     },
     {
       "id": "solution-industrial-mobility",
-      "title": "Industrial & Mobility",
-      "heading": "INDUSTRIAL & MOBILITY",
+      "title": "Industrial, Mobility & Energy",
+      "heading": "INDUSTRIAL, MOBILITY & ENERGY",
       "subtitle": "Automotive, aerospace, marine and energy infrastructure LFAM programmes",
       "description": "LFAM for automotive, aerospace, marine mock-ups, R&D prototyping and energy infrastructure in the UAE.",
-      "excerpt": "Industrial and mobility clients need high-precision mock-ups, marine-grade interior fit-outs and rapid R&amp;D iteration — without the tooling delays of conventional fabrication. Polymer LFAM delivers complex geometry with recycled materials, while robotic concrete supports energy infrastructure in remote and Net Zero environments. Advanced engineering where iteration speed, material efficiency and geometric freedom define procurement decisions.",
+      "excerpt": "Industrial, Mobility &amp; Energy Industrial and mobility clients need high-precision mock-ups, marine-grade interior fit-outs and rapid R&amp;D iteration — without the tooling delays of conventional fabrication. Polymer LFAM delivers complex geometry with recycled materials, while robotic concrete supports energy infrastructure in remote and Net Zero environments.",
       "url": "solution-industrial-mobility.html",
       "category": "Solutions",
       "keywords": [],
@@ -274,10 +279,10 @@
     {
       "id": "index",
       "title": "Sectors We Serve",
-      "heading": "Industrial 3D Printing at Scale",
+      "heading": "UAE's Premier Platform for Commercial-Scale Industrial 3D Printing",
       "subtitle": "",
       "description": "Commercial-scale LFAM in UAE. Robotic concrete and polymer 3D printing for buildings, facades, hospitality and government projects.",
-      "excerpt": "Robotic concrete and polymer LFAM for buildings, facades, hospitality and government projects — from concept to site installation. 30-minute technical briefing · Facility tour · 72-hour RFQ response for qualified commercial enquiries. ELM delivered exactly the LFAM capability we needed — technical depth, commercial discipline, and on-site execution aligned with our programme.",
+      "excerpt": "Robotic concrete and polymer LFAM for buildings, facades, hospitality and government projects — from concept to site installation. Facility tours are part of our four-step engagement — from initial briefing through technical capability profile access.",
       "url": "index.html",
       "category": "Home",
       "keywords": [
@@ -299,9 +304,9 @@
       "id": "contact",
       "title": "Contact",
       "heading": "CONTACT",
-      "subtitle": "30-minute briefing · Facility tour · 72-hour RFQ response",
+      "subtitle": "30-minute briefing · Facility tour · 72-hour RFQ · Capability profile",
       "description": "Request a consultation. 30-minute briefing, facility tour, and 72-hour RFQ response.",
-      "excerpt": "Tell us about your project — building type, timeline, component scope and any compliance requirements. We respond to qualified commercial enquiries within 72 hours with a structured capability profile and next steps. Engagement includes a 30-minute technical briefing and optional facility tour.",
+      "excerpt": "Office 203, API Business Suites Al Barsha 1, Dubai, UAE Tell us about your project — building type, timeline, component scope and any compliance requirements. Qualified commercial enquiries receive a 30-minute technical briefing , optional facility tour , a substantive RFQ within 72 hours , and technical capability profile access for procurement submissions.",
       "url": "contact.html",
       "category": "Contact",
       "keywords": [
@@ -311,6 +316,8 @@
         "email",
         "facility tour",
         "Dubai HQ",
+        "Al Barsha",
+        "API Business Suites",
         "+971"
       ],
       "noindex": false
@@ -328,7 +335,7 @@
       "category": "Quick link"
     },
     {
-      "title": "THE LOOP OOH",
+      "title": "THE LOOP",
       "url": "solution-ooh-the-loop.html",
       "category": "Quick link"
     },

@@ -11,23 +11,23 @@
 <header class="hero">
   <div class="hero__media hero__slideshow" aria-hidden="true">
     <div class="hero__slide is-active">
-      <img src="images/slide01.jpg" alt="Industrial robotic LFAM system in production" width="1920" height="1080" fetchpriority="high" decoding="async">
+      <img src="images/background/branding-elm-18.jpg" alt="ELM LFAM manufacturing facility" width="1920" height="1080" fetchpriority="high" decoding="async">
     </div>
     <div class="hero__slide">
-      <img src="images/background/branding-elm-18.jpg" alt="" width="1920" height="1080" loading="lazy" decoding="async">
+      <img src="images/video-poster01.jpg" alt="Robotic LFAM production process" width="1920" height="1080" loading="lazy" decoding="async">
     </div>
     <div class="hero__slide">
-      <img src="images/step02.jpg" alt="Robotic LFAM manufacturing facility" width="1920" height="1080" loading="lazy" decoding="async">
+      <img src="images/slide06.jpg" alt="Bergamo Airport LFAM service building" width="1920" height="1080" loading="lazy" decoding="async">
     </div>
     <div class="hero__slide">
-        <img src="images/slide06.jpg" alt="Bergamo Airport LFAM service building" width="1920" height="1080" loading="lazy" decoding="async">
+      <img src="images/slide05.jpg" alt="THE LOOP kinetic OOH media concept" width="1920" height="1080" loading="lazy" decoding="async">
     </div>
   </div>
   <div class="hero__shade" aria-hidden="true"></div>
   <div class="container">
     <div class="hero__inner">
       <p class="hero__eyebrow">Commercial LFAM · Dubai, UAE</p>
-      <h1>Industrial 3D Printing at Scale</h1>
+      <h1>UAE's Premier Platform for Commercial-Scale Industrial 3D Printing</h1>
       <p class="hero__lede">Robotic concrete and polymer LFAM for buildings, facades, hospitality and government projects — from concept to site installation.</p>
       <div class="hero__actions">
         <a href="technologies.html" class="custom-button">Explore Technologies <i class="lni lni-arrow-right" aria-hidden="true"></i></a>
@@ -35,77 +35,25 @@
       </div>
     </div>
   </div>
+  <div class="hero__meta">
+    <div class="container">
+      <span>Based in: Dubai, UAE</span>
+      <span>25.2048° N, 55.2708° E</span>
+    </div>
+  </div>
 </header>
 
+<main id="main-content">
 {{> stats-row}}
 {{> home-capabilities}}
 {{> home-about}}
 {{> lfam-comparison}}
+{{> home-policy-mandates}}
 {{> home-metric-projects}}
 {{> sectors-grid label="INDUSTRIES" title="Sectors We Serve" subtitle="Commercial LFAM applications across the UAE built environment." compact=true}}
-<section class="content-section section-compact engagement-section">
-  <div class="container">
-    <div class="row align-items-end engagement-section__head">
-      <div class="col-lg-8">
-        <div class="section-title text-left">
-          <h6>ENGAGEMENT</h6>
-          <h2>Start Your LFAM Project</h2>
-        </div>
-        <p class="engagement-section__lede">30-minute technical briefing · Facility tour · 72-hour RFQ response for qualified commercial enquiries.</p>
-      </div>
-      <div class="col-lg-4">
-        <div class="engagement-section__cta">
-          <a href="contact.html#consultation-form" class="custom-button">Request consultation <i class="lni lni-arrow-right" aria-hidden="true"></i></a>
-        </div>
-      </div>
-    </div>
-    <div class="video-box">
-      <a href="videos/video01.mp4" data-fancybox data-width="1280" data-height="720" class="play-btn" aria-label="Play facility video"><i class="lni lni-play" aria-hidden="true"></i></a>
-      <video src="videos/video01.mp4" poster="images/video-poster01.jpg" autoplay muted loop playsinline></video>
-    </div>
-    <div class="swiper-container testimonials-slider">
-      <div class="swiper-wrapper">
-        <div class="swiper-slide">
-          <blockquote class="testimonial">
-            <p>ELM delivered exactly the LFAM capability we needed — technical depth, commercial discipline, and on-site execution aligned with our programme.</p>
-            <footer>
-              <cite>Development Partner</cite>
-              <span>UAE Commercial Project</span>
-            </footer>
-          </blockquote>
-        </div>
-        <div class="swiper-slide">
-          <blockquote class="testimonial">
-            <p>From design intent through fabrication, ELM's team integrated seamlessly with our consultants and kept the LFAM programme on track.</p>
-            <footer>
-              <cite>Contractor Partner</cite>
-              <span>GCC Infrastructure</span>
-            </footer>
-          </blockquote>
-        </div>
-        <div class="swiper-slide">
-          <blockquote class="testimonial">
-            <p>Commercial-scale 3D printing is only valuable when it ships to site — ELM understood that from day one and delivered production-ready components.</p>
-            <footer>
-              <cite>Hospitality Developer</cite>
-              <span>Dubai, UAE</span>
-            </footer>
-          </blockquote>
-        </div>
-        <div class="swiper-slide">
-          <blockquote class="testimonial">
-            <p>Robotic concrete LFAM at architectural scale — executed with European engineering standards and UAE delivery discipline.</p>
-            <footer>
-              <cite>Government Entity</cite>
-              <span>United Arab Emirates</span>
-            </footer>
-          </blockquote>
-        </div>
-      </div>
-      {{> testimonials-slider-controls}}
-    </div>
-  </div>
-</section>
+{{> client-engagement-process compact=true}}
+{{> video-quote-section}}
+</main>
 
 {{> footer year="2026"}}
 {{> scripts}}

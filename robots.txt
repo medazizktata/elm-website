@@ -1,10 +1,7 @@
 User-agent: *
 Allow: /
 
-Disallow: /leadership.html
 Disallow: /offices.html
-Disallow: /news.html
-Disallow: /news-single.html
 Disallow: /project-single.html
 
 Sitemap: https://www.elmmdesign.com/sitemap.xml
