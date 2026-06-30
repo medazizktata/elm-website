@@ -5150,84 +5150,19 @@ body:has(.hero) .navbar.sticky {
   filter: none;
   opacity: 1;
 }
-.engagement-section .engagement-showcase {
-  border: 1px solid var(--elm-border);
-  background: var(--elm-bg-surface);
-  overflow: hidden;
-}
-.engagement-section .engagement-showcase .video-box {
-  min-height: 0;
-  aspect-ratio: 16/9;
-  border: none;
-  border-bottom: 1px solid var(--elm-border);
-}
-.engagement-section .engagement-showcase .video-box video {
-  width: 100%;
-  height: 100%;
-  min-height: 0;
-  object-fit: cover;
-}
-.engagement-section .engagement-showcase .video-box .play-btn {
-  top: 50%;
-  right: auto;
-  left: 50%;
-  transform: translate(-50%, -50%);
-}
-.engagement-section .engagement-showcase .testimonials-slider {
-  margin: 0;
-  max-width: none;
-  overflow: hidden;
-  height: auto !important;
-}
-.engagement-section .engagement-showcase .testimonials-slider .swiper-wrapper {
-  height: auto !important;
-}
-.engagement-section .engagement-showcase .testimonials-slider .swiper-slide {
-  height: auto !important;
-}
-.engagement-section .engagement-showcase .testimonials-slider .swiper-slide:not(.swiper-slide-active) .testimonial {
-  opacity: 1;
-}
-.engagement-section .engagement-showcase .testimonial {
-  min-height: 0;
-  padding: clamp(28px, 4vw, 44px);
-  border: none;
-  border-radius: 0;
-  box-shadow: none;
-  background: transparent;
-}
-.engagement-section .engagement-showcase__foot {
-  display: flex;
-  justify-content: center;
-  padding: 14px 16px;
-  border-top: 1px solid var(--elm-border);
-  background: var(--elm-bg-page);
-}
-.engagement-section .engagement-showcase .testimonials-slider__controls {
-  position: static;
-  display: flex;
-  gap: 12px;
-  margin: 0;
-  pointer-events: auto;
-}
-.engagement-section .engagement-showcase .testimonials-slider__arrow {
-  position: static;
-  transform: none;
-  width: 44px;
-  height: 44px;
-}
 .engagement-section .testimonials-slider {
-  margin-top: clamp(28px, 4vw, 40px);
+  margin-top: clamp(-96px, -8vw, -72px);
   position: relative;
-  z-index: 1;
-  max-width: 100%;
-  margin-left: 0;
-  margin-right: 0;
-  overflow: hidden;
+  z-index: 2;
+  max-width: min(100%, 1080px);
+  margin-left: auto;
+  margin-right: auto;
+  overflow: visible;
 }
 @media (max-width: 767px) {
   .engagement-section .testimonials-slider {
-    margin-top: 28px;
+    margin-top: 16px;
+    max-width: none;
   }
 }
 .engagement-section .testimonials-slider .swiper-slide:not(.swiper-slide-active) .testimonial {
@@ -5274,17 +5209,6 @@ body:has(.hero) .navbar.sticky {
   .engagement-section .testimonials-slider__arrow--next {
     right: 8px;
   }
-}
-.engagement-section .engagement-showcase .testimonials-slider {
-  margin-top: 0;
-}
-.engagement-section .engagement-showcase .testimonials-slider__controls, .engagement-section .engagement-showcase .testimonials-slider__arrow {
-  position: static;
-  transform: none;
-}
-.engagement-section .engagement-showcase .testimonials-slider__arrow--prev, .engagement-section .engagement-showcase .testimonials-slider__arrow--next {
-  left: auto;
-  right: auto;
 }
 .engagement-section .testimonial {
   padding: clamp(40px, 5vw, 60px) clamp(44px, 5.5vw, 68px);
@@ -6598,23 +6522,6 @@ body:has(.hero) .navbar.sticky {
     width: 100%;
     justify-content: center;
   }
-  .engagement-section .engagement-showcase .testimonial {
-    padding: 20px 18px 22px;
-    min-height: 0;
-  }
-  .engagement-section .engagement-showcase__foot {
-    padding: 14px 18px 16px;
-    border-top: 1px solid var(--elm-border);
-    background: var(--elm-bg-page);
-  }
-  .engagement-section .engagement-showcase__foot .testimonials-slider__controls {
-    margin-top: 0;
-    padding-top: 0;
-    border-top: none;
-  }
-  .engagement-section .engagement-showcase .video-box {
-    min-height: 0;
-  }
   .engagement-section .testimonial {
     padding: 24px 20px;
     min-height: 0;
@@ -6765,20 +6672,6 @@ body:has(.hero) .navbar.sticky {
     width: 100%;
     justify-content: center;
     pointer-events: auto;
-  }
-  .engagement-showcase__foot .testimonials-slider__controls {
-    width: 100%;
-    justify-content: center;
-    gap: 0;
-    margin: 0;
-    padding: 0;
-    border: none;
-  }
-  .engagement-showcase__foot .testimonials-slider__controls .swiper-pagination {
-    position: static;
-    width: 100%;
-    justify-content: center;
-    padding: 4px 0;
   }
   .our-history .slider-controls {
     gap: 0;
@@ -7289,6 +7182,66 @@ body:has(.hero) .navbar.sticky {
   }
   .portfolio-card__title {
     font-size: 16px;
+  }
+}
+:root {
+  --elm-motion-duration: 0.62s;
+  --elm-motion-ease: cubic-bezier(0.22, 1, 0.36, 1);
+  --elm-motion-offset: 14px;
+  --elm-motion-stagger: 65ms;
+  --elm-motion-max-stagger: 4;
+}
+
+@keyframes elm-line-grow {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+html.elm-motion-ready .elm-reveal:not(.is-visible) {
+  opacity: 0;
+  transform: translate3d(0, var(--elm-motion-offset), 0);
+}
+html.elm-motion-ready .elm-reveal--fade:not(.is-visible) {
+  transform: none;
+}
+html.elm-motion-ready .section-title h6.elm-reveal:not(.is-visible)::after,
+html.elm-motion-ready .feature-cards-section__eyebrow.elm-reveal:not(.is-visible)::after,
+html.elm-motion-ready .about-intro__eyebrow.elm-reveal:not(.is-visible)::after {
+  transform: scaleX(0);
+  transform-origin: left center;
+}
+
+.elm-reveal {
+  transition: opacity var(--elm-motion-duration) var(--elm-motion-ease), transform var(--elm-motion-duration) var(--elm-motion-ease);
+  transition-delay: calc(var(--elm-motion-i, 0) * var(--elm-motion-stagger));
+}
+.elm-reveal.is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+.section-title h6.elm-reveal.is-visible::after,
+.feature-cards-section__eyebrow.elm-reveal.is-visible::after,
+.about-intro__eyebrow.elm-reveal.is-visible::after {
+  animation: elm-line-grow 0.55s var(--elm-motion-ease) forwards;
+  animation-delay: calc(var(--elm-motion-i, 0) * var(--elm-motion-stagger) + 0.08s);
+}
+
+.hero__inner .elm-reveal {
+  --elm-motion-offset: 18px;
+}
+
+.page-header .container > .elm-reveal {
+  --elm-motion-offset: 12px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html.elm-motion-ready .elm-reveal:not(.is-visible) {
+    opacity: 1;
+    transform: none;
   }
 }
 /* SHARP CORNERS — ELM industrial UI */

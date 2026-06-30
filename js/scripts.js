@@ -296,10 +296,6 @@
         nextEl: $engagement.find(".button-next")[0],
         prevEl: $engagement.find(".button-prev")[0],
       },
-      pagination: {
-        el: $engagement.find(".testimonials-slider__pagination")[0],
-        clickable: true,
-      },
     });
   }
 

@@ -93,27 +93,6 @@
       justify-content: center;
     }
 
-    .engagement-showcase .testimonial {
-      padding: 20px 18px 22px;
-      min-height: 0;
-    }
-
-    .engagement-showcase__foot {
-      padding: 14px 18px 16px;
-      border-top: 1px solid var(--elm-border);
-      background: var(--elm-bg-page);
-    }
-
-    .engagement-showcase__foot .testimonials-slider__controls {
-      margin-top: 0;
-      padding-top: 0;
-      border-top: none;
-    }
-
-    .engagement-showcase .video-box {
-      min-height: 0;
-    }
-
     .testimonial {
       padding: 24px 20px;
       min-height: 0;
@@ -287,22 +266,6 @@
         justify-content: center;
         pointer-events: auto;
       }
-    }
-  }
-
-  .engagement-showcase__foot .testimonials-slider__controls {
-    width: 100%;
-    justify-content: center;
-    gap: 0;
-    margin: 0;
-    padding: 0;
-    border: none;
-
-    .swiper-pagination {
-      position: static;
-      width: 100%;
-      justify-content: center;
-      padding: 4px 0;
     }
   }
 

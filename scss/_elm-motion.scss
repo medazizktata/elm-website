@@ -1,0 +1,68 @@
+// Subtle scroll / load motion — titles & cards only, not body copy
+
+:root {
+  --elm-motion-duration: 0.62s;
+  --elm-motion-ease: cubic-bezier(0.22, 1, 0.36, 1);
+  --elm-motion-offset: 14px;
+  --elm-motion-stagger: 65ms;
+  --elm-motion-max-stagger: 4;
+}
+
+@keyframes elm-line-grow {
+  from { transform: scaleX(0); }
+  to { transform: scaleX(1); }
+}
+
+html.elm-motion-ready {
+  .elm-reveal:not(.is-visible) {
+    opacity: 0;
+    transform: translate3d(0, var(--elm-motion-offset), 0);
+  }
+
+  .elm-reveal--fade:not(.is-visible) {
+    transform: none;
+  }
+
+  .section-title h6.elm-reveal:not(.is-visible)::after,
+  .feature-cards-section__eyebrow.elm-reveal:not(.is-visible)::after,
+  .about-intro__eyebrow.elm-reveal:not(.is-visible)::after {
+    transform: scaleX(0);
+    transform-origin: left center;
+  }
+}
+
+.elm-reveal {
+  transition:
+    opacity var(--elm-motion-duration) var(--elm-motion-ease),
+    transform var(--elm-motion-duration) var(--elm-motion-ease);
+  transition-delay: calc(var(--elm-motion-i, 0) * var(--elm-motion-stagger));
+
+  &.is-visible {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.section-title h6.elm-reveal.is-visible::after,
+.feature-cards-section__eyebrow.elm-reveal.is-visible::after,
+.about-intro__eyebrow.elm-reveal.is-visible::after {
+  animation: elm-line-grow 0.55s var(--elm-motion-ease) forwards;
+  animation-delay: calc(var(--elm-motion-i, 0) * var(--elm-motion-stagger) + 0.08s);
+}
+
+.hero__inner {
+  .elm-reveal {
+    --elm-motion-offset: 18px;
+  }
+}
+
+.page-header .container > .elm-reveal {
+  --elm-motion-offset: 12px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html.elm-motion-ready .elm-reveal:not(.is-visible) {
+    opacity: 1;
+    transform: none;
+  }
+}

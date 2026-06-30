@@ -1654,95 +1654,18 @@ body:has(.hero) .navbar {
     }
   }
 
-  .engagement-showcase {
-    border: 1px solid var(--elm-border);
-    background: var(--elm-bg-surface);
-    overflow: hidden;
-
-    .video-box {
-      min-height: 0;
-      aspect-ratio: 16 / 9;
-      border: none;
-      border-bottom: 1px solid var(--elm-border);
-
-      video {
-        width: 100%;
-        height: 100%;
-        min-height: 0;
-        object-fit: cover;
-      }
-
-      .play-btn {
-        top: 50%;
-        right: auto;
-        left: 50%;
-        transform: translate(-50%, -50%);
-      }
-    }
-
-    .testimonials-slider {
-      margin: 0;
-      max-width: none;
-      overflow: hidden;
-      height: auto !important;
-
-      .swiper-wrapper {
-        height: auto !important;
-      }
-
-      .swiper-slide {
-        height: auto !important;
-      }
-
-      .swiper-slide:not(.swiper-slide-active) .testimonial {
-        opacity: 1;
-      }
-    }
-
-    .testimonial {
-      min-height: 0;
-      padding: clamp(28px, 4vw, 44px);
-      border: none;
-      border-radius: 0;
-      box-shadow: none;
-      background: transparent;
-    }
-
-    &__foot {
-      display: flex;
-      justify-content: center;
-      padding: 14px 16px;
-      border-top: 1px solid var(--elm-border);
-      background: var(--elm-bg-page);
-    }
-
-    .testimonials-slider__controls {
-      position: static;
-      display: flex;
-      gap: 12px;
-      margin: 0;
-      pointer-events: auto;
-    }
-
-    .testimonials-slider__arrow {
-      position: static;
-      transform: none;
-      width: 44px;
-      height: 44px;
-    }
-  }
-
   .testimonials-slider {
-    margin-top: clamp(28px, 4vw, 40px);
+    margin-top: clamp(-96px, -8vw, -72px);
     position: relative;
-    z-index: 1;
-    max-width: 100%;
-    margin-left: 0;
-    margin-right: 0;
-    overflow: hidden;
+    z-index: 2;
+    max-width: min(100%, 1080px);
+    margin-left: auto;
+    margin-right: auto;
+    overflow: visible;
 
     @media (max-width: 767px) {
-      margin-top: 28px;
+      margin-top: 16px;
+      max-width: none;
     }
 
     .swiper-slide:not(.swiper-slide-active) .testimonial {
@@ -1797,22 +1720,6 @@ body:has(.hero) .navbar {
           right: 8px;
         }
       }
-    }
-  }
-
-  .engagement-showcase .testimonials-slider {
-    margin-top: 0;
-
-    &__controls,
-    &__arrow {
-      position: static;
-      transform: none;
-    }
-
-    &__arrow--prev,
-    &__arrow--next {
-      left: auto;
-      right: auto;
     }
   }
 
