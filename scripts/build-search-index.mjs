@@ -143,10 +143,6 @@ function extractProjects(content, file) {
     "Recarlo Milan": "project-recarlo-milan.html",
     "Bergamo Airport": "project-bergamo-airport.html",
     "UAE Commercial LFAM": "contact.html#consultation-form",
-    "Oval Digital Billboard": "solution-ooh-the-loop.html",
-    "Dubai Eagle": "solution-ooh-the-loop.html",
-    "The Flouka": "solution-ooh-the-loop.html",
-    "Dubai Watch": "solution-ooh-the-loop.html",
   };
   return [...content.matchAll(/<h5>([^<]+)<\/h5>/g)].map((m, i) => ({
     id: `project-${i + 1}`,

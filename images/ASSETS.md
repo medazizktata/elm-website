@@ -5,16 +5,14 @@ Doc-driven placement (from `Docs/website_proposal.pdf`, corporate profile, prese
 | Site section | What docs require | Client zip assets | Status |
 |---|---|---|---|
 | **Home hero** | LFAM robots / printed structures | — (stock `slide01/02`) | Gap — no LFAM photos in zip |
-| **Home featured projects** | Case studies + impressive visuals | Recarlo/Bergamo stock; `slide07` Dubai Eagle OOH | Partial |
+| **Home featured projects** | Recarlo, Bergamo, UAE LFAM programmes | Recarlo/Bergamo stock | Partial |
 | **Home video** | Facility / process footage | `53 - building…mp4` → `video01.mp4` | Done |
-| **THE LOOP** (`solution-ooh-the-loop`) | Kinetic OOH, high-footfall deployment | Oval Billboard hero + Eagle secondary + gallery | Done |
-| **Hospitality** | LFAM lobby/retail (Recarlo proof point) | `slide04` Recarlo only — not OOH kiosks | Fixed |
-| **Creative & Culture** | Public art, monuments, immersive | The Flouka gallery | Done |
-| **Projects grid** | Per-project cards with galleries | All 4 OOH + 2 LFAM case studies | Done — needs dedicated project pages |
+| **THE LOOP** (`solution-ooh-the-loop`) | Kinetic OOH concept from docs | Stock urban/skyline placeholders | Partial |
+| **Hospitality** | LFAM lobby/retail (Recarlo proof point) | `slide04` Recarlo proxy | OK |
+| **Creative & Culture** | Public art, monuments, immersive | Stock `side-image03` | Partial |
+| **Projects grid** | LFAM case studies (Recarlo, Bergamo, UAE) | — | OK |
 | **Technologies** | Robotic process imagery | — (stock) | Gap |
-| **Brand** | Logo, favicon, OG | `logo.svg` / `logo.png` from `ico/logo/` (not zip) | Correct |
-
-OOH units (Dubai Watch, Eagle, Flouka, Oval) = **LetsAd/ELM media heritage** → Projects + OOH solution only, not Hospitality LFAM.
+| **Brand** | Logo, favicon, OG | `logo.svg` / `logo.png` from `ico/logo/` | Correct |
 
 Replace template placeholders with final ELM media as it becomes available.
 
@@ -24,9 +22,7 @@ Replace template placeholders with final ELM media as it becomes available.
 pnpm run images:placeholders
 ```
 
-Downloads subject-matched stock photos and **ELM Wix portfolio** assets (`images/wix-portfolio.json`), writes `images/placeholders.json`, and refreshes `images/background/` brand JPEGs.
-
-Portfolio OOH / retail images (Dubai Watch, THE LOOP, Dubai Eagle, Flouka) are copied from `../../elm-wix-archive/media/` when available.
+Downloads subject-matched stock photos, writes `images/placeholders.json`, and refreshes `images/background/` brand JPEGs.
 
 **Replace all stock media before launch** with client-owned LFAM photography.
 
@@ -36,16 +32,16 @@ Portfolio OOH / retail images (Dubai Watch, THE LOOP, Dubai Eagle, Flouka) are c
 |------|------------------------|--------|
 | `slide01.jpg` | Industrial robotic LFAM system in production | Unsplash |
 | `slide02.jpg` | Robotic LFAM manufacturing facility | Unsplash |
-| `slide03.jpg` | Luxury retail display — Dubai Watch | ELM client media |
+| `slide03.jpg` | Luxury retail interior environment | Pexels |
 | `slide04.jpg` | Recarlo Milan LFAM architectural wall panels | Unsplash |
-| `slide05.jpg` | Oval digital billboard — THE LOOP OOH | ELM client media |
+| `slide05.jpg` | Urban OOH environment — kinetic media deployment | Pexels |
 | `slide06.jpg` | Bergamo Airport LFAM service building | Unsplash |
-| `slide07.jpg` | Dubai Eagle OOH installation skyline | ELM client media |
+| `slide07.jpg` | Dubai skyline — premium deployment locations | Pexels |
 | `slide08.jpg` | UAE commercial LFAM programme — Dubai Marina | Pexels |
-| `slide09.jpg` | The Flouka creative OOH installation | ELM client media |
+| `slide09.jpg` | Creative culture public art installation | Pexels |
 | `side-image01.jpg` | Property and infrastructure LFAM facade | Pexels |
 | `side-image02.jpg` | Recarlo Milan hospitality LFAM panels | Unsplash (Recarlo proxy) |
-| `side-image03.jpg` | The Flouka creative OOH monument | ELM client media |
+| `side-image03.jpg` | Creative culture public art sculpture | Pexels |
 | `step01.jpg` | Digital design and material specification | Pexels |
 | `step02.jpg` | Robotic LFAM fabrication in progress | Pexels |
 | `step03.jpg` | On-site installation of printed component | Pexels |
@@ -57,14 +53,12 @@ Portfolio OOH / retail images (Dubai Watch, THE LOOP, Dubai Eagle, Flouka) are c
 | `tab04.jpg` | LFAM design workflow and technical scoping | Pexels |
 | `tab05.jpg` | Dubai development and urban growth | Pexels |
 | `certificate01–04.jpg` | UAE policy cards (Dubai 2030, ICV, Net Zero, 2040) | Pexels |
-| `video-poster01.jpg` | Oval Digital Billboard video poster | ELM client media |
+| `video-poster01.jpg` | LFAM facility video poster | Unsplash |
 | `author01.jpg` | ELM editorial author | Unsplash |
 | `team01–08.jpg` | Leadership team portraits (noindex page) | Pexels |
 | `videos/video01.mp4` | LFAM / construction facility loop | ELM client media |
 
-Project galleries: **`images/projects/`** (`dubai-watch/`, `oval-digital-billboard/`, `dubai-eagle/`, `the-flouka/`). Raw zip extract kept locally in `images/elm-source/` (gitignored).
-
-Machine-readable registry: **`images/placeholders.json`** · Wix project map: **`images/wix-portfolio.json`**
+Machine-readable registry: **`images/placeholders.json`**
 
 ## Logo
 

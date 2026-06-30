@@ -1,9 +1,7 @@
 import {
-  copyFileSync,
   createWriteStream,
   existsSync,
   mkdirSync,
-  readFileSync,
   writeFileSync,
 } from "fs";
 import { pipeline } from "stream/promises";
@@ -13,16 +11,11 @@ const root = resolve(".");
 const imagesDir = resolve(root, "images");
 const backgroundDir = resolve(imagesDir, "background");
 const videosDir = resolve(root, "videos");
-const wixMediaDir = resolve(root, "../../elm-wix-archive/media");
 const q = "?auto=compress&cs=tinysrgb";
 
 for (const dir of [imagesDir, backgroundDir, videosDir]) {
   if (!existsSync(dir)) mkdirSync(dir, { recursive: true });
 }
-
-const wixPortfolio = JSON.parse(
-  readFileSync(resolve(imagesDir, "wix-portfolio.json"), "utf8")
-);
 
 const pexels = (id, w = 1600, h) =>
   `https://images.pexels.com/photos/${id}/pexels-photo-${id}.jpeg${q}&w=${w}${h ? `&h=${h}&fit=crop` : ""}`;
@@ -30,13 +23,8 @@ const pexels = (id, w = 1600, h) =>
 const unsplash = (photoId, w = 1600, h) =>
   `https://images.unsplash.com/photo-${photoId}?w=${w}&q=80&auto=format&fit=crop${h ? `&h=${h}` : ""}`;
 
-const wixUrl = (file, w = 1600, h) => {
-  const path = `https://static.wixstatic.com/media/${file}`;
-  return `${path}/v1/fit/w_${w}${h ? `,h_${h}` : ""},q_85,enc_auto/${file}`;
-};
-
 /**
- * @type {Record<string, { subject: string; source: string; url?: string; wixKey?: string; w?: number; h?: number; fallbacks?: string[] }>}
+ * @type {Record<string, { subject: string; source: string; url: string; w?: number; h?: number; fallbacks?: string[] }>}
  */
 const imageAssets = {
   "slide01.jpg": {
@@ -50,10 +38,9 @@ const imageAssets = {
     url: unsplash("1581092160562-40aa08e78837", 1920),
   },
   "slide03.jpg": {
-    subject: "Luxury retail display — Dubai Watch",
-    source: "ELM Wix portfolio",
-    wixKey: "Dubai Watch",
-    w: 1920,
+    subject: "Luxury retail interior environment",
+    source: "Pexels",
+    url: pexels(323705, 1920),
   },
   "slide04.jpg": {
     subject: "Recarlo Milan LFAM architectural wall panels",
@@ -62,10 +49,9 @@ const imageAssets = {
     fallbacks: [unsplash("1560448204-e02f11c3d0e2", 1920)],
   },
   "slide05.jpg": {
-    subject: "Oval digital billboard — THE LOOP OOH",
-    source: "ELM Wix portfolio",
-    wixKey: "Oval Digital Billboard",
-    w: 1920,
+    subject: "Urban OOH environment — kinetic media deployment",
+    source: "Pexels",
+    url: pexels(323780, 1920),
   },
   "slide06.jpg": {
     subject: "Bergamo Airport LFAM service building",
@@ -74,10 +60,9 @@ const imageAssets = {
     fallbacks: [pexels(8293774, 1920)],
   },
   "slide07.jpg": {
-    subject: "Dubai Eagle OOH installation skyline",
-    source: "ELM Wix portfolio",
-    wixKey: "Dubai Eagle",
-    w: 1920,
+    subject: "Dubai skyline — premium deployment locations",
+    source: "Pexels",
+    url: pexels(276024, 1920),
   },
   "slide08.jpg": {
     subject: "UAE commercial LFAM programme — Dubai Marina",
@@ -86,11 +71,9 @@ const imageAssets = {
     fallbacks: [pexels(2404843, 1920), pexels(323705, 1920)],
   },
   "slide09.jpg": {
-    subject: "The Flouka creative OOH installation",
-    source: "ELM Wix portfolio",
-    wixKey: "The Flouka",
-    w: 1600,
-    h: 1133,
+    subject: "Creative culture public art installation",
+    source: "Pexels",
+    url: pexels(1193743, 1600, 1133),
   },
 
   "side-image01.jpg": {
@@ -289,18 +272,6 @@ async function download(name, url, dir) {
 }
 
 async function installImage(name, asset) {
-  if (asset.wixKey) {
-    const file = wixPortfolio[asset.wixKey];
-    if (!file) throw new Error(`${name}: missing wix key ${asset.wixKey}`);
-    const local = resolve(wixMediaDir, file);
-    if (existsSync(local)) {
-      copyFileSync(local, resolve(imagesDir, name));
-      console.log(`OK ${name} (wix local)`);
-      return;
-    }
-    await downloadFirst(name, [wixUrl(file, asset.w ?? 1600, asset.h)], imagesDir);
-    return;
-  }
   await downloadFirst(name, [asset.url, ...(asset.fallbacks ?? [])], imagesDir);
 }
 
@@ -316,10 +287,7 @@ for (const [name, asset] of Object.entries(imageAssets)) {
     subject: asset.subject,
     alt: asset.subject,
     source: asset.source,
-    license:
-      asset.source === "ELM Wix portfolio"
-        ? "Client — ELM Wix portfolio"
-        : "Free stock — replace before launch",
+    license: "Free stock — replace before launch",
   };
 }
 

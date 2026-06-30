@@ -769,14 +769,30 @@ body:has(.hero) .navbar {
 }
 
 @media (max-width: 767px) {
+  .compare-table {
+    border: none;
+    background: transparent;
+
+    &:hover {
+      box-shadow: none;
+    }
+  }
+
   .compare-table__row {
-    grid-template-columns: 1fr;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto auto;
+    gap: 4px 12px;
+    padding: 10px 0;
     border-bottom: none;
-    padding: 0;
-    gap: 0;
+    background: transparent;
 
     &:not(.compare-table__row--head):hover {
-      background: color-mix(in srgb, var(--elm-bg-page) 45%, var(--elm-bg-surface));
+      background: transparent;
+
+      .compare-table__elm {
+        background: rgba($color-main, 0.12);
+      }
     }
 
     &--head {
@@ -785,28 +801,48 @@ body:has(.hero) .navbar {
 
     > span {
       border-right: none;
-      border-bottom: none;
-      padding: 6px 20px;
+      padding: 0;
+    }
 
-      &:first-child {
-        padding-top: 16px;
-        font-size: 13px;
-        text-transform: uppercase;
-        letter-spacing: 0.08em;
-        color: $color-main;
+    .compare-table__metric {
+      grid-column: 1 / -1;
+      padding: 0 0 2px;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: $color-main;
+    }
+
+    .compare-table__old {
+      grid-column: 1;
+      align-self: center;
+      font-size: 12px;
+      line-height: 1.35;
+      color: var(--elm-text-muted);
+      opacity: 0.75;
+      text-decoration: line-through;
+      text-decoration-color: rgba($color-main, 0.45);
+
+      &::before {
+        display: none;
       }
     }
 
-    .compare-table__old::before {
-      content: "Conventional: ";
-      font-weight: 600;
-      color: var(--elm-text-muted);
-    }
+    .compare-table__elm {
+      grid-column: 2;
+      align-self: center;
+      justify-self: stretch;
+      text-align: right;
+      font-size: 13px;
+      line-height: 1.35;
+      font-weight: 700;
+      padding: 6px 8px;
+      background: rgba($color-main, 0.08);
 
-    .compare-table__elm::before {
-      content: "ELM LFAM: ";
-      font-weight: 600;
-      color: $color-main;
+      &::before {
+        display: none;
+      }
     }
   }
 

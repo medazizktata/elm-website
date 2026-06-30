@@ -102,9 +102,9 @@ Template ships with placeholder images. Replace files in `images/` with ELM phot
 ## Contact (business)
 
 - **Mobile:** +971 56 466 3334
-- **Office:** +971 4 422 1177
-- **Email:** info@elmmdesign.com
-- **Location:** Office 203, API Business Suites, Dubai, UAE
+- **Email:** amin@letsadsmedia.com
+- **Website:** www.elmmdesign.com
+- **Location:** Dubai, UAE
 
 ---
 

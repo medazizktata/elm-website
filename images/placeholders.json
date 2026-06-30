@@ -13,10 +13,10 @@
       "license": "Free stock — replace before launch"
     },
     "slide03.jpg": {
-      "subject": "Luxury retail display — Dubai Watch",
-      "alt": "Luxury retail display — Dubai Watch",
-      "source": "ELM client media",
-      "license": "Client — ELM Media Design"
+      "subject": "Luxury retail interior environment",
+      "alt": "Luxury retail interior environment",
+      "source": "Pexels",
+      "license": "Free stock — replace before launch"
     },
     "slide04.jpg": {
       "subject": "Recarlo Milan LFAM architectural wall panels",
@@ -25,10 +25,10 @@
       "license": "Free stock — replace before launch"
     },
     "slide05.jpg": {
-      "subject": "Oval digital billboard — THE LOOP OOH",
-      "alt": "Oval digital billboard — THE LOOP OOH",
-      "source": "ELM client media",
-      "license": "Client — ELM Media Design"
+      "subject": "Urban OOH environment — kinetic media deployment",
+      "alt": "Urban OOH environment — kinetic media deployment",
+      "source": "Pexels",
+      "license": "Free stock — replace before launch"
     },
     "slide06.jpg": {
       "subject": "Bergamo Airport LFAM service building",
@@ -37,10 +37,10 @@
       "license": "Free stock — replace before launch"
     },
     "slide07.jpg": {
-      "subject": "Dubai Eagle OOH installation skyline",
-      "alt": "Dubai Eagle OOH installation skyline",
-      "source": "ELM client media",
-      "license": "Client — ELM Media Design"
+      "subject": "Dubai skyline — premium deployment locations",
+      "alt": "Dubai skyline — premium deployment locations",
+      "source": "Pexels",
+      "license": "Free stock — replace before launch"
     },
     "slide08.jpg": {
       "subject": "UAE commercial LFAM programme — Dubai Marina",
@@ -49,10 +49,10 @@
       "license": "Free stock — replace before launch"
     },
     "slide09.jpg": {
-      "subject": "The Flouka creative OOH installation",
-      "alt": "The Flouka creative OOH installation",
-      "source": "ELM client media",
-      "license": "Client — ELM Media Design"
+      "subject": "Creative culture public art installation",
+      "alt": "Creative culture public art installation",
+      "source": "Pexels",
+      "license": "Free stock — replace before launch"
     },
     "side-image01.jpg": {
       "subject": "Property and infrastructure LFAM facade",
@@ -61,16 +61,16 @@
       "license": "Free stock — replace before launch"
     },
     "side-image02.jpg": {
-      "subject": "Recarlo Milan hospitality LFAM panels",
-      "alt": "Recarlo Milan hospitality LFAM panels",
-      "source": "Unsplash (Recarlo proxy until client LFAM photography)",
+      "subject": "Hospitality LFAM installation — luxury hotel",
+      "alt": "Hospitality LFAM installation — luxury hotel",
+      "source": "Pexels",
       "license": "Free stock — replace before launch"
     },
     "side-image03.jpg": {
-      "subject": "The Flouka creative OOH monument",
-      "alt": "The Flouka creative OOH monument",
-      "source": "ELM client media",
-      "license": "Client — ELM Media Design"
+      "subject": "Creative culture public art sculpture",
+      "alt": "Creative culture public art sculpture",
+      "source": "Pexels",
+      "license": "Free stock — replace before launch"
     },
     "step01.jpg": {
       "subject": "Digital design and material specification",
@@ -157,10 +157,10 @@
       "license": "Free stock — replace before launch"
     },
     "video-poster01.jpg": {
-      "subject": "Oval Digital Billboard — THE LOOP video poster",
-      "alt": "Oval Digital Billboard — THE LOOP video poster",
-      "source": "ELM client media",
-      "license": "Client — ELM Media Design"
+      "subject": "LFAM facility video poster frame",
+      "alt": "LFAM facility video poster frame",
+      "source": "Unsplash",
+      "license": "Free stock — replace before launch"
     },
     "author01.jpg": {
       "subject": "ELM Media Design editorial author",
@@ -261,9 +261,9 @@
   },
   "videos": {
     "video01.mp4": {
-      "subject": "LFAM / construction facility loop",
-      "source": "ELM client media",
-      "license": "Client — ELM Media Design"
+      "subject": "LFAM / 3D printing facility loop",
+      "source": "Mixkit",
+      "license": "Mixkit License — replace with ELM facility footage"
     }
   }
 }
