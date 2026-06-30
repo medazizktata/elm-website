@@ -3492,7 +3492,11 @@ select,
     height: 34px;
   }
   .navbar .theme-toggle {
-    display: none;
+    display: inline-flex;
+    width: 40px;
+    height: 40px;
+    min-width: 40px;
+    min-height: 40px;
   }
   .navbar .navbar-button span {
     display: none;
@@ -3740,7 +3744,7 @@ h1, h2, h3 {
   text-align: left;
 }
 
-.benefits-section__eyebrow,
+.feature-cards-section__eyebrow,
 .about-intro__eyebrow {
   display: inline-flex;
   align-items: center;
@@ -3751,7 +3755,7 @@ h1, h2, h3 {
   text-transform: uppercase;
   color: #BD1F71;
 }
-.benefits-section__eyebrow::after,
+.feature-cards-section__eyebrow::after,
 .about-intro__eyebrow::after {
   content: "";
   width: clamp(28px, 4vw, 48px);
@@ -3760,7 +3764,7 @@ h1, h2, h3 {
   flex-shrink: 0;
 }
 
-.benefits-section__head h2,
+.feature-cards-section__head h2,
 .about-intro__content h2 {
   font-size: var(--elm-section-title-size);
   line-height: 1.08;
@@ -3770,7 +3774,7 @@ h1, h2, h3 {
   margin: 0 0 16px;
 }
 
-.benefits-section__lede,
+.feature-cards-section__lede,
 .capability-section__lede,
 .project-showcase__lede,
 .tech-preview-section__lede,
@@ -3786,12 +3790,12 @@ h1, h2, h3 {
   max-width: 42rem;
 }
 
-.benefits-section__head .benefits-section__lede,
+.feature-cards-section__head .feature-cards-section__lede,
 .compare-section__head .compare-section__lede {
   margin-top: clamp(14px, 2vw, 18px);
 }
 
-.benefits-section__head h2 + .benefits-section__lede,
+.feature-cards-section__head h2 + .feature-cards-section__lede,
 .section-title h2 + .capability-section__lede,
 .section-title h2 + .project-showcase__lede,
 .section-title h2 + .tech-preview-section__lede,
@@ -4455,7 +4459,7 @@ body:has(.hero) .navbar.sticky {
 .project-showcase__head,
 .tech-preview-section__head,
 .solutions-section__head,
-.benefits-section__head,
+.feature-cards-section__head,
 .compare-section__head {
   max-width: 56rem;
   margin-bottom: clamp(28px, 4vw, 36px);
@@ -4800,6 +4804,59 @@ body:has(.hero) .navbar.sticky {
     padding: 0;
   }
 }
+/* Related case studies — project detail pages */
+.related-projects {
+  padding-top: var(--elm-section-y-compact) !important;
+  padding-bottom: var(--elm-section-y-compact) !important;
+}
+.related-projects .section-title {
+  margin-bottom: clamp(18px, 3vw, 24px);
+}
+.related-projects__grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(14px, 2vw, 20px);
+}
+.related-projects .portfolio-card__media {
+  aspect-ratio: 16/10;
+}
+
+@media (max-width: 767px) {
+  .related-projects {
+    padding-top: clamp(36px, 9vw, 48px) !important;
+    padding-bottom: clamp(36px, 9vw, 48px) !important;
+  }
+  .related-projects .section-title {
+    margin-bottom: 14px;
+  }
+  .related-projects .section-title h6 {
+    margin-bottom: 8px;
+  }
+  .related-projects .section-title h2 {
+    font-size: clamp(22px, 5.5vw, 28px);
+  }
+  .related-projects__grid {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+  .related-projects .portfolio-card__media {
+    aspect-ratio: 16/9;
+    max-height: 148px;
+  }
+  .related-projects .portfolio-card__body {
+    padding: 12px 14px;
+    gap: 12px;
+  }
+  .related-projects .portfolio-card__title {
+    font-size: 15px;
+    line-height: 1.25;
+  }
+  .related-projects .portfolio-card__go {
+    width: 32px;
+    height: 32px;
+    font-size: 13px;
+  }
+}
 /* ABOUT — editorial split panel */
 .about-intro {
   padding-top: var(--elm-section-y-compact) !important;
@@ -4995,59 +5052,71 @@ body:has(.hero) .navbar.sticky {
   padding: 8px 14px;
 }
 
-/* BENEFITS — technology pages */
-.benefits-section__head {
+/* FEATURE CARDS — surface grid (replaces flat benefits list) */
+.feature-cards-section__head {
   max-width: 56ch;
 }
-.benefits-section__eyebrow {
+.feature-cards-section__eyebrow {
   margin: 0 0 12px;
 }
-.benefits-section__grid {
-  margin: 0;
-  padding: 0;
-  list-style: none;
+.feature-cards + .feature-cards-section__head {
+  margin-top: clamp(40px, 6vw, 64px);
+}
+
+.feature-cards {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: clamp(20px, 3vw, 32px) clamp(24px, 4vw, 40px);
-}
-.benefits-section__grid li {
+  gap: clamp(14px, 2vw, 20px);
+  list-style: none;
   margin: 0;
-  padding: 14px 0 0;
-  border-top: 2px solid #BD1F71;
+  padding: 0;
+  counter-reset: feature-step;
+}
+.feature-cards > li {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+  margin: 0;
+  padding: clamp(18px, 2.5vw, 26px);
+  background: var(--elm-bg-surface);
+  border: 1px solid var(--elm-border);
+  border-radius: 4px;
   font-size: 15px;
-  font-weight: 600;
-  line-height: 1.45;
+  font-weight: 500;
+  line-height: 1.5;
   color: var(--elm-text);
 }
-@media (max-width: 991px) {
-  .benefits-section__grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
+.feature-cards > li::before {
+  flex-shrink: 0;
+  margin-top: 2px;
+  color: #BD1F71;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 1.4;
+  content: "✓";
 }
-@media (max-width: 767px) {
-  .benefits-section__grid {
-    grid-template-columns: 1fr;
-    gap: 0;
-  }
-  .benefits-section__grid li {
-    padding: 14px 0;
-    border-top: none;
-    border-bottom: 1px solid var(--elm-border);
-  }
-  .benefits-section__grid li:first-child {
-    border-top: 1px solid var(--elm-border);
-  }
-}
-.benefits-section__grid--quad {
+.feature-cards--quad {
   grid-template-columns: repeat(4, minmax(0, 1fr));
 }
+.feature-cards--steps > li::before {
+  content: counter(feature-step, decimal-leading-zero);
+  counter-increment: feature-step;
+  font-size: 13px;
+  letter-spacing: 0.04em;
+}
 @media (max-width: 991px) {
-  .benefits-section__grid--quad {
+  .feature-cards {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .feature-cards--quad {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
-@media (max-width: 767px) {
-  .benefits-section__grid--quad {
+@media (max-width: 575px) {
+  .feature-cards {
+    grid-template-columns: 1fr;
+  }
+  .feature-cards--quad {
     grid-template-columns: 1fr;
   }
 }
@@ -6489,6 +6558,7 @@ body:has(.hero) .navbar.sticky {
   .navbar .logo a img {
     height: 30px;
   }
+  .navbar .theme-toggle,
   .navbar .search,
   .navbar .hamburger,
   .navbar .navbar-button {

@@ -1025,7 +1025,12 @@ $section-whitespace: 120px;
 	.navbar{padding: 14px 0;}
 	.navbar.sticky{padding: 10px 0;}
 	.navbar .logo a img{height: 34px;}
-	.navbar .theme-toggle{display: none;}
+	.navbar .theme-toggle{
+		display: inline-flex;
+		width: 40px;
+		height: 40px;
+		min-width: 40px;
+		min-height: 40px;}
 	.navbar .navbar-button span{display: none;}
 	.navbar .navbar-button{padding: 0 14px; width: auto; justify-content: center;
 		i{transform: none; margin: 0;}}
