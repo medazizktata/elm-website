@@ -1,0 +1,199 @@
+{
+  "nav": {
+    "home": "Home",
+    "about": "About",
+    "whoWeAre": "Who We Are",
+    "ourStory": "Our Story",
+    "whyElm": "Why ELM",
+    "uaeCompliance": "UAE Compliance",
+    "technologies": "Technologies",
+    "overview": "Overview",
+    "roboticConcrete": "Robotic Concrete",
+    "polymerLfam": "Polymer LFAM",
+    "architecturalManufacturing": "Architectural Manufacturing",
+    "solutions": "Solutions",
+    "propertyInfrastructure": "Property & Infrastructure",
+    "industrialMobility": "Industrial, Mobility & Energy",
+    "theLoop": "THE LOOP",
+    "hospitalityLeisure": "Hospitality & Leisure",
+    "creativeCulture": "Creative & Culture",
+    "projects": "Projects",
+    "contact": "Contact",
+    "consultation": "Consultation",
+    "expandAbout": "Expand About submenu",
+    "expandTechnologies": "Expand Technologies submenu",
+    "expandSolutions": "Expand Solutions submenu"
+  },
+  "search": {
+    "label": "Search",
+    "placeholder": "Search pages, projects…",
+    "close": "Close search",
+    "open": "Open search",
+    "results": "Search results"
+  },
+  "chrome": {
+    "closeMenu": "Close menu",
+    "sideTagline": "Industrial 3D printing at architectural scale. Dubai, UAE.",
+    "addressTitle": "ADDRESS",
+    "themeDark": "Switch to dark mode"
+  },
+  "locale": {
+    "en": "EN",
+    "ar": "عربي",
+    "switchToEn": "Switch to English",
+    "switchToAr": "Switch to Arabic"
+  },
+  "footer": {
+    "barTitle": "Build the UAE's most <b>expressive</b> future",
+    "requestConsultation": "REQUEST A CONSULTATION",
+    "hq": "DUBAI HQ",
+    "mapLink": "Find us on map",
+    "engagement": "ENGAGEMENT",
+    "engagementCopy": "30-min consultation · Facility tour · 72h RFQ response · Capability profile",
+    "startProject": "Start a project",
+    "inquiry": "INQUIRY",
+    "inquiryCopy": "Tell us about your project requirements.",
+    "emailLabel": "Work email",
+    "emailPlaceholder": "Work email…",
+    "getInTouch": "Get in Touch",
+    "rights": "All rights reserved.",
+    "credit": "Website made with care by Propagenda Marketing",
+    "scrollUp": "Scroll Up"
+  },
+  "breadcrumb": {
+    "home": "Home"
+  },
+  "pages": {
+    "index": {
+      "meta": {
+        "title": "ELM Media Design",
+        "description": "Commercial-scale LFAM in UAE. Robotic concrete and polymer 3D printing for buildings, facades, hospitality and government projects."
+      },
+      "hero": {
+        "eyebrow": "Commercial LFAM · Dubai, UAE",
+        "title": "UAE's Premier Platform for Commercial-Scale Industrial 3D Printing",
+        "lede": "Robotic concrete and polymer LFAM for buildings, facades, hospitality and government projects — from concept to site installation.",
+        "exploreTech": "Explore Technologies",
+        "requestConsultation": "Request Consultation",
+        "basedIn": "Based in: Dubai, UAE"
+      },
+      "facility": {
+        "label": "FACILITY",
+        "title": "See LFAM in Production",
+        "lede": "Facility tours are part of our four-step engagement — from initial briefing through technical capability profile access.",
+        "cta": "Request consultation",
+        "playVideo": "Play facility video"
+      },
+      "testimonials": {
+        "t1quote": "ELM delivered exactly the LFAM capability we needed — technical depth, commercial discipline, and on-site execution aligned with our programme.",
+        "t1cite": "Development Partner",
+        "t1meta": "UAE Commercial Project",
+        "t2quote": "From design intent through fabrication, ELM's team integrated seamlessly with our consultants and kept the LFAM programme on track.",
+        "t2cite": "Contractor Partner",
+        "t2meta": "GCC Infrastructure",
+        "t3quote": "Commercial-scale 3D printing is only valuable when it ships to site — ELM understood that from day one and delivered production-ready components.",
+        "t3cite": "Hospitality Developer",
+        "t3meta": "Dubai, UAE",
+        "t4quote": "Robotic concrete LFAM at architectural scale — executed with European engineering standards and UAE delivery discipline.",
+        "t4cite": "Government Entity",
+        "t4meta": "United Arab Emirates"
+      },
+      "sectors": {
+        "label": "Industries",
+        "title": "Sectors We Serve",
+        "subtitle": "Commercial LFAM applications across the UAE built environment."
+      }
+    }
+  },
+  "stats": {
+    "rfqLabel": "RFQ response",
+    "rfqDesc": "Structured quotation turnaround for qualified commercial enquiries",
+    "consultLabel": "Consultation briefing",
+    "consultDesc": "Initial technical scoping with our LFAM specialists",
+    "techLabel": "Core technologies",
+    "techDesc": "Robotic concrete, polymer LFAM and architectural manufacturing",
+    "strategyLabel": "Dubai 3D strategy",
+    "strategyDesc": "Aligned with UAE additive manufacturing mandates"
+  },
+  "homeCapabilities": {
+    "label": "TECHNOLOGIES",
+    "title": "Commercial LFAM Platform",
+    "lede": "Robotic precision, digital-first design and on-demand production — built for architectural scale in the UAE.",
+    "card1Title": "Robotic Concrete 3D Printing",
+    "card1Copy": "Structural printing without conventional formwork — buildings, infrastructure and urban furniture with up to 60% less material waste.",
+    "card2Title": "Polymer Large-Format 3D Printing",
+    "card2Copy": "6-axis robotic extrusion for facades, lighting, retail and branded environments — complex geometry without mould tooling.",
+    "card3Title": "Architectural Manufacturing",
+    "card3Copy": "End-to-end fabrication from digital model to rapid site installation for hospitality, retail and public landmark projects.",
+    "explore": "Explore",
+    "allTech": "ALL TECHNOLOGIES"
+  },
+  "homeAbout": {
+    "eyebrow": "WHO WE ARE",
+    "title": "Closing the UAE LFAM Capability Gap",
+    "lede": "Commercial LFAM in Dubai — robotic concrete and polymer printing from concept to site installation.",
+    "deliveryLabel": "Delivery",
+    "deliveryValue": "Design → fabricate → install",
+    "heritageLabel": "Heritage",
+    "heritageValue": "European engineering",
+    "heritageDetail": "UAE delivery",
+    "alignmentLabel": "Alignment",
+    "alignmentValue": "Dubai 2030",
+    "alignmentDetail": "ICV",
+    "cta": "Our story"
+  },
+  "homeWhyHub": {
+    "whyEyebrow": "Why ELM",
+    "whyTitle": "LFAM beats conventional",
+    "whyLede": "Faster programmes. Near-zero waste. No geometry limits.",
+    "metricCol": "Metric",
+    "conventionalCol": "Conventional",
+    "elmCol": "ELM LFAM",
+    "leadTimeMetric": "Lead time",
+    "leadTimeOld": "8–14 weeks",
+    "leadTimeElm": "Days–2 weeks",
+    "wasteMetric": "Material waste",
+    "wasteOld": "40–60% scrap",
+    "wasteElm": "Near-zero",
+    "geometryMetric": "Geometry",
+    "geometryOld": "Mould-limited",
+    "geometryElm": "Any form, any scale",
+    "changesMetric": "Design changes",
+    "changesOld": "New tooling",
+    "changesElm": "File update",
+    "onsiteMetric": "On-site build",
+    "onsiteOld": "Factory only",
+    "onsiteElm": "Print where you build",
+    "whyLink": "See all differentiators",
+    "policyEyebrow": "Why choose ELM",
+    "policyTitle": "UAE policy alignment",
+    "policyLede": "Built around the mandates shaping UAE construction and procurement.",
+    "dubai2030Title": "Dubai 3D Printing 2030",
+    "dubai2030Copy": "On-site structural LFAM",
+    "industrial2031Title": "UAE Industrial 2031",
+    "industrial2031Copy": "LFAM manufacturing vertical",
+    "icvTitle": "ICV",
+    "icvCopy": "State tender pathway",
+    "netZeroTitle": "UAE Net Zero 2050",
+    "netZeroCopy": "Up to 60% waste reduction",
+    "dubai2040Title": "Dubai 2040",
+    "dubai2040Copy": "Bespoke assets at programme speed",
+    "policyLink": "Full compliance overview"
+  },
+  "homeMetrics": {
+    "label": "Selected work",
+    "title": "LFAM Projects",
+    "lede": "From landmark retail installations to airport infrastructure — commercial LFAM with European engineering standards and UAE execution.",
+    "p1Title": "Recarlo Milan",
+    "p1Meta": "Retail · Milan",
+    "p1Copy": "Large-format printed elements for a premium retail environment — complex geometry without conventional formwork.",
+    "p2Title": "Bergamo Airport",
+    "p2Meta": "Infrastructure · Italy",
+    "p2Copy": "Robotic concrete service module inside a live airport logistics zone — concept to handover in 100 days.",
+    "p3Title": "UAE Programme",
+    "p3Meta": "Commercial · UAE",
+    "p3Copy": "Pipeline programmes across hospitality, government and infrastructure — qualified RFQ response within 72 hours.",
+    "viewCaseStudy": "View case study",
+    "requestConsultation": "Request consultation"
+  }
+}

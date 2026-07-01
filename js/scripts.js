@@ -87,9 +87,14 @@
 
 
     /* MENU TOGGLE */
-    $('.side-widget .site-menu ul li i').on('click', function (e) {
-      $(this).parent().children('.side-widget .site-menu ul li ul').toggle();
-      return true;
+    $('.side-widget .site-menu__subtoggle').on('click', function (e) {
+      e.preventDefault();
+      e.stopPropagation();
+      var $btn = $(this);
+      var $sub = $btn.closest('li').children('ul').first();
+      var open = $sub.is(':visible');
+      $sub.toggle();
+      $btn.attr('aria-expanded', open ? 'false' : 'true');
     });
 
 
@@ -335,24 +340,6 @@
     });
 
     activate(0);
-  });
-
-  // VIDEO QUOTE TOGGLE
-  $(".video-quote").each(function () {
-    var $wrap = $(this);
-    var video = $wrap.find(".video-quote__video")[0];
-    var $btn = $wrap.find(".video-quote__toggle");
-    if (!video || !$btn.length) return;
-
-    $btn.on("click", function () {
-      if (video.paused) {
-        video.play();
-        $btn.attr("data-state", "playing").attr("aria-label", "Pause facility video");
-      } else {
-        video.pause();
-        $btn.attr("data-state", "paused").attr("aria-label", "Play facility video");
-      }
-    });
   });
 
   // QUOTE SWITCHER

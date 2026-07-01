@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" dir="ltr" data-page="index">
 <head>
 {{> meta description="Commercial-scale LFAM in UAE. Robotic concrete and polymer 3D printing for buildings, facades, hospitality and government projects." ogPath=""}}
 {{> json-ld-home}}
@@ -26,33 +26,94 @@
   <div class="hero__shade" aria-hidden="true"></div>
   <div class="container">
     <div class="hero__inner">
-      <p class="hero__eyebrow">Commercial LFAM · Dubai, UAE</p>
-      <h1>UAE's Premier Platform for Commercial-Scale Industrial 3D Printing</h1>
-      <p class="hero__lede">Robotic concrete and polymer LFAM for buildings, facades, hospitality and government projects — from concept to site installation.</p>
+      <p class="hero__eyebrow" data-i18n="pages.index.hero.eyebrow">Commercial LFAM · Dubai, UAE</p>
+      <h1 data-i18n="pages.index.hero.title">UAE's Premier Platform for Commercial-Scale Industrial 3D Printing</h1>
+      <p class="hero__lede" data-i18n="pages.index.hero.lede">Robotic concrete and polymer LFAM for buildings, facades, hospitality and government projects — from concept to site installation.</p>
       <div class="hero__actions">
-        <a href="technologies.html" class="custom-button">Explore Technologies <i class="lni lni-arrow-right" aria-hidden="true"></i></a>
-        <a href="contact.html#consultation-form" class="custom-button custom-button--ghost">Request Consultation</a>
+        <a href="technologies.html" class="custom-button"><span data-i18n="pages.index.hero.exploreTech">Explore Technologies</span> <i class="lni lni-arrow-right" aria-hidden="true"></i></a>
+        <a href="contact.html#consultation-form" class="custom-button custom-button--ghost" data-i18n="pages.index.hero.requestConsultation">Request Consultation</a>
       </div>
     </div>
   </div>
   <div class="hero__meta">
     <div class="container">
-      <span>Based in: Dubai, UAE</span>
+      <span data-i18n="pages.index.hero.basedIn">Based in: Dubai, UAE</span>
       <span>25.2048° N, 55.2708° E</span>
     </div>
   </div>
 </header>
 
 <main id="main-content">
-{{> stats-row}}
+{{> stats-row afterHero=true eyebrow="At a glance" title="Commercial LFAM, quantified" lede="Response times, capability depth and UAE policy alignment."}}
 {{> home-capabilities}}
 {{> home-about}}
-{{> lfam-comparison}}
-{{> home-policy-mandates}}
+{{> home-why-hub}}
 {{> home-metric-projects}}
-{{> sectors-grid label="INDUSTRIES" title="Sectors We Serve" subtitle="Commercial LFAM applications across the UAE built environment." compact=true}}
+{{> sectors-grid label="Industries" title="Sectors We Serve" subtitle="Commercial LFAM applications across the UAE built environment." i18nLabel="pages.index.sectors.label" i18nTitle="pages.index.sectors.title" i18nSubtitle="pages.index.sectors.subtitle" compact=true}}
 {{> client-engagement-process compact=true}}
-{{> video-quote-section}}
+<section class="content-section section-compact engagement-section">
+  <div class="container">
+    <div class="row align-items-end engagement-section__head">
+      <div class="col-lg-8">
+        <div class="section-title text-left">
+          <h6 data-i18n="pages.index.facility.label">FACILITY</h6>
+          <h2 data-i18n="pages.index.facility.title">See LFAM in Production</h2>
+        </div>
+        <p class="engagement-section__lede" data-i18n="pages.index.facility.lede">Facility tours are part of our four-step engagement — from initial briefing through technical capability profile access.</p>
+      </div>
+      <div class="col-lg-4">
+        <div class="engagement-section__cta">
+          <a href="contact.html#consultation-form" class="custom-button"><span data-i18n="pages.index.facility.cta">Request consultation</span> <i class="lni lni-arrow-right" aria-hidden="true"></i></a>
+        </div>
+      </div>
+    </div>
+    <div class="video-box">
+      <a href="videos/video01.mp4" data-fancybox data-width="1280" data-height="720" class="play-btn" data-i18n-aria="pages.index.facility.playVideo" aria-label="Play facility video"><i class="lni lni-play" aria-hidden="true"></i></a>
+      <video src="videos/video01.mp4" poster="images/video-poster01.jpg" autoplay muted loop playsinline></video>
+    </div>
+    <div class="swiper-container testimonials-slider">
+      <div class="swiper-wrapper">
+        <div class="swiper-slide">
+          <blockquote class="testimonial">
+            <p data-i18n="pages.index.testimonials.t1quote">ELM delivered exactly the LFAM capability we needed — technical depth, commercial discipline, and on-site execution aligned with our programme.</p>
+            <footer>
+              <cite data-i18n="pages.index.testimonials.t1cite">Development Partner</cite>
+              <span data-i18n="pages.index.testimonials.t1meta">UAE Commercial Project</span>
+            </footer>
+          </blockquote>
+        </div>
+        <div class="swiper-slide">
+          <blockquote class="testimonial">
+            <p data-i18n="pages.index.testimonials.t2quote">From design intent through fabrication, ELM's team integrated seamlessly with our consultants and kept the LFAM programme on track.</p>
+            <footer>
+              <cite data-i18n="pages.index.testimonials.t2cite">Contractor Partner</cite>
+              <span data-i18n="pages.index.testimonials.t2meta">GCC Infrastructure</span>
+            </footer>
+          </blockquote>
+        </div>
+        <div class="swiper-slide">
+          <blockquote class="testimonial">
+            <p data-i18n="pages.index.testimonials.t3quote">Commercial-scale 3D printing is only valuable when it ships to site — ELM understood that from day one and delivered production-ready components.</p>
+            <footer>
+              <cite data-i18n="pages.index.testimonials.t3cite">Hospitality Developer</cite>
+              <span data-i18n="pages.index.testimonials.t3meta">Dubai, UAE</span>
+            </footer>
+          </blockquote>
+        </div>
+        <div class="swiper-slide">
+          <blockquote class="testimonial">
+            <p data-i18n="pages.index.testimonials.t4quote">Robotic concrete LFAM at architectural scale — executed with European engineering standards and UAE delivery discipline.</p>
+            <footer>
+              <cite data-i18n="pages.index.testimonials.t4cite">Government Entity</cite>
+              <span data-i18n="pages.index.testimonials.t4meta">United Arab Emirates</span>
+            </footer>
+          </blockquote>
+        </div>
+      </div>
+      {{> testimonials-slider-controls}}
+    </div>
+  </div>
+</section>
 </main>
 
 {{> footer year="2026"}}

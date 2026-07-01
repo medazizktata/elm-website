@@ -1,5 +1,13 @@
-<section class="content-section stats-row" aria-label="Key metrics">
+<section class="content-section stats-row{{#if afterHero}} stats-row--after-hero{{/if}}" aria-label="Key metrics">
   <div class="container">
+    {{#unless hideHead}}
+    <header class="stats-row__head">
+      <p class="stats-row__eyebrow">{{#if eyebrow}}{{eyebrow}}{{else}}At a glance{{/if}}</p>
+      <h2 class="stats-row__title">{{#if title}}{{title}}{{else}}Commercial LFAM, quantified{{/if}}</h2>
+      <p class="stats-row__lede">{{#if lede}}{{lede}}{{else}}Response times, capability depth and UAE policy alignment.{{/if}}</p>
+    </header>
+    {{/unless}}
+
     <ul class="stats-row__grid">
       <li class="stats-row__item">
         <article class="counter-box">

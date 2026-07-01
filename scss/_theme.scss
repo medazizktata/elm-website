@@ -22,6 +22,7 @@
   --elm-feather-h-sm: 128px;
   --elm-feather-h-md: 180px;
   --elm-feather-h-lg: 240px;
+  --elm-feather-hero-h: clamp(120px, 14vw, 200px);
   --elm-feather-top: linear-gradient(
     to bottom,
     var(--elm-bg-page) 0%,

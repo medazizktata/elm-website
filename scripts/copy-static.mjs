@@ -3,7 +3,7 @@ import { resolve } from "path";
 
 const root = resolve(".");
 const dist = resolve("dist");
-const dirs = ["css", "js", "images", "fonts", "ico", "videos"];
+const dirs = ["css", "js", "images", "fonts", "ico", "videos", "locales"];
 const rootFiles = ["robots.txt", "sitemap.xml"];
 
 if (!existsSync(dist)) mkdirSync(dist, { recursive: true });

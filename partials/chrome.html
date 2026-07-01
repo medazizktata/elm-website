@@ -1,22 +1,22 @@
-<div class="search-box" id="site-search" role="dialog" aria-modal="true" aria-label="Search" aria-hidden="true">
+<div class="search-box" id="site-search" role="dialog" aria-modal="true" data-i18n-aria="search.label" aria-label="Search" aria-hidden="true">
   <div class="search-backdrop" tabindex="-1"></div>
   <div class="search-panel">
     <div class="search-field">
       <i class="lni lni-search-alt" aria-hidden="true"></i>
-      <input type="text" id="site-search-input" autocomplete="off" spellcheck="false" placeholder="Search pages, projects…" aria-controls="site-search-results" aria-autocomplete="list">
-      <button type="button" class="search-close" aria-label="Close search"><i class="lni lni-close" aria-hidden="true"></i></button>
+      <input type="text" id="site-search-input" autocomplete="off" spellcheck="false" data-i18n-placeholder="search.placeholder" placeholder="Search pages, projects…" aria-controls="site-search-results" aria-autocomplete="list">
+      <button type="button" class="search-close" data-i18n-aria="search.close" aria-label="Close search"><i class="lni lni-close" aria-hidden="true"></i></button>
     </div>
-    <div class="search-results" id="site-search-results" role="listbox" aria-label="Search results"></div>
+    <div class="search-results" id="site-search-results" role="listbox" data-i18n-aria="search.results" aria-label="Search results"></div>
   </div>
 </div>
 <aside class="side-widget">
-  <button type="button" class="side-widget-close" aria-label="Close menu"><i class="lni lni-close" aria-hidden="true"></i></button>
+  <button type="button" class="side-widget-close" data-i18n-aria="chrome.closeMenu" aria-label="Close menu"><i class="lni lni-close" aria-hidden="true"></i></button>
   <div class="inner">
     <div class="logo"><a href="index.html"><img src="images/logo.svg" alt="ELM Media Design"></a></div>
     <div class="hide-mobile">
-      <p>Industrial 3D printing at architectural scale. Dubai, UAE.</p>
+      <p data-i18n="chrome.sideTagline">Industrial 3D printing at architectural scale. Dubai, UAE.</p>
       <figure class="gallery"><img src="images/step01.jpg" alt="Digital design and material specification"><img src="images/tab04.jpg" alt="LFAM design workflow and technical scoping"></figure>
-      <h6 class="widget-title">ADDRESS</h6>
+      <h6 class="widget-title" data-i18n="chrome.addressTitle">ADDRESS</h6>
       <address class="address">
         <p>Office 203, API Business Suites<br>Al Barsha 1, Dubai, UAE</p>
         <p><a href="tel:+971564663334">+971 56 466 3334</a></p>
@@ -25,36 +25,7 @@
     </div>
     <div class="show-mobile">
       <div class="site-menu">
-        <ul>
-          <li><a href="who-we-are.html">About</a><i class="lni lni-chevron-down-circle"></i>
-            <ul>
-              <li><a href="who-we-are.html">Who We Are</a></li>
-              <li><a href="our-story.html">Our Story</a></li>
-              <li><a href="why-elm.html">Why ELM</a></li>
-              <li><a href="uae-compliance.html">UAE Compliance</a></li>
-            </ul>
-          </li>
-          <li><a href="technologies.html">Technologies</a>
-            <ul>
-              <li><a href="technologies.html">Overview</a></li>
-              <li><a href="technology-robotic-concrete.html">Robotic Concrete</a></li>
-              <li><a href="technology-polymer-lfam.html">Polymer LFAM</a></li>
-              <li><a href="technology-architectural-manufacturing.html">Architectural Manufacturing</a></li>
-            </ul>
-          </li>
-          <li><a href="solutions.html">Solutions</a>
-          <ul>
-            <li><a href="solutions.html">Overview</a></li>
-            <li><a href="solution-property-infrastructure.html">Property &amp; Infrastructure</a></li>
-            <li><a href="solution-industrial-mobility.html">Industrial, Mobility &amp; Energy</a></li>
-            <li><a href="solution-ooh-the-loop.html">THE LOOP</a></li>
-            <li><a href="solution-hospitality-leisure.html">Hospitality &amp; Leisure</a></li>
-            <li><a href="solution-creative-culture.html">Creative &amp; Culture</a></li>
-          </ul>
-        </li>
-        <li><a href="projects.html">Projects</a></li>
-          <li><a href="contact.html">Contact</a></li>
-        </ul>
+        {{> nav-menu mobile=true}}
       </div>
     </div>
     <small>&copy; {{year}} ELM Media Design</small>
@@ -64,49 +35,24 @@
   <div class="container">
     <div class="logo"><a href="index.html"><img src="images/logo.svg" alt="ELM Media Design"></a></div>
     <div class="site-menu">
-      <ul>
-        <li><a href="index.html">Home</a></li>
-        <li><a href="who-we-are.html">About</a>
-          <ul>
-            <li><a href="who-we-are.html">Who We Are</a></li>
-            <li><a href="our-story.html">Our Story</a></li>
-            <li><a href="why-elm.html">Why ELM</a></li>
-            <li><a href="uae-compliance.html">UAE Compliance</a></li>
-          </ul>
-        </li>
-        <li><a href="technologies.html">Technologies</a>
-          <ul>
-            <li><a href="technologies.html">Overview</a></li>
-            <li><a href="technology-robotic-concrete.html">Robotic Concrete</a></li>
-            <li><a href="technology-polymer-lfam.html">Polymer LFAM</a></li>
-            <li><a href="technology-architectural-manufacturing.html">Architectural Manufacturing</a></li>
-          </ul>
-        </li>
-        <li><a href="solutions.html">Solutions</a>
-          <ul>
-            <li><a href="solutions.html">Overview</a></li>
-            <li><a href="solution-property-infrastructure.html">Property &amp; Infrastructure</a></li>
-            <li><a href="solution-industrial-mobility.html">Industrial, Mobility &amp; Energy</a></li>
-            <li><a href="solution-ooh-the-loop.html">THE LOOP</a></li>
-            <li><a href="solution-hospitality-leisure.html">Hospitality &amp; Leisure</a></li>
-            <li><a href="solution-creative-culture.html">Creative &amp; Culture</a></li>
-          </ul>
-        </li>
-        <li><a href="projects.html">Projects</a></li>
-        <li><a href="contact.html">Contact</a></li>
-      </ul>
+      {{> nav-menu}}
     </div>
     <div class="navbar__tools">
-      <button type="button" class="theme-toggle" aria-pressed="false" aria-label="Switch to dark mode">
+      <div class="locale-switch" role="group" aria-label="Language">
+        <button type="button" class="locale-switch__btn" data-locale="en" aria-pressed="true" data-i18n-aria="locale.switchToEn"><span data-i18n="locale.en">EN</span></button>
+        <span class="locale-switch__sep" aria-hidden="true">|</span>
+        <button type="button" class="locale-switch__btn" data-locale="ar" aria-pressed="false" data-i18n-aria="locale.switchToAr"><span data-i18n="locale.ar">عربي</span></button>
+      </div>
+      <button type="button" class="theme-toggle" aria-pressed="false" data-i18n-aria="chrome.themeDark" aria-label="Switch to dark mode">
         <i class="lni lni-sun theme-icon-light" aria-hidden="true"></i>
         <i class="lni lni-night theme-icon-dark" hidden aria-hidden="true"></i>
       </button>
-      <button type="button" class="search search-toggle" aria-label="Open search" aria-expanded="false" aria-controls="site-search"><i class="lni lni-search-alt" aria-hidden="true"></i></button>
+      <button type="button" class="search search-toggle" data-i18n-aria="search.open" aria-label="Open search" aria-expanded="false" aria-controls="site-search"><i class="lni lni-search-alt" aria-hidden="true"></i></button>
       <div class="hamburger">
         <div id="hamburger"><span></span><span></span><span></span></div>
         <div id="cross"><span></span><span></span></div>
       </div>
-      <a href="contact.html#consultation-form" class="navbar-button"><span>Consultation</span><i class="lni lni-arrow-right" aria-hidden="true"></i></a>
+      <a href="contact.html#consultation-form" class="navbar-button"><span data-i18n="nav.consultation">Consultation</span><i class="lni lni-arrow-right" aria-hidden="true"></i></a>
     </div>
   </div>
 </nav>

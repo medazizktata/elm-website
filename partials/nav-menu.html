@@ -1,0 +1,57 @@
+<ul>
+  {{#unless mobile}}
+  <li><a href="index.html" data-i18n="nav.home">Home</a></li>
+  {{/unless}}
+  <li>
+    {{#if mobile}}
+    <div class="site-menu__row">
+      <a href="who-we-are.html" data-i18n="nav.about">About</a>
+      <button type="button" class="site-menu__subtoggle" aria-expanded="false" data-i18n-aria="nav.expandAbout"><i class="lni lni-chevron-down-circle" aria-hidden="true"></i></button>
+    </div>
+    {{else}}
+    <a href="who-we-are.html" data-i18n="nav.about">About</a>
+    {{/if}}
+    <ul>
+      <li><a href="who-we-are.html" data-i18n="nav.whoWeAre">Who We Are</a></li>
+      <li><a href="our-story.html" data-i18n="nav.ourStory">Our Story</a></li>
+      <li><a href="why-elm.html" data-i18n="nav.whyElm">Why ELM</a></li>
+      <li><a href="uae-compliance.html" data-i18n="nav.uaeCompliance">UAE Compliance</a></li>
+    </ul>
+  </li>
+  <li>
+    {{#if mobile}}
+    <div class="site-menu__row">
+      <a href="technologies.html" data-i18n="nav.technologies">Technologies</a>
+      <button type="button" class="site-menu__subtoggle" aria-expanded="false" data-i18n-aria="nav.expandTechnologies"><i class="lni lni-chevron-down-circle" aria-hidden="true"></i></button>
+    </div>
+    {{else}}
+    <a href="technologies.html" data-i18n="nav.technologies">Technologies</a>
+    {{/if}}
+    <ul>
+      <li><a href="technologies.html" data-i18n="nav.overview">Overview</a></li>
+      <li><a href="technology-robotic-concrete.html" data-i18n="nav.roboticConcrete">Robotic Concrete</a></li>
+      <li><a href="technology-polymer-lfam.html" data-i18n="nav.polymerLfam">Polymer LFAM</a></li>
+      <li><a href="technology-architectural-manufacturing.html" data-i18n="nav.architecturalManufacturing">Architectural Manufacturing</a></li>
+    </ul>
+  </li>
+  <li>
+    {{#if mobile}}
+    <div class="site-menu__row">
+      <a href="solutions.html" data-i18n="nav.solutions">Solutions</a>
+      <button type="button" class="site-menu__subtoggle" aria-expanded="false" data-i18n-aria="nav.expandSolutions"><i class="lni lni-chevron-down-circle" aria-hidden="true"></i></button>
+    </div>
+    {{else}}
+    <a href="solutions.html" data-i18n="nav.solutions">Solutions</a>
+    {{/if}}
+    <ul>
+      <li><a href="solutions.html" data-i18n="nav.overview">Overview</a></li>
+      <li><a href="solution-property-infrastructure.html" data-i18n="nav.propertyInfrastructure">Property &amp; Infrastructure</a></li>
+      <li><a href="solution-industrial-mobility.html" data-i18n="nav.industrialMobility">Industrial, Mobility &amp; Energy</a></li>
+      <li><a href="solution-ooh-the-loop.html" data-i18n="nav.theLoop">THE LOOP</a></li>
+      <li><a href="solution-hospitality-leisure.html" data-i18n="nav.hospitalityLeisure">Hospitality &amp; Leisure</a></li>
+      <li><a href="solution-creative-culture.html" data-i18n="nav.creativeCulture">Creative &amp; Culture</a></li>
+    </ul>
+  </li>
+  <li><a href="projects.html" data-i18n="nav.projects">Projects</a></li>
+  <li><a href="contact.html" data-i18n="nav.contact">Contact</a></li>
+</ul>

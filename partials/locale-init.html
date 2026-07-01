@@ -1,0 +1,11 @@
+<script>
+(function () {
+  var key = 'elm-locale';
+  var root = document.documentElement;
+  var stored = null;
+  try { stored = localStorage.getItem(key); } catch (e) {}
+  var locale = stored === 'ar' ? 'ar' : 'en';
+  root.setAttribute('lang', locale);
+  root.setAttribute('dir', locale === 'ar' ? 'rtl' : 'ltr');
+})();
+</script>

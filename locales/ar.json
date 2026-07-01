@@ -1,0 +1,200 @@
+{
+  "nav": {
+    "home": "",
+    "about": "",
+    "whoWeAre": "",
+    "ourStory": "",
+    "whyElm": "",
+    "uaeCompliance": "",
+    "technologies": "",
+    "overview": "",
+    "roboticConcrete": "",
+    "polymerLfam": "",
+    "architecturalManufacturing": "",
+    "solutions": "",
+    "propertyInfrastructure": "",
+    "industrialMobility": "",
+    "theLoop": "",
+    "hospitalityLeisure": "",
+    "creativeCulture": "",
+    "projects": "",
+    "contact": "",
+    "consultation": "",
+    "expandAbout": "",
+    "expandTechnologies": "",
+    "expandSolutions": ""
+  },
+  "search": {
+    "label": "",
+    "placeholder": "",
+    "close": "",
+    "open": "",
+    "results": ""
+  },
+  "chrome": {
+    "closeMenu": "",
+    "sideTagline": "",
+    "addressTitle": "",
+    "themeDark": "",
+    "copyright": ""
+  },
+  "locale": {
+    "en": "",
+    "ar": "",
+    "switchToEn": "",
+    "switchToAr": ""
+  },
+  "footer": {
+    "barTitle": "",
+    "requestConsultation": "",
+    "hq": "",
+    "mapLink": "",
+    "engagement": "",
+    "engagementCopy": "",
+    "startProject": "",
+    "inquiry": "",
+    "inquiryCopy": "",
+    "emailLabel": "",
+    "emailPlaceholder": "",
+    "getInTouch": "",
+    "rights": "",
+    "credit": "",
+    "scrollUp": ""
+  },
+  "breadcrumb": {
+    "home": ""
+  },
+  "pages": {
+    "index": {
+      "meta": {
+        "title": "",
+        "description": ""
+      },
+      "hero": {
+        "eyebrow": "",
+        "title": "",
+        "lede": "",
+        "exploreTech": "",
+        "requestConsultation": "",
+        "basedIn": ""
+      },
+      "facility": {
+        "label": "",
+        "title": "",
+        "lede": "",
+        "cta": "",
+        "playVideo": ""
+      },
+      "testimonials": {
+        "t1quote": "",
+        "t1cite": "",
+        "t1meta": "",
+        "t2quote": "",
+        "t2cite": "",
+        "t2meta": "",
+        "t3quote": "",
+        "t3cite": "",
+        "t3meta": "",
+        "t4quote": "",
+        "t4cite": "",
+        "t4meta": ""
+      },
+      "sectors": {
+        "label": "",
+        "title": "",
+        "subtitle": ""
+      }
+    }
+  },
+  "stats": {
+    "rfqLabel": "",
+    "rfqDesc": "",
+    "consultLabel": "",
+    "consultDesc": "",
+    "techLabel": "",
+    "techDesc": "",
+    "strategyLabel": "",
+    "strategyDesc": ""
+  },
+  "homeCapabilities": {
+    "label": "",
+    "title": "",
+    "lede": "",
+    "card1Title": "",
+    "card1Copy": "",
+    "card2Title": "",
+    "card2Copy": "",
+    "card3Title": "",
+    "card3Copy": "",
+    "explore": "",
+    "allTech": ""
+  },
+  "homeAbout": {
+    "eyebrow": "",
+    "title": "",
+    "lede": "",
+    "deliveryLabel": "",
+    "deliveryValue": "",
+    "heritageLabel": "",
+    "heritageValue": "",
+    "heritageDetail": "",
+    "alignmentLabel": "",
+    "alignmentValue": "",
+    "alignmentDetail": "",
+    "cta": ""
+  },
+  "homeWhyHub": {
+    "whyEyebrow": "",
+    "whyTitle": "",
+    "whyLede": "",
+    "metricCol": "",
+    "conventionalCol": "",
+    "elmCol": "",
+    "leadTimeMetric": "",
+    "leadTimeOld": "",
+    "leadTimeElm": "",
+    "wasteMetric": "",
+    "wasteOld": "",
+    "wasteElm": "",
+    "geometryMetric": "",
+    "geometryOld": "",
+    "geometryElm": "",
+    "changesMetric": "",
+    "changesOld": "",
+    "changesElm": "",
+    "onsiteMetric": "",
+    "onsiteOld": "",
+    "onsiteElm": "",
+    "whyLink": "",
+    "policyEyebrow": "",
+    "policyTitle": "",
+    "policyLede": "",
+    "dubai2030Title": "",
+    "dubai2030Copy": "",
+    "industrial2031Title": "",
+    "industrial2031Copy": "",
+    "icvTitle": "",
+    "icvCopy": "",
+    "netZeroTitle": "",
+    "netZeroCopy": "",
+    "dubai2040Title": "",
+    "dubai2040Copy": "",
+    "policyLink": ""
+  },
+  "homeMetrics": {
+    "label": "",
+    "title": "",
+    "lede": "",
+    "p1Title": "",
+    "p1Meta": "",
+    "p1Copy": "",
+    "p2Title": "",
+    "p2Meta": "",
+    "p2Copy": "",
+    "p3Title": "",
+    "p3Meta": "",
+    "p3Copy": "",
+    "viewCaseStudy": "",
+    "requestConsultation": ""
+  }
+}
