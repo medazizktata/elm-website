@@ -8,8 +8,7 @@
     ".section-title",
     ".feature-cards-section__head > :not(.feature-cards-section__lede)",
     ".capability-section__head .section-title",
-    ".sectors-grid__title",
-    ".sectors-grid__eyebrow",
+    ".sectors-grid__intro .section-title",
     ".about-intro__eyebrow",
     ".about-intro__content > h2",
     ".also-explore__head",
@@ -20,13 +19,13 @@
     ".stats-row__eyebrow",
     ".home-why-hub__eyebrow",
     ".page-header h1",
-    ".page-header .page-breadcrumb",
   ].join(",");
 
   var ITEM_SELECTORS = [
     ".capability-card",
     ".stats-row__item",
     ".sectors-index__item",
+    ".engagement-timeline__step",
     ".feature-cards > li",
     ".portfolio-card",
     ".project-card",
@@ -131,7 +130,13 @@
     var header = document.querySelector(".page-header .container");
     if (!header) return;
 
-    var parts = header.querySelectorAll("h1, .page-breadcrumb");
+    var parts = [];
+    var h1 = header.querySelector("h1");
+    if (h1) parts.push(h1);
+    header.querySelectorAll(".page-breadcrumb a, .page-breadcrumb [aria-current='page']").forEach(function (el) {
+      parts.push(el);
+    });
+
     parts.forEach(function (el, i) {
       if (!el.classList.contains("elm-reveal")) {
         markReveal(el, "head", i);
