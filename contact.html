@@ -7,82 +7,82 @@
 <body>
 {{> chrome year="2026"}}
 
-{{> page-header title="CONTACT" subtitle="30-minute briefing · Facility tour · 72-hour RFQ · Capability profile" crumb="Contact"}}
+{{> page-header pageKey="contact" title="CONTACT" subtitle="30-minute briefing · Facility tour · 72-hour RFQ · Capability profile" crumb="Contact"}}
 
 <section class="content-section">
-  <div class="container">
-    <div class="row contact-cards">
-      <div class="col-lg-4 col-md-6">
-        <div class="contact-box">
-          <figure><i class="lni lni-world" aria-hidden="true"></i></figure>
-          <h6>Dubai HQ</h6>
-          <p>Office 203, API Business Suites<br>Al Barsha 1, Dubai, UAE</p>
-        </div>
-      </div>
-      <div class="col-lg-4 col-md-6">
-        <div class="contact-box">
-          <figure><i class="lni lni-phone" aria-hidden="true"></i></figure>
-          <h6>Mobile</h6>
-          <p><a href="tel:+971564663334">+971 56 466 3334</a></p>
-        </div>
-      </div>
-      <div class="col-lg-4 col-md-6">
-        <div class="contact-box">
-          <figure><i class="lni lni-envelope" aria-hidden="true"></i></figure>
-          <h6>Email</h6>
-          <p><a href="mailto:amin@letsadsmedia.com">amin@letsadsmedia.com</a></p>
-        </div>
-      </div>
-    </div>
-  </div>
+ <div class="container">
+ <div class="row contact-cards">
+ <div class="col-lg-4 col-md-6">
+ <div class="contact-box">
+ <figure><i class="lni lni-world" aria-hidden="true"></i></figure>
+ <h6 data-i18n="pages.contact.hqTitle">Dubai HQ</h6>
+ <p data-i18n="pages.contact.hqAddress" style="white-space: pre-line">Office 203, API Business Suites<br>Al Barsha 1, Dubai, UAE</p>
+ </div>
+ </div>
+ <div class="col-lg-4 col-md-6">
+ <div class="contact-box">
+ <figure><i class="lni lni-phone" aria-hidden="true"></i></figure>
+ <h6 data-i18n="pages.contact.mobileTitle">Mobile</h6>
+ <p><a href="tel:+971564663334">+971 56 466 3334</a></p>
+ </div>
+ </div>
+ <div class="col-lg-4 col-md-6">
+ <div class="contact-box">
+ <figure><i class="lni lni-envelope" aria-hidden="true"></i></figure>
+ <h6 data-i18n="pages.contact.emailTitle">Email</h6>
+ <p><a href="mailto:amin@letsadsmedia.com">amin@letsadsmedia.com</a></p>
+ </div>
+ </div>
+ </div>
+ </div>
 </section>
 
 {{> client-engagement-process}}
 
 <section class="content-section no-spacing" id="consultation-form">
-  <div class="container">
-    <div class="row">
-      <div class="col-lg-6">
-        <div class="section-title text-left">
-          <h6>REQUEST CONSULTATION</h6>
-          <h2>Start Your LFAM<br>Programme</h2>
-        </div>
-        <br>
-        <p>Tell us about your project — building type, timeline, component scope and any compliance requirements. Qualified commercial enquiries receive a <strong>30-minute technical briefing</strong>, optional <strong>facility tour</strong>, a substantive <strong>RFQ within 72 hours</strong>, and <strong>technical capability profile</strong> access for procurement submissions.</p>
-      </div>
-      <div class="col-lg-6">
-        <form class="contact-form">
-          <div class="form-group">
-            <span>Full Name</span>
-            <input type="text" name="name" required>
-          </div>
-          <div class="form-group">
-            <span>Work Email</span>
-            <input type="email" name="email" required>
-          </div>
-          <div class="form-group">
-            <span>Phone</span>
-            <input type="tel" name="phone">
-          </div>
-          <div class="form-group">
-            <span>Project Type</span>
-            <input type="text" name="subject" placeholder="e.g. Hospitality facade, Government installation">
-          </div>
-          <div class="form-group">
-            <span>Project Requirements</span>
-            <textarea name="message" rows="4"></textarea>
-          </div>
-          <div class="contact-form__actions">
-            <input type="submit" value="Submit">
-          </div>
-        </form>
-      </div>
-    </div>
-  </div>
+ <div class="container">
+ <div class="row">
+ <div class="col-lg-6">
+ <div class="section-title text-left">
+ <h6 data-i18n="pages.contact.formLabel">REQUEST CONSULTATION</h6>
+ <h2 data-i18n="pages.contact.formTitle">Start Your LFAM<br>Programme</h2>
+ </div>
+ <br>
+ <p data-i18n="pages.contact.formIntro">Tell us about your project building type, timeline, component scope and any compliance requirements. Qualified commercial enquiries receive a 30-minute technical briefing, optional facility tour, a substantive RFQ within 72 hours, and technical capability profile access for procurement submissions.</p>
+ </div>
+ <div class="col-lg-6">
+ <form class="contact-form">
+ <div class="form-group">
+ <span data-i18n="pages.contact.fieldName">Full Name</span>
+ <input type="text" name="name" required>
+ </div>
+ <div class="form-group">
+ <span data-i18n="pages.contact.fieldEmail">Work Email</span>
+ <input type="email" name="email" required>
+ </div>
+ <div class="form-group">
+ <span data-i18n="pages.contact.fieldPhone">Phone</span>
+ <input type="tel" name="phone">
+ </div>
+ <div class="form-group">
+ <span data-i18n="pages.contact.fieldType">Project Type</span>
+ <input type="text" name="subject" data-i18n-placeholder="pages.contact.fieldTypePlaceholder" placeholder="e.g. Hospitality facade, Government installation">
+ </div>
+ <div class="form-group">
+ <span data-i18n="pages.contact.fieldRequirements">Project Requirements</span>
+ <textarea name="message" rows="4"></textarea>
+ </div>
+ <div class="contact-form__actions">
+ <input type="submit" data-i18n-value="shared.submit" value="Submit">
+ </div>
+ </form>
+ </div>
+ </div>
+ </div>
 </section>
 
 <section class="content-section no-spacing">
-  <iframe src="https://maps.google.com/maps?q=API+Business+Suites,+Al+Barsha+1,+Dubai,+UAE&hl=en&z=16&output=embed" frameborder="0" class="google-maps" allowfullscreen="" aria-hidden="false" tabindex="0" title="ELM Media Design — Office 203, API Business Suites, Dubai"></iframe>
+ <iframe src="https://maps.google.com/maps?q=API+Business+Suites,+Al+Barsha+1,+Dubai,+UAE&hl=en&z=16&output=embed" frameborder="0" class="google-maps" allowfullscreen="" aria-hidden="false" tabindex="0" data-i18n-title="pages.contact.mapTitle" title="ELM Media Design Office 203, API Business Suites, Dubai"></iframe>
 </section>
 
 {{> footer year="2026"}}

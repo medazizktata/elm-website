@@ -7,42 +7,108 @@
 <body>
 {{> chrome year="2026"}}
 
-{{> page-header title="WHO WE ARE" subtitle="Commercial large-format additive manufacturing for the UAE built environment" crumb="Who We Are"}}
+{{> page-header pageKey="who-we-are" title="WHO WE ARE" subtitle="Commercial large-format additive manufacturing for the UAE built environment" crumb="Who We Are"}}
 
 <section class="content-section about-intro no-bottom-spacing">
-  <div class="container">
-    <div class="about-intro__grid">
-      <figure class="about-intro__media">
-        <img src="images/step02.jpg" alt="Robotic LFAM facility" width="800" height="1000" loading="lazy">
-      </figure>
-      <div class="about-intro__content">
-        <p class="about-intro__eyebrow">Commercial LFAM</p>
-        <h2>Industrial 3D Printing at Architectural Scale</h2>
-        <p class="about-intro__lede">Commercial LFAM in Dubai — robotic concrete and polymer printing for developers, government and hospitality programmes that need site-ready delivery, not prototypes.</p>
-        <p class="about-intro__lede">Our leadership combines expertise in urban advertising and advanced engineering — bridging ambitious design and architectural reality through local, agile manufacturing.</p>
-        <ul class="about-intro__facts about-intro__facts--quad">
-          <li>
-            <div class="about-intro__fact-head"><span class="about-intro__fact-label">Delivery</span></div>
-            <p class="about-intro__fact-value">Design → fabricate → install</p>
-          </li>
-          <li>
-            <div class="about-intro__fact-head"><span class="about-intro__fact-label">Heritage</span></div>
-            <p class="about-intro__fact-value">European engineering<span class="about-intro__fact-detail">UAE delivery</span></p>
-          </li>
-          <li>
-            <div class="about-intro__fact-head"><span class="about-intro__fact-label">Compliance</span></div>
-            <p class="about-intro__fact-value">Dubai 2030<span class="about-intro__fact-detail">ICV · Net Zero</span></p>
-          </li>
-          <li>
-            <div class="about-intro__fact-head"><span class="about-intro__fact-label">Response</span></div>
-            <p class="about-intro__fact-value">72 hours<span class="about-intro__fact-detail">RFQ turnaround</span></p>
-          </li>
-        </ul>
-        <a href="why-elm.html" class="custom-button">Why ELM <i class="lni lni-arrow-right" aria-hidden="true"></i></a>
-      </div>
-    </div>
-  </div>
+ <div class="container">
+ <div class="about-intro__grid">
+ <figure class="about-intro__media">
+ <img src="images/video-poster01.jpg" alt="Industrial robotic LFAM in production" width="800" height="1000" loading="lazy">
+ </figure>
+ <div class="about-intro__content">
+ <p class="about-intro__eyebrow" data-i18n="pages.who-we-are.introEyebrow">Commercial LFAM</p>
+ <h2 data-i18n="pages.who-we-are.introTitle">Industrial 3D Printing at Architectural Scale</h2>
+ <p class="about-intro__lede" data-i18n="pages.who-we-are.introLede1">Commercial LFAM in Dubai robotic concrete and polymer printing for developers, government and hospitality programmes that need site-ready delivery, not prototypes.</p>
+ <p class="about-intro__lede" data-i18n="pages.who-we-are.introLede2">Our leadership combines expertise in urban advertising and advanced engineering bridging ambitious design and architectural reality through local, agile manufacturing.</p>
+ <ul class="about-intro__facts about-intro__facts--quad">
+ <li>
+ <span class="about-intro__fact-num" aria-hidden="true">01</span>
+ <div class="about-intro__fact-body">
+ <span class="about-intro__fact-label" data-i18n="pages.who-we-are.deliveryLabel">Delivery</span>
+ <p class="about-intro__fact-value" data-i18n="pages.who-we-are.deliveryValue">Design → fabricate → install</p>
+ </div>
+ </li>
+ <li>
+ <span class="about-intro__fact-num" aria-hidden="true">02</span>
+ <div class="about-intro__fact-body">
+ <span class="about-intro__fact-label" data-i18n="pages.who-we-are.heritageLabel">Heritage</span>
+ <p class="about-intro__fact-value"><span data-i18n="pages.who-we-are.heritageValue">European engineering</span><span class="about-intro__fact-detail" data-i18n="pages.who-we-are.heritageDetail">UAE delivery</span></p>
+ </div>
+ </li>
+ <li>
+ <span class="about-intro__fact-num" aria-hidden="true">03</span>
+ <div class="about-intro__fact-body">
+ <span class="about-intro__fact-label" data-i18n="pages.who-we-are.complianceLabel">Compliance</span>
+ <p class="about-intro__fact-value"><span data-i18n="pages.who-we-are.complianceValue">Dubai 2030</span><span class="about-intro__fact-detail" data-i18n="pages.who-we-are.complianceDetail">ICV · Net Zero</span></p>
+ </div>
+ </li>
+ <li>
+ <span class="about-intro__fact-num" aria-hidden="true">04</span>
+ <div class="about-intro__fact-body">
+ <span class="about-intro__fact-label" data-i18n="pages.who-we-are.responseLabel">Response</span>
+ <p class="about-intro__fact-value"><span data-i18n="pages.who-we-are.responseValue">72 hours</span><span class="about-intro__fact-detail" data-i18n="pages.who-we-are.responseDetail">RFQ turnaround</span></p>
+ </div>
+ </li>
+ </ul>
+ <a href="why-elm.html" class="custom-button"><span data-i18n="shared.whyElm">Why ELM</span> <i class="lni lni-arrow-right" aria-hidden="true"></i></a>
+ </div>
+ </div>
+ </div>
 </section>
+
+{{> print-capabilities}}
+
+<section class="content-section about-intro about-intro--reverse">
+ <div class="container">
+ <div class="about-intro__grid">
+ <figure class="about-intro__media">
+ <img src="images/tab01.jpg" alt="Robotic concrete extrusion at architectural scale" width="800" height="1000" loading="lazy">
+ </figure>
+ <div class="about-intro__content">
+ <p class="about-intro__eyebrow" data-i18n="pages.who-we-are.techEyebrow">How it works</p>
+ <h2 data-i18n="pages.who-we-are.techTitle">Industrial LFAM, layer by layer</h2>
+ <p class="about-intro__lede" data-i18n="pages.who-we-are.techLede1">Industrial robotic systems extrude polymer or concrete layer by layer, building components without the moulds, formwork and tooling conventional fabrication cannot do without. It is genuinely different to anything else in this market.</p>
+ <p class="about-intro__lede" data-i18n="pages.who-we-are.techLede2">Robotic precision, digital-first design and on-demand production — one platform logic across concrete, polymer and end-to-end architectural manufacturing.</p>
+ <a href="technologies.html" class="custom-button"><span data-i18n="pages.index.hero.exploreTech">Explore Technologies</span> <i class="lni lni-arrow-right" aria-hidden="true"></i></a>
+ </div>
+ </div>
+ </div>
+</section>
+
+<section class="content-section about-intro">
+ <div class="container">
+ <div class="about-intro__grid">
+ <figure class="about-intro__media">
+ <img src="images/slide08.jpg" alt="Dubai skyline and UAE LFAM opportunity" width="800" height="1000" loading="lazy">
+ </figure>
+ <div class="about-intro__content">
+ <p class="about-intro__eyebrow" data-i18n="pages.who-we-are.originEyebrow">Why we exist</p>
+ <h2 data-i18n="pages.who-we-are.originTitle">Closing the UAE capability gap</h2>
+ <p class="about-intro__lede" data-i18n="pages.who-we-are.originLede1">We started ELM Media Design because the UAE was ready for this. Dubai has already mandated it. Yet there was no specialist company here doing it properly — at commercial grade, with the delivery discipline serious clients require.</p>
+ <p class="about-intro__lede" data-i18n="pages.who-we-are.originLede2">That gap is what we are here to close.</p>
+ </div>
+ </div>
+ </div>
+</section>
+
+<section class="content-section about-intro about-intro--reverse">
+ <div class="container">
+ <div class="about-intro__grid">
+ <figure class="about-intro__media">
+ <img src="images/slide01.jpg" alt="WASP Crane LFAM production" width="800" height="1000" loading="lazy">
+ </figure>
+ <div class="about-intro__content">
+ <p class="about-intro__eyebrow" data-i18n="pages.who-we-are.visionEyebrow">Our ambition</p>
+ <h2 data-i18n="pages.who-we-are.visionTitle">LFAM as the standard choice</h2>
+ <p class="about-intro__lede" data-i18n="pages.who-we-are.visionLede1">We want large-format additive manufacturing to become the standard choice for anyone building something ambitious in the UAE — not an exotic option that takes months of convincing to reach a tender list.</p>
+ <p class="about-intro__lede" data-i18n="pages.who-we-are.visionLede2">Every project we deliver should make the next client's decision easier. The technology speaks for itself once people see it. Our job is to show what it looks like in the real world.</p>
+ <a href="our-story.html" class="custom-button"><span data-i18n="homeAbout.cta">Our story</span> <i class="lni lni-arrow-right" aria-hidden="true"></i></a>
+ </div>
+ </div>
+ </div>
+</section>
+
+{{> presentation-verticals}}
 
 {{> stats-row hideHead=true}}
 
