@@ -313,7 +313,7 @@ $section-whitespace: 120px;
 
 
 
-/* SWIPER BULLETS + SLIDER CONTROLS — base; refined in _elm-refresh.scss */
+/* SWIPER BULLETS + SLIDER CONTROLS base; refined in _elm-refresh.scss */
 .swiper-pagination{
 	width: auto;
 	display: inline-flex;
@@ -379,8 +379,9 @@ $section-whitespace: 120px;
 		&::placeholder{color: var(--elm-text-muted);}
 		&:focus{outline: none;}}
 	&:focus-within{border-color: $color-main;}}
-.search-close{position: absolute; right: 0; top: 0; width: 48px; height: 48px; border: none; background: transparent; color: var(--elm-text-muted); cursor: pointer; display: inline-flex; align-items: center; justify-content: center; font-size: 14px; padding: 0; @include transition;
-	&:hover{color: var(--elm-text);}}
+.search-close{position: absolute; right: 0; top: 0; width: 32px; height: 100%; border: none; background: transparent; color: var(--elm-text-muted); cursor: pointer; display: inline-flex; align-items: center; justify-content: center; font-size: 14px; line-height: 1; padding: 0; @include transition;
+	&:hover{color: var(--elm-text);}
+	i{line-height: 1;}}
 .search-results{max-height: min(44vh, 360px); overflow-y: auto; margin: 0;
 	&:empty{min-height: 0;}}
 .search-result{display: block; position: relative; padding: 10px 28px 10px 10px; border: 1px solid transparent; text-decoration: none; color: var(--elm-text); @include transition;
@@ -454,7 +455,7 @@ $section-whitespace: 120px;
 
 
 
-/* WHITE SPACES — gradient blends, not hard color blocks */
+/* WHITE SPACES gradient blends, not hard color blocks */
 .white-space-top{position: relative;
 	&:before{content: ""; width: 100vw; height: var(--elm-feather-h-md); background: var(--elm-feather-top); position: absolute; left: 0; top: 0; z-index: 1; pointer-events: none;}}
 .white-space-bottom{position: relative;
@@ -522,13 +523,17 @@ $section-whitespace: 120px;
 	.container{position: relative; z-index: 2; color: #fff; padding-top: clamp(108px, 14vh, 128px);
 		h1{ width: 100%; display: block; font-size: clamp(38px, 5.5vw, 68px); font-weight: 800; line-height: 1.02; letter-spacing: var(--elm-tracking-display, 0.02em); margin: 0; color: #fff; max-width: none;}
 		.page-header__lede{ width: 100%; display: block; margin: 14px 0 0; max-width: 42rem; line-height: 1.55; font-size: clamp(15px, 1.5vw, 17px); font-weight: 400; color: rgba(255, 255, 255, 0.82);}
-		.page-breadcrumb{display: block; margin: 12px 0 0; padding: 0; background: none; border-radius: 0;
+		.page-breadcrumb{display: block; margin: 12px 0 0; padding: 0; background: none; border-radius: 0; user-select: text; -webkit-user-select: text;
 			ul{display: block; margin: 0; padding: 0; list-style: none;
-				li{display: inline; margin: 0; padding: 0; font-size: 13px; font-weight: 600; letter-spacing: 0.04em; text-transform: uppercase; color: rgba(255, 255, 255, 0.88);
+				li{display: inline; margin: 0; padding: 0; font-size: 13px; font-weight: 600; letter-spacing: 0.04em; text-transform: uppercase;
 					&:last-child:after{display: none;}
-					&:after{content: ">"; display: inline-block; margin: 0 10px; color: $color-main; font-weight: 700;}
-					a{color: rgba(255, 255, 255, 0.88); text-decoration: none;
-						&:hover{color: #fff; text-decoration: none;}}}}}}}
+					&:after{content: ">"; display: inline-block; margin: 0 10px; color: rgba(255, 255, 255, 0.45); font-weight: 700; user-select: none;}
+					&[aria-current="page"]{color: #fff; cursor: default;}
+					a{color: rgba(255, 255, 255, 0.72); text-decoration: none; border-radius: 2px; cursor: pointer; @include transition;
+						&:hover{color: $color-main; text-decoration: underline; text-underline-offset: 3px;}
+						&:focus-visible{color: #fff; outline: 2px solid $color-main; outline-offset: 3px; text-decoration: none;}}}
+			a::selection,
+			li::selection{background: rgba($color-main, 0.55); color: #fff;}}}}}
 
 
 
@@ -868,7 +873,7 @@ $section-whitespace: 120px;
 
 
 
-/* TESTIOMONIALS SLIDER — see _elm-refresh.scss */
+/* TESTIOMONIALS SLIDER see _elm-refresh.scss */
 
 
 
@@ -923,7 +928,7 @@ $section-whitespace: 120px;
 
 
 /* FOOTER BAR */
-.footer-bar{width: 100%; display: block; padding: 88px 0; position: relative; overflow: hidden; color: #fff; @include brand-bg('../images/background/branding-elm-7.jpg', $bg-photo-overlay-heavy);
+.footer-bar{width: 100%; display: block; padding: 88px 0; position: relative; overflow: hidden; color: #fff; background-color: $color-dark; background-image: var(--elm-footer-bar-overlay), url('../images/background/branding-elm-7.jpg'); background-size: cover; background-position: center; background-repeat: no-repeat;
 	&::before{content: ""; position: absolute; left: 0; right: 0; top: 0; height: var(--elm-feather-h-sm); background: var(--elm-feather-top); pointer-events: none; z-index: 1;}
 	.container{position: relative; z-index: 2;}
 	&__row{align-items: center; row-gap: 24px;}
@@ -942,29 +947,30 @@ $section-whitespace: 120px;
 
 
 /* FOOTER */
-.footer{width: 100%; display: block; background-color:$color-dark; position: relative; padding: 44px 0 0; color: #fff;
+.footer{width: 100%; display: block; background-color: var(--elm-footer-bg); position: relative; padding: 44px 0 0; color: var(--elm-footer-text); @include transition;
 	.scroll-top{width: 44px; height: 44px; display: inline-flex; flex-direction: column; align-items: center; justify-content: center; gap: 0; @include rose-bg; position: absolute; right: 24px; top: -22px; z-index: 1; padding: 0; font-size: 16px; line-height: 1;
 		small{display: none;}}
 	.widget-title{width: 100%; display: block; margin-bottom: 12px; font-weight: 700; font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: $color-main;}
-	p{font-size: 14px; line-height: 1.55; margin-bottom: 10px; opacity: 0.82;}
-	p a{display: inline-block; color: #fff; font-weight: 600; font-size: 12px; letter-spacing: 0.06em; text-transform: uppercase; margin-top: 6px;
+	p{font-size: 14px; line-height: 1.55; margin-bottom: 10px; color: var(--elm-footer-text-muted);}
+	p a{display: inline-block; color: var(--elm-footer-link); font-weight: 600; font-size: 12px; letter-spacing: 0.06em; text-transform: uppercase; margin-top: 6px;
 		&:hover{text-decoration: none; color: $color-secondary;}}
 	address{width: 100%; display: block; margin: 0; font-style: normal;
-		p{width: 100%; display: block; margin-bottom: 6px; font-size: 14px; line-height: 1.55; opacity: 0.82;}
-		a{display: inline-block; color: #fff; font-weight: 600; font-size: 12px; letter-spacing: 0.06em; text-transform: uppercase; margin-top: 4px;
+		p{width: 100%; display: block; margin-bottom: 6px; font-size: 14px; line-height: 1.55; color: var(--elm-footer-text-muted);}
+		a{display: inline-block; color: var(--elm-footer-link); font-weight: 600; font-size: 12px; letter-spacing: 0.06em; text-transform: uppercase; margin-top: 4px;
 			&:hover{text-decoration: none; color: $color-secondary;}}}
 	form{width: 100%; display: block; margin-top: 4px;
-		input[type="email"]{width: 100%; height: 44px; border: none; background: $color-bg; color: $color-dark; padding: 0 16px; margin-bottom: 10px; font-size: 14px;
-			&::placeholder{color: rgba($color-dark, 0.45);}}
+		input[type="email"]{width: 100%; height: 44px; border: 1px solid var(--elm-border); background: var(--elm-bg-surface); color: var(--elm-text); padding: 0 16px; margin-bottom: 10px; font-size: 14px;
+			&::placeholder{color: var(--elm-text-muted);}
+			&:focus{border-color: var(--elm-text); outline: none;}}
 		input[type="submit"]{width: 100%; @include elm-btn; @include rose-bg; border: none; cursor: pointer;
 			&:hover{background: $color-secondary;}}}
-	.footer-bottom{width: 100%; display: flex; flex-direction: column; align-items: flex-start; gap: 8px; margin-top: 36px; border-top: 1px solid rgba(255,255,255,0.12); padding: 20px 0 24px;
-		span{opacity: 0.65; font-size: 12px;}
-		.footer__credit{margin: 0; opacity: 0.5; font-size: 11px; letter-spacing: 0.02em;}
+	.footer-bottom{width: 100%; display: flex; flex-direction: column; align-items: flex-start; gap: 8px; margin-top: 36px; border-top: 1px solid var(--elm-footer-border); padding: 20px 0 24px;
+		span{color: var(--elm-footer-text-muted); font-size: 12px;}
+		.footer__credit{margin: 0; color: var(--elm-footer-text-muted); opacity: 0.85; font-size: 11px; letter-spacing: 0.02em;}
 		ul{margin: 0; padding: 0;
 			li{display: inline-block; margin-left: 16px; padding: 0; list-style: none;
-				a{opacity: 0.65; font-size: 12px; color: #fff;
-					&:hover{opacity: 1; color: $color-main; text-decoration: none;}}}}}}
+				a{font-size: 12px; color: var(--elm-footer-text-muted);
+					&:hover{color: $color-main; text-decoration: none;}}}}}}
 
 
 .fancybox-close-small{transform: scale(1.5); top: 10px; right: 10px;}
@@ -1085,7 +1091,7 @@ $section-whitespace: 120px;
 @import 'elm-motion';
 @import 'elm-rtl';
 
-/* SHARP CORNERS — ELM industrial UI */
+/* SHARP CORNERS ELM industrial UI */
 body *,
 body *::before,
 body *::after {

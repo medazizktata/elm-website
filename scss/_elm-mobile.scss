@@ -1,4 +1,4 @@
-// ELM sitewide mobile fixes — 767px primary, 480px small phones
+// ELM sitewide mobile fixes 767px primary, 480px small phones
 
 @media (max-width: 767px) {
   :root {
@@ -370,10 +370,6 @@
         min-height: 0;
       }
     }
-
-    &__facts--quad {
-      grid-template-columns: 1fr;
-    }
   }
 
   .applications-section {
@@ -562,7 +558,7 @@
   }
 
   .about-intro__facts li {
-    padding: 14px;
+    padding: clamp(16px, 3vw, 20px) 0;
   }
 
   .about-intro__fact-value {
@@ -699,7 +695,7 @@
       font-size: 13px;
       margin-bottom: 6px;
       line-height: 1.5;
-      opacity: 0.85;
+      color: var(--elm-footer-text-muted);
     }
 
     address a {
@@ -710,7 +706,7 @@
       text-transform: none;
       margin-top: 0;
       margin-bottom: 6px;
-      opacity: 0.9;
+      color: var(--elm-footer-link);
     }
 
     &__map-link {
@@ -719,7 +715,7 @@
       font-size: 11px;
       letter-spacing: 0.04em;
       text-transform: none;
-      opacity: 0.75;
+      color: var(--elm-footer-text-muted);
     }
 
     .footer-bottom {
@@ -728,7 +724,7 @@
       margin-top: 20px;
       padding: 16px 0 0;
       gap: 14px;
-      border-top: 1px solid rgba(#fff, 0.1);
+      border-top: 1px solid var(--elm-footer-border);
 
       > span {
         font-size: 11px;
@@ -816,11 +812,6 @@
     width: 48px;
     height: 48px;
     line-height: 44px;
-  }
-
-  .search-close {
-    width: 48px;
-    height: 48px;
   }
 }
 
