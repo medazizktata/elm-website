@@ -7,5 +7,14 @@
   var locale = stored === 'ar' ? 'ar' : 'en';
   root.setAttribute('lang', locale);
   root.setAttribute('dir', locale === 'ar' ? 'rtl' : 'ltr');
+  if (locale !== 'en') {
+    root.classList.add('elm-i18n-pending');
+  }
 })();
 </script>
+<style>
+html.elm-i18n-pending:not(.elm-i18n-ready) body {
+  visibility: hidden;
+}
+</style>
+<script src="js/i18n.js" defer></script>

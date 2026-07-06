@@ -2,10 +2,12 @@
   "use strict";
 
   var LOCALE_KEY = "elm-locale";
+  var CACHE_PREFIX = "elm-locale-bundle-";
   var SUPPORTED = ["en", "ar"];
   var DEFAULT_LOCALE = "en";
   var bundles = {};
   var currentLocale = DEFAULT_LOCALE;
+  var defaultsCaptured = false;
 
   function getLocale() {
     return currentLocale;
@@ -19,10 +21,38 @@
     return DEFAULT_LOCALE;
   }
 
+  function readBundleCache(locale) {
+    try {
+      var raw = localStorage.getItem(CACHE_PREFIX + locale);
+      if (!raw) return null;
+      return JSON.parse(raw);
+    } catch (e) {
+      return null;
+    }
+  }
+
+  function writeBundleCache(locale, data) {
+    if (!data || typeof data !== "object") return;
+    try {
+      localStorage.setItem(CACHE_PREFIX + locale, JSON.stringify(data));
+    } catch (e) {}
+  }
+
   function applyHtmlAttrs(locale) {
     var root = document.documentElement;
     root.setAttribute("lang", locale);
     root.setAttribute("dir", locale === "ar" ? "rtl" : "ltr");
+    if (locale === "en") {
+      root.classList.remove("elm-i18n-pending");
+    } else {
+      root.classList.add("elm-i18n-pending");
+    }
+  }
+
+  function markReady() {
+    var root = document.documentElement;
+    root.classList.add("elm-i18n-ready");
+    root.classList.remove("elm-i18n-pending");
   }
 
   function getNested(obj, key) {
@@ -45,10 +75,11 @@
       })
       .then(function (data) {
         bundles[locale] = data;
+        writeBundleCache(locale, data);
         return data;
       })
       .catch(function () {
-        bundles[locale] = {};
+        bundles[locale] = bundles[locale] || readBundleCache(locale) || {};
         return bundles[locale];
       });
   }
@@ -64,12 +95,50 @@
     return "";
   }
 
+  function captureDefaults() {
+    if (defaultsCaptured) return;
+    defaultsCaptured = true;
+
+    [
+      ["data-i18n", "text"],
+      ["data-i18n-html", "html"],
+      ["data-i18n-placeholder", "placeholder"],
+      ["data-i18n-aria", "aria"],
+      ["data-i18n-value", "value"],
+    ].forEach(function (pair) {
+      var attr = pair[0];
+      var kind = pair[1];
+      document.querySelectorAll("[" + attr + "]").forEach(function (el) {
+        if (el.hasAttribute("data-i18n-default")) return;
+        if (kind === "html") el.setAttribute("data-i18n-default", el.innerHTML);
+        else if (kind === "placeholder") el.setAttribute("data-i18n-default", el.getAttribute("placeholder") || "");
+        else if (kind === "aria") el.setAttribute("data-i18n-default", el.getAttribute("aria-label") || "");
+        else if (kind === "value") el.setAttribute("data-i18n-default", el.getAttribute("value") || "");
+        else el.setAttribute("data-i18n-default", el.textContent);
+      });
+    });
+  }
+
+  function resolveValue(key) {
+    var value = t(key, currentLocale);
+    if (value) return value;
+    if (currentLocale === "en") return "";
+    return t(key, "en");
+  }
+
   function applyAttr(keyAttr, attr) {
-    var nodes = document.querySelectorAll("[" + keyAttr + "]");
-    nodes.forEach(function (el) {
+    document.querySelectorAll("[" + keyAttr + "]").forEach(function (el) {
       var key = el.getAttribute(keyAttr);
-      var value = t(key);
-      if (!value) return;
+      var value = resolveValue(key);
+      if (!value) {
+        var fallback = el.getAttribute("data-i18n-default");
+        if (fallback != null) {
+          if (attr === "textContent") el.textContent = fallback;
+          else if (attr === "innerHTML") el.innerHTML = fallback;
+          else el.setAttribute(attr, fallback);
+        }
+        return;
+      }
       if (attr === "textContent") el.textContent = value;
       else if (attr === "innerHTML") el.innerHTML = value;
       else el.setAttribute(attr, value);
@@ -85,11 +154,15 @@
     var pageId = document.documentElement.getAttribute("data-page");
     if (!pageId) return;
 
+    var siteName = "ELM Media Design";
     var prefix = "pages." + pageId + ".meta.";
-    var title = t(prefix + "title");
-    var description = t(prefix + "description");
+    var title = resolveValue(prefix + "title");
+    var description = resolveValue(prefix + "description");
 
     if (title) {
+      if (pageId !== "index" && title.indexOf(siteName) === -1) {
+        title = title + " | " + siteName;
+      }
       document.title = title;
       setMetaContent('meta[property="og:title"]', title);
       setMetaContent('meta[name="twitter:title"]', title);
@@ -102,6 +175,7 @@
   }
 
   function applyLocale() {
+    captureDefaults();
     applyAttr("data-i18n", "textContent");
     applyAttr("data-i18n-html", "innerHTML");
     applyAttr("data-i18n-placeholder", "placeholder");
@@ -123,10 +197,21 @@
     });
   }
 
+  function hydrateFromCache(locale) {
+    var cached = readBundleCache(locale);
+    if (!cached) return false;
+    bundles[locale] = cached;
+    if (locale !== "en") {
+      var enCached = readBundleCache("en");
+      if (enCached) bundles.en = enCached;
+    }
+    applyLocale();
+    markReady();
+    return true;
+  }
+
   function loadBundles(locale) {
-    var tasks = [loadBundle("en")];
-    if (locale !== "en") tasks.push(loadBundle(locale));
-    return Promise.all(tasks);
+    return Promise.all([loadBundle("en"), locale !== "en" ? loadBundle(locale) : Promise.resolve()]);
   }
 
   function setLocale(locale) {
@@ -136,13 +221,36 @@
       localStorage.setItem(LOCALE_KEY, locale);
     } catch (e) {}
     applyHtmlAttrs(locale);
-    return loadBundles(locale).then(applyLocale);
+
+    if (locale !== "en") {
+      document.documentElement.classList.remove("elm-i18n-ready");
+      document.documentElement.classList.add("elm-i18n-pending");
+      hydrateFromCache(locale);
+    } else {
+      markReady();
+    }
+
+    return loadBundles(locale).then(function () {
+      applyLocale();
+      markReady();
+    });
   }
 
   function init() {
     currentLocale = readStoredLocale();
     applyHtmlAttrs(currentLocale);
-    return loadBundles(currentLocale).then(applyLocale);
+    captureDefaults();
+
+    if (currentLocale !== "en") {
+      hydrateFromCache(currentLocale);
+    } else {
+      markReady();
+    }
+
+    return loadBundles(currentLocale).then(function () {
+      applyLocale();
+      markReady();
+    });
   }
 
   document.addEventListener("click", function (e) {
