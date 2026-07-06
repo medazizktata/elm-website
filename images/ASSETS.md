@@ -1,85 +1,61 @@
-# ELM image asset manifest
+# ELM image assets
 
-Doc-driven placement (from `Docs/website_proposal.pdf`, corporate profile, presentation):
+Client-owned media synced from PDF extracts in `Docs/`:
 
-| Site section | What docs require | Client zip assets | Status |
-|---|---|---|---|
-| **Home hero** | LFAM robots / printed structures | — (stock `slide01/02`) | Gap — no LFAM photos in zip |
-| **Home featured projects** | Recarlo, Bergamo, UAE LFAM programmes | Recarlo/Bergamo stock | Partial |
-| **Home video** | Facility / process footage | `53 - building…mp4` → `video01.mp4` | Done |
-| **THE LOOP** (`solution-ooh-the-loop`) | Kinetic OOH concept from docs | Stock urban/skyline placeholders | Partial |
-| **Hospitality** | LFAM lobby/retail (Recarlo proof point) | `slide04` Recarlo proxy | OK |
-| **Creative & Culture** | Public art, monuments, immersive | Stock `side-image03` | Partial |
-| **Projects grid** | LFAM case studies (Recarlo, Bergamo, UAE) | — | OK |
-| **Technologies** | Robotic process imagery | — (stock) | Gap |
-| **Brand** | Logo, favicon, OG | `logo.svg` / `logo.png` from `ico/logo/` | Correct |
+| PDF source folder | MD reference |
+|---|---|
+| `Docs/ELM presentation/` | `Docs/ELM presentation.md` |
+| `Docs/corporate profile 2026 ELM/` | `Docs/corporate profile 2026 ELM.md` |
 
-Replace template placeholders with final ELM media as it becomes available.
-
-## Refresh placeholders
+## Refresh from PDF extracts
 
 ```bash
-pnpm run images:placeholders
+pnpm run images:sync-docs
 ```
 
-Downloads subject-matched stock photos, writes `images/placeholders.json`, and refreshes `images/background/` brand JPEGs.
+Copies/converts extracted images into `images/` and archives originals under `images/elm-source/`.
 
-**Replace all stock media before launch** with client-owned LFAM photography.
+## Semantic map (doc → site slot)
 
-## Semantic map
-
-| File | Subject (use as `alt`) | Source |
-|------|------------------------|--------|
-| `slide01.jpg` | Industrial robotic LFAM system in production | Unsplash |
-| `slide02.jpg` | Robotic LFAM manufacturing facility | Unsplash |
-| `slide03.jpg` | Luxury retail interior environment | Pexels |
-| `slide04.jpg` | Recarlo Milan LFAM architectural wall panels | Unsplash |
-| `slide05.jpg` | Urban OOH environment — kinetic media deployment | Pexels |
-| `slide06.jpg` | Bergamo Airport LFAM service building | Unsplash |
-| `slide07.jpg` | Dubai skyline — premium deployment locations | Pexels |
-| `slide08.jpg` | UAE commercial LFAM programme — Dubai Marina | Pexels |
-| `slide09.jpg` | Creative culture public art installation | Pexels |
-| `side-image01.jpg` | Property and infrastructure LFAM facade | Pexels |
-| `side-image02.jpg` | Recarlo Milan hospitality LFAM panels | Unsplash (Recarlo proxy) |
-| `side-image03.jpg` | Creative culture public art sculpture | Pexels |
-| `step01.jpg` | Digital design and material specification | Pexels |
-| `step02.jpg` | Robotic LFAM fabrication in progress | Pexels |
-| `step03.jpg` | On-site installation of printed component | Pexels |
-| `section-bg01.jpg` | Industrial construction — dark section backdrop | Pexels |
-| `section-bg02.jpg` | Modern architecture — dark section backdrop | Pexels |
-| `tab01.jpg` | Robotic concrete 3D printing in progress | Unsplash |
-| `tab02.jpg` | Polymer LFAM facade element | Pexels |
-| `tab03.jpg` | Custom architectural manufacturing installation | Pexels |
-| `tab04.jpg` | LFAM design workflow and technical scoping | Pexels |
-| `tab05.jpg` | Dubai development and urban growth | Pexels |
-| `certificate01–04.jpg` | UAE policy cards (Dubai 2030, ICV, Net Zero, 2040) | Pexels |
-| `video-poster01.jpg` | LFAM facility video poster | Unsplash |
-| `author01.jpg` | ELM editorial author | Unsplash |
-| `team01–08.jpg` | Leadership team portraits (noindex page) | Pexels |
-| `videos/video01.mp4` | LFAM / construction facility loop | ELM client media |
-
-Machine-readable registry: **`images/placeholders.json`**
+| Site file | Doc source | Subject |
+|---|---|---|
+| `slide01.jpg` | presentation `5.png` | WASP Crane dome print |
+| `slide02.jpg` | corporate `15.jpg` | Aerial concrete LFAM site |
+| `slide03.jpg` | corporate `6.jpg` | Modular 3D-printed pods |
+| `slide04.jpg` | presentation `41.jpg` | Recarlo Milan interior panels |
+| `slide05.jpg` | corporate `16.jpg` | THE LOOP / Dubai geodesic |
+| `slide06.jpg` | presentation `42.jpg` | Bergamo Airport service building |
+| `slide07.jpg` | presentation `14.png` | Infrastructure / mobility |
+| `slide08.jpg` | presentation `35.jpg` | Dubai skyline (UAE programme) |
+| `slide09.jpg` | corporate `14.jpg` | Property / urban plaza |
+| `tab01.jpg` | corporate `4.jpg` | Robotic concrete extrusion |
+| `tab02.jpg` | corporate `7.jpg` | Polymer lattice LFAM |
+| `tab03.jpg` | corporate `8.jpg` | Architectural manufacturing render |
+| `tab04.jpg` | corporate `23.jpg` | Engagement / response time |
+| `tab05.jpg` | presentation `35.jpg` | Dubai policy / urban growth |
+| `step01.jpg` | corporate `22.jpg` | Digital design mesh |
+| `step02.jpg` | corporate `11.jpg` | Industrial robot arm |
+| `step03.jpg` | corporate `10.jpg` | Printed building install |
+| `side-image01.jpg` | presentation `13.png` | Property & infrastructure |
+| `side-image02.jpg` | presentation `41.jpg` | Hospitality / Recarlo |
+| `side-image03.jpg` | corporate `8.jpg` | Creative & culture |
+| `video-poster01.jpg` | presentation `6.png` | LFAM robot concrete walls |
+| `section-bg01.jpg` | presentation `12.jpg` | Abstract tech backdrop |
+| `section-bg02.jpg` | corporate `9.jpg` | Abstract tech backdrop |
+| `section-bg-industrial.jpg` | corporate `11.jpg` | Industrial LFAM robot (applications bg) |
+| `background/branding-elm-18.jpg` | presentation `6.png` | Home hero LFAM |
+| `background/bg_elm-1.jpg` | corporate `1.jpg` | Inner page headers |
+| `background/branding-elm-7.jpg` | corporate `5.jpg` | Footer CTA bar |
 
 ## Logo
 
-| File | Source | Use |
-|------|--------|-----|
-| `logo.svg` | `ico/logo/logo_ELM_svg.svg` | Nav, footer, side menu |
-| `logo.png` | `ico/logo/logo_ELMx1.png` | OG, Twitter, JSON-LD |
-| `ico/favicon.svg` | `ico/logo/logo_ELM_svg.svg` | Tab icon — `pnpm run favicons:generate` |
+| File | Use |
+|---|---|
+| `logo.svg` | Nav, footer, side menu |
+| `logo.png` | OG / JSON-LD (generate if needed) |
 
-## Brand backgrounds (`images/background/`)
+## Video
 
-Gradient: **#BD1F71 → #592C7B → #0A76B5** (`$gradient-brand` in SCSS).
-
-JPEG backgrounds use `$bg-photo-overlay`: black 60% → 50%. Footer CTA uses `$bg-photo-overlay-heavy`.
-
-| File | Subject | Used on |
-|------|---------|---------|
-| `branding-elm-18.jpg` | LFAM manufacturing atmosphere | Home hero slideshow |
-| `bg_elm-1.jpg` | Modern architecture | Inner page headers |
-| `bg_elm-4.jpg` | Construction programme | Calculator section |
-| `branding-elm-7.jpg` | Industrial construction | Footer CTA bar |
-| `bg_elm.jpg`, `bg_elm-2/3.jpg`, `branding-elm-6.jpg` | Spare themed backdrops | Future sections |
-
-Service icons use **LineIcons** — no PNG placeholders.
+| File | Use |
+|---|---|
+| `videos/video01.mp4` | Facility loop (home, why-elm) |
