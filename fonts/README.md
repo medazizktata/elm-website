@@ -15,4 +15,4 @@ pnpm run fonts:setup
 
 Sources: `@tamagui/font-nohemi` (Nohemi, freeware/commercial per Rajesh Rajput), `@fontsource/almarai` (SIL OFL).
 
-Arabic copy: wrap in `lang="ar"` or class `lang-ar`.
+Arabic: set on `<html lang="ar">` via locale switch (or wrap copy in `.lang-ar`).
