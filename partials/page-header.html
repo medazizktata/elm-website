@@ -1,13 +1,13 @@
 <header class="page-header">
   <div class="container">
-    <h1>{{title}}</h1>
+    <h1 data-i18n="pages.{{pageKey}}.header.title">{{title}}</h1>
     <nav class="page-breadcrumb" aria-label="Breadcrumb">
       <ul>
         <li><a href="index.html" data-i18n="breadcrumb.home">Home</a></li>
-        {{#if parent}}<li><a href="{{parentHref}}">{{parent}}</a></li>{{/if}}
-        <li aria-current="page">{{crumb}}</li>
+        {{#if parent}}<li><a href="{{parentHref}}" data-i18n="pages.{{pageKey}}.header.parent">{{parent}}</a></li>{{/if}}
+        <li aria-current="page" data-i18n="pages.{{pageKey}}.header.crumb">{{crumb}}</li>
       </ul>
     </nav>
-    {{#if subtitle}}<p class="page-header__lede">{{subtitle}}</p>{{/if}}
+    {{#if subtitle}}<p class="page-header__lede" data-i18n="pages.{{pageKey}}.header.subtitle">{{subtitle}}</p>{{/if}}
   </div>
 </header>

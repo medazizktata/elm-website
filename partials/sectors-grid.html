@@ -1,64 +1,68 @@
 <section class="content-section sectors-section{{#if compact}} section-compact{{/if}}">
   <div class="container">
     <div class="sectors-grid">
+      <div class="sectors-grid__left">
       <header class="sectors-grid__intro">
-        <p class="sectors-grid__eyebrow"{{#if i18nLabel}} data-i18n="{{i18nLabel}}"{{/if}}>{{label}}</p>
-        <h2 class="sectors-grid__title"{{#if i18nTitle}} data-i18n="{{i18nTitle}}"{{/if}}>{{title}}</h2>
-        {{#if subtitle}}<p class="sectors-grid__lede"{{#if i18nSubtitle}} data-i18n="{{i18nSubtitle}}"{{/if}}>{{subtitle}}</p>{{/if}}
+        <div class="section-title text-left">
+          <h6 data-i18n="{{#if i18nLabel}}{{i18nLabel}}{{else}}partials.sectorsGrid.defaultLabel{{/if}}">{{label}}</h6>
+          <h2 data-i18n="{{#if i18nTitle}}{{i18nTitle}}{{else}}partials.sectorsGrid.defaultTitle{{/if}}">{{title}}</h2>
+        </div>
+        {{#if subtitle}}<p class="sectors-grid__lede" data-i18n="{{#if i18nSubtitle}}{{i18nSubtitle}}{{else}}partials.sectorsGrid.defaultSubtitle{{/if}}">{{subtitle}}</p>{{/if}}
       </header>
 
       {{#unless hideMedia}}
       <figure class="sectors-grid__media">
-        <img src="{{#if mediaSrc}}{{mediaSrc}}{{else}}images/slide06.jpg{{/if}}" alt="{{#if mediaAlt}}{{mediaAlt}}{{else}}LFAM applications across UAE industry sectors{{/if}}" width="640" height="800" loading="lazy" decoding="async">
+        <img src="{{#if mediaSrc}}{{mediaSrc}}{{else}}images/tab01.jpg{{/if}}" alt="{{#if mediaAlt}}{{mediaAlt}}{{else}}Robotic LFAM across UAE industry sectors{{/if}}" width="640" height="800" loading="lazy" decoding="async">
       </figure>
       {{/unless}}
+      </div>
 
       <nav class="sectors-index" aria-label="{{title}}">
         <a href="solution-property-infrastructure.html" class="sectors-index__item">
           <span class="sectors-index__num">01</span>
           <span class="sectors-index__body">
-            <span class="sectors-index__title">Property &amp; Infrastructure</span>
-            <span class="sectors-index__meta">On-site printing, facades &amp; urban assets</span>
+            <span class="sectors-index__title" data-i18n="partials.sectorsGrid.s1Title">Property &amp; Infrastructure</span>
+            <span class="sectors-index__meta" data-i18n="partials.sectorsGrid.s1Meta">On-site printing, facades &amp; urban assets</span>
           </span>
           <span class="sectors-index__arrow" aria-hidden="true"><i class="lni lni-arrow-right"></i></span>
         </a>
         <a href="solution-industrial-mobility.html" class="sectors-index__item">
           <span class="sectors-index__num">02</span>
           <span class="sectors-index__body">
-            <span class="sectors-index__title">Industrial, Mobility &amp; Energy</span>
-            <span class="sectors-index__meta">Automotive, aerospace, marine &amp; energy</span>
+            <span class="sectors-index__title" data-i18n="partials.sectorsGrid.s2Title">Industrial, Mobility &amp; Energy</span>
+            <span class="sectors-index__meta" data-i18n="partials.sectorsGrid.s2Meta">Automotive, aerospace, marine &amp; energy</span>
           </span>
           <span class="sectors-index__arrow" aria-hidden="true"><i class="lni lni-arrow-right"></i></span>
         </a>
         <a href="solution-ooh-the-loop.html" class="sectors-index__item">
           <span class="sectors-index__num">03</span>
           <span class="sectors-index__body">
-            <span class="sectors-index__title">THE LOOP</span>
-            <span class="sectors-index__meta">Kinetic digital robotics</span>
+            <span class="sectors-index__title" data-i18n="partials.sectorsGrid.s3Title">THE LOOP</span>
+            <span class="sectors-index__meta" data-i18n="partials.sectorsGrid.s3Meta">Kinetic digital robotics</span>
           </span>
           <span class="sectors-index__arrow" aria-hidden="true"><i class="lni lni-arrow-right"></i></span>
         </a>
         <a href="solution-hospitality-leisure.html" class="sectors-index__item">
           <span class="sectors-index__num">04</span>
           <span class="sectors-index__body">
-            <span class="sectors-index__title">Hospitality &amp; Leisure</span>
-            <span class="sectors-index__meta">Luxury retail &amp; lobby fit-outs</span>
+            <span class="sectors-index__title" data-i18n="partials.sectorsGrid.s4Title">Hospitality &amp; Leisure</span>
+            <span class="sectors-index__meta" data-i18n="partials.sectorsGrid.s4Meta">Luxury retail &amp; lobby fit-outs</span>
           </span>
           <span class="sectors-index__arrow" aria-hidden="true"><i class="lni lni-arrow-right"></i></span>
         </a>
         <a href="solution-creative-culture.html" class="sectors-index__item">
           <span class="sectors-index__num">05</span>
           <span class="sectors-index__body">
-            <span class="sectors-index__title">Creative &amp; Culture</span>
-            <span class="sectors-index__meta">Public art &amp; immersive environments</span>
+            <span class="sectors-index__title" data-i18n="partials.sectorsGrid.s5Title">Creative &amp; Culture</span>
+            <span class="sectors-index__meta" data-i18n="partials.sectorsGrid.s5Meta">Public art &amp; immersive environments</span>
           </span>
           <span class="sectors-index__arrow" aria-hidden="true"><i class="lni lni-arrow-right"></i></span>
         </a>
         <a href="solutions.html" class="sectors-index__item sectors-index__item--all">
           <span class="sectors-index__num">06</span>
           <span class="sectors-index__body">
-            <span class="sectors-index__title">All solutions</span>
-            <span class="sectors-index__meta">Industry verticals overview</span>
+            <span class="sectors-index__title" data-i18n="partials.sectorsGrid.s6Title">All solutions</span>
+            <span class="sectors-index__meta" data-i18n="partials.sectorsGrid.s6Meta">Industry verticals overview</span>
           </span>
           <span class="sectors-index__arrow" aria-hidden="true"><i class="lni lni-arrow-right"></i></span>
         </a>

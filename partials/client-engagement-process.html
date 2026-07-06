@@ -1,15 +1,42 @@
-<section class="content-section feature-cards-section{{#if compact}} section-compact{{/if}}">
+<section class="content-section engagement-process{{#if compact}} section-compact{{/if}}">
   <div class="container">
-    <div class="feature-cards-section__head">
-      <p class="feature-cards-section__eyebrow">Engagement</p>
-      <h2>Four-step client process</h2>
-      <p class="feature-cards-section__lede">Clear expectations from first briefing through capability profile access — the same model across all commercial LFAM programmes.</p>
-    </div>
-    <ul class="feature-cards feature-cards--quad feature-cards--steps">
-      <li>Consultation — 30-minute technical briefing and feasibility review</li>
-      <li>Facility tour — production capability and platform demonstration</li>
-      <li>RFQ response — substantive quotation within 72 hours</li>
-      <li>Capability profile — documentation for procurement submissions</li>
-    </ul>
+    <header class="engagement-process__head">
+      <div class="section-title text-left">
+        <h6 data-i18n="partials.clientEngagement.eyebrow">Engagement</h6>
+        <h2 data-i18n="partials.clientEngagement.title">Four-step client process</h2>
+      </div>
+      <p class="engagement-process__lede" data-i18n="partials.clientEngagement.lede">Clear expectations from first briefing through capability profile access. Same model across all commercial LFAM programmes.</p>
+    </header>
+
+    <ol class="engagement-timeline">
+      <li class="engagement-timeline__step">
+        <span class="engagement-timeline__num" aria-hidden="true">01</span>
+        <div class="engagement-timeline__body">
+          <span class="engagement-timeline__title" data-i18n="partials.clientEngagement.step1Title">Consultation</span>
+          <p class="engagement-timeline__meta" data-i18n="partials.clientEngagement.step1Meta">30-minute technical briefing and feasibility review</p>
+        </div>
+      </li>
+      <li class="engagement-timeline__step">
+        <span class="engagement-timeline__num" aria-hidden="true">02</span>
+        <div class="engagement-timeline__body">
+          <span class="engagement-timeline__title" data-i18n="partials.clientEngagement.step2Title">Facility tour</span>
+          <p class="engagement-timeline__meta" data-i18n="partials.clientEngagement.step2Meta">Guided walkthrough of platforms and production capability</p>
+        </div>
+      </li>
+      <li class="engagement-timeline__step">
+        <span class="engagement-timeline__num" aria-hidden="true">03</span>
+        <div class="engagement-timeline__body">
+          <span class="engagement-timeline__title" data-i18n="partials.clientEngagement.step3Title">RFQ response</span>
+          <p class="engagement-timeline__meta" data-i18n="partials.clientEngagement.step3Meta">Substantive quote within 72 hours</p>
+        </div>
+      </li>
+      <li class="engagement-timeline__step">
+        <span class="engagement-timeline__num" aria-hidden="true">04</span>
+        <div class="engagement-timeline__body">
+          <span class="engagement-timeline__title" data-i18n="partials.clientEngagement.step4Title">Capability profile</span>
+          <p class="engagement-timeline__meta" data-i18n="partials.clientEngagement.step4Meta">Technical documentation for procurement submissions</p>
+        </div>
+      </li>
+    </ol>
   </div>
 </section>

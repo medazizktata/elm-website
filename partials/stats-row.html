@@ -2,9 +2,9 @@
   <div class="container">
     {{#unless hideHead}}
     <header class="stats-row__head">
-      <p class="stats-row__eyebrow">{{#if eyebrow}}{{eyebrow}}{{else}}At a glance{{/if}}</p>
-      <h2 class="stats-row__title">{{#if title}}{{title}}{{else}}Commercial LFAM, quantified{{/if}}</h2>
-      <p class="stats-row__lede">{{#if lede}}{{lede}}{{else}}Response times, capability depth and UAE policy alignment.{{/if}}</p>
+      <p class="stats-row__eyebrow" data-i18n="{{#if i18nEyebrow}}{{i18nEyebrow}}{{else}}stats.defaultEyebrow{{/if}}">{{#if eyebrow}}{{eyebrow}}{{else}}At a glance{{/if}}</p>
+      <h2 class="stats-row__title" data-i18n="{{#if i18nTitle}}{{i18nTitle}}{{else}}stats.defaultTitle{{/if}}">{{#if title}}{{title}}{{else}}Commercial LFAM, quantified{{/if}}</h2>
+      <p class="stats-row__lede" data-i18n="{{#if i18nLede}}{{i18nLede}}{{else}}stats.defaultLede{{/if}}">{{#if lede}}{{lede}}{{else}}Response times, capability depth and UAE policy alignment.{{/if}}</p>
     </header>
     {{/unless}}
 
@@ -14,8 +14,8 @@
           <div class="counter-box__figure">
             <span class="odometer" data-count="72" data-status="yes">0</span><span class="counter-box__unit">h</span>
           </div>
-          <p class="counter-box__label">RFQ response</p>
-          <p class="counter-box__desc">Structured quotation turnaround for qualified commercial enquiries</p>
+          <p class="counter-box__label" data-i18n="stats.rfqLabel">RFQ response</p>
+          <p class="counter-box__desc" data-i18n="stats.rfqDesc">Structured quotation turnaround for qualified commercial enquiries</p>
         </article>
       </li>
       <li class="stats-row__item">
@@ -23,8 +23,8 @@
           <div class="counter-box__figure">
             <span class="odometer" data-count="30" data-status="yes">0</span><span class="counter-box__unit">min</span>
           </div>
-          <p class="counter-box__label">Consultation briefing</p>
-          <p class="counter-box__desc">Initial technical scoping with our LFAM specialists</p>
+          <p class="counter-box__label" data-i18n="stats.consultLabel">Consultation briefing</p>
+          <p class="counter-box__desc" data-i18n="stats.consultDesc">Initial technical scoping with our LFAM specialists</p>
         </article>
       </li>
       <li class="stats-row__item">
@@ -32,8 +32,8 @@
           <div class="counter-box__figure">
             <span class="odometer" data-count="3" data-status="yes">0</span>
           </div>
-          <p class="counter-box__label">Core technologies</p>
-          <p class="counter-box__desc">Robotic concrete, polymer LFAM and architectural manufacturing</p>
+          <p class="counter-box__label" data-i18n="stats.techLabel">Core technologies</p>
+          <p class="counter-box__desc" data-i18n="stats.techDesc">Robotic concrete, polymer LFAM and architectural manufacturing</p>
         </article>
       </li>
       <li class="stats-row__item">
@@ -41,8 +41,8 @@
           <div class="counter-box__figure">
             <span class="odometer" data-count="2030" data-status="yes">0</span>
           </div>
-          <p class="counter-box__label">Dubai 3D strategy</p>
-          <p class="counter-box__desc">Aligned with UAE additive manufacturing mandates</p>
+          <p class="counter-box__label" data-i18n="stats.strategyLabel">Dubai 3D strategy</p>
+          <p class="counter-box__desc" data-i18n="stats.strategyDesc">Aligned with UAE additive manufacturing mandates</p>
         </article>
       </li>
     </ul>
