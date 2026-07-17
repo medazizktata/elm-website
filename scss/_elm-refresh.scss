@@ -494,6 +494,29 @@ p, li, td, th, label, input, textarea, select, button, blockquote, figcaption {
     pointer-events: none;
   }
 
+  /* Extruded 3D monogram — right-side overlay, above the shade, below the copy.
+     Desktop only; pointer-events stay off so the hero CTAs remain clickable
+     (the module raycasts window clicks to detect hits on the mark itself). */
+  &__logo3d {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    display: none;
+    pointer-events: none;
+
+    canvas {
+      display: block;
+      width: 100% !important;
+      height: 100% !important;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    &__logo3d {
+      display: block;
+    }
+  }
+
   &::after {
     content: "";
     position: absolute;

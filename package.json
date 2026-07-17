@@ -19,6 +19,9 @@
     "tunnel:1h": "node scripts/tunnel.mjs --timeout=1h",
     "sass": "sass scss/style.scss css/style.css --no-source-map"
   },
+  "dependencies": {
+    "three": "^0.185.1"
+  },
   "devDependencies": {
     "@fontsource/almarai": "^5.2.8",
     "@tamagui/font-nohemi": "^2.3.2",

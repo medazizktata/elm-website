@@ -4204,6 +4204,28 @@ p, li, td, th, label, input, textarea, select, button, blockquote, figcaption {
   background: linear-gradient(95deg, rgba(18, 18, 18, 0.94) 0%, rgba(18, 18, 18, 0.82) 38%, rgba(18, 18, 18, 0.45) 58%, rgba(18, 18, 18, 0.2) 100%);
   pointer-events: none;
 }
+.hero {
+  /* Extruded 3D monogram — right-side overlay, above the shade, below the copy.
+     Desktop only; pointer-events stay off so the hero CTAs remain clickable
+     (the module raycasts window clicks to detect hits on the mark itself). */
+}
+.hero__logo3d {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  display: none;
+  pointer-events: none;
+}
+.hero__logo3d canvas {
+  display: block;
+  width: 100% !important;
+  height: 100% !important;
+}
+@media (min-width: 1024px) {
+  .hero__logo3d {
+    display: block;
+  }
+}
 .hero::after {
   content: "";
   position: absolute;
