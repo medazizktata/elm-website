@@ -423,6 +423,7 @@ p, li, td, th, label, input, textarea, select, button, blockquote, figcaption {
 /* HERO */
 .hero {
   position: relative;
+  width: 100%;
   min-height: clamp(760px, 108svh, 1000px);
   display: flex;
   align-items: stretch;
@@ -443,47 +444,24 @@ p, li, td, th, label, input, textarea, select, button, blockquote, figcaption {
 
   &__media {
     position: absolute;
-    inset: 0;
-  }
-
-  &__slideshow {
-    .hero__slide {
-      position: absolute;
-      inset: 0;
-      opacity: 0;
-      transition: opacity 1.4s ease;
-
-      &.is-active {
-        opacity: 1;
-      }
-
-      img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        object-position: center;
-        display: block;
-        transform: scale(1.04);
-        transition: transform 8s linear;
-      }
-
-      &.is-active img {
-        transform: scale(1);
-      }
-    }
-  }
-
-  &__media:not(.hero__slideshow) img {
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
     width: 100%;
     height: 100%;
-    object-fit: cover;
-    object-position: 65% center;
-    display: block;
+    z-index: 0;
+    background-color: $color-dark;
+    background-image: url("../images/hero-abstract-elm.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
   }
 
   &__shade {
     position: absolute;
     inset: 0;
+    z-index: 1;
     background: linear-gradient(
       95deg,
       rgba($color-dark, 0.94) 0%,
@@ -499,15 +477,23 @@ p, li, td, th, label, input, textarea, select, button, blockquote, figcaption {
      (the module raycasts window clicks to detect hits on the mark itself). */
   &__logo3d {
     position: absolute;
-    inset: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
     z-index: 1;
     display: none;
     pointer-events: none;
+    overflow: hidden;
+    background: transparent;
 
     canvas {
       display: block;
       width: 100% !important;
       height: 100% !important;
+      background: transparent;
     }
   }
 
@@ -623,7 +609,8 @@ body:has(.hero) .navbar {
     .theme-toggle,
     .search,
     .hamburger,
-    .navbar-button {
+    .navbar-button,
+    .locale-switch {
       flex-shrink: 0;
     }
 
@@ -2234,10 +2221,10 @@ body:has(.hero) .navbar {
 
 /* ENGAGEMENT + TESTIMONIALS */
 .engagement-section {
-  overflow: visible;
+  overflow-x: clip;
 
   .container {
-    overflow: visible;
+    overflow-x: clip;
   }
 
   &__cta {
@@ -2271,7 +2258,7 @@ body:has(.hero) .navbar {
     max-width: min(100%, 1080px);
     margin-left: auto;
     margin-right: auto;
-    overflow: visible;
+    overflow: hidden;
 
     @media (max-width: 767px) {
       margin-top: 16px;
@@ -2314,21 +2301,11 @@ body:has(.hero) .navbar {
       }
 
       &--prev {
-        left: clamp(-52px, -5vw, -16px);
+        left: 12px;
       }
 
       &--next {
-        right: clamp(-52px, -5vw, -16px);
-      }
-
-      @media (max-width: 991px) {
-        &--prev {
-          left: 8px;
-        }
-
-        &--next {
-          right: 8px;
-        }
+        right: 12px;
       }
     }
   }
@@ -2548,21 +2525,37 @@ body:has(.hero) .navbar {
 }
 
 /* FOOTER */
+.footer-bar {
+  padding: clamp(40px, 4vw, 56px) 0;
+
+  .logo {
+    margin-bottom: 12px;
+
+    img {
+      height: 34px;
+    }
+  }
+
+  h2 {
+    font-size: clamp(28px, 3.2vw, 42px);
+  }
+}
+
 .footer {
-  padding-top: clamp(56px, 6vw, 80px) !important;
-  padding-bottom: clamp(12px, 2vw, 20px);
+  padding-top: clamp(32px, 3.5vw, 48px) !important;
+  padding-bottom: 0;
 
   .row > [class*='col-']:not(.col-12) {
-    margin-bottom: clamp(12px, 2vw, 20px);
+    margin-bottom: clamp(8px, 1.2vw, 14px);
   }
 
   .widget-title {
-    margin-bottom: clamp(16px, 2vw, 22px);
+    margin-bottom: clamp(10px, 1.2vw, 14px);
   }
 
   p {
-    margin-bottom: clamp(14px, 2vw, 20px);
-    line-height: 1.6;
+    margin-bottom: clamp(8px, 1vw, 12px);
+    line-height: 1.5;
   }
 
   address p {
@@ -2573,7 +2566,7 @@ body:has(.hero) .navbar {
     display: inline-flex;
     align-items: center;
     gap: 8px;
-    margin-top: clamp(12px, 1.5vw, 18px);
+    margin-top: clamp(6px, 1vw, 10px);
     color: var(--elm-footer-link);
     font-weight: 600;
     font-size: 12px;
@@ -2595,15 +2588,15 @@ body:has(.hero) .navbar {
   }
 
   &__cta {
-    margin-top: clamp(10px, 1.5vw, 14px);
+    margin-top: 8px;
     align-self: flex-start;
   }
 
   form {
     display: flex;
     flex-direction: column;
-    gap: 12px;
-    margin-top: clamp(10px, 1.5vw, 14px);
+    gap: 8px;
+    margin-top: 8px;
 
     input[type='email'] {
       width: 100%;
@@ -2631,9 +2624,14 @@ body:has(.hero) .navbar {
   }
 
   .footer-bottom {
-    margin-top: clamp(44px, 5vw, 60px);
-    padding: clamp(24px, 3vw, 32px) 0 clamp(28px, 3.5vw, 40px);
-    gap: 16px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: clamp(18px, 2vw, 28px);
+    padding: 14px 0 16px;
+    gap: 8px 16px;
   }
 
   &__social {

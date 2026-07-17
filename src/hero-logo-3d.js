@@ -1,32 +1,76 @@
 /**
  * ELM monogram (images/logo.svg) extruded into 3D — ported from the Propagenda
- * hero logo (raw three.js). The mark turns on 3 axes following the mouse; click it
- * to cycle through the ELM brand palette (magenta → blue → purple) with a full
- * spin, a smooth colour lerp, and a glow pulse.
+ * hero logo (raw three.js). The mark carries the ELM brand gradient (magenta →
+ * purple → blue, left→right) baked across its surface, exactly like the topbar
+ * logo. It turns on 3 axes following the mouse; click it for a full spin + glow.
  *
  * Mounts into `.hero__logo3d` on the home page only. Desktop-only (the container
  * is display:none below the lg breakpoint, so this bails out when it has no size).
  * The container is pointer-events:none so the hero CTAs stay clickable — clicks are
- * caught on `window` and raycast against the logo, so only hits on the mark cycle it.
+ * caught on `window` and raycast against the logo, so only hits on the mark spin it.
  */
 import * as THREE from 'three';
 import { SVGLoader } from 'three/examples/jsm/loaders/SVGLoader.js';
 import { RoomEnvironment } from 'three/examples/jsm/environments/RoomEnvironment.js';
 
-// ELM brand palette (scss: $color-main / $color-secondary / $color-accent).
-const COLOR_MAGENTA = new THREE.Color(0xbd1f71);
-const COLOR_BLUE = new THREE.Color(0x0a76b5);
-const COLOR_PURPLE = new THREE.Color(0x592c7b);
-const COLOR_CYCLE = [COLOR_MAGENTA, COLOR_BLUE, COLOR_PURPLE];
-// Per-colour surface — all glossy jewel-tone metals with env reflections for form.
-const MAT_PARAMS = [
-  { metalness: 0.5, roughness: 0.28, env: 0.65 }, // magenta
-  { metalness: 0.55, roughness: 0.24, env: 0.75 }, // blue
-  { metalness: 0.6, roughness: 0.22, env: 0.75 }, // purple
+// ELM brand gradient — official hex codes from the branding guidelines (Color
+// Palette, branding PDF p.22) and matching the logo.svg gradient stops/offsets.
+const GRADIENT_STOPS = [
+  { off: 0.0, color: new THREE.Color(0xbd1f71) }, // magenta  #BD1F71
+  { off: 0.47, color: new THREE.Color(0x592c7b) }, // purple   #592C7B
+  { off: 0.98, color: new THREE.Color(0x0a76b5) }, // blue     #0A76B5
+  { off: 1.0, color: new THREE.Color(0x0a76b5) },
 ];
-const GLOW_COLOR = new THREE.Color(0xffa8d4); // soft pink flash during the transition
+const GLOW_COLOR = new THREE.Color(0xffa8d4); // soft pink flash on click
 
 const LOGO_URL = `${import.meta.env.BASE_URL}images/logo.svg`;
+
+// Sample the 3-stop brand gradient at t∈[0,1]. Colours are stored in the working
+// linear space; the returned r/g/b go straight into a vertex-colour buffer.
+function sampleGradient(t, out) {
+  const x = Math.min(1, Math.max(0, t));
+  for (let i = 0; i < GRADIENT_STOPS.length - 1; i++) {
+    const a = GRADIENT_STOPS[i];
+    const b = GRADIENT_STOPS[i + 1];
+    if (x <= b.off) {
+      const span = b.off - a.off;
+      return out.copy(a.color).lerp(b.color, span <= 0 ? 0 : (x - a.off) / span);
+    }
+  }
+  return out.copy(GRADIENT_STOPS[GRADIENT_STOPS.length - 1].color);
+}
+
+// Bake a left→right gradient across the whole mark as vertex colours, using each
+// vertex's X within the mark's overall X extent (t = 0 at the left edge → 1 right).
+function applyGradientColors(root) {
+  const meshes = [];
+  root.traverse((o) => {
+    if (o.isMesh) meshes.push(o);
+  });
+  let minX = Infinity;
+  let maxX = -Infinity;
+  meshes.forEach((m) => {
+    const pos = m.geometry.getAttribute('position');
+    for (let i = 0; i < pos.count; i++) {
+      const x = pos.getX(i) + m.position.x;
+      if (x < minX) minX = x;
+      if (x > maxX) maxX = x;
+    }
+  });
+  const span = maxX - minX || 1;
+  const tmp = new THREE.Color();
+  meshes.forEach((m) => {
+    const pos = m.geometry.getAttribute('position');
+    const colors = new Float32Array(pos.count * 3);
+    for (let i = 0; i < pos.count; i++) {
+      sampleGradient((pos.getX(i) + m.position.x - minX) / span, tmp);
+      colors[i * 3] = tmp.r;
+      colors[i * 3 + 1] = tmp.g;
+      colors[i * 3 + 2] = tmp.b;
+    }
+    m.geometry.setAttribute('color', new THREE.BufferAttribute(colors, 3));
+  });
+}
 
 function initHeroLogo3D(el) {
   const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -38,9 +82,15 @@ function initHeroLogo3D(el) {
   const camera = new THREE.PerspectiveCamera(34, el.clientWidth / el.clientHeight, 0.1, 100);
   camera.position.set(0, 0, 9.5);
 
-  const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
+  const renderer = new THREE.WebGLRenderer({
+    alpha: true,
+    antialias: true,
+    premultipliedAlpha: true,
+  });
+  renderer.setClearColor(0x000000, 0);
   renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
   renderer.setSize(el.clientWidth, el.clientHeight);
+  renderer.domElement.style.background = 'transparent';
   el.appendChild(renderer.domElement);
 
   // Studio environment so metallic surfaces show form via reflections.
@@ -67,8 +117,8 @@ function initHeroLogo3D(el) {
   const group = new THREE.Group();
   scene.add(group);
   const positionGroup = () => {
-    // Bias right, clear of the left-aligned hero copy.
-    group.position.x = el.clientWidth / el.clientHeight > 1 ? 2.85 : 0;
+    // Bias right into the open hero field (fills the right third, clears copy).
+    group.position.x = el.clientWidth / el.clientHeight > 1 ? 2.4 : 0;
   };
   positionGroup();
 
@@ -77,11 +127,13 @@ function initHeroLogo3D(el) {
 
   const loader = new SVGLoader();
   loader.load(LOGO_URL, (data) => {
+    // White base so the per-vertex brand gradient shows true; glossy metal for form.
     const mat = new THREE.MeshStandardMaterial({
-      color: COLOR_MAGENTA.clone(),
-      metalness: MAT_PARAMS[0].metalness,
-      roughness: MAT_PARAMS[0].roughness,
-      envMapIntensity: MAT_PARAMS[0].env,
+      color: 0xffffff,
+      vertexColors: true,
+      metalness: 0.5,
+      roughness: 0.28,
+      envMapIntensity: 0.65,
       side: THREE.DoubleSide,
     });
     logoMaterial = mat;
@@ -107,7 +159,8 @@ function initHeroLogo3D(el) {
     const center = box.getCenter(new THREE.Vector3());
     const size = box.getSize(new THREE.Vector3());
     logo.children.forEach((m) => m.position.sub(center));
-    const fit = 3.05 / Math.max(size.x, size.y);
+    applyGradientColors(logo); // bake magenta→purple→blue across the mark
+    const fit = 3.55 / Math.max(size.x, size.y);
     logo.scale.set(fit, -fit, fit); // flip Y: SVG space is Y-down, three is Y-up
     group.add(logo);
   });
@@ -121,17 +174,13 @@ function initHeroLogo3D(el) {
   };
   window.addEventListener('mousemove', onMove);
 
-  // --- Click-to-cycle colour (magenta → blue → purple) with a spin + glow ---
-  let colorIndex = 0;
-  let fromIndex = 0;
+  // --- Click for a full spin + glow pulse (gradient stays — it's the brand mark) ---
   let spinTarget = 0;
   let spin = 0;
-  let transStart = -1;
-  const fromColor = COLOR_MAGENTA.clone();
-  const toColor = COLOR_MAGENTA.clone();
+  let glowStart = -1;
   const raycaster = new THREE.Raycaster();
   // Listen on window (the container is pointer-events:none). Raycast so only a hit
-  // on the mark cycles it; clicks elsewhere fall through to the hero buttons.
+  // on the mark spins it; clicks elsewhere fall through to the hero buttons.
   const onClick = (e) => {
     if (!logoMaterial) return;
     const rect = renderer.domElement.getBoundingClientRect();
@@ -141,11 +190,7 @@ function initHeroLogo3D(el) {
     );
     raycaster.setFromCamera(ndc, camera);
     if (raycaster.intersectObject(group, true).length === 0) return;
-    fromIndex = colorIndex;
-    colorIndex = (colorIndex + 1) % COLOR_CYCLE.length;
-    fromColor.copy(logoMaterial.color);
-    toColor.copy(COLOR_CYCLE[colorIndex]);
-    transStart = (performance.now() - start) / 1000;
+    glowStart = (performance.now() - start) / 1000;
     spinTarget += Math.PI * 2; // one full turn per click
   };
   window.addEventListener('click', onClick);
@@ -161,19 +206,12 @@ function initHeroLogo3D(el) {
     group.rotation.x = cur.y * 0.7 + Math.sin(t * 0.3) * 0.06;
     group.rotation.z = cur.x * 0.12;
 
-    if (transStart >= 0 && logoMaterial) {
-      const p = Math.min((t - transStart) / 1.0, 1);
-      const e = p < 0.5 ? 2 * p * p : 1 - Math.pow(-2 * p + 2, 2) / 2; // easeInOutQuad
-      logoMaterial.color.lerpColors(fromColor, toColor, e);
-      const fp = MAT_PARAMS[fromIndex];
-      const tp = MAT_PARAMS[colorIndex];
-      logoMaterial.metalness = fp.metalness + (tp.metalness - fp.metalness) * e;
-      logoMaterial.roughness = fp.roughness + (tp.roughness - fp.roughness) * e;
-      logoMaterial.envMapIntensity = fp.env + (tp.env - fp.env) * e;
+    if (glowStart >= 0 && logoMaterial) {
+      const p = Math.min((t - glowStart) / 1.0, 1);
       const glow = Math.sin(p * Math.PI); // 0 → 1 → 0
-      logoMaterial.emissive.copy(GLOW_COLOR).multiplyScalar(glow * 0.4);
+      logoMaterial.emissive.copy(GLOW_COLOR).multiplyScalar(glow * 0.35);
       if (p >= 1) {
-        transStart = -1;
+        glowStart = -1;
         logoMaterial.emissive.setScalar(0);
       }
     }

@@ -14,13 +14,14 @@ html[dir="rtl"] {
   font-size: 0.8125rem;
   font-weight: 600;
   letter-spacing: 0.04em;
+  flex-shrink: 0;
 }
 
 .locale-switch__btn {
   background: none;
   border: none;
   padding: 0.25rem 0.35rem;
-  color: var(--elm-text-muted);
+  color: rgba(#fff, 0.72);
   cursor: pointer;
   font: inherit;
   line-height: 1;
@@ -28,7 +29,7 @@ html[dir="rtl"] {
 
   &:hover,
   &.is-active {
-    color: var(--elm-text);
+    color: #fff;
   }
 
   &.is-active {
@@ -38,9 +39,24 @@ html[dir="rtl"] {
 }
 
 .locale-switch__sep {
-  color: var(--elm-text-muted);
-  opacity: 0.5;
+  color: rgba(#fff, 0.45);
+  opacity: 1;
   user-select: none;
+}
+
+.navbar.sticky {
+  .locale-switch__btn {
+    color: rgba($color-dark, 0.72);
+
+    &:hover,
+    &.is-active {
+      color: $color-dark;
+    }
+  }
+
+  .locale-switch__sep {
+    color: rgba($color-dark, 0.4);
+  }
 }
 
 [dir="rtl"] {

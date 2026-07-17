@@ -212,7 +212,8 @@ $font-ar: 'Almarai', $font-en;
 
 
 *{box-sizing: border-box;}
-body{margin: 0; padding: 0; font-family: $font-en; font-weight: 400; font-size: 17px; letter-spacing: var(--elm-tracking-body, 0.03em); color: var(--elm-text); background-color: var(--elm-bg-page); @include font-smoothing; overflow-x: hidden;}
+html{overflow-x: clip;}
+body{margin: 0; padding: 0; font-family: $font-en; font-weight: 400; font-size: 17px; letter-spacing: var(--elm-tracking-body, 0.03em); color: var(--elm-text); background-color: var(--elm-bg-page); @include font-smoothing; overflow-x: clip;}
 ::selection{background: $color-main; color: $color-white;}
 
 h1, .h1{font-family: $font-en; font-weight: 700;}
@@ -964,7 +965,7 @@ $section-whitespace: 120px;
 			&:focus{border-color: var(--elm-text); outline: none;}}
 		input[type="submit"]{width: 100%; @include elm-btn; @include rose-bg; border: none; cursor: pointer;
 			&:hover{background: $color-secondary;}}}
-	.footer-bottom{width: 100%; display: flex; flex-direction: column; align-items: flex-start; gap: 8px; margin-top: 36px; border-top: 1px solid var(--elm-footer-border); padding: 20px 0 24px;
+	.footer-bottom{width: 100%; display: flex; flex-direction: row; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px 16px; margin-top: 36px; border-top: 1px solid var(--elm-footer-border); padding: 20px 0 24px;
 		span{color: var(--elm-footer-text-muted); font-size: 12px;}
 		.footer__credit{margin: 0; color: var(--elm-footer-text-muted); opacity: 0.85; font-size: 11px; letter-spacing: 0.02em;}
 		ul{margin: 0; padding: 0;
@@ -1081,7 +1082,7 @@ $section-whitespace: 120px;
 			img{height: 32px;}}
 		.button{width: 100%; justify-content: center;}}
 	.footer{padding-top: 36px;
-		.footer-bottom{flex-direction: column; align-items: flex-start; margin-top: 28px; padding: 16px 0 20px;}}
+		.footer-bottom{flex-direction: row; flex-wrap: wrap; align-items: center; justify-content: space-between; margin-top: 28px; padding: 16px 0 20px;}}
 	.footer .scroll-top{right: auto; left: 15px;}
 	.footer .footer-bottom ul li{ margin-left: 0; margin-right: 12px;}
 }

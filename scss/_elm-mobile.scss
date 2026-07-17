@@ -620,14 +620,14 @@
 
   // Minimal footer
   .footer-bar {
-    padding: 24px 0;
+    padding: 18px 0;
 
     .logo {
       display: none;
     }
 
     &__row {
-      row-gap: 14px;
+      row-gap: 10px;
     }
 
     .col-lg-8,
@@ -652,8 +652,8 @@
   }
 
   .footer {
-    padding-top: 20px !important;
-    padding-bottom: max(20px, env(safe-area-inset-bottom));
+    padding-top: 16px !important;
+    padding-bottom: max(12px, env(safe-area-inset-bottom));
 
     .scroll-top {
       display: none !important;
@@ -663,7 +663,7 @@
     .row > .col-lg-4:nth-child(3) {
       flex: 0 0 100%;
       max-width: 100%;
-      margin-top: 20px;
+      margin-top: 14px;
     }
 
     .row > .col-lg-4:first-child {
@@ -719,18 +719,20 @@
     }
 
     .footer-bottom {
-      flex-direction: column;
-      align-items: flex-start;
-      margin-top: 20px;
-      padding: 16px 0 0;
-      gap: 14px;
+      flex-direction: row;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      margin-top: 12px;
+      padding: 10px 0 0;
+      gap: 6px 12px;
       border-top: 1px solid var(--elm-footer-border);
 
       > span {
         font-size: 11px;
         line-height: 1.45;
         opacity: 0.5;
-        order: 2;
+        order: 0;
       }
     }
 

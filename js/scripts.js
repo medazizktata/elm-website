@@ -239,21 +239,6 @@
 
  var SWIPER_SPEED = 220;
 
- // HERO BACKGROUND SLIDESHOW (no controls)
- (function initHeroSlideshow() {
- var $slides = $(".hero__slideshow .hero__slide");
- if ($slides.length < 2) return;
-
- var index = 0;
- var delay = 7000;
-
- setInterval(function () {
- $slides.eq(index).removeClass("is-active");
- index = (index + 1) % $slides.length;
- $slides.eq(index).addClass("is-active");
- }, delay);
- })();
-
  // OUR HISTORY
  var swiper = new Swiper('.our-history', {
  speed: SWIPER_SPEED,

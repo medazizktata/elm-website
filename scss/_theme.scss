@@ -238,6 +238,16 @@
           background: rgba(#ecebe4, 0.1);
         }
       }
+      .locale-switch__btn {
+        color: rgba(#ecebe4, 0.72);
+        &:hover,
+        &.is-active {
+          color: #ecebe4;
+        }
+      }
+      .locale-switch__sep {
+        color: rgba(#ecebe4, 0.4);
+      }
       .hamburger {
         color: #ecebe4;
         background: rgba(#ecebe4, 0.06);
