@@ -141,9 +141,9 @@ $on-rose: $color-white;
   @include transition;
   i{font-size: 14px; line-height: 1; @include transition;}
   &:hover{text-decoration: none;
-    i{transform: translateX(3px);}}}
+    i{transform: translateX(var(--elm-nudge));}}}
 $font-en: 'Nohemi', sans-serif;
-$font-ar: 'Almarai', $font-en;
+$font-ar: 'Readex Pro', $font-en;
 
 
 /* ELM brand fonts */
@@ -172,8 +172,8 @@ $font-ar: 'Almarai', $font-en;
 }
 
 @font-face {
-  font-family: 'Almarai';
-  src: url('../fonts/almarai/almarai-latin-400-normal.woff2') format('woff2');
+  font-family: 'Readex Pro';
+  src: url('../fonts/readex-pro/readex-pro-latin-400-normal.woff2') format('woff2');
   font-weight: 400;
   font-style: normal;
   font-display: swap;
@@ -181,17 +181,35 @@ $font-ar: 'Almarai', $font-en;
 }
 
 @font-face {
-  font-family: 'Almarai';
-  src: url('../fonts/almarai/almarai-arabic-400-normal.woff2') format('woff2');
+  font-family: 'Readex Pro';
+  src: url('../fonts/readex-pro/readex-pro-arabic-400-normal.woff2') format('woff2');
   font-weight: 400;
   font-style: normal;
   font-display: swap;
-  unicode-range: U+0600-06FF, U+0750-077F, U+08A0-08FF, U+FB50-FDFF, U+FE70-FEFF;
+  unicode-range: U+0600-06FF, U+0750-077F, U+0870-088E, U+0890-0891, U+0898-08E1, U+08E3-08FF, U+200C-200E, U+2010-2011, U+204F, U+2E41, U+FB50-FDFF, U+FE70-FE74, U+FE76-FEFF;
 }
 
 @font-face {
-  font-family: 'Almarai';
-  src: url('../fonts/almarai/almarai-latin-700-normal.woff2') format('woff2');
+  font-family: 'Readex Pro';
+  src: url('../fonts/readex-pro/readex-pro-latin-600-normal.woff2') format('woff2');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+  font-family: 'Readex Pro';
+  src: url('../fonts/readex-pro/readex-pro-arabic-600-normal.woff2') format('woff2');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+  unicode-range: U+0600-06FF, U+0750-077F, U+0870-088E, U+0890-0891, U+0898-08E1, U+08E3-08FF, U+200C-200E, U+2010-2011, U+204F, U+2E41, U+FB50-FDFF, U+FE70-FE74, U+FE76-FEFF;
+}
+
+@font-face {
+  font-family: 'Readex Pro';
+  src: url('../fonts/readex-pro/readex-pro-latin-700-normal.woff2') format('woff2');
   font-weight: 700;
   font-style: normal;
   font-display: swap;
@@ -199,12 +217,12 @@ $font-ar: 'Almarai', $font-en;
 }
 
 @font-face {
-  font-family: 'Almarai';
-  src: url('../fonts/almarai/almarai-arabic-700-normal.woff2') format('woff2');
+  font-family: 'Readex Pro';
+  src: url('../fonts/readex-pro/readex-pro-arabic-700-normal.woff2') format('woff2');
   font-weight: 700;
   font-style: normal;
   font-display: swap;
-  unicode-range: U+0600-06FF, U+0750-077F, U+08A0-08FF, U+FB50-FDFF, U+FE70-FEFF;
+  unicode-range: U+0600-06FF, U+0750-077F, U+0870-088E, U+0890-0891, U+0898-08E1, U+08E3-08FF, U+200C-200E, U+2010-2011, U+204F, U+2E41, U+FB50-FDFF, U+FE70-FE74, U+FE76-FEFF;
 }
 
 
@@ -213,17 +231,20 @@ $font-ar: 'Almarai', $font-en;
 
 *{box-sizing: border-box;}
 html{overflow-x: clip;}
-body{margin: 0; padding: 0; font-family: $font-en; font-weight: 400; font-size: 17px; letter-spacing: var(--elm-tracking-body, 0.03em); color: var(--elm-text); background-color: var(--elm-bg-page); @include font-smoothing; overflow-x: clip;}
+body{margin: 0; padding: 0; font-family: $font-en; font-weight: 400; font-size: 17px; letter-spacing: var(--elm-tracking-body, 0.03em); color: var(--elm-text); background-color: var(--elm-bg-page); text-align: var(--elm-align, start); @include font-smoothing; overflow-x: clip;}
 ::selection{background: $color-main; color: $color-white;}
 
 h1, .h1{font-family: $font-en; font-weight: 700;}
 h2, h3, h4, h5, h6{font-family: $font-en; font-weight: 600;}
 
-[lang="ar"], .lang-ar{
-  font-family: $font-ar;
-  font-weight: 400;
-  h1, .h1{font-weight: 700;}
-  h2, h3, h4, h5, h6{font-weight: 400;}
+[lang="ar"], .lang-ar, html[dir="rtl"] {
+  &, body {
+    font-family: $font-ar;
+    font-weight: 400;
+    text-align: var(--elm-align);
+  }
+  h1, .h1{font-family: $font-ar; font-weight: 700;}
+  h2, h3, h4, h5, h6{font-family: $font-ar; font-weight: 600;}
 }
 
 
@@ -524,11 +545,11 @@ $section-whitespace: 120px;
 	.container{position: relative; z-index: 2; color: #fff; padding-top: clamp(108px, 14vh, 128px);
 		h1{ width: 100%; display: block; font-size: clamp(38px, 5.5vw, 68px); font-weight: 800; line-height: 1.02; letter-spacing: var(--elm-tracking-display, 0.02em); margin: 0; color: #fff; max-width: none;}
 		.page-header__lede{ width: 100%; display: block; margin: 14px 0 0; max-width: 42rem; line-height: 1.55; font-size: clamp(15px, 1.5vw, 17px); font-weight: 400; color: rgba(255, 255, 255, 0.82);}
-		.page-breadcrumb{display: block; margin: 12px 0 0; padding: 0; background: none; border-radius: 0; user-select: text; -webkit-user-select: text;
+		.page-breadcrumb{display: block; margin: 12px 0 0; padding: 0; background: none; border-radius: 0; user-select: text; -webkit-user-select: text; text-align: var(--elm-align);
 			ul{display: block; margin: 0; padding: 0; list-style: none;
 				li{display: inline; margin: 0; padding: 0; font-size: 13px; font-weight: 600; letter-spacing: 0.04em; text-transform: uppercase;
 					&:last-child:after{display: none;}
-					&:after{content: ">"; display: inline-block; margin: 0 10px; color: rgba(255, 255, 255, 0.45); font-weight: 700; user-select: none;}
+					&:after{content: var(--elm-breadcrumb-sep); display: inline-block; margin: 0 10px; color: rgba(255, 255, 255, 0.45); font-weight: 700; user-select: none; unicode-bidi: isolate; direction: ltr;}
 					&[aria-current="page"]{color: #fff; cursor: default;}
 					a{color: rgba(255, 255, 255, 0.72); text-decoration: none; border-radius: 2px; cursor: pointer; @include transition;
 						&:hover{color: $color-main; text-decoration: underline; text-underline-offset: 3px;}
@@ -590,7 +611,7 @@ $section-whitespace: 120px;
 	&__foot{margin-top: 28px; text-align: right;}
 	&__link{display: inline-flex; align-items: center; gap: 8px; font-size: 12px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: $color-main; text-decoration: none;
 		&:hover{color: var(--elm-link-hover); text-decoration: none;
-			i{transform: translateX(3px);}}
+			i{transform: translateX(var(--elm-nudge));}}
 		i{font-size: 14px; @include transition;}}}
 
 .compare-wins{margin: 0; padding: 0; list-style: none; display: grid; gap: 14px;}
@@ -635,7 +656,7 @@ $section-whitespace: 120px;
 .capability-card{
 	width: 100%; display: flex; flex-direction: column; height: 100%; padding: 28px 24px 24px; border: 1px solid var(--elm-border); border-top: 3px solid $color-main; background: var(--elm-bg-surface); color: var(--elm-text); text-decoration: none; @include transition;
 	&:hover{transform: translateY(-4px); box-shadow: 0 20px 40px var(--elm-shadow); border-color: rgba($color-main, 0.45); color: var(--elm-text); text-decoration: none;
-		.capability-card__link{color: $color-main; i{transform: translateX(3px);}}}
+		.capability-card__link{color: $color-main; i{transform: translateX(var(--elm-nudge));}}}
 	&__icon{display: block; margin-bottom: 18px;
 		i{font-size: 34px; line-height: 1; color: $color-main;}}
 	h3{width: 100%; margin: 0 0 12px; font-size: 20px; line-height: 1.25;}
@@ -662,7 +683,7 @@ $section-whitespace: 120px;
 	display: flex; flex-direction: column; height: 100%; border: 1px solid var(--elm-border); background: var(--elm-bg-surface); color: var(--elm-text); text-decoration: none; overflow: hidden; @include transition;
 	&:hover{transform: translateY(-4px); box-shadow: 0 20px 40px var(--elm-shadow); border-color: rgba($color-main, 0.4); color: var(--elm-text); text-decoration: none;
 		figure img{transform: scale(1.04);}
-		.tech-preview-card__link{color: $color-main; i{transform: translateX(3px);}}}
+		.tech-preview-card__link{color: $color-main; i{transform: translateX(var(--elm-nudge));}}}
 	figure{margin: 0; aspect-ratio: 4 / 3; overflow: hidden; background: $color-dark;
 		img{width: 100%; height: 100%; object-fit: cover; display: block; @include transition;}}
 	&__body{display: flex; flex-direction: column; flex: 1; padding: 22px 20px 20px; border-top: 3px solid $color-main;}
@@ -778,11 +799,11 @@ $section-whitespace: 120px;
 	&__cards{display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px;}}
 
 .sector-card{display: flex; align-items: center; gap: 12px; padding: 16px 18px; background: var(--elm-bg-surface); border: 1px solid var(--elm-border); position: relative; overflow: hidden; text-decoration: none; color: var(--elm-text); @include transition;
-	&::before{content: ""; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: var(--elm-sector-accent-line); transform: scaleX(0); transform-origin: left; @include transition;}
+	&::before{content: ""; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: var(--elm-sector-accent-line); transform: scaleX(0); transform-origin: var(--elm-origin-x); @include transition;}
 	&:hover{transform: translateY(-3px); box-shadow: 0 14px 32px var(--elm-shadow); border-color: rgba($color-main, 0.28); text-decoration: none; color: var(--elm-text);
 		&::before{transform: scaleX(1);}
 		.sector-card__icon{background: rgba($color-main, 0.12); color: $color-main;}
-		.sector-card__go{background: $color-main; border-color: $color-main; color: var(--elm-on-accent); transform: translateX(3px);}}
+		.sector-card__go{background: $color-main; border-color: $color-main; color: var(--elm-on-accent); transform: translateX(var(--elm-nudge));}}
 	&__icon{flex-shrink: 0; width: 44px; height: 44px; display: flex; align-items: center; justify-content: center; background: var(--elm-sector-icon-bg); color: var(--elm-sector-icon-color); font-size: 18px; @include transition;}
 	&__text{flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 3px;
 		strong{font-size: 15px; font-weight: 700; display: block; line-height: 1.25;}

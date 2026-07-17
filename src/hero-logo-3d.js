@@ -117,8 +117,13 @@ function initHeroLogo3D(el) {
   const group = new THREE.Group();
   scene.add(group);
   const positionGroup = () => {
-    // Bias right into the open hero field (fills the right third, clears copy).
-    group.position.x = el.clientWidth / el.clientHeight > 1 ? 2.4 : 0;
+    if (el.clientWidth / el.clientHeight <= 1) {
+      group.position.x = 0;
+      return;
+    }
+    // LTR: bias right of the left-aligned copy. RTL: bias left of the right-aligned copy.
+    const rtl = document.documentElement.getAttribute('dir') === 'rtl';
+    group.position.x = rtl ? -2.4 : 2.4;
   };
   positionGroup();
 
@@ -240,6 +245,13 @@ function initHeroLogo3D(el) {
     positionGroup();
   };
   window.addEventListener('resize', onResize);
+
+  // Re-bias when locale flips LTR ↔ RTL without a full reload.
+  const dirObserver = new MutationObserver(positionGroup);
+  dirObserver.observe(document.documentElement, {
+    attributes: true,
+    attributeFilter: ['dir', 'lang'],
+  });
 }
 
 const mount = document.querySelector('.hero__logo3d');

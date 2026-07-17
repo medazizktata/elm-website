@@ -2,7 +2,8 @@
   "use strict";
 
   var LOCALE_KEY = "elm-locale";
-  var CACHE_PREFIX = "elm-locale-bundle-";
+  var CACHE_PREFIX = "elm-locale-bundle-v3-";
+  var BUNDLE_VERSION = "3";
   var SUPPORTED = ["en", "ar"];
   var DEFAULT_LOCALE = "en";
   var bundles = {};
@@ -66,9 +67,24 @@
     return typeof cur === "string" ? cur : undefined;
   }
 
-  function loadBundle(locale) {
-    if (bundles[locale]) return Promise.resolve(bundles[locale]);
-    return fetch("locales/" + locale + ".json", { cache: "no-cache" })
+  function purgeLegacyCaches() {
+    try {
+      var keys = [];
+      for (var i = 0; i < localStorage.length; i++) {
+        var k = localStorage.key(i);
+        if (k && k.indexOf("elm-locale-bundle") === 0 && k.indexOf(CACHE_PREFIX) !== 0) {
+          keys.push(k);
+        }
+      }
+      keys.forEach(function (k) {
+        localStorage.removeItem(k);
+      });
+    } catch (e) {}
+  }
+
+  function loadBundle(locale, revalidate) {
+    if (!revalidate && bundles[locale]) return Promise.resolve(bundles[locale]);
+    return fetch("locales/" + locale + ".json?v=" + BUNDLE_VERSION, { cache: "no-cache" })
       .then(function (res) {
         if (!res.ok) throw new Error("Locale bundle unavailable: " + locale);
         return res.json();
@@ -88,6 +104,8 @@
     locale = locale || currentLocale;
     var value = getNested(bundles[locale], key);
     if (value) return value;
+    // Prefer empty so callers can use data-i18n-default; only fall back to EN
+    // when the active locale bundle is missing the key entirely.
     if (locale !== "en") {
       value = getNested(bundles.en, key);
       if (value) return value;
@@ -197,21 +215,11 @@
     });
   }
 
-  function hydrateFromCache(locale) {
-    var cached = readBundleCache(locale);
-    if (!cached) return false;
-    bundles[locale] = cached;
-    if (locale !== "en") {
-      var enCached = readBundleCache("en");
-      if (enCached) bundles.en = enCached;
-    }
-    applyLocale();
-    markReady();
-    return true;
-  }
-
   function loadBundles(locale) {
-    return Promise.all([loadBundle("en"), locale !== "en" ? loadBundle(locale) : Promise.resolve()]);
+    return Promise.all([
+      loadBundle("en", true),
+      locale !== "en" ? loadBundle(locale, true) : Promise.resolve(),
+    ]);
   }
 
   function setLocale(locale) {
@@ -225,7 +233,6 @@
     if (locale !== "en") {
       document.documentElement.classList.remove("elm-i18n-ready");
       document.documentElement.classList.add("elm-i18n-pending");
-      hydrateFromCache(locale);
     } else {
       markReady();
     }
@@ -237,15 +244,10 @@
   }
 
   function init() {
+    purgeLegacyCaches();
     currentLocale = readStoredLocale();
     applyHtmlAttrs(currentLocale);
     captureDefaults();
-
-    if (currentLocale !== "en") {
-      hydrateFromCache(currentLocale);
-    } else {
-      markReady();
-    }
 
     return loadBundles(currentLocale).then(function () {
       applyLocale();

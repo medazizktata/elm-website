@@ -51,7 +51,7 @@ From `Docs/branding elm.pdf`:
 | Cream (background) | `#ECEBE4` |
 | White | `#FFFFFF` |
 
-**Typography:** Nohemi Bold / SemiBold (EN) · Almarai Bold / Regular (AR) — `pnpm run fonts:setup` after install.
+**Typography:** Nohemi Bold / SemiBold (EN) · Readex Pro Bold / SemiBold / Regular (AR) — `pnpm run fonts:setup` after install.
 
 Edit brand tokens in `scss/style.scss` (`$color-dark`, `$color-main`, etc.), then recompile.
 

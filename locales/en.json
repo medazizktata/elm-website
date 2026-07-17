@@ -905,14 +905,19 @@
       "eyebrow": "Engagement",
       "title": "Four-step client process",
       "lede": "Clear expectations from first briefing through capability profile access. Same model across all commercial LFAM programmes.",
+      "cta": "Start with step 01",
       "step1Title": "Consultation",
       "step1Meta": "30-minute technical briefing and feasibility review",
+      "step1Chip": "30 min",
       "step2Title": "Facility tour",
       "step2Meta": "Guided walkthrough of platforms and production capability",
+      "step2Chip": "On-site",
       "step3Title": "RFQ response",
       "step3Meta": "Substantive quote within 72 hours",
+      "step3Chip": "72 hrs",
       "step4Title": "Capability profile",
-      "step4Meta": "Technical documentation for procurement submissions"
+      "step4Meta": "Technical documentation for procurement submissions",
+      "step4Chip": "Docs"
     },
     "printCapabilities": {
       "eyebrow": "What we print",

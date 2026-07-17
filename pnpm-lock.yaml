@@ -8,13 +8,13 @@ importers:
 
   .:
     dependencies:
+      '@fontsource/readex-pro':
+        specifier: ^5.2.11
+        version: 5.2.11
       three:
         specifier: ^0.185.1
         version: 0.185.1
     devDependencies:
-      '@fontsource/almarai':
-        specifier: ^5.2.8
-        version: 5.2.8
       '@tamagui/font-nohemi':
         specifier: ^2.3.2
         version: 2.3.2(react-dom@19.2.7(react@19.2.7))(react@19.2.7)
@@ -189,8 +189,8 @@ packages:
     cpu: [x64]
     os: [win32]
 
-  '@fontsource/almarai@5.2.8':
-    resolution: {integrity: sha512-Y214OHk6rYYCDIwjpVM6Y4iaPIH7JSSflF7xmE5ejKZkhVdMGwhgqIdo4kPMgoaVfo+XL5qeOzGQF9DTnZS9mg==}
+  '@fontsource/readex-pro@5.2.11':
+    resolution: {integrity: sha512-MOPXkNp5mJsU05j9/vpiarDtFzW+WDgbTHwia2CS/SokEmDQ94WUFSP0ryhv/f90RsgU4LktnFKiDz7E3EUfoQ==}
 
   '@isaacs/cliui@9.0.0':
     resolution: {integrity: sha512-AokJm4tuBHillT+FpMtxQ60n8ObyXBatq7jD2/JA9dxbDDokKQm8KMht5ibGzLVU9IJDIKK4TPKgMHEYMn3lMg==}
@@ -799,7 +799,7 @@ snapshots:
   '@esbuild/win32-x64@0.27.7':
     optional: true
 
-  '@fontsource/almarai@5.2.8': {}
+  '@fontsource/readex-pro@5.2.11': {}
 
   '@isaacs/cliui@9.0.0': {}
 

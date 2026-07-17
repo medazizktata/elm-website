@@ -198,42 +198,47 @@
  });
 
 
- // MASONRY
- $(window).load(function () {
- $('.projects').isotope({
+ // MASONRY / ISOTOPE
+ function elmIsRtl() {
+ return document.documentElement.getAttribute('dir') === 'rtl';
+ }
+
+ function elmIsotopeOpts(extra) {
+ return $.extend({
  itemSelector: '.projects li',
- percentPosition: true
- });
- });
-
-
- // ISOTOPE FILTER
- var $container = $('.projects');
- $container.isotope({
- filter: '*',
+ percentPosition: true,
+ originLeft: !elmIsRtl(),
  animationOptions: {
  duration: 750,
  easing: 'linear',
  queue: false
  }
+ }, extra || {});
+ }
+
+ var $container = $('.projects');
+
+ $(window).on('load', function () {
+ if ($container.length) {
+ $container.isotope(elmIsotopeOpts());
+ }
  });
 
+ if ($container.length) {
+ $container.isotope(elmIsotopeOpts({ filter: '*' }));
+ }
 
- // ISOTOPE FILTER
- $('.isotope-filter li').on('click', function (e) {
+ $('.isotope-filter li').on('click', function () {
  $('.isotope-filter li.current').removeClass('current');
  $(this).addClass('current');
-
- var selector = $(this).attr('data-filter');
- $container.isotope({
- filter: selector,
- animationOptions: {
- duration: 750,
- easing: 'linear',
- queue: false
- }
- });
+ $container.isotope(elmIsotopeOpts({ filter: $(this).attr('data-filter') }));
  return false;
+ });
+
+ document.addEventListener('elm:localechange', function () {
+ if (!$container.length || !$container.data('isotope')) return;
+ $container.isotope('option', { originLeft: !elmIsRtl() });
+ $container.isotope('layout');
  });
 
 

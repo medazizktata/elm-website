@@ -15,6 +15,17 @@
   --elm-focus: 0 0 0 2px var(--elm-bg-page), 0 0 0 4px #{$color-main};
   --elm-hover-ease: cubic-bezier(0.4, 0, 0.2, 1);
   --elm-hover-duration: 0.32s;
+
+  // Direction tokens — flipped in _elm-rtl.scss on [dir="rtl"]
+  --elm-dir: 1;
+  --elm-align: start;
+  --elm-align-end: end;
+  --elm-arrow-scale: 1;
+  --elm-nudge: 3px;
+  --elm-nudge-lg: 4px;
+  --elm-origin-x: left;
+  --elm-breadcrumb-sep: ">";
+  --elm-hero-shade-angle: 95deg;
 }
 
 @mixin elm-smooth-hover {
@@ -130,7 +141,7 @@ p, li, td, th, label, input, textarea, select, button, blockquote, figcaption {
 
   &.text-left {
     margin-bottom: 0;
-    text-align: left;
+    text-align: start;
   }
 }
 
@@ -202,7 +213,7 @@ p, li, td, th, label, input, textarea, select, button, blockquote, figcaption {
 
 .sectors-grid {
   display: grid;
-  grid-template-columns: minmax(240px, 36%) minmax(0, 1fr);
+  grid-template-columns: minmax(320px, 46%) minmax(0, 1fr);
   gap: clamp(32px, 5vw, 64px);
   align-items: stretch;
 
@@ -215,7 +226,7 @@ p, li, td, th, label, input, textarea, select, button, blockquote, figcaption {
 
   &__intro {
     flex: 0 0 auto;
-    max-width: 28rem;
+    max-width: 34rem;
     margin-bottom: 0;
 
     .section-title {
@@ -234,7 +245,7 @@ p, li, td, th, label, input, textarea, select, button, blockquote, figcaption {
   &__lede {
     @include elm-section-lede;
     margin: clamp(14px, 2vw, 18px) 0 0;
-    max-width: 32ch;
+    max-width: 38ch;
   }
 
   &__media {
@@ -324,7 +335,7 @@ p, li, td, th, label, input, textarea, select, button, blockquote, figcaption {
 
       .sectors-index__arrow {
         opacity: 0.7;
-        transform: translateX(3px);
+        transform: translateX(var(--elm-nudge));
       }
     }
 
@@ -1066,7 +1077,7 @@ body:has(.hero) .navbar {
       text-decoration: none;
 
       i {
-        transform: translateX(3px);
+        transform: translateX(var(--elm-nudge));
       }
     }
 
@@ -1591,7 +1602,7 @@ body:has(.hero) .navbar {
     margin: 0;
     max-width: 38ch;
     justify-self: end;
-    text-align: right;
+    text-align: end;
     color: var(--elm-text-muted);
     font-size: clamp(15px, 1.6vw, 17px);
     line-height: 1.65;
@@ -1605,6 +1616,7 @@ body:has(.hero) .navbar {
     display: flex;
     flex-wrap: wrap;
     align-items: center;
+    justify-content: flex-start;
     gap: 10px clamp(16px, 2.5vw, 28px);
 
     li {
@@ -1766,7 +1778,7 @@ body:has(.hero) .navbar {
 
     &__lede {
       justify-self: start;
-      text-align: left;
+      text-align: start;
       max-width: none;
     }
 
@@ -2823,6 +2835,27 @@ body:has(.hero) .navbar {
   }
 }
 
+/* CONTACT PAGE — even section rhythm (one gap, not double padding) */
+[data-page="contact"] {
+  .content-section + .content-section {
+    padding-top: clamp(40px, 5vw, 64px) !important;
+  }
+
+  .content-section:has(+ .content-section) {
+    padding-bottom: clamp(40px, 5vw, 64px) !important;
+  }
+
+  .content-section.no-spacing {
+    padding-top: clamp(48px, 6vw, 80px) !important;
+    padding-bottom: clamp(48px, 6vw, 80px) !important;
+  }
+
+  .engagement-process {
+    padding-top: clamp(40px, 5vw, 64px) !important;
+    padding-bottom: clamp(40px, 5vw, 64px) !important;
+  }
+}
+
 /* CONTACT CARDS equal dimensions in a row */
 .contact-cards {
   align-items: stretch;
@@ -3006,7 +3039,7 @@ body:has(.hero) .navbar {
       }
 
       .metric-stage__cta i {
-        transform: translateX(4px);
+        transform: translateX(var(--elm-nudge-lg));
       }
     }
   }
@@ -3807,7 +3840,7 @@ body:has(.hero) .navbar {
       color: #fff;
 
       i {
-        transform: translateX(3px);
+        transform: translateX(var(--elm-nudge));
       }
     }
   }
@@ -4687,8 +4720,16 @@ body:has(.hero) .navbar {
 }
 
 .engagement-process {
+  &__layout {
+    display: grid;
+    grid-template-columns: minmax(0, 0.4fr) minmax(0, 0.6fr);
+    gap: clamp(32px, 4vw, 72px);
+    align-items: stretch;
+  }
+
   &__head {
-    max-width: 56ch;
+    max-width: 42ch;
+    align-self: start;
 
     .section-title {
       margin-bottom: 0;
@@ -4706,93 +4747,379 @@ body:has(.hero) .navbar {
   &__lede {
     @include elm-section-lede;
     margin: clamp(14px, 2vw, 18px) 0 0;
-    max-width: 42ch;
+    max-width: 38ch;
   }
 }
 
 .engagement-timeline {
   list-style: none;
-  margin: clamp(32px, 4vw, 48px) 0 0;
-  padding: clamp(28px, 3.5vw, 40px) 0 0;
-  border-top: 1px solid var(--elm-border);
+  margin: 0;
+  padding: 0;
+  border: 1px solid var(--elm-border);
   display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: clamp(24px, 3.5vw, 40px);
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-rows: repeat(2, minmax(0, 1fr));
+  // Collapse max-content so the copy column sizes the row; then fill it
+  height: 0;
+  min-height: 100%;
+  overflow: hidden;
+  width: 100%;
+  max-width: none;
+  justify-self: stretch;
+  align-self: stretch;
 
   &__step {
+    position: relative;
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
+    justify-content: center;
+    align-items: stretch;
+    gap: clamp(8px, 1.2vw, 12px);
     margin: 0;
-    padding: 0 clamp(8px, 1.5vw, 16px) 0 0;
+    padding: clamp(22px, 2.8vw, 32px);
+    min-height: 0;
+    overflow: hidden;
+    text-align: start;
+    @include elm-smooth-hover;
 
-    &:not(:last-child) {
-      border-right: 1px solid var(--elm-border);
-      padding-right: clamp(20px, 3vw, 32px);
+    &:nth-child(1),
+    &:nth-child(2) {
+      border-bottom: 1px solid var(--elm-border);
+    }
+
+    &:nth-child(odd) {
+      border-inline-end: 1px solid var(--elm-border);
+    }
+
+    &:hover {
+      background: rgba($color-main, 0.04);
+
+      .engagement-timeline__num {
+        color: $color-main;
+      }
+
+      .engagement-timeline__title {
+        color: $color-main;
+      }
     }
   }
 
   &__num {
-    display: block;
-    margin-bottom: clamp(14px, 2vw, 20px);
-    font-size: 12px;
-    font-weight: 600;
+    position: absolute;
+    inset-block-start: clamp(14px, 1.8vw, 22px);
+    inset-inline-end: clamp(18px, 2.2vw, 28px);
+    z-index: 0;
+    font-size: clamp(36px, 4vw, 52px);
+    font-weight: 800;
+    line-height: 0.9;
+    letter-spacing: -0.03em;
     font-variant-numeric: tabular-nums;
-    letter-spacing: 0.06em;
     color: var(--elm-text-muted);
-    line-height: 1;
+    opacity: 0.35;
+    pointer-events: none;
+    @include elm-smooth-hover;
   }
 
   &__body {
+    position: relative;
+    z-index: 1;
     display: flex;
     flex-direction: column;
-    gap: clamp(10px, 1.5vw, 14px);
+    gap: 4px;
     min-width: 0;
+    text-align: start;
+  }
+
+  &__chip {
+    display: block;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: $color-main;
   }
 
   &__title {
     display: block;
-    font-size: clamp(17px, 1.65vw, 20px);
+    font-size: clamp(15px, 1.4vw, 18px);
     font-weight: 700;
     line-height: 1.25;
     letter-spacing: var(--elm-tracking-heading);
     color: var(--elm-text);
+    @include elm-smooth-hover;
   }
 
   &__meta {
     margin: 0;
-    font-size: clamp(14px, 1.35vw, 16px);
-    line-height: 1.65;
+    font-size: clamp(12px, 1.1vw, 14px);
+    line-height: 1.45;
     color: var(--elm-text-muted);
-    max-width: 28ch;
+    max-width: none;
   }
 }
 
 @media (max-width: 991px) {
+  .engagement-process {
+    &__layout {
+      grid-template-columns: 1fr;
+      gap: clamp(28px, 4vw, 40px);
+      align-items: start;
+    }
+
+    &__head {
+      max-width: none;
+    }
+
+    &__lede {
+      max-width: 42rem;
+    }
+  }
+
   .engagement-timeline {
-    grid-template-columns: 1fr;
-    gap: 0;
-    padding-top: clamp(24px, 4vw, 32px);
+    height: auto;
+    min-height: 0;
+    aspect-ratio: 1;
+    max-width: min(100%, 520px);
+    justify-self: start;
 
     &__step {
-      padding: 0 0 clamp(28px, 4vw, 36px);
-      border-right: none !important;
+      min-height: 0;
+    }
+  }
+}
+
+@media (max-width: 575px) {
+  .engagement-timeline {
+    grid-template-columns: 1fr;
+    aspect-ratio: auto;
+
+    &__step {
+      min-height: 0;
+      padding: clamp(20px, 5vw, 24px);
+
+      &:nth-child(odd) {
+        border-inline-end: none;
+      }
 
       &:not(:last-child) {
-        margin-bottom: clamp(24px, 4vw, 32px);
-        padding-bottom: clamp(24px, 4vw, 32px);
         border-bottom: 1px solid var(--elm-border);
       }
 
       &:last-child {
-        padding-bottom: 0;
-        margin-bottom: 0;
+        border-bottom: none;
       }
     }
 
-    &__meta {
-      max-width: none;
+    &__num {
+      font-size: 36px;
     }
+  }
+}
+
+/* ============================================================
+   HOVER POLISH — micro-interactions across components
+   ============================================================ */
+
+@keyframes elm-icon-pop {
+  0% { transform: scale(1) rotate(0deg); }
+  40% { transform: scale(1.18) rotate(-6deg); }
+  70% { transform: scale(0.96) rotate(3deg); }
+  100% { transform: scale(1.08) rotate(0deg); }
+}
+
+@keyframes elm-arrow-bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-4px); }
+}
+
+/* Sheen sweep on primary buttons */
+.custom-button,
+.navbar-button,
+.footer-bar .button,
+.footer form input[type='submit'] {
+  position: relative;
+  overflow: hidden;
+
+  &::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: -60%;
+    width: 40%;
+    background: linear-gradient(
+      100deg,
+      transparent 0%,
+      rgba(#fff, 0.28) 50%,
+      transparent 100%
+    );
+    transform: skewX(-18deg);
+    pointer-events: none;
+    transition: none;
+  }
+
+  &:hover::after {
+    left: 130%;
+    transition: left 0.55s ease;
+  }
+}
+
+/* Capability cards: icon pop + accent line sweep */
+.capability-card {
+  position: relative;
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: -3px;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, $color-main, $color-accent, $color-secondary);
+    transform: scaleX(0);
+    transform-origin: var(--elm-origin-x);
+    transition: transform 0.45s var(--elm-hover-ease);
+  }
+
+  &:hover {
+    &::before {
+      transform: scaleX(1);
+    }
+
+    .capability-card__icon i {
+      animation: elm-icon-pop 0.5s var(--elm-hover-ease) forwards;
+    }
+  }
+}
+
+/* Stat counters: number tints brand + top accent grows */
+.counter-box {
+  &::before {
+    content: "";
+    position: absolute;
+    top: -2px;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, $color-main, $color-secondary);
+    transform: scaleX(0);
+    transform-origin: var(--elm-origin-x);
+    transition: transform 0.45s var(--elm-hover-ease);
+  }
+
+  .odometer {
+    transition: color var(--elm-hover-duration) var(--elm-hover-ease);
+  }
+
+  &:hover {
+    transform: translateY(-3px);
+
+    &::before {
+      transform: scaleX(1);
+    }
+
+    .odometer {
+      color: $color-main;
+    }
+  }
+}
+
+/* Sector cards: icon wiggle */
+.sector-card:hover .sector-card__icon {
+  animation: elm-icon-pop 0.5s var(--elm-hover-ease) forwards;
+}
+
+/* Tech preview cards: richer image treatment */
+.tech-preview-card {
+  figure img {
+    transition:
+      transform 0.6s var(--elm-hover-ease),
+      filter 0.6s var(--elm-hover-ease);
+  }
+
+  &:hover figure img {
+    transform: scale(1.06);
+    filter: saturate(1.15) brightness(1.04);
+  }
+}
+
+/* Topbar: logo + theme toggle micro-motions */
+.navbar {
+  .logo a img {
+    transition:
+      transform 0.35s var(--elm-hover-ease),
+      filter 0.35s var(--elm-hover-ease),
+      opacity 0.35s var(--elm-hover-ease);
+  }
+
+  .logo a:hover img {
+    transform: scale(1.06) rotate(-2deg);
+  }
+
+  .theme-toggle i {
+    transition: transform 0.4s var(--elm-hover-ease);
+  }
+
+  .theme-toggle:hover i {
+    transform: rotate(40deg) scale(1.1);
+  }
+
+  .search:hover i {
+    animation: elm-icon-pop 0.45s var(--elm-hover-ease) forwards;
+  }
+}
+
+/* Scroll-top: bouncing arrow */
+.footer .scroll-top:hover i {
+  animation: elm-arrow-bounce 0.7s ease infinite;
+}
+
+/* Footer links: underline slide-in */
+.footer__map-link span,
+.footer__social-link span {
+  background-image: linear-gradient(currentColor, currentColor);
+  background-size: 0% 1px;
+  background-position: 0 100%;
+  background-repeat: no-repeat;
+  transition: background-size 0.35s var(--elm-hover-ease);
+}
+
+.footer__map-link:hover span,
+.footer__social-link:hover span {
+  background-size: 100% 1px;
+}
+
+/* Testimonials: quote lifts with brand glow */
+.engagement-section .testimonials-slider .swiper-slide-active .testimonial {
+  transition:
+    box-shadow var(--elm-hover-duration) var(--elm-hover-ease),
+    transform var(--elm-hover-duration) var(--elm-hover-ease);
+
+  &:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 22px 56px rgba($color-main, 0.14);
+  }
+}
+
+/* Contact boxes: icon pop */
+.contact-box:hover figure i {
+  animation: elm-icon-pop 0.5s var(--elm-hover-ease) forwards;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .custom-button::after,
+  .navbar-button::after,
+  .footer-bar .button::after,
+  .footer form input[type='submit']::after {
+    display: none;
+  }
+
+  .capability-card:hover .capability-card__icon i,
+  .sector-card:hover .sector-card__icon,
+  .navbar .search:hover i,
+  .footer .scroll-top:hover i,
+  .contact-box:hover figure i {
+    animation: none;
   }
 }
 

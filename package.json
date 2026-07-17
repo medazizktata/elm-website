@@ -20,10 +20,10 @@
     "sass": "sass scss/style.scss css/style.css --no-source-map"
   },
   "dependencies": {
+    "@fontsource/readex-pro": "^5.2.11",
     "three": "^0.185.1"
   },
   "devDependencies": {
-    "@fontsource/almarai": "^5.2.8",
     "@tamagui/font-nohemi": "^2.3.2",
     "glob": "^11.0.2",
     "sass": "^1.89.0",
