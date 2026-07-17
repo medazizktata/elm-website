@@ -72,11 +72,19 @@ function applyGradientColors(root) {
   });
 }
 
+function signalHero3dReady() {
+  window.__elmHero3dReady = true;
+  window.dispatchEvent(new CustomEvent('elm:hero3dready'));
+}
+
 function initHeroLogo3D(el) {
   const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
   // Bail out if the container is collapsed (mobile/tablet: display:none → 0×0).
-  if (!el.clientWidth || !el.clientHeight) return;
+  if (!el.clientWidth || !el.clientHeight) {
+    signalHero3dReady();
+    return;
+  }
 
   const scene = new THREE.Scene();
   const camera = new THREE.PerspectiveCamera(34, el.clientWidth / el.clientHeight, 0.1, 100);
@@ -168,6 +176,9 @@ function initHeroLogo3D(el) {
     const fit = 3.0 / Math.max(size.x, size.y);
     logo.scale.set(fit, -fit, fit); // flip Y: SVG space is Y-down, three is Y-up
     group.add(logo);
+    signalHero3dReady();
+  }, () => {
+    signalHero3dReady();
   });
 
   // --- Mouse-driven rotation ---
@@ -255,4 +266,8 @@ function initHeroLogo3D(el) {
 }
 
 const mount = document.querySelector('.hero__logo3d');
-if (mount) initHeroLogo3D(mount);
+if (mount) {
+  initHeroLogo3D(mount);
+} else {
+  signalHero3dReady();
+}

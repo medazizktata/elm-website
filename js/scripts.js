@@ -21,6 +21,70 @@
  }, 600);
  }
 
+ function setPageLoader(active) {
+ $('.page-loader').toggleClass('is-active', active);
+ }
+
+ var pageLoaderShownAt = Date.now();
+ var PAGE_LOADER_NAV_DELAY_MS = 520;
+ var PAGE_LOADER_MIN_VISIBLE_MS = 450;
+ var PAGE_LOADER_HOME_MIN_MS = 1200;
+ var PAGE_LOADER_HOME_TIMEOUT_MS = 4500;
+ var pageLoaderHidden = false;
+ var PAGE_TRANSITION_KEY = 'elm-page-transition';
+
+ function markPageTransition() {
+ try {
+ sessionStorage.setItem(PAGE_TRANSITION_KEY, '1');
+ } catch (e) {}
+ }
+
+ function clearPageTransition() {
+ try {
+ sessionStorage.removeItem(PAGE_TRANSITION_KEY);
+ } catch (e) {}
+ document.documentElement.classList.remove('is-page-loading');
+ }
+
+ function isContinuingPageTransition() {
+ return document.documentElement.classList.contains('is-page-loading');
+ }
+
+ function hidePageLoader(minMs) {
+ if (pageLoaderHidden) return;
+ pageLoaderHidden = true;
+ var elapsed = Date.now() - pageLoaderShownAt;
+ var hideDelay = Math.max(0, (minMs || PAGE_LOADER_MIN_VISIBLE_MS) - elapsed);
+ setTimeout(function () {
+ clearPageTransition();
+ setPageLoader(false);
+ }, hideDelay);
+ }
+
+ function waitForHomeHero3dThenHide() {
+ if (window.__elmHero3dReady) {
+ hidePageLoader(PAGE_LOADER_HOME_MIN_MS);
+ return;
+ }
+ var settled = false;
+ function finish() {
+ if (settled) return;
+ settled = true;
+ window.removeEventListener('elm:hero3dready', onReady);
+ hidePageLoader(PAGE_LOADER_HOME_MIN_MS);
+ }
+ function onReady() {
+ finish();
+ }
+ window.addEventListener('elm:hero3dready', onReady);
+ setTimeout(finish, PAGE_LOADER_HOME_TIMEOUT_MS);
+ }
+
+ function shouldWaitForHero3d() {
+ var mount = document.querySelector('.hero__logo3d');
+ return !!(mount && mount.clientWidth && mount.clientHeight);
+ }
+
  function resolveNavPage(current) {
  if (current.indexOf('project-') === 0 || current === 'project-single.html') {
  return 'projects.html';
@@ -75,6 +139,15 @@
  $(document).ready(function () {
  "use strict";
 
+ // Cold load: fade loader in. Mid-nav: already covered via html.is-page-loading
+ setPageLoader(true);
+ if (isContinuingPageTransition()) {
+ // Restore fade-out transition after first paint
+ requestAnimationFrame(function () {
+ requestAnimationFrame(clearPageTransition);
+ });
+ }
+ pageLoaderShownAt = Date.now();
  setActiveNav();
 
 
@@ -185,15 +258,38 @@
  if ($('.side-widget').hasClass('active')) {
  setSideWidgetOpen(false);
  }
+ markPageTransition();
+ setPageLoader(true);
+ pageLoaderShownAt = Date.now();
+ setTimeout(function () {
  window.location = url;
+ }, PAGE_LOADER_NAV_DELAY_MS);
  });
 
  });
  // END DOCUMENT READY
 
  $(window).on('load', function () {
+ if (shouldWaitForHero3d()) {
+ waitForHomeHero3dThenHide();
+ } else {
+ hidePageLoader(PAGE_LOADER_MIN_VISIBLE_MS);
+ }
  if (window.location.hash) {
  setTimeout(scrollToHash, 350);
+ }
+ });
+
+ $(window).on('pageshow', function (event) {
+ if (event.originalEvent && event.originalEvent.persisted) {
+ pageLoaderHidden = false;
+ setPageLoader(true);
+ pageLoaderShownAt = Date.now();
+ if (shouldWaitForHero3d()) {
+ waitForHomeHero3dThenHide();
+ } else {
+ hidePageLoader(PAGE_LOADER_MIN_VISIBLE_MS);
+ }
  }
  });
 

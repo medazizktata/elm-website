@@ -255,12 +255,31 @@
     });
   }
 
+  var localeSwitching = false;
+
   document.addEventListener("click", function (e) {
     var btn = e.target.closest("[data-locale]");
     if (!btn) return;
     e.preventDefault();
     var locale = btn.getAttribute("data-locale");
-    if (locale && locale !== currentLocale) setLocale(locale);
+    if (!locale || locale === currentLocale || localeSwitching) return;
+
+    localeSwitching = true;
+    var loader = document.querySelector(".page-loader");
+    var fadeInMs = 550;
+    var holdMs = 480;
+
+    if (loader) loader.classList.add("is-active");
+
+    // Cover the page first, then swap locale under the loader
+    setTimeout(function () {
+      setLocale(locale).then(function () {
+        setTimeout(function () {
+          if (loader) loader.classList.remove("is-active");
+          localeSwitching = false;
+        }, holdMs);
+      });
+    }, fadeInMs);
   });
 
   window.ElmI18n = { getLocale: getLocale, setLocale: setLocale, t: t, init: init };

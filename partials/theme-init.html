@@ -8,5 +8,12 @@
   root.setAttribute('data-theme', theme);
   var meta = document.querySelector('meta[name="theme-color"]');
   if (meta) meta.setAttribute('content', theme === 'dark' ? '#121212' : '#BD1F71');
+
+  // Continue page-transition loader across navigations (skip second fade-in)
+  try {
+    if (sessionStorage.getItem('elm-page-transition') === '1') {
+      root.classList.add('is-page-loading');
+    }
+  } catch (e) {}
 })();
 </script>
