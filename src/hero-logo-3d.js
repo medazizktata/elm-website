@@ -160,7 +160,7 @@ function initHeroLogo3D(el) {
     const size = box.getSize(new THREE.Vector3());
     logo.children.forEach((m) => m.position.sub(center));
     applyGradientColors(logo); // bake magenta→purple→blue across the mark
-    const fit = 3.55 / Math.max(size.x, size.y);
+    const fit = 3.0 / Math.max(size.x, size.y);
     logo.scale.set(fit, -fit, fit); // flip Y: SVG space is Y-down, three is Y-up
     group.add(logo);
   });
