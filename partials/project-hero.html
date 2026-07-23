@@ -1,0 +1,30 @@
+<header class="page-header page-header--project">
+  <div class="page-header__media">
+    <div class="swiper-container project-slider project-slider--hero">
+      <div class="swiper-wrapper">
+        <div class="swiper-slide">
+          <figure class="project-box"><img src="{{slide1}}" alt="{{slide1Alt}}"></figure>
+        </div>
+        <div class="swiper-slide">
+          <figure class="project-box"><img src="{{slide2}}" alt="{{slide2Alt}}"></figure>
+        </div>
+        <div class="swiper-slide">
+          <figure class="project-box"><img src="{{slide3}}" alt="{{slide3Alt}}"></figure>
+        </div>
+      </div>
+      {{> project-slider-controls}}
+    </div>
+  </div>
+  <div class="page-header__scrim" aria-hidden="true"></div>
+  <div class="container">
+    <h1 data-i18n="pages.{{pageKey}}.header.title">{{title}}</h1>
+    <nav class="page-breadcrumb" aria-label="Breadcrumb">
+      <ul>
+        <li><a href="index.html" data-i18n="breadcrumb.home">Home</a></li>
+        {{#if parent}}<li><a href="{{parentHref}}" data-i18n="pages.{{pageKey}}.header.parent">{{parent}}</a></li>{{/if}}
+        <li aria-current="page" data-i18n="pages.{{pageKey}}.header.crumb">{{crumb}}</li>
+      </ul>
+    </nav>
+    {{#if subtitle}}<p class="page-header__lede" data-i18n="pages.{{pageKey}}.header.subtitle">{{subtitle}}</p>{{/if}}
+  </div>
+</header>

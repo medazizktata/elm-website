@@ -340,34 +340,95 @@
 
  var SWIPER_SPEED = 220;
 
- // OUR HISTORY
- var swiper = new Swiper('.our-history', {
- speed: SWIPER_SPEED,
- slidesPerView: 5,
- spaceBetween: 0,
- pagination: {
- el: '.our-history .swiper-pagination',
- type: 'progressbar',
- },
- navigation: {
- nextEl: '.our-history .button-next',
- prevEl: '.our-history .button-prev',
- },
- breakpoints: {
- 640: {
- slidesPerView: 2,
- spaceBetween: 0,
- },
- 768: {
- slidesPerView: 3,
- spaceBetween: 30,
- },
- 1024: {
- slidesPerView: 4,
- spaceBetween: 30,
- },
+ // OUR STORY scroll timeline
+ (function initStoryTimeline() {
+ var root = document.querySelector("[data-story-timeline]");
+ if (!root) return;
+
+ var scroller = root.querySelector(".story-timeline__scroller");
+ var frame = root.querySelector(".story-timeline__frame");
+ var cards = Array.prototype.slice.call(root.querySelectorAll(".story-timeline__card"));
+ var years = Array.prototype.slice.call(root.querySelectorAll(".story-timeline__years li"));
+ var prevBtn = root.querySelector(".story-timeline__prev");
+ var nextBtn = root.querySelector(".story-timeline__next");
+ var n = cards.length;
+ var index = 0;
+ var reduced =
+ window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+ root.style.setProperty("--story-n", String(n));
+
+ function setIndex(i, scrollTo) {
+ index = Math.max(0, Math.min(n - 1, i));
+ root.style.setProperty("--story-i", String(index));
+
+ cards.forEach(function (card, ci) {
+ card.classList.toggle("is-active", ci === index);
+ });
+ years.forEach(function (year, yi) {
+ year.classList.toggle("is-active", yi === index);
+ year.classList.toggle("is-passed", yi < index);
+ });
+
+ if (prevBtn) prevBtn.disabled = index <= 0;
+ if (nextBtn) nextBtn.disabled = index >= n - 1;
+
+ if (scrollTo && scroller && !reduced) {
+ var start = scroller.offsetTop;
+ var range = Math.max(1, scroller.offsetHeight - window.innerHeight);
+ var y = start + (index / Math.max(1, n - 1)) * range;
+ window.scrollTo({ top: y, behavior: "smooth" });
+ }
+ }
+
+ function syncFromScroll() {
+ if (reduced || !scroller) return;
+ var start = scroller.offsetTop;
+ var range = Math.max(1, scroller.offsetHeight - window.innerHeight);
+ var scrolled = Math.min(Math.max(window.scrollY - start, 0), range);
+ var progress = scrolled / range;
+ var next = Math.round(progress * (n - 1));
+ if (next !== index) setIndex(next, false);
+ }
+
+ setIndex(0, false);
+
+ if (!reduced) {
+ window.addEventListener("scroll", syncFromScroll, { passive: true });
+ window.addEventListener("resize", syncFromScroll);
+ }
+
+ if (prevBtn) {
+ prevBtn.addEventListener("click", function () {
+ setIndex(index - 1, !reduced);
+ });
+ }
+ if (nextBtn) {
+ nextBtn.addEventListener("click", function () {
+ setIndex(index + 1, !reduced);
+ });
+ }
+
+ years.forEach(function (year, yi) {
+ year.style.cursor = "pointer";
+ year.addEventListener("click", function () {
+ setIndex(yi, !reduced);
+ });
+ });
+
+ if (frame) {
+ frame.setAttribute("tabindex", "0");
+ frame.addEventListener("keydown", function (e) {
+ if (e.key === "ArrowRight" || e.key === "ArrowDown") {
+ e.preventDefault();
+ setIndex(index + 1, !reduced);
+ } else if (e.key === "ArrowLeft" || e.key === "ArrowUp") {
+ e.preventDefault();
+ setIndex(index - 1, !reduced);
  }
  });
+ }
+ })();
 
 
  // TESTIMONIALS SLIDER
@@ -431,7 +492,29 @@
  // PROJECT SLIDER
  $(".project-slider").each(function () {
  var $slider = $(this);
- new Swiper(this, {
+ var isHero = $slider.hasClass("project-slider--hero");
+ new Swiper(this, isHero
+ ? {
+ speed: Math.max(SWIPER_SPEED, 900),
+ loop: true,
+ effect: "fade",
+ fadeEffect: { crossFade: true },
+ autoplay: {
+ delay: 4200,
+ disableOnInteraction: false,
+ },
+ slidesPerView: 1,
+ spaceBetween: 0,
+ navigation: {
+ nextEl: $slider.find(".project-slider__arrow--next")[0],
+ prevEl: $slider.find(".project-slider__arrow--prev")[0],
+ },
+ pagination: {
+ el: $slider.find(".swiper-pagination")[0],
+ clickable: true,
+ },
+ }
+ : {
  speed: SWIPER_SPEED,
  loop: true,
  slidesPerView: "auto",

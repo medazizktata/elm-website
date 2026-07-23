@@ -647,6 +647,7 @@
         "parent": "المشاريع"
       },
       "projectTitle": "مبنى خدمة مطار Old Castle",
+      "overviewEyebrow": "دراسة حالة",
       "projectLede1": "وحدة خدمة وراحة لمطار ميلانو بيرغامو جدران خرسانية مطبوعة طبقة بطبقة داخل منطقة لوجستيات مطار عاملة، دون قوالب تقليدية.",
       "projectLede2": "نُفّذ بواسطة WASP (إيطاليا) لصالح SACBO Airport Authority. أول مبنى مطبوع ثلاثي الأبعاد داخل مطار عامل. إذا نجح هناك، ينجح في أكثر بيئات الإمارات تنظيماً.",
       "specLocation": "الموقع",
@@ -694,6 +695,7 @@
         "parent": "المشاريع"
       },
       "projectTitle": "متجر Recarlo Fine Jewellery",
+      "overviewEyebrow": "دراسة حالة",
       "projectLede1": "ألواح جدارية معمارية كبيرة للمتجر الرئيسي في ميلانو مصممة كسطح سردي يحمل هوية العلامة عبر الشكل والملمس واللون.",
       "projectLede2": "نُفّذ بواسطة Caracol AM (إيطاليا) باستخدام منصة Heron AM 400. تصنيع فاخر عالي الجودة قابل للتطبيق مباشرة على ضيافة الخمس نجوم والتجزئة الفاخرة في الإمارات.",
       "specLocationVal": "ميلانو، إيطاليا",
@@ -1024,9 +1026,15 @@
       "link": "اطلع على جميع المميزات"
     },
     "technologyPartners": {
+      "eyebrow": "أصول المنصات",
       "title": "شركاء التقنية",
-      "partner1": "Caracol AM, نظام Heron AM",
-      "partner2": "WASP, نظام Crane"
+      "lede": "أنظمة تصنيع إضافي واسعة النطاق مثبتة أوروبياً خلف كل برنامج في الإمارات.",
+      "partner1Name": "Caracol AM",
+      "partner1System": "Heron AM",
+      "partner1Meta": "بوليمر LFAM · إيطاليا · ألواح Recarlo Milan",
+      "partner2Name": "WASP",
+      "partner2System": "Crane",
+      "partner2Meta": "خرسانة روبوتية · إيطاليا · وحدة مطار بيرغامو"
     },
     "projectsGrid": {
       "p1Title": "Recarlo Milan",
@@ -1105,7 +1113,8 @@
       "card3Item1": "التصميم الرقمي والجدوى",
       "card3Item2": "مراقبة جودة التصنيع والتشطيب",
       "card3Item3": "دعم التركيب في الموقع",
-      "card3Item4": "مستندات تسليم البرنامج"
+      "card3Item4": "مستندات تسليم البرنامج",
+      "explore": "استكشف"
     }
   }
 }

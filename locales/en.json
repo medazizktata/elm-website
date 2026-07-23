@@ -647,6 +647,7 @@
         "parent": "Projects"
       },
       "projectTitle": "Old Castle Airport Service Building",
+      "overviewEyebrow": "Case study",
       "projectLede1": "A service and rest module for Milan Bergamo Airport concrete walls printed layer by layer inside a live airport logistics zone, with no conventional formwork.",
       "projectLede2": "Delivered by WASP (Italy) for SACBO Airport Authority. The first 3D-printed building constructed inside an operating airport. If it works there, it works in the UAE's most regulated environments.",
       "specLocation": "LOCATION",
@@ -694,6 +695,7 @@
         "parent": "Projects"
       },
       "projectTitle": "Recarlo Fine Jewellery Boutique",
+      "overviewEyebrow": "Case study",
       "projectLede1": "Large architectural wall panels for the flagship Milan store designed as a story-telling surface carrying the brand's identity through form, texture and colour.",
       "projectLede2": "Delivered by Caracol AM (Italy) using the Heron AM 400 platform. High-finish luxury fabrication at a quality level directly applicable to UAE five-star hospitality and premium retail.",
       "specLocationVal": "Milan, Italy",
@@ -931,9 +933,15 @@
       "item3Copy": "Urban furniture, lobby pieces and branded installations."
     },
     "technologyPartners": {
+      "eyebrow": "Platform pedigree",
       "title": "Technology partners",
-      "partner1": "Caracol AM, Heron AM system",
-      "partner2": "WASP, Crane system"
+      "lede": "Industrial LFAM systems with proven European delivery behind every UAE programme.",
+      "partner1Name": "Caracol AM",
+      "partner1System": "Heron AM",
+      "partner1Meta": "Polymer LFAM · Italy · Recarlo Milan flagship panels",
+      "partner2Name": "WASP",
+      "partner2System": "Crane",
+      "partner2Meta": "Robotic concrete · Italy · Bergamo Airport service module"
     },
     "sustainabilityCommitment": {
       "eyebrow": "Our commitment",
@@ -1105,7 +1113,8 @@
       "card3Item1": "Digital design & feasibility",
       "card3Item2": "Fabrication QC & finishing",
       "card3Item3": "Site installation support",
-      "card3Item4": "Programme handover docs"
+      "card3Item4": "Programme handover docs",
+      "explore": "Explore"
     }
   }
 }
