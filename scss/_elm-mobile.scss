@@ -92,6 +92,11 @@
     }
   }
 
+  .page-header--project {
+    min-height: min(70vh, 560px);
+    padding-bottom: 72px;
+  }
+
   .content-section {
     overflow-x: clip;
   }
