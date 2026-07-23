@@ -116,7 +116,7 @@
       highlight(item.heading || item.title, query) +
       "</span>" +
       (excerpt ? '<span class="search-result__excerpt">' + highlight(excerpt, query) + "</span>" : "") +
-      '<i class="lni lni-arrow-right search-result__arrow" aria-hidden="true"></i>' +
+      '<span class="elm-go elm-go--sm search-result__arrow" aria-hidden="true"></span>' +
       "</a>"
     );
   }
@@ -131,7 +131,7 @@
       '<span class="search-result__title">' +
       item.title +
       "</span>" +
-      '<i class="lni lni-arrow-right search-result__arrow" aria-hidden="true"></i>' +
+      '<span class="elm-go elm-go--sm search-result__arrow" aria-hidden="true"></span>' +
       "</a>"
     );
   }

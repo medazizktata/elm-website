@@ -8,27 +8,33 @@
       <p class="sustainability-commitment__lede" data-i18n="partials.sustainabilityCommitment.lede">Recycled materials because they're the right technical choice, not a pitch line.</p>
     </header>
 
-    <ul class="about-intro__facts sustainability-commitment__facts">
-      <li>
-        <span class="about-intro__fact-num" aria-hidden="true">01</span>
-        <div class="about-intro__fact-body">
-          <span class="about-intro__fact-label" data-i18n="partials.sustainabilityCommitment.materialsLabel">Materials</span>
-          <p class="about-intro__fact-value"><span data-i18n="partials.sustainabilityCommitment.materialsValue">rPET-G, recycled PP and PLA bioplastics</span><span class="about-intro__fact-detail" data-i18n="partials.sustainabilityCommitment.materialsDetail">Measurable and reportable at scale</span></p>
+    <ul class="sustainability-commitment__grid">
+      <li class="sustainability-commitment__card">
+        <span class="sustainability-commitment__num" aria-hidden="true">01</span>
+        <div class="elm-title-pill">
+          <h3 class="elm-title-pill__label" data-i18n="partials.sustainabilityCommitment.materialsLabel">Materials</h3>
+          {{> elm-icon name="layers"}}
         </div>
+        <p class="sustainability-commitment__value" data-i18n="partials.sustainabilityCommitment.materialsValue">rPET-G, recycled PP and PLA bioplastics</p>
+        <p class="sustainability-commitment__meta" data-i18n="partials.sustainabilityCommitment.materialsDetail">Measurable and reportable at scale</p>
       </li>
-      <li>
-        <span class="about-intro__fact-num" aria-hidden="true">02</span>
-        <div class="about-intro__fact-body">
-          <span class="about-intro__fact-label" data-i18n="partials.sustainabilityCommitment.processLabel">Process</span>
-          <p class="about-intro__fact-value"><span data-i18n="partials.sustainabilityCommitment.processValue">Deposit only what's needed</span><span class="about-intro__fact-detail" data-i18n="partials.sustainabilityCommitment.processDetail">Up to 60% less waste on large programmes</span></p>
+      <li class="sustainability-commitment__card sustainability-commitment__card--featured">
+        <span class="sustainability-commitment__num" aria-hidden="true">02</span>
+        <div class="elm-title-pill">
+          <h3 class="elm-title-pill__label" data-i18n="partials.sustainabilityCommitment.processLabel">Process</h3>
+          {{> elm-icon name="cog"}}
         </div>
+        <p class="sustainability-commitment__value" data-i18n="partials.sustainabilityCommitment.processValue">Deposit only what's needed</p>
+        <p class="sustainability-commitment__meta" data-i18n="partials.sustainabilityCommitment.processDetail">Up to 60% less waste on large programmes</p>
       </li>
-      <li>
-        <span class="about-intro__fact-num" aria-hidden="true">03</span>
-        <div class="about-intro__fact-body">
-          <span class="about-intro__fact-label" data-i18n="partials.sustainabilityCommitment.lifecycleLabel">End of life</span>
-          <p class="about-intro__fact-value"><span data-i18n="partials.sustainabilityCommitment.lifecycleValue">Designed for disassembly</span><span class="about-intro__fact-detail" data-i18n="partials.sustainabilityCommitment.lifecycleDetail">Components re-enter the material stream</span></p>
+      <li class="sustainability-commitment__card">
+        <span class="sustainability-commitment__num" aria-hidden="true">03</span>
+        <div class="elm-title-pill">
+          <h3 class="elm-title-pill__label" data-i18n="partials.sustainabilityCommitment.lifecycleLabel">End of life</h3>
+          {{> elm-icon name="world"}}
         </div>
+        <p class="sustainability-commitment__value" data-i18n="partials.sustainabilityCommitment.lifecycleValue">Designed for disassembly</p>
+        <p class="sustainability-commitment__meta" data-i18n="partials.sustainabilityCommitment.lifecycleDetail">Components re-enter the material stream</p>
       </li>
     </ul>
   </div>
