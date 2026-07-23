@@ -9,54 +9,81 @@
 
 {{> page-header pageKey="our-story" title="OUR STORY" subtitle="From European LFAM expertise to UAE commercial capability" crumb="Our Story" parent="Who We Are" parentHref="who-we-are.html"}}
 
-<section class="content-section">
+<section class="content-section story-timeline" data-story-timeline>
+ <div class="story-timeline__scroller">
+ <div class="story-timeline__sticky">
  <div class="container">
- <div class="row">
- <div class="col-12">
  <div class="section-title">
  <h6 data-i18n="pages.our-story.timelineLabel">TIMELINE</h6>
  <h2 data-i18n="pages.our-story.timelineTitle">Building LFAM Capability</h2>
  </div>
+
+ <div class="story-timeline__frame">
+ <div class="story-timeline__rail" aria-hidden="true">
+ <div class="story-timeline__rail-track">
+ <div class="story-timeline__rail-fill"></div>
  </div>
+ <ol class="story-timeline__years">
+ <li data-year="2019"><span>2019</span></li>
+ <li data-year="2022"><span>2022</span></li>
+ <li data-year="2023"><span>2023</span></li>
+ <li data-year="2024"><span>2024</span></li>
+ <li data-year="2025"><span>2025</span></li>
+ <li data-year="2026"><span>2026</span></li>
+ </ol>
  </div>
- </div>
- <div class="our-history">
- <div class="swiper-wrapper">
- <div class="swiper-slide">
- <b>2019</b>
- <figure><img src="images/slide06.jpg" alt="Bergamo Airport LFAM service building"></figure>
+
+ <div class="story-timeline__viewport">
+ <div class="story-timeline__track">
+ <article class="story-timeline__card" data-index="0">
+ <figure>
+ <img src="images/slide06.jpg" alt="Bergamo Airport LFAM service building" width="800" height="600" loading="lazy">
+ </figure>
  <p data-i18n="pages.our-story.slide2019">European LFAM track record established landmark retail and infrastructure projects including Recarlo Milan and Bergamo Airport components.</p>
- </div>
- <div class="swiper-slide">
- <b>2022</b>
- <figure><img src="images/slide08.jpg" alt="Dubai skyline and development growth"></figure>
+ </article>
+ <article class="story-timeline__card" data-index="1">
+ <figure>
+ <img src="images/slide08.jpg" alt="Dubai skyline and development growth" width="800" height="600" loading="lazy">
+ </figure>
  <p data-i18n="pages.our-story.slide2022">UAE market analysis identifies accelerating demand for commercial-scale 3D printing aligned with Dubai's construction transformation agenda.</p>
- </div>
- <div class="swiper-slide">
- <b>2023</b>
- <figure><img src="images/step01.jpg" alt="Additive manufacturing technology"></figure>
+ </article>
+ <article class="story-timeline__card" data-index="2">
+ <figure>
+ <img src="images/step01.jpg" alt="Additive manufacturing technology" width="800" height="600" loading="lazy">
+ </figure>
  <p data-i18n="pages.our-story.slide2023">ELM Media Design concept formed bridging European LFAM engineering depth with Dubai-based execution for regional developers and government.</p>
- </div>
- <div class="swiper-slide">
- <b>2024</b>
- <figure><img src="images/tab04.jpg" alt="LFAM programme planning and design workflow"></figure>
+ </article>
+ <article class="story-timeline__card" data-index="3">
+ <figure>
+ <img src="images/tab04.jpg" alt="LFAM programme planning and design workflow" width="800" height="600" loading="lazy">
+ </figure>
  <p data-i18n="pages.our-story.slide2024">Partnership development, capability profiling and facility planning to support UAE commercial programmes at architectural scale.</p>
- </div>
- <div class="swiper-slide">
- <b>2025</b>
- <figure><img src="images/step02.jpg" alt="Robotic manufacturing team"></figure>
+ </article>
+ <article class="story-timeline__card" data-index="4">
+ <figure>
+ <img src="images/step02.jpg" alt="Robotic manufacturing team" width="800" height="600" loading="lazy">
+ </figure>
  <p data-i18n="pages.our-story.slide2025">Technical team assembly, material qualification and pilot project pipeline across hospitality, real estate and government sectors.</p>
- </div>
- <div class="swiper-slide">
- <b>2026</b>
- <figure><img src="images/tab05.jpg" alt="Dubai development and urban growth"></figure>
+ </article>
+ <article class="story-timeline__card" data-index="5">
+ <figure>
+ <img src="images/tab05.jpg" alt="Dubai development and urban growth" width="800" height="600" loading="lazy">
+ </figure>
  <p data-i18n="pages.our-story.slide2026">Commercial LFAM operations in Dubai robotic concrete and polymer 3D printing with 72-hour RFQ response and ICV-aligned delivery.</p>
+ </article>
  </div>
  </div>
- <div class="swiper-pagination"></div>
- <div class="slider-controls">
- <button type="button" class="slider-controls__btn button-prev" data-i18n-aria="shared.prevSlide" aria-label="Previous"><i class="lni lni-arrow-left" aria-hidden="true"></i></button>
- <button type="button" class="slider-controls__btn button-next" data-i18n-aria="shared.nextSlide" aria-label="Next"><i class="lni lni-arrow-right" aria-hidden="true"></i></button>
+
+ <div class="story-timeline__controls">
+ <button type="button" class="slider-controls__btn story-timeline__prev" data-i18n-aria="shared.prevSlide" aria-label="Previous">
+ <span class="elm-go elm-go--sm elm-go--prev" aria-hidden="true"></span>
+ </button>
+ <button type="button" class="slider-controls__btn story-timeline__next" data-i18n-aria="shared.nextSlide" aria-label="Next">
+ <span class="elm-go elm-go--sm" aria-hidden="true"></span>
+ </button>
+ </div>
+ </div>
+ </div>
  </div>
  </div>
 </section>
@@ -72,7 +99,7 @@
  <h2 data-i18n="pages.our-story.policyTitle">Policy mandates meet commercial LFAM</h2>
  <p class="about-intro__lede" data-i18n="pages.our-story.policyLede1">Dubai's <strong>3D Printing Strategy 2030</strong> mandates 25% of new buildings to incorporate additive manufacturing. Combined with Net Zero 2050, Dubai 2040 urban planning and ICV requirements, the market needs partners who deliver at scale not in a lab.</p>
  <p class="about-intro__lede" data-i18n="pages.our-story.policyLede2">ELM exists to be that partner: authoritative, commercially disciplined, and technically credible.</p>
- <a href="why-elm.html" class="custom-button"><span data-i18n="shared.whyElm">Why ELM</span> <i class="lni lni-arrow-right" aria-hidden="true"></i></a>
+ <a href="why-elm.html" class="custom-button"><span data-i18n="shared.whyElm">Why ELM</span> <span class="elm-go elm-go--sm" aria-hidden="true"></span></a>
  </div>
  </div>
  </div>
