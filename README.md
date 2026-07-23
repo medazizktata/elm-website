@@ -1,4 +1,4 @@
-# ELM Media Design — Website
+# ELM Media Design, Website
 
 Marketing website for **ELM Media Design**, a Dubai-based large-format additive manufacturing (LFAM) company. Built on the [Consto](https://themezinho.net) industrial HTML template, customized to ELM brand guidelines and content requirements.
 
@@ -10,7 +10,7 @@ Marketing website for **ELM Media Design**, a Dubai-based large-format additive 
 
 ## About ELM
 
-ELM Media Design provides industrial 3D printing at architectural scale — robotic concrete printing, polymer LFAM, and end-to-end architectural manufacturing for developers, hospitality, government, and the built environment in the UAE.
+ELM Media Design provides industrial 3D printing at architectural scale, robotic concrete printing, polymer LFAM, and end-to-end architectural manufacturing for developers, hospitality, government, and the built environment in the UAE.
 
 ---
 
@@ -51,7 +51,7 @@ From `Docs/branding elm.pdf`:
 | Cream (background) | `#ECEBE4` |
 | White | `#FFFFFF` |
 
-**Typography:** Nohemi Bold / SemiBold (EN) · Readex Pro Bold / SemiBold / Regular (AR) — `pnpm run fonts:setup` after install.
+**Typography:** Nohemi Bold / SemiBold (EN) · Readex Pro Bold / SemiBold / Regular (AR), `pnpm run fonts:setup` after install.
 
 Edit brand tokens in `scss/style.scss` (`$color-dark`, `$color-main`, etc.), then recompile.
 
@@ -112,10 +112,10 @@ Template ships with placeholder images. Replace files in `images/` with ELM phot
 
 Stored in the parent ELM project `Docs/` folder (not in this repo):
 
-- `website_proposal.pdf` — site IA and content spec
-- `branding elm.pdf` — visual identity and tone
-- `corporate profile 2026 ELM.pdf` — company copy
-- `ELM presentation.pdf` — proof points and case studies
+- `website_proposal.pdf`, site IA and content spec
+- `branding elm.pdf`, visual identity and tone
+- `corporate profile 2026 ELM.pdf`, company copy
+- `ELM presentation.pdf`, proof points and case studies
 
 ---
 

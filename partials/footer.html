@@ -1,11 +1,13 @@
 <section class="footer-bar">
   <div class="container">
-    <div class="row footer-bar__row">
-      <div class="col-lg-8">
-        <figure class="logo"><img src="images/logo.svg" alt="ELM Media Design"></figure>
-        <h2 data-i18n-html="footer.barTitle">Build the UAE's most <b>expressive</b> future</h2>
+    <div class="footer-bar__row">
+      <div class="footer-bar__copy">
+        <h2 data-i18n-html="footer.barTitle">BUILD THE UAE'S MOST <b>EXPRESSIVE</b> FUTURE</h2>
       </div>
-      <div class="col-lg-4 text-lg-right">
+      <figure class="footer-bar__logo">
+        <img src="images/logo.svg" alt="ELM Media Design" width="80" height="75">
+      </figure>
+      <div class="footer-bar__action">
         <a href="contact.html#consultation-form" class="button"><span data-i18n="footer.requestConsultation">REQUEST A CONSULTATION</span> <i class="lni lni-arrow-right"></i></a>
       </div>
     </div>
@@ -20,8 +22,14 @@
           <p dir="ltr">Office 203, API Business Suites<br>Al Barsha 1, Dubai, UAE</p>
           <p><a href="tel:+971564663334" dir="ltr">+971 56 466 3334</a></p>
           <p><a href="mailto:amin@letsadsmedia.com" dir="ltr">amin@letsadsmedia.com</a></p>
-          <a href="https://www.google.com/maps/search/?api=1&query=Office+203+API+Business+Suites+Al+Barsha+Dubai" class="footer__map-link" data-fancybox data-width="640" data-height="360"><i class="lni lni-map-marker" aria-hidden="true"></i> <span data-i18n="footer.mapLink">Find us on map</span></a>
+          <a href="https://www.google.com/maps/search/?api=1&query=Office+203+API+Business+Suites+Al+Barsha+Dubai" class="footer__map-link" data-fancybox data-width="640" data-height="360">{{> elm-icon name="location"}} <span data-i18n="footer.mapLink">Find us on map</span></a>
         </address>
+        <ul class="footer__social" aria-label="Social media">
+          <li><a href="https://www.facebook.com/" class="footer__social-link" aria-label="Facebook">{{> elm-icon name="facebook"}}</a></li>
+          <li><a href="https://www.instagram.com/" class="footer__social-link" aria-label="Instagram">{{> elm-icon name="instagram"}}</a></li>
+          <li><a href="https://www.youtube.com/" class="footer__social-link" aria-label="YouTube">{{> elm-icon name="youtube"}}</a></li>
+          <li><a href="https://www.linkedin.com/" class="footer__social-link" aria-label="LinkedIn">{{> elm-icon name="linkedin"}}</a></li>
+        </ul>
       </div>
       <div class="col-lg-4 col-md-6">
         <h6 class="widget-title" data-i18n="footer.engagement">ENGAGEMENT</h6>

@@ -1,19 +1,20 @@
 /**
- * ELM monogram (images/logo.svg) extruded into 3D — ported from the Propagenda
+ * ELM monogram (images/logo.svg) extruded into 3D, ported from the Propagenda
  * hero logo (raw three.js). The mark carries the ELM brand gradient (magenta →
  * purple → blue, left→right) baked across its surface, exactly like the topbar
  * logo. It turns on 3 axes following the mouse; click it for a full spin + glow.
  *
- * Mounts into `.hero__logo3d` on the home page only. Desktop-only (the container
- * is display:none below the lg breakpoint, so this bails out when it has no size).
- * The container is pointer-events:none so the hero CTAs stay clickable — clicks are
- * caught on `window` and raycast against the logo, so only hits on the mark spin it.
+ * Mounts into `.hero__logo3d` inside the centered `.hero__mark` slot on the home
+ * page. Desktop-only (the container is display:none below the lg breakpoint, so
+ * this bails out when it has no size). The container is pointer-events:none so
+ * the hero CTAs stay clickable, clicks are caught on `window` and raycast
+ * against the logo, so only hits on the mark spin it.
  */
 import * as THREE from 'three';
 import { SVGLoader } from 'three/examples/jsm/loaders/SVGLoader.js';
 import { RoomEnvironment } from 'three/examples/jsm/environments/RoomEnvironment.js';
 
-// ELM brand gradient — official hex codes from the branding guidelines (Color
+// ELM brand gradient, official hex codes from the branding guidelines (Color
 // Palette, branding PDF p.22) and matching the logo.svg gradient stops/offsets.
 const GRADIENT_STOPS = [
   { off: 0.0, color: new THREE.Color(0xbd1f71) }, // magenta  #BD1F71
@@ -117,7 +118,7 @@ function initHeroLogo3D(el) {
   const rim = new THREE.DirectionalLight(0xffffff, 1.0);
   rim.position.set(-5, 4, -7);
   scene.add(rim);
-  // Modest back rim — traces an edge so the mark separates from the dark hero bg.
+  // Modest back rim, traces an edge so the mark separates from the dark hero bg.
   const backRim = new THREE.DirectionalLight(0xffffff, 0.55);
   backRim.position.set(3, -3, -8);
   scene.add(backRim);
@@ -125,13 +126,7 @@ function initHeroLogo3D(el) {
   const group = new THREE.Group();
   scene.add(group);
   const positionGroup = () => {
-    if (el.clientWidth / el.clientHeight <= 1) {
-      group.position.x = 0;
-      return;
-    }
-    // LTR: bias right of the left-aligned copy. RTL: bias left of the right-aligned copy.
-    const rtl = document.documentElement.getAttribute('dir') === 'rtl';
-    group.position.x = rtl ? -2.4 : 2.4;
+    group.position.x = 0;
   };
   positionGroup();
 
@@ -173,7 +168,7 @@ function initHeroLogo3D(el) {
     const size = box.getSize(new THREE.Vector3());
     logo.children.forEach((m) => m.position.sub(center));
     applyGradientColors(logo); // bake magenta→purple→blue across the mark
-    const fit = 3.0 / Math.max(size.x, size.y);
+    const fit = 3.6 / Math.max(size.x, size.y);
     logo.scale.set(fit, -fit, fit); // flip Y: SVG space is Y-down, three is Y-up
     group.add(logo);
     signalHero3dReady();
@@ -190,7 +185,7 @@ function initHeroLogo3D(el) {
   };
   window.addEventListener('mousemove', onMove);
 
-  // --- Click for a full spin + glow pulse (gradient stays — it's the brand mark) ---
+  // --- Click for a full spin + glow pulse (gradient stays, it's the brand mark) ---
   let spinTarget = 0;
   let spin = 0;
   let glowStart = -1;

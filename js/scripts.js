@@ -481,19 +481,24 @@
  });
 
 
- // COUNTER
- $(document).scroll(function () {
- $('.odometer').each(function () {
- var parent_section_postion = $(this).closest('section').position();
- var parent_section_top = parent_section_postion.top;
- if ($(document).scrollTop() > parent_section_top - 300) {
- if ($(this).data('status') == 'yes') {
- $(this).html($(this).data('count'));
- $(this).data('status', 'no');
+ // COUNTER, animate when stats enter viewport
+ function runCounters() {
+  var scrollY = $(window).scrollTop();
+  var triggerAt = scrollY + $(window).height() * 0.85;
+  $('.odometer').each(function () {
+   var $el = $(this);
+   if ($el.data('status') !== 'yes') return;
+   var $section = $el.closest('section');
+   if (!$section.length) return;
+   var top = $section.offset().top;
+   if (triggerAt >= top) {
+    $el.html(String($el.data('count')));
+    $el.data('status', 'no');
+   }
+  });
  }
- }
- });
- });
+ $(window).on('scroll resize', runCounters);
+ runCounters();
 
 
  // STICKY NAVBAR transparent at top, solid bg on scroll

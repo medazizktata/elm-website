@@ -1,5 +1,5 @@
 // ============================================================
-// Direction system — flip tokens once; components consume vars
+// Direction system, flip tokens once; components consume vars
 // ============================================================
 
 html[dir="ltr"] {
@@ -241,29 +241,22 @@ html[dir="rtl"] {
   }
 
   .hero > .container {
-    justify-content: flex-start;
+    justify-content: center;
   }
 
   .hero__inner,
-  .hero__eyebrow,
   .hero h1,
   .hero__lede {
-    text-align: var(--elm-align);
+    text-align: center;
   }
 
   .hero__shade {
-    background: linear-gradient(
-      var(--elm-hero-shade-angle),
-      rgba($color-dark, 0.94) 0%,
-      rgba($color-dark, 0.82) 38%,
-      rgba($color-dark, 0.45) 58%,
-      rgba($color-dark, 0.2) 100%
-    );
+    background: #000;
   }
 
   .hero__actions {
-    justify-content: flex-start;
-    text-align: var(--elm-align);
+    justify-content: center;
+    text-align: center;
   }
 
   .navbar__tools {
@@ -370,7 +363,7 @@ html[dir="rtl"] {
   }
 
   .tech-spec-section__lede {
-    text-align: var(--elm-align);
+    text-align: center;
   }
 
   .sectors-index {
@@ -396,11 +389,7 @@ html[dir="rtl"] {
   }
 
   .print-capabilities__item {
-    align-items: flex-start;
-  }
-
-  .print-capabilities__icon {
-    align-self: flex-start;
+    align-items: stretch;
   }
 
   .engagement-section__cta {

@@ -22,13 +22,6 @@ html.elm-motion-ready {
   .elm-reveal--fade:not(.is-visible) {
     transform: none;
   }
-
-  .section-title h6.elm-reveal:not(.is-visible)::after,
-  .feature-cards-section__eyebrow.elm-reveal:not(.is-visible)::after,
-  .about-intro__eyebrow.elm-reveal:not(.is-visible)::after {
-    transform: scaleX(0);
-    transform-origin: left center;
-  }
 }
 
 .elm-reveal {
@@ -41,13 +34,6 @@ html.elm-motion-ready {
     opacity: 1;
     transform: none;
   }
-}
-
-.section-title h6.elm-reveal.is-visible::after,
-.feature-cards-section__eyebrow.elm-reveal.is-visible::after,
-.about-intro__eyebrow.elm-reveal.is-visible::after {
-  animation: elm-line-grow 0.55s var(--elm-motion-ease) forwards;
-  animation-delay: calc(var(--elm-motion-i, 0) * var(--elm-motion-stagger) + 0.08s);
 }
 
 .hero__inner {

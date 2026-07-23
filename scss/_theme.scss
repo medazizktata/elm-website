@@ -25,35 +25,41 @@
   --elm-footer-border: #{$color-border};
   --elm-footer-link: #{$color-dark};
   --elm-footer-bar-overlay: #{linear-gradient(180deg, rgba($color-dark, 0.72) 0%, rgba($color-dark, 0.58) 100%)};
-  --elm-feather-h-sm: 128px;
-  --elm-feather-h-md: 180px;
-  --elm-feather-h-lg: 240px;
-  --elm-feather-hero-h: clamp(120px, 14vw, 200px);
+  --elm-feather-h-sm: 160px;
+  --elm-feather-h-md: 220px;
+  --elm-feather-h-lg: 280px;
+  --elm-feather-hero-h: clamp(380px, 48vw, 600px);
+  /* oklab interpolation = perceptually smooth (far less banding than srgb stops) */
   --elm-feather-top: linear-gradient(
-    to bottom,
+    to bottom in oklab,
     var(--elm-bg-page) 0%,
-    color-mix(in srgb, var(--elm-bg-page) 90%, transparent) 18%,
-    color-mix(in srgb, var(--elm-bg-page) 62%, transparent) 42%,
-    color-mix(in srgb, var(--elm-bg-page) 32%, transparent) 66%,
-    color-mix(in srgb, var(--elm-bg-page) 10%, transparent) 84%,
+    color-mix(in oklab, var(--elm-bg-page) 70%, transparent) 35%,
+    color-mix(in oklab, var(--elm-bg-page) 28%, transparent) 70%,
     transparent 100%
   );
   --elm-feather-bottom: linear-gradient(
-    to bottom,
+    to bottom in oklab,
     transparent 0%,
-    color-mix(in srgb, var(--elm-bg-page) 10%, transparent) 16%,
-    color-mix(in srgb, var(--elm-bg-page) 32%, transparent) 34%,
-    color-mix(in srgb, var(--elm-bg-page) 62%, transparent) 58%,
-    color-mix(in srgb, var(--elm-bg-page) 90%, transparent) 82%,
+    color-mix(in oklab, var(--elm-bg-page) 28%, transparent) 30%,
+    color-mix(in oklab, var(--elm-bg-page) 70%, transparent) 65%,
+    var(--elm-bg-page) 100%
+  );
+  --elm-feather-hero: linear-gradient(
+    to bottom in oklab,
+    transparent 0%,
+    transparent 16%,
+    color-mix(in oklab, var(--elm-bg-page) 10%, transparent) 38%,
+    color-mix(in oklab, var(--elm-bg-page) 32%, transparent) 55%,
+    color-mix(in oklab, var(--elm-bg-page) 62%, transparent) 72%,
+    color-mix(in oklab, var(--elm-bg-page) 88%, transparent) 86%,
+    var(--elm-bg-page) 94%,
     var(--elm-bg-page) 100%
   );
   --elm-feather-hero-edge: linear-gradient(
-    to right,
+    to right in oklab,
     #{$color-dark} 0%,
-    rgba(18, 18, 18, 0.88) 20%,
-    rgba(18, 18, 18, 0.58) 45%,
-    rgba(18, 18, 18, 0.26) 70%,
-    rgba(18, 18, 18, 0.08) 88%,
+    rgba(18, 18, 18, 0.7) 35%,
+    rgba(18, 18, 18, 0.28) 70%,
     transparent 100%
   );
   --elm-feather-hero-edge-w: min(34vw, 340px);

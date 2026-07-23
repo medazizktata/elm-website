@@ -11,12 +11,12 @@
   --elm-tracking-heading: 0.025em;
   --elm-tracking-display: 0.02em;
   --elm-tracking-caps: 0.14em;
-  --elm-radius: 0;
+  --elm-radius: 8px;
   --elm-focus: 0 0 0 2px var(--elm-bg-page), 0 0 0 4px #{$color-main};
   --elm-hover-ease: cubic-bezier(0.4, 0, 0.2, 1);
   --elm-hover-duration: 0.32s;
 
-  // Direction tokens — flipped in _elm-rtl.scss on [dir="rtl"]
+  // Direction tokens, flipped in _elm-rtl.scss on [dir="rtl"]
   --elm-dir: 1;
   --elm-align: start;
   --elm-align-end: end;
@@ -47,21 +47,14 @@
   letter-spacing: var(--elm-tracking-caps);
   text-transform: uppercase;
   color: $color-main;
-
-  &::after {
-    content: '';
-    width: clamp(28px, 4vw, 48px);
-    height: 2px;
-    background: $color-main;
-    flex-shrink: 0;
-  }
 }
 
 @mixin elm-section-title {
   font-size: var(--elm-section-title-size);
   line-height: 1.08;
   font-weight: 700;
-  letter-spacing: var(--elm-tracking-heading);
+  letter-spacing: var(--elm-tracking-caps);
+  text-transform: uppercase;
   text-wrap: balance;
 }
 
@@ -205,6 +198,19 @@ p, li, td, th, label, input, textarea, select, button, blockquote, figcaption {
   }
 }
 
+/* All display titles, caps, matching section-title treatment */
+.content-section h2,
+.home-why-hub__title,
+.metric-showcase__title,
+.sticky-stack-section__head h2,
+.engagement-section__head h2,
+.glass-panel__title,
+.footer-bar h2,
+.footer-bar h3 {
+  text-transform: uppercase;
+  letter-spacing: var(--elm-tracking-caps);
+}
+
 .feature-cards-section__eyebrow,
 .about-intro__eyebrow {
   @include elm-section-eyebrow;
@@ -257,7 +263,8 @@ p, li, td, th, label, input, textarea, select, button, blockquote, figcaption {
 .page-header .container h1 {
   font-size: clamp(38px, 5.5vw, 68px);
   line-height: 1.02;
-  letter-spacing: var(--elm-tracking-display);
+  letter-spacing: var(--elm-tracking-caps);
+  text-transform: uppercase;
   max-width: none;
 }
 
@@ -498,7 +505,7 @@ p, li, td, th, label, input, textarea, select, button, blockquote, figcaption {
   min-height: clamp(760px, 108svh, 1000px);
   display: flex;
   align-items: stretch;
-  background: $color-dark;
+  background: #000;
   overflow: hidden;
 
   > .container {
@@ -506,11 +513,11 @@ p, li, td, th, label, input, textarea, select, button, blockquote, figcaption {
     z-index: 2;
     display: flex;
     align-items: center;
-    justify-content: flex-start;
+    justify-content: center;
     min-height: clamp(760px, 108svh, 1000px);
     width: 100%;
     padding-top: calc(88px + clamp(28px, 5vh, 52px));
-    padding-bottom: clamp(64px, 8vh, 96px);
+    padding-bottom: clamp(120px, 16vh, 200px);
   }
 
   &__media {
@@ -522,38 +529,75 @@ p, li, td, th, label, input, textarea, select, button, blockquote, figcaption {
     width: 100%;
     height: 100%;
     z-index: 0;
-    background-color: $color-dark;
-    background-image: url("../images/hero-abstract-elm.png");
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
+    background-color: #000;
+    background-image: none;
   }
 
   &__shade {
     position: absolute;
     inset: 0;
     z-index: 1;
-    background: linear-gradient(
-      95deg,
-      rgba($color-dark, 0.94) 0%,
-      rgba($color-dark, 0.82) 38%,
-      rgba($color-dark, 0.45) 58%,
-      rgba($color-dark, 0.2) 100%
-    );
+    background: #000;
     pointer-events: none;
   }
 
-  /* Extruded 3D monogram — right-side overlay, above the shade, below the copy.
-     Desktop only; pointer-events stay off so the hero CTAs remain clickable
-     (the module raycasts window clicks to detect hits on the mark itself). */
-  &__logo3d {
+  &::after {
+    content: "";
     position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
     left: 0;
+    right: 0;
+    /* Overflow slightly so blur stays inside the solid cream lip */
+    bottom: -12px;
+    height: calc(var(--elm-feather-hero-h) + 24px);
+    background: var(--elm-feather-hero);
+    pointer-events: none;
+    z-index: 2;
+    filter: blur(6px);
+    transform: translateZ(0);
+  }
+
+  &__inner {
+    width: 100%;
+    max-width: 720px;
+    margin: 0 auto;
+    text-align: center;
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  h1 {
+    margin: 0;
+    max-width: 34em;
+    font-size: clamp(13px, 1.35vw, 16px);
+    font-weight: 700;
+    line-height: 1.35;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: rgba(#fff, 0.92);
+  }
+
+  &__mark {
+    position: relative;
+    width: clamp(150px, 22vw, 260px);
+    aspect-ratio: 407 / 383;
+    margin: clamp(22px, 3.2vh, 36px) auto;
+    flex-shrink: 0;
+  }
+
+  &__mark-img {
+    display: block;
     width: 100%;
     height: 100%;
+    object-fit: contain;
+  }
+
+  /* Extruded 3D monogram, fills the centered mark slot on desktop.
+     pointer-events stay off so hero CTAs remain clickable (raycast on window). */
+  &__logo3d {
+    position: absolute;
+    inset: -12%;
     z-index: 1;
     display: none;
     pointer-events: none;
@@ -572,58 +616,25 @@ p, li, td, th, label, input, textarea, select, button, blockquote, figcaption {
     &__logo3d {
       display: block;
     }
-  }
 
-  &::after {
-    content: "";
-    position: absolute;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    height: var(--elm-feather-hero-h);
-    background: var(--elm-feather-bottom);
-    pointer-events: none;
-    z-index: 2;
-  }
-
-  &__inner {
-    width: 100%;
-    max-width: 640px;
-    margin: 0;
-    text-align: left;
-    color: #fff;
-  }
-
-  &__eyebrow {
-    margin: 0 0 16px;
-    font-size: var(--elm-section-eyebrow-size);
-    font-weight: 700;
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
-    color: rgba(#fff, 0.82);
-  }
-
-  h1 {
-    margin: 0 0 20px;
-    font-size: clamp(38px, 5.2vw, 60px);
-    font-weight: 700;
-    line-height: 1.04;
-    letter-spacing: var(--elm-tracking-heading);
-    color: #fff;
+    &__mark-img {
+      opacity: 0;
+    }
   }
 
   &__lede {
     margin: 0 0 28px;
-    max-width: 520px;
-    font-size: clamp(16px, 1.5vw, 18px);
-    line-height: 1.6;
-    font-weight: 400;
-    color: rgba(#fff, 0.88);
+    max-width: 38em;
+    font-size: clamp(15px, 1.4vw, 18px);
+    line-height: 1.65;
+    font-weight: 300;
+    color: rgba(#fff, 0.82);
   }
 
   &__actions {
     display: flex;
     flex-wrap: wrap;
+    justify-content: center;
     gap: 12px;
   }
 
@@ -640,7 +651,7 @@ p, li, td, th, label, input, textarea, select, button, blockquote, figcaption {
     .container {
       display: flex;
       align-items: center;
-      justify-content: space-between;
+      justify-content: center;
       gap: 16px;
       font-size: 13px;
       font-weight: 500;
@@ -792,6 +803,7 @@ body:has(.hero) .navbar {
   background: var(--elm-bg-surface);
   border: 1px solid var(--elm-border);
   border-top: 2px solid $color-main;
+  border-radius: var(--elm-radius);
   @include elm-smooth-hover;
 
   &:hover {
@@ -811,15 +823,6 @@ body:has(.hero) .navbar {
 
   &:hover .capability-card__link {
     color: $color-main;
-  }
-
-  &__icon i {
-    font-size: 28px;
-  }
-
-  h3 {
-    font-size: 18px;
-    font-weight: 700;
   }
 
   p {
@@ -2016,10 +2019,6 @@ body:has(.hero) .navbar {
 
   &__eyebrow {
     margin: 0 0 12px;
-
-    &::after {
-      width: clamp(32px, 5vw, 56px);
-    }
   }
 
   h2 {
@@ -2067,13 +2066,14 @@ body:has(.hero) .navbar {
 }
 
 .about-intro__fact-num {
-  font-size: 12px;
-  font-weight: 600;
+  font-size: clamp(28px, 3.2vw, 40px);
+  font-weight: 700;
   font-variant-numeric: tabular-nums;
-  letter-spacing: 0.06em;
-  color: var(--elm-text-muted);
-  padding-top: 4px;
+  letter-spacing: var(--elm-tracking-display, 0.02em);
+  color: $color-main;
+  padding-top: 0;
   line-height: 1;
+  min-width: 1.4em;
 }
 
 .about-intro__fact-body {
@@ -2189,8 +2189,7 @@ body:has(.hero) .navbar {
     background: transparent;
     border: 1px solid var(--elm-border);
     border-top: 2px solid rgba($color-main, 0.32);
-    border-radius: 0;
-    font-size: clamp(15px, 1.4vw, 16px);
+    border-radius: var(--elm-radius);
     font-weight: 600;
     line-height: 1.6;
     letter-spacing: var(--elm-tracking-heading);
@@ -2599,17 +2598,14 @@ body:has(.hero) .navbar {
 /* FOOTER */
 .footer-bar {
   padding: clamp(40px, 4vw, 56px) 0;
+  background: #000;
 
-  .logo {
-    margin-bottom: 12px;
-
-    img {
-      height: 34px;
-    }
+  &__logo img {
+    height: clamp(48px, 6vw, 72px);
   }
 
   h2 {
-    font-size: clamp(28px, 3.2vw, 42px);
+    font-size: clamp(20px, 2.6vw, 32px);
   }
 }
 
@@ -2650,6 +2646,12 @@ body:has(.hero) .navbar {
     i {
       font-size: 16px;
       line-height: 1;
+      color: $color-main;
+    }
+
+    .elm-icon {
+      width: 18px;
+      height: 18px;
       color: $color-main;
     }
 
@@ -2711,7 +2713,7 @@ body:has(.hero) .navbar {
     flex-wrap: wrap;
     align-items: center;
     gap: clamp(12px, 2vw, 20px);
-    margin: 0;
+    margin: 16px 0 0;
     padding: 0;
     list-style: none;
 
@@ -2724,13 +2726,15 @@ body:has(.hero) .navbar {
   &__social-link {
     display: inline-flex;
     align-items: center;
-    gap: 8px;
-    color: var(--elm-footer-text-muted);
-    font-size: 12px;
-    font-weight: 600;
-    letter-spacing: 0.04em;
+    justify-content: center;
+    color: $color-main;
     text-decoration: none;
     @include elm-smooth-hover;
+
+    .elm-icon {
+      width: 36px;
+      height: 36px;
+    }
 
     i {
       font-size: 16px;
@@ -2739,9 +2743,10 @@ body:has(.hero) .navbar {
     }
 
     &:hover {
-      color: var(--elm-footer-link);
+      color: $color-secondary;
       text-decoration: none;
 
+      .elm-icon,
       i {
         color: $color-secondary;
       }
@@ -2895,7 +2900,7 @@ body:has(.hero) .navbar {
   }
 }
 
-/* CONTACT PAGE — even section rhythm (one gap, not double padding) */
+/* CONTACT PAGE, even section rhythm (one gap, not double padding) */
 [data-page="contact"] {
   .content-section + .content-section {
     padding-top: clamp(40px, 5vw, 64px) !important;
@@ -2933,18 +2938,9 @@ body:has(.hero) .navbar {
     min-height: 176px;
     padding: 22px 20px;
 
-    figure {
+    .elm-title-pill {
       flex-shrink: 0;
-      margin-bottom: 12px;
-
-      i {
-        font-size: 36px;
-      }
-    }
-
-    h6 {
-      flex-shrink: 0;
-      margin-bottom: 8px;
+      margin-bottom: 14px;
     }
 
     p {
@@ -3429,38 +3425,16 @@ body:has(.hero) .navbar {
 .sticky-stack__copy {
   min-width: 0;
 
+  .elm-title-pill {
+    margin-bottom: 12px;
+  }
+
   p {
     margin: 0;
     font-size: 15px;
     line-height: 1.55;
     color: var(--elm-text-muted);
   }
-}
-
-.sticky-stack__title-row {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  margin-bottom: 10px;
-}
-
-.sticky-stack__icon {
-  flex-shrink: 0;
-  width: 40px;
-  height: 40px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 19px;
-  color: $color-main;
-  background: color-mix(in srgb, $color-main 12%, transparent);
-}
-
-.sticky-stack__copy h3 {
-  font-size: clamp(20px, 2.1vw, 26px);
-  line-height: 1.2;
-  font-weight: 700;
-  margin: 0;
 }
 
 .sticky-stack__features {
@@ -3855,16 +3829,26 @@ body:has(.hero) .navbar {
   background: var(--elm-bg-page);
 
   &__head {
-    display: grid;
-    grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
-    gap: clamp(20px, 4vw, 48px);
-    align-items: end;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: clamp(14px, 2vw, 20px);
     margin-bottom: clamp(32px, 4vw, 48px);
+
+    .section-title {
+      text-align: center;
+
+      h6 {
+        justify-content: center;
+      }
+    }
   }
 
   &__lede {
-    margin: 0;
-    max-width: 38ch;
+    margin: 0 auto;
+    max-width: 52ch;
+    text-align: center;
     @include elm-section-lede;
   }
 }
@@ -3988,6 +3972,7 @@ body:has(.hero) .navbar {
     align-items: center;
     gap: 8px;
     margin-top: auto;
+    margin-inline-start: auto;
     padding-top: clamp(14px, 1.6vw, 18px);
     border-top: 1px solid rgba(#fff, 0.1);
     font-size: 11px;
@@ -4164,10 +4149,11 @@ body:has(.hero) .navbar {
   padding-bottom: var(--elm-section-y) !important;
 
   &__head {
-    display: grid;
-    grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
-    gap: clamp(20px, 4vw, 48px);
-    align-items: end;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: clamp(14px, 2vw, 20px);
     margin-bottom: clamp(36px, 5vw, 56px);
   }
 
@@ -4175,7 +4161,7 @@ body:has(.hero) .navbar {
     h2 {
       @include elm-section-title;
       margin: 0;
-      max-width: 14ch;
+      max-width: 22ch;
     }
   }
 
@@ -4185,10 +4171,9 @@ body:has(.hero) .navbar {
 
   &__lede {
     @include elm-section-lede;
-    margin: 0;
-    justify-self: end;
-    text-align: right;
-    max-width: 42ch;
+    margin: 0 auto;
+    max-width: 52ch;
+    text-align: center;
   }
 }
 
@@ -4214,6 +4199,7 @@ body:has(.hero) .navbar {
   @include elm-smooth-hover;
 
   &__media {
+    position: relative;
     margin: 0;
     aspect-ratio: 3 / 2;
     overflow: hidden;
@@ -4224,6 +4210,7 @@ body:has(.hero) .navbar {
       height: 100%;
       object-fit: cover;
       display: block;
+      filter: grayscale(1);
       @include elm-smooth-hover;
     }
   }
@@ -4233,60 +4220,34 @@ body:has(.hero) .navbar {
     box-shadow: 0 16px 40px var(--elm-shadow);
     transform: translateY(-4px);
 
-    .process-step__icon {
-      background: $color-main;
-      color: #fff;
-    }
-
     .process-step__media img {
       transform: scale(1.03);
     }
   }
 
-  &__top,
-  > h3,
+  .elm-title-pill,
   > p,
   &__list {
     padding-left: clamp(20px, 2.5vw, 28px);
     padding-right: clamp(20px, 2.5vw, 28px);
   }
 
-  &__top {
-    display: flex;
-    align-items: flex-start;
-    justify-content: space-between;
-    gap: 12px;
-    margin-bottom: 12px;
-    padding-top: clamp(20px, 2.5vw, 24px);
+  .elm-title-pill {
+    margin-top: clamp(20px, 2.5vw, 24px);
+    margin-bottom: 14px;
   }
 
   &__num {
+    position: absolute;
+    top: clamp(12px, 2vw, 18px);
+    inset-inline-start: clamp(12px, 2vw, 18px);
+    z-index: 1;
     font-size: clamp(44px, 5vw, 64px);
     font-weight: 700;
     line-height: 1;
     letter-spacing: var(--elm-tracking-display);
-    color: $color-main;
-    opacity: 0.85;
-  }
-
-  &__icon {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    width: 44px;
-    height: 44px;
-    font-size: 20px;
-    color: $color-main;
-    background: color-mix(in srgb, $color-main 12%, transparent);
-    flex-shrink: 0;
-    @include elm-smooth-hover;
-  }
-
-  h3 {
-    margin: 0 0 10px;
-    font-size: clamp(20px, 2.2vw, 24px);
-    font-weight: 700;
-    line-height: 1.2;
+    color: #fff;
+    text-shadow: 0 2px 16px rgba(0, 0, 0, 0.45);
   }
 
   > p {
@@ -4336,13 +4297,11 @@ body:has(.hero) .navbar {
 
 @media (max-width: 991px) {
   .process-section {
-    &__head {
-      grid-template-columns: 1fr;
+    &__intro h2 {
+      max-width: none;
     }
 
     &__lede {
-      justify-self: start;
-      text-align: left;
       max-width: none;
     }
   }
@@ -4396,10 +4355,6 @@ body:has(.hero) .navbar {
   &__eyebrow {
     @include elm-section-eyebrow;
     margin-bottom: 12px;
-
-    &::after {
-      background: $color-main;
-    }
   }
 
   h2 {
@@ -4575,10 +4530,6 @@ body:has(.hero) .navbar {
   }
 
   .tech-spec-section {
-    &__head {
-      grid-template-columns: 1fr;
-    }
-
     &__lede {
       max-width: none;
     }
@@ -4599,7 +4550,7 @@ body:has(.hero) .navbar {
 
   .hero__meta .container {
     flex-direction: column;
-    align-items: flex-start;
+    align-items: center;
     gap: 8px;
   }
 
@@ -4672,18 +4623,20 @@ body:has(.hero) .navbar {
   padding-bottom: var(--elm-section-y-compact) !important;
 
   &__head {
-    max-width: 40rem;
+    max-width: none;
+    width: 100%;
     margin-bottom: clamp(36px, 5vw, 56px);
 
     h2 {
       margin-bottom: 0;
+      max-width: none;
     }
   }
 
   &__lede {
     @include elm-section-lede;
     margin: clamp(18px, 2.5vw, 24px) 0 0;
-    max-width: 38ch;
+    max-width: none;
   }
 
   &__grid {
@@ -4699,16 +4652,12 @@ body:has(.hero) .navbar {
     @include elm-card-surface;
     display: flex;
     flex-direction: column;
-    align-items: center;
-    padding: clamp(32px, 4vw, 44px) clamp(24px, 3vw, 32px);
-    text-align: center;
+    align-items: stretch;
+    padding: clamp(24px, 3vw, 32px);
+    text-align: var(--elm-align, left);
 
-    h3 {
-      margin: 0 0 clamp(10px, 1.5vw, 14px);
-      font-size: clamp(18px, 2vw, 22px);
-      font-weight: 700;
-      line-height: 1.2;
-      letter-spacing: var(--elm-tracking-heading);
+    .elm-title-pill {
+      margin-bottom: clamp(14px, 2vw, 18px);
     }
 
     p {
@@ -4716,21 +4665,7 @@ body:has(.hero) .navbar {
       font-size: 15px;
       line-height: 1.55;
       color: var(--elm-text-muted);
-      max-width: 26ch;
     }
-  }
-
-  &__icon {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    width: clamp(3rem, 5vw, 3.5rem);
-    height: clamp(3rem, 5vw, 3.5rem);
-    margin-bottom: clamp(16px, 2vw, 22px);
-    border-radius: 50%;
-    background: color-mix(in srgb, $color-main 12%, transparent);
-    color: $color-main;
-    font-size: 1.35rem;
   }
 
   @media (max-width: 991px) {
@@ -4738,17 +4673,188 @@ body:has(.hero) .navbar {
       grid-template-columns: 1fr;
       gap: clamp(16px, 3vw, 24px);
     }
+  }
+}
 
-    &__item p {
-      max-width: none;
+.technology-partners {
+  &__inner {
+    position: relative;
+    overflow: hidden;
+    padding: clamp(2.5rem, 5vw, 4rem) clamp(1.5rem, 4vw, 3rem);
+    text-align: center;
+    border: 1px solid rgba(#fff, 0.12);
+    border-top: 2px solid $color-main;
+    border-radius: var(--elm-radius);
+    background-color: $color-dark;
+    background-image: url("../images/bg-partners-gradient.jpg");
+    background-position: center top;
+    background-size: cover;
+    color: #fff;
+
+    &::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        180deg,
+        rgba($color-dark, 0.35) 0%,
+        rgba($color-dark, 0.55) 45%,
+        rgba($color-dark, 0.72) 100%
+      );
+      pointer-events: none;
+    }
+
+    > * {
+      position: relative;
+      z-index: 1;
+    }
+  }
+
+  h2 {
+    @include elm-section-title;
+    margin: 0 0 clamp(18px, 2.5vw, 24px);
+    color: #fff;
+  }
+
+  &__list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: clamp(10px, 2vw, 16px) clamp(20px, 4vw, 40px);
+
+    li {
+      margin: 0;
+      font-size: clamp(15px, 1.5vw, 18px);
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      color: rgba(#fff, 0.9);
     }
   }
 }
 
-.technology-partners__inner {
-  @include elm-card-surface;
-  padding: 2rem;
-  text-align: center;
+/* Technologies page, B&W photos + all copy centered */
+[data-page="technologies"] {
+  .about-intro__media img,
+  .process-step__media img,
+  .spec-card__media img,
+  .sticky-stack__media img {
+    filter: grayscale(1);
+  }
+
+  .content-section,
+  .content-section .section-title,
+  .content-section .section-title.text-left,
+  .about-intro__content,
+  .about-intro__eyebrow,
+  .about-intro__lede,
+  .about-intro__facts,
+  .about-intro__fact-body,
+  .about-intro__fact-label,
+  .about-intro__fact-value,
+  .process-section__head,
+  .process-section__lede,
+  .process-step,
+  .process-step__list,
+  .tech-spec-section__head,
+  .tech-spec-section__lede,
+  .sticky-stack-section__head,
+  .sticky-stack-section__lede,
+  .sticky-stack__copy,
+  .sticky-stack__features,
+  .sticky-stack__features-label,
+  .compare-section__head,
+  .compare-section__lede,
+  .compare-section__foot,
+  .compare-section__link,
+  .compare-table,
+  .compare-table__row,
+  .compare-table__row > span,
+  .compare-table__metric,
+  .compare-table__old,
+  .compare-table__elm,
+  .sectors-grid__intro,
+  .sectors-grid__lede,
+  .counter-box,
+  .counter-box__label,
+  .counter-box__desc,
+  .spec-card__body,
+  .spec-card__blurb,
+  .spec-card__rows,
+  .spec-card__rows dt,
+  .spec-card__rows dd,
+  .spec-card__link,
+  .sectors-index__item,
+  .sectors-index__body,
+  .sectors-index__title,
+  .sectors-index__meta,
+  .page-header .container {
+    text-align: center;
+  }
+
+  .content-section .section-title h6,
+  .about-intro__eyebrow {
+    justify-content: center;
+  }
+
+  .compare-section__head,
+  .sticky-stack-section__head,
+  .tech-spec-section__head,
+  .process-section__head,
+  .sectors-grid__intro {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: none;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .compare-section__lede,
+  .sticky-stack-section__lede,
+  .tech-spec-section__lede,
+  .about-intro__lede,
+  .sectors-grid__lede {
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 52ch;
+  }
+
+  .about-intro__facts {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .about-intro__facts li,
+  .process-step__list li,
+  .sticky-stack__features ul li {
+    justify-content: center;
+  }
+
+  .elm-title-pill {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .compare-section__foot {
+    display: flex;
+    justify-content: center;
+  }
+
+  .sticky-stack__features {
+    border-left: none;
+    padding-left: 0;
+  }
+
+  @media (max-width: 767px) {
+    .compare-table__row .compare-table__elm,
+    .compare-table__row .compare-table__old,
+    .compare-table__row .compare-table__metric {
+      text-align: center;
+    }
+  }
 }
 
 .sustainability-commitment {
@@ -4977,7 +5083,7 @@ body:has(.hero) .navbar {
 }
 
 /* ============================================================
-   HOVER POLISH — micro-interactions across components
+   HOVER POLISH, micro-interactions across components
    ============================================================ */
 
 @keyframes elm-icon-pop {
@@ -5046,7 +5152,7 @@ body:has(.hero) .navbar {
       transform: scaleX(1);
     }
 
-    .capability-card__icon i {
+    .elm-title-pill .elm-icon {
       animation: elm-icon-pop 0.5s var(--elm-hover-ease) forwards;
     }
   }
@@ -5162,7 +5268,7 @@ body:has(.hero) .navbar {
 }
 
 /* Contact boxes: icon pop */
-.contact-box:hover figure i {
+.contact-box:hover .elm-title-pill .elm-icon {
   animation: elm-icon-pop 0.5s var(--elm-hover-ease) forwards;
 }
 
@@ -5174,11 +5280,11 @@ body:has(.hero) .navbar {
     display: none;
   }
 
-  .capability-card:hover .capability-card__icon i,
+  .capability-card:hover .elm-title-pill .elm-icon,
   .sector-card:hover .sector-card__icon,
   .navbar .search:hover i,
   .footer .scroll-top:hover i,
-  .contact-box:hover figure i {
+  .contact-box:hover .elm-title-pill .elm-icon {
     animation: none;
   }
 }

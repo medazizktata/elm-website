@@ -10,11 +10,11 @@ const readexOut = resolve(root, "fonts/readex-pro");
 const almaraiOut = resolve(root, "fonts/almarai");
 
 if (!existsSync(nohemiSrc)) {
-  console.error("Run pnpm install first — @tamagui/font-nohemi missing");
+  console.error("Run pnpm install first, @tamagui/font-nohemi missing");
   process.exit(1);
 }
 if (!existsSync(readexSrc)) {
-  console.error("Run pnpm install first — @fontsource/readex-pro missing");
+  console.error("Run pnpm install first, @fontsource/readex-pro missing");
   process.exit(1);
 }
 
