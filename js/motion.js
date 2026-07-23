@@ -4,21 +4,36 @@
   var prefersReduced =
     window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
+  var SECTION_SELECTORS = [
+    ".content-section",
+    ".engagement-section",
+    ".stats-row.content-section",
+  ].join(",");
+
   var HEAD_SELECTORS = [
     ".section-title",
-    ".feature-cards-section__head > :not(.feature-cards-section__lede)",
-    ".capability-section__head .section-title",
-    ".sectors-grid__intro .section-title",
+    ".feature-cards-section__head",
+    ".capability-section__head",
+    ".sectors-grid__intro",
     ".about-intro__eyebrow",
     ".about-intro__content > h2",
     ".also-explore__head",
-    ".sticky-stack-section__head > :not(.sticky-stack-section__lede)",
-    ".process-section__intro",
-    ".compare-section__head .section-title",
+    ".sticky-stack-section__head",
+    ".process-section__head",
+    ".tech-spec-section__head",
+    ".compare-section__head",
+    ".stats-row__head",
     ".stats-row__title",
     ".stats-row__eyebrow",
     ".home-why-hub__eyebrow",
+    ".home-why-hub__title",
+    ".technology-partners__head",
+    ".sustainability-commitment__head",
+    ".engagement-section__head",
+    ".glass-panel__eyebrow",
+    ".glass-panel__title",
     ".page-header h1",
+    ".page-header__lede",
   ].join(",");
 
   var ITEM_SELECTORS = [
@@ -34,16 +49,28 @@
     ".sectors-grid__media",
     ".about-intro__facts > li",
     ".tech-preview-card",
+    ".tech-routes__item",
+    ".spec-card",
+    ".technology-partners__card",
+    ".sticky-stack__item",
     ".policy-rail__item",
     ".process-step",
+    ".sustainability-commitment__card",
     ".director-team",
     ".core-values-box",
     ".news-box",
     ".contact-box",
+    ".glass-panel",
+    ".applications-panel",
+    ".print-capabilities__item",
+    ".case-study-card",
+    ".metric-stage__card",
+    ".home-why-hub__card",
+    ".sector-card",
   ].join(",");
 
   var SKIP_ANCESTOR =
-    ".navbar, .side-widget, .footer, .footer-bar, .search-overlay, .contact-form, .testimonials-slider, .sticky-stack__item";
+    ".navbar, .side-widget, .footer, .footer-bar, .search-box, .contact-form, .testimonials-slider, .story-timeline__scroller, .page-loader";
 
   function inSkipZone(el) {
     return el.closest(SKIP_ANCESTOR);
@@ -53,7 +80,7 @@
     if (!el || el.classList.contains("elm-reveal")) return;
     el.classList.add("elm-reveal");
     if (variant) el.classList.add("elm-reveal--" + variant);
-    var i = Math.min(index || 0, 4);
+    var i = Math.min(index || 0, 6);
     el.style.setProperty("--elm-motion-i", String(i));
   }
 
@@ -64,15 +91,18 @@
     function addAll(selector, variant) {
       document.querySelectorAll(selector).forEach(function (el) {
         if (seen.has(el) || inSkipZone(el)) return;
+        // Don't double-wrap if a parent section is already the target and this is nested content
+        // still allow heads/items inside sections
         seen.add(el);
         markReveal(el, variant, 0);
         targets.push({ el: el, variant: variant });
       });
     }
 
+    addAll(SECTION_SELECTORS, "section");
     addAll(HEAD_SELECTORS, "head");
     addAll(ITEM_SELECTORS, "item");
-    addAll(".compare-table", "fade");
+    addAll(".compare-table, .story-timeline__frame", "fade");
 
     var staggerParents = [
       ".capability-section__grid",
@@ -83,15 +113,22 @@
       ".process-steps",
       ".policy-rail",
       ".also-explore__grid",
+      ".tech-spec-grid",
+      ".tech-routes",
+      ".technology-partners__grid",
+      ".sticky-stack",
+      ".sustainability-commitment__grid",
       ".row:has(.tech-preview-card)",
       ".row:has(.portfolio-card)",
+      ".row:has(.capability-card)",
+      ".row:has(.contact-box)",
     ];
 
     staggerParents.forEach(function (parentSel) {
       document.querySelectorAll(parentSel).forEach(function (parent) {
         var items = parent.querySelectorAll(".elm-reveal--item");
         items.forEach(function (item, i) {
-          item.style.setProperty("--elm-motion-i", String(Math.min(i, 4)));
+          item.style.setProperty("--elm-motion-i", String(Math.min(i, 6)));
         });
       });
     });
@@ -120,7 +157,7 @@
         (function (idx) {
           setTimeout(function () {
             revealNow(kids[idx]);
-          }, 80 + idx * 90);
+          }, 90 + idx * 100);
         })(j);
       }
     });
@@ -136,6 +173,8 @@
     header.querySelectorAll(".page-breadcrumb a, .page-breadcrumb [aria-current='page']").forEach(function (el) {
       parts.push(el);
     });
+    var lede = header.querySelector(".page-header__lede");
+    if (lede) parts.push(lede);
 
     parts.forEach(function (el, i) {
       if (!el.classList.contains("elm-reveal")) {
@@ -149,21 +188,14 @@
         parts.forEach(function (el, i) {
           setTimeout(function () {
             revealNow(el);
-          }, 60 + i * 80);
+          }, 70 + i * 90);
         });
       });
     }
   }
 
   function initScrollReveal(targets) {
-    if (prefersReduced) {
-      targets.forEach(function (t) {
-        revealNow(t.el);
-      });
-      return;
-    }
-
-    if (!("IntersectionObserver" in window)) {
+    if (prefersReduced || !("IntersectionObserver" in window)) {
       targets.forEach(function (t) {
         revealNow(t.el);
       });
@@ -178,11 +210,21 @@
           observer.unobserve(entry.target);
         });
       },
-      { root: null, rootMargin: "0px 0px -8% 0px", threshold: 0.12 }
+      {
+        root: null,
+        rootMargin: "0px 0px -6% 0px",
+        threshold: 0.08,
+      }
     );
 
     targets.forEach(function (t) {
       if (t.el.closest(".hero") || t.el.closest(".page-header")) return;
+      // Already in view on load — reveal immediately so first fold isn't blank
+      var rect = t.el.getBoundingClientRect();
+      if (rect.top < window.innerHeight * 0.92 && rect.bottom > 0) {
+        revealNow(t.el);
+        return;
+      }
       observer.observe(t.el);
     });
   }

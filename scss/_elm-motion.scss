@@ -1,26 +1,38 @@
-// Subtle scroll / load motion titles & cards only, not body copy
+// Sitewide scroll / load reveals — sections, heads, cards
 
 :root {
-  --elm-motion-duration: 0.62s;
-  --elm-motion-ease: cubic-bezier(0.22, 1, 0.36, 1);
-  --elm-motion-offset: 14px;
-  --elm-motion-stagger: 65ms;
-  --elm-motion-max-stagger: 4;
-}
-
-@keyframes elm-line-grow {
-  from { transform: scaleX(0); }
-  to { transform: scaleX(1); }
+  --elm-motion-duration: 0.78s;
+  --elm-motion-ease: cubic-bezier(0.16, 1, 0.3, 1);
+  --elm-motion-offset: 28px;
+  --elm-motion-stagger: 70ms;
+  --elm-motion-max-stagger: 6;
 }
 
 html.elm-motion-ready {
   .elm-reveal:not(.is-visible) {
     opacity: 0;
     transform: translate3d(0, var(--elm-motion-offset), 0);
+    will-change: opacity, transform;
   }
 
   .elm-reveal--fade:not(.is-visible) {
     transform: none;
+  }
+
+  .elm-reveal--section:not(.is-visible) {
+    --elm-motion-offset: 36px;
+  }
+
+  .elm-reveal--head:not(.is-visible) {
+    --elm-motion-offset: 18px;
+  }
+
+  .elm-reveal--item:not(.is-visible) {
+    --elm-motion-offset: 24px;
+  }
+
+  .elm-reveal--hero:not(.is-visible) {
+    --elm-motion-offset: 22px;
   }
 }
 
@@ -33,22 +45,33 @@ html.elm-motion-ready {
   &.is-visible {
     opacity: 1;
     transform: none;
+    will-change: auto;
   }
 }
 
 .hero__inner {
   .elm-reveal {
-    --elm-motion-offset: 18px;
+    --elm-motion-duration: 0.9s;
   }
 }
 
 .page-header .container > .elm-reveal {
-  --elm-motion-offset: 12px;
+  --elm-motion-offset: 14px;
+  --elm-motion-duration: 0.7s;
 }
 
 @media (prefers-reduced-motion: reduce) {
-  html.elm-motion-ready .elm-reveal:not(.is-visible) {
-    opacity: 1;
-    transform: none;
+  html.elm-motion-ready {
+    .elm-reveal:not(.is-visible),
+    .elm-reveal--section:not(.is-visible),
+    .elm-reveal--head:not(.is-visible),
+    .elm-reveal--item:not(.is-visible),
+    .elm-reveal--fade:not(.is-visible),
+    .elm-reveal--hero:not(.is-visible) {
+      opacity: 1;
+      transform: none;
+      transition: none;
+      will-change: auto;
+    }
   }
 }
