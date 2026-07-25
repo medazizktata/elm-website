@@ -476,7 +476,8 @@ p, li, td, th, label, input, textarea, select, button, blockquote, figcaption {
       background: color-mix(in srgb, #{$color-main} 6%, transparent);
 
       .sectors-index__num {
-        @include elm-brand-text;
+        color: #fff !important;
+        -webkit-text-fill-color: #fff !important;
         opacity: 1;
       }
 
@@ -498,9 +499,14 @@ p, li, td, th, label, input, textarea, select, button, blockquote, figcaption {
     font-weight: 800;
     font-variant-numeric: tabular-nums;
     letter-spacing: var(--elm-tracking-display, 0.02em);
-    @include elm-brand-text;
     line-height: 0.95;
     min-width: 1.4em;
+    background: none !important;
+    background-image: none !important;
+    -webkit-background-clip: border-box !important;
+    background-clip: border-box !important;
+    color: #fff !important;
+    -webkit-text-fill-color: #fff !important;
     @include elm-smooth-hover;
   }
 
@@ -2687,7 +2693,8 @@ table.elm-table {
   font-weight: 700;
   font-variant-numeric: tabular-nums;
   letter-spacing: var(--elm-tracking-display, 0.02em);
-  @include elm-brand-text;
+  color: var(--elm-text);
+  -webkit-text-fill-color: var(--elm-text);
   padding-top: 0;
   line-height: 1;
   min-width: 1.4em;
@@ -4293,7 +4300,8 @@ table.elm-table {
     font-weight: 600;
     font-variant-numeric: tabular-nums;
     letter-spacing: inherit;
-    @include elm-brand-text;
+    color: var(--elm-text);
+    -webkit-text-fill-color: var(--elm-text);
     padding-top: 2px;
   }
 
@@ -5266,6 +5274,20 @@ table.elm-table {
     overflow: hidden;
     border-bottom: 1px solid var(--elm-border);
 
+    &::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+      pointer-events: none;
+      background: linear-gradient(
+        180deg,
+        rgba(0, 0, 0, 0.55) 0%,
+        rgba(0, 0, 0, 0.35) 45%,
+        rgba(0, 0, 0, 0.25) 100%
+      );
+    }
+
     img {
       width: 100%;
       height: 100%;
@@ -5313,13 +5335,14 @@ table.elm-table {
     position: absolute;
     top: clamp(12px, 2vw, 18px);
     inset-inline-start: clamp(12px, 2vw, 18px);
-    z-index: 1;
+    z-index: 2;
     font-size: clamp(44px, 5vw, 64px);
     font-weight: 700;
     line-height: 1;
     letter-spacing: var(--elm-tracking-display);
-    @include elm-brand-text;
-    filter: drop-shadow(0 2px 12px rgba(0, 0, 0, 0.4));
+    color: #fff;
+    -webkit-text-fill-color: #fff;
+    text-shadow: 0 2px 16px rgba(0, 0, 0, 0.65);
   }
 
   > p {
@@ -5854,8 +5877,13 @@ table.elm-table {
     font-size: 11px;
     font-weight: 800;
     letter-spacing: 0.14em;
-    @include elm-brand-text;
     line-height: 1;
+    background: none !important;
+    background-image: none !important;
+    -webkit-background-clip: border-box !important;
+    background-clip: border-box !important;
+    color: #fff !important;
+    -webkit-text-fill-color: #fff !important;
   }
 
   &__body {
@@ -5971,7 +5999,8 @@ table.elm-table {
   font-weight: 800;
   letter-spacing: 0.08em;
   font-variant-numeric: tabular-nums;
-  @include elm-brand-text;
+  color: var(--elm-text);
+  -webkit-text-fill-color: var(--elm-text);
   min-width: 1.6em;
 }
 
@@ -6040,7 +6069,8 @@ table.elm-table {
 /* ============================================================
    PHOTO RULE
    - Text on photo → color + brand gradient scrim
-   - Standalone / beside / below copy → B&W only
+   - Standalone / beside / below copy → moody B&W (darkened)
+   - Project / case-study / portfolio media → full color
    ============================================================ */
 .about-intro__media img,
 .sectors-grid__media img,
@@ -6048,43 +6078,37 @@ table.elm-table {
 .spec-card__media img,
 .process-step__media img,
 .sticky-stack__media img,
-.project-card img,
-.case-study-card__media img,
-.portfolio-card__media img,
 .news-box figure img,
 .director-team figure img,
 .sales-team figure img,
 .certificate figure img,
 .side-image img,
 .contact-box figure img {
-  filter: grayscale(1) !important;
+  filter: grayscale(1) brightness(0.58) contrast(1.12) !important;
 }
 
-/* Dark page eats grayscale photos — lift so detail stays readable */
-[data-theme="dark"] {
-  .about-intro__media img,
-  .sectors-grid__media img,
-  .tech-preview-card figure img,
-  .spec-card__media img,
-  .process-step__media img,
-  .sticky-stack__media img,
-  .project-card img,
-  .case-study-card__media img,
-  .portfolio-card__media img,
-  .news-box figure img,
-  .director-team figure img,
-  .sales-team figure img,
-  .certificate figure img,
-  .side-image img,
-  .contact-box figure img {
-    filter: grayscale(1) brightness(1.35) contrast(1.08) !important;
-  }
+/* Text sits on photo — slightly deeper so numbers stay readable */
+.process-step__media img {
+  filter: grayscale(1) brightness(0.5) contrast(1.1) !important;
 }
 
 .page-header--project .project-box img,
 .metric-stage__media img,
-.video-quote video {
+.video-quote video,
+.project-card img,
+.case-study-card__media img,
+.portfolio-card__media img {
   filter: none !important;
+}
+
+.project-slider .swiper-slide:not(.swiper-slide-active) .project-card img {
+  filter: blur(5px) !important;
+}
+
+@media (max-width: 767px) {
+  .project-slider .swiper-slide:not(.swiper-slide-active) .project-card img {
+    filter: blur(3px) !important;
+  }
 }
 
 /* Technologies page — all copy centered (photos already B&W via global rule) */
@@ -6332,7 +6356,8 @@ table.elm-table {
     font-variant-numeric: tabular-nums;
     letter-spacing: var(--elm-tracking-display, 0.02em);
     line-height: 0.9;
-    @include elm-brand-text;
+    color: var(--elm-text);
+    -webkit-text-fill-color: var(--elm-text);
     opacity: 0.88;
     @include elm-smooth-hover;
   }
@@ -6441,7 +6466,9 @@ table.elm-table {
       border-color: color-mix(in srgb, $color-main 35%, var(--elm-border));
 
       .engagement-timeline__num {
-        @include elm-brand-text;
+        color: var(--elm-text);
+        -webkit-text-fill-color: var(--elm-text);
+        opacity: 0.55;
       }
 
       .engagement-timeline__title {
@@ -6794,6 +6821,38 @@ table.elm-table {
 .capability-card:hover .capability-card__link,
 .footer .bottom-bar a:hover {
   @include elm-brand-text;
+}
+
+/* Index numbers — solid white, never brand gradient */
+.sectors-index__num,
+.sectors-index__item:hover .sectors-index__num,
+.about-intro__fact-num,
+.metric-index__num,
+.process-step__num,
+.tech-routes__index,
+.technology-partners__index,
+.sustainability-commitment__num,
+.engagement-timeline__num,
+.engagement-timeline__step:hover .engagement-timeline__num {
+  background: none !important;
+  background-image: none !important;
+  -webkit-background-clip: border-box !important;
+  background-clip: border-box !important;
+  color: #fff !important;
+  -webkit-text-fill-color: #fff !important;
+}
+
+:root:not([data-theme="dark"]) {
+  .sectors-index__num,
+  .sectors-index__item:hover .sectors-index__num,
+  .about-intro__fact-num,
+  .metric-index__num,
+  .tech-routes__index,
+  .engagement-timeline__num,
+  .engagement-timeline__step:hover .engagement-timeline__num {
+    color: var(--elm-text) !important;
+    -webkit-text-fill-color: var(--elm-text) !important;
+  }
 }
 
 @import 'elm-mobile';

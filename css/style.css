@@ -2387,12 +2387,11 @@ button:hover > .elm-go {
 /* Company-profile title pill: label + large ring glyph (matches brand stadium) */
 .elm-title-pill {
   display: flex;
-  align-items: center;
+  align-items: stretch;
   justify-content: flex-start;
   gap: 12px;
   width: 100%;
   min-height: 56px;
-  /* Tight trailing pad so the ring reads ~full pill height */
   padding: 5px 5px 5px 20px;
   border-radius: 999px;
   border: 1.5px solid transparent;
@@ -2403,6 +2402,7 @@ button:hover > .elm-go {
   margin: 0;
   flex: 1;
   min-width: 0;
+  align-self: center;
   font-size: clamp(13px, 1.25vw, 16px);
   font-weight: 700;
   line-height: 1.25;
@@ -2412,9 +2412,12 @@ button:hover > .elm-go {
 }
 .elm-title-pill .elm-icon {
   display: block;
-  width: 46px;
-  height: 46px;
   flex-shrink: 0;
+  align-self: stretch;
+  width: auto;
+  height: auto;
+  aspect-ratio: 1;
+  min-height: 46px;
   margin-inline-start: auto;
   background-image: linear-gradient(135deg in oklab, #BD1F71 0%, #592C7B 48%, #0A76B5 100%);
   background-color: transparent;
@@ -4619,11 +4622,8 @@ p, li, td, th, label, input, textarea, select, button, blockquote, figcaption {
   background: color-mix(in srgb, #BD1F71 6%, transparent);
 }
 .sectors-index__item:hover .sectors-index__num {
-  background-image: linear-gradient(135deg in oklab, #BD1F71 0%, #592C7B 48%, #0A76B5 100%);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent !important;
-  -webkit-text-fill-color: transparent;
+  color: #fff !important;
+  -webkit-text-fill-color: #fff !important;
   opacity: 1;
 }
 .sectors-index__item:hover .elm-go {
@@ -4640,13 +4640,14 @@ p, li, td, th, label, input, textarea, select, button, blockquote, figcaption {
   font-weight: 800;
   font-variant-numeric: tabular-nums;
   letter-spacing: var(--elm-tracking-display, 0.02em);
-  background-image: linear-gradient(135deg in oklab, #BD1F71 0%, #592C7B 48%, #0A76B5 100%);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent !important;
-  -webkit-text-fill-color: transparent;
   line-height: 0.95;
   min-width: 1.4em;
+  background: none !important;
+  background-image: none !important;
+  -webkit-background-clip: border-box !important;
+  background-clip: border-box !important;
+  color: #fff !important;
+  -webkit-text-fill-color: #fff !important;
   transition: background-color var(--elm-hover-duration) var(--elm-hover-ease), border-color var(--elm-hover-duration) var(--elm-hover-ease), box-shadow var(--elm-hover-duration) var(--elm-hover-ease), transform var(--elm-hover-duration) var(--elm-hover-ease), opacity var(--elm-hover-duration) var(--elm-hover-ease), filter var(--elm-hover-duration) var(--elm-hover-ease), color var(--elm-hover-duration) var(--elm-hover-ease);
 }
 .sectors-index__body {
@@ -6877,11 +6878,8 @@ table.elm-table tr:hover td:first-child {
   font-weight: 700;
   font-variant-numeric: tabular-nums;
   letter-spacing: var(--elm-tracking-display, 0.02em);
-  background-image: linear-gradient(135deg in oklab, #BD1F71 0%, #592C7B 48%, #0A76B5 100%);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent !important;
-  -webkit-text-fill-color: transparent;
+  color: var(--elm-text);
+  -webkit-text-fill-color: var(--elm-text);
   padding-top: 0;
   line-height: 1;
   min-width: 1.4em;
@@ -8353,11 +8351,8 @@ table.elm-table tr:hover td:first-child {
   font-weight: 600;
   font-variant-numeric: tabular-nums;
   letter-spacing: inherit;
-  background-image: linear-gradient(135deg in oklab, #BD1F71 0%, #592C7B 48%, #0A76B5 100%);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent !important;
-  -webkit-text-fill-color: transparent;
+  color: var(--elm-text);
+  -webkit-text-fill-color: var(--elm-text);
   padding-top: 2px;
 }
 .metric-index__body {
@@ -9262,6 +9257,14 @@ table.elm-table tr:hover td:first-child {
   overflow: hidden;
   border-bottom: 1px solid var(--elm-border);
 }
+.process-step__media::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.55) 0%, rgba(0, 0, 0, 0.35) 45%, rgba(0, 0, 0, 0.25) 100%);
+}
 .process-step__media img {
   width: 100%;
   height: 100%;
@@ -9303,17 +9306,14 @@ table.elm-table tr:hover td:first-child {
   position: absolute;
   top: clamp(12px, 2vw, 18px);
   inset-inline-start: clamp(12px, 2vw, 18px);
-  z-index: 1;
+  z-index: 2;
   font-size: clamp(44px, 5vw, 64px);
   font-weight: 700;
   line-height: 1;
   letter-spacing: var(--elm-tracking-display);
-  background-image: linear-gradient(135deg in oklab, #BD1F71 0%, #592C7B 48%, #0A76B5 100%);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent !important;
-  -webkit-text-fill-color: transparent;
-  filter: drop-shadow(0 2px 12px rgba(0, 0, 0, 0.4));
+  color: #fff;
+  -webkit-text-fill-color: #fff;
+  text-shadow: 0 2px 16px rgba(0, 0, 0, 0.65);
 }
 .process-step > p {
   margin: 0 0 20px;
@@ -9845,12 +9845,13 @@ table.elm-table tr:hover td:first-child {
   font-size: 11px;
   font-weight: 800;
   letter-spacing: 0.14em;
-  background-image: linear-gradient(135deg in oklab, #BD1F71 0%, #592C7B 48%, #0A76B5 100%);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent !important;
-  -webkit-text-fill-color: transparent;
   line-height: 1;
+  background: none !important;
+  background-image: none !important;
+  -webkit-background-clip: border-box !important;
+  background-clip: border-box !important;
+  color: #fff !important;
+  -webkit-text-fill-color: #fff !important;
 }
 .technology-partners__body {
   min-width: 0;
@@ -9952,11 +9953,8 @@ table.elm-table tr:hover td:first-child {
   font-weight: 800;
   letter-spacing: 0.08em;
   font-variant-numeric: tabular-nums;
-  background-image: linear-gradient(135deg in oklab, #BD1F71 0%, #592C7B 48%, #0A76B5 100%);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent !important;
-  -webkit-text-fill-color: transparent;
+  color: var(--elm-text);
+  -webkit-text-fill-color: var(--elm-text);
   min-width: 1.6em;
 }
 
@@ -10018,7 +10016,8 @@ table.elm-table tr:hover td:first-child {
 /* ============================================================
    PHOTO RULE
    - Text on photo → color + brand gradient scrim
-   - Standalone / beside / below copy → B&W only
+   - Standalone / beside / below copy → moody B&W (darkened)
+   - Project / case-study / portfolio media → full color
    ============================================================ */
 .about-intro__media img,
 .sectors-grid__media img,
@@ -10026,43 +10025,38 @@ table.elm-table tr:hover td:first-child {
 .spec-card__media img,
 .process-step__media img,
 .sticky-stack__media img,
-.project-card img,
-.case-study-card__media img,
-.portfolio-card__media img,
 .news-box figure img,
 .director-team figure img,
 .sales-team figure img,
 .certificate figure img,
 .side-image img,
 .contact-box figure img {
-  filter: grayscale(1) !important;
+  filter: grayscale(1) brightness(0.58) contrast(1.12) !important;
 }
 
-/* Dark page eats grayscale photos — lift so detail stays readable */
-[data-theme=dark] .about-intro__media img,
-[data-theme=dark] .sectors-grid__media img,
-[data-theme=dark] .tech-preview-card figure img,
-[data-theme=dark] .spec-card__media img,
-[data-theme=dark] .process-step__media img,
-[data-theme=dark] .sticky-stack__media img,
-[data-theme=dark] .project-card img,
-[data-theme=dark] .case-study-card__media img,
-[data-theme=dark] .portfolio-card__media img,
-[data-theme=dark] .news-box figure img,
-[data-theme=dark] .director-team figure img,
-[data-theme=dark] .sales-team figure img,
-[data-theme=dark] .certificate figure img,
-[data-theme=dark] .side-image img,
-[data-theme=dark] .contact-box figure img {
-  filter: grayscale(1) brightness(1.35) contrast(1.08) !important;
+/* Text sits on photo — slightly deeper so numbers stay readable */
+.process-step__media img {
+  filter: grayscale(1) brightness(0.5) contrast(1.1) !important;
 }
 
 .page-header--project .project-box img,
 .metric-stage__media img,
-.video-quote video {
+.video-quote video,
+.project-card img,
+.case-study-card__media img,
+.portfolio-card__media img {
   filter: none !important;
 }
 
+.project-slider .swiper-slide:not(.swiper-slide-active) .project-card img {
+  filter: blur(5px) !important;
+}
+
+@media (max-width: 767px) {
+  .project-slider .swiper-slide:not(.swiper-slide-active) .project-card img {
+    filter: blur(3px) !important;
+  }
+}
 /* Technologies page — all copy centered (photos already B&W via global rule) */
 [data-page=technologies] .content-section,
 [data-page=technologies] .content-section .section-title,
@@ -10304,11 +10298,8 @@ table.elm-table tr:hover td:first-child {
   font-variant-numeric: tabular-nums;
   letter-spacing: var(--elm-tracking-display, 0.02em);
   line-height: 0.9;
-  background-image: linear-gradient(135deg in oklab, #BD1F71 0%, #592C7B 48%, #0A76B5 100%);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent !important;
-  -webkit-text-fill-color: transparent;
+  color: var(--elm-text);
+  -webkit-text-fill-color: var(--elm-text);
   opacity: 0.88;
   transition: background-color var(--elm-hover-duration) var(--elm-hover-ease), border-color var(--elm-hover-duration) var(--elm-hover-ease), box-shadow var(--elm-hover-duration) var(--elm-hover-ease), transform var(--elm-hover-duration) var(--elm-hover-ease), opacity var(--elm-hover-duration) var(--elm-hover-ease), filter var(--elm-hover-duration) var(--elm-hover-ease), color var(--elm-hover-duration) var(--elm-hover-ease);
 }
@@ -10409,11 +10400,9 @@ table.elm-table tr:hover td:first-child {
   border-color: color-mix(in srgb, #BD1F71 35%, var(--elm-border));
 }
 .engagement-timeline__step:hover .engagement-timeline__num {
-  background-image: linear-gradient(135deg in oklab, #BD1F71 0%, #592C7B 48%, #0A76B5 100%);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent !important;
-  -webkit-text-fill-color: transparent;
+  color: var(--elm-text);
+  -webkit-text-fill-color: var(--elm-text);
+  opacity: 0.55;
 }
 .engagement-timeline__step:hover .engagement-timeline__title {
   background-image: linear-gradient(135deg in oklab, #BD1F71 0%, #592C7B 48%, #0A76B5 100%);
@@ -10738,6 +10727,36 @@ table.elm-table tr:hover td:first-child {
   background-clip: text;
   color: transparent !important;
   -webkit-text-fill-color: transparent;
+}
+
+/* Index numbers — solid white, never brand gradient */
+.sectors-index__num,
+.sectors-index__item:hover .sectors-index__num,
+.about-intro__fact-num,
+.metric-index__num,
+.process-step__num,
+.tech-routes__index,
+.technology-partners__index,
+.sustainability-commitment__num,
+.engagement-timeline__num,
+.engagement-timeline__step:hover .engagement-timeline__num {
+  background: none !important;
+  background-image: none !important;
+  -webkit-background-clip: border-box !important;
+  background-clip: border-box !important;
+  color: #fff !important;
+  -webkit-text-fill-color: #fff !important;
+}
+
+:root:not([data-theme=dark]) .sectors-index__num,
+:root:not([data-theme=dark]) .sectors-index__item:hover .sectors-index__num,
+:root:not([data-theme=dark]) .about-intro__fact-num,
+:root:not([data-theme=dark]) .metric-index__num,
+:root:not([data-theme=dark]) .tech-routes__index,
+:root:not([data-theme=dark]) .engagement-timeline__num,
+:root:not([data-theme=dark]) .engagement-timeline__step:hover .engagement-timeline__num {
+  color: var(--elm-text) !important;
+  -webkit-text-fill-color: var(--elm-text) !important;
 }
 
 @media (max-width: 767px) {
