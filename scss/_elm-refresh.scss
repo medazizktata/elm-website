@@ -58,7 +58,8 @@
 }
 
 /* Gradient border draws from top-left, clockwise; unwinds on leave.
-   Uses border-box (not mask) so rounded corners stay clean. */
+   Mask punches out the interior so only the stroke paints — never a fill.
+   Static top accent (elm-brand-edge-top) stays painted underneath — never cleared on hover. */
 @mixin elm-border-wrap {
   --elm-wrap: 0deg;
 
@@ -68,31 +69,31 @@
     inset: 0;
     z-index: 2;
     border-radius: inherit;
-    border: 1.5px solid transparent;
+    padding: 1.5px;
     box-sizing: border-box;
     pointer-events: none;
-    background:
-      linear-gradient(transparent, transparent) padding-box,
-      conic-gradient(
-        from 315deg,
-        #{$color-main} 0deg,
-        #{$color-accent},
-        #{$color-secondary},
-        #{$color-main} var(--elm-wrap),
-        transparent var(--elm-wrap)
-      ) border-box;
+    background: conic-gradient(
+      from 315deg,
+      #{$color-main} 0deg,
+      #{$color-accent},
+      #{$color-secondary},
+      #{$color-main} var(--elm-wrap),
+      transparent var(--elm-wrap)
+    );
+    -webkit-mask:
+      linear-gradient(#fff 0 0) content-box,
+      linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask:
+      linear-gradient(#fff 0 0) content-box,
+      linear-gradient(#fff 0 0);
+    mask-composite: exclude;
     transition: --elm-wrap 0.9s var(--elm-hover-ease);
   }
 
   &:hover::before,
   &:focus-visible::before {
     --elm-wrap: 360deg;
-  }
-
-  /* Hide the straight top accent while the ring is drawing */
-  &:hover,
-  &:focus-visible {
-    background-size: 0 0;
   }
 }
 
@@ -824,13 +825,18 @@ body:has(.hero) .navbar {
   &.sticky .site-menu ul li {
     > a.is-active,
     &.is-active-parent > a {
-      @include elm-brand-text;
-      background: rgba($color-main, 0.1);
+      /* Don't pair elm-brand-text with a pill bg — clip + solid bg = invisible glyphs */
+      color: #fff !important;
+      -webkit-text-fill-color: #fff;
+      background-image: none;
+      background-color: rgba($color-main, 0.38);
     }
 
     ul li a.is-active {
-      @include elm-brand-text;
-      background: rgba($color-main, 0.12);
+      color: #fff !important;
+      -webkit-text-fill-color: #fff;
+      background-image: none;
+      background-color: rgba($color-main, 0.42);
       font-weight: 700;
     }
   }
@@ -1182,7 +1188,6 @@ body:has(.hero) .navbar {
   position: relative;
   background-color: var(--elm-bg-surface);
   border: 1px solid var(--elm-border);
-  border-top: 2px solid transparent;
   border-radius: var(--elm-radius);
   @include elm-smooth-hover;
   @include elm-brand-edge-top(2px);
@@ -1216,12 +1221,12 @@ body:has(.hero) .navbar {
 .portfolio-card,
 .testimonial {
   position: relative;
+  @include elm-brand-edge-top(2px);
   @include elm-border-wrap;
 }
 
 .sector-card {
-  @include elm-brand-edge-top(2px);
-  border-top: 2px solid transparent;
+  border-top-color: transparent;
 }
 
 .capability-card {
@@ -1329,13 +1334,9 @@ body:has(.hero) .navbar {
     height: 100%;
     padding: clamp(32px, 3.5vw, 44px) clamp(28px, 3vw, 36px);
     border: 1px solid var(--elm-border);
-    border-top: 2px solid transparent;
     background-color: var(--elm-bg-surface);
-    background-image: $gradient-brand;
-    background-size: 100% 2px;
-    background-position: top left;
-    background-repeat: no-repeat;
     box-shadow: 0 8px 24px rgba($color-dark, 0.06);
+    @include elm-brand-edge-top(2px);
 
     &:hover {
       border-color: rgba($color-main, 0.35);
@@ -1376,9 +1377,9 @@ body:has(.hero) .navbar {
         -webkit-text-fill-color: currentColor !important;
       }
 
-      // Gradient only after the ribbon settles (one value per digit).
+      // Brighter gradient after settle — readable on dark card surfaces
       &:not(.odometer-animating) .odometer-value {
-        background-image: $gradient-brand !important;
+        background-image: $gradient-brand-on-dark !important;
         -webkit-background-clip: text !important;
         background-clip: text !important;
         color: transparent !important;
@@ -1391,7 +1392,7 @@ body:has(.hero) .navbar {
       font-size: clamp(17px, 1.6vw, 21px);
       font-weight: 700;
       line-height: 1;
-      background-image: $gradient-brand;
+      background-image: $gradient-brand-on-dark;
       -webkit-background-clip: text;
       background-clip: text;
       color: transparent;
@@ -1593,33 +1594,6 @@ body:has(.hero) .navbar {
     margin-top: auto;
     padding-top: clamp(20px, 2.5vw, 28px);
     text-align: right;
-  }
-
-  &__link {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    font-size: 14px;
-    font-weight: 600;
-    letter-spacing: inherit;
-    text-transform: none;
-    @include elm-brand-text;
-    text-decoration: none;
-    @include elm-smooth-hover;
-
-    &:hover {
-      color: var(--elm-link-hover);
-      text-decoration: none;
-
-      i {
-        transform: translateX(var(--elm-nudge));
-      }
-    }
-
-    i {
-      font-size: 14px;
-      @include elm-smooth-hover;
-    }
   }
 
   .compare-table__row--head span {
@@ -1927,8 +1901,6 @@ body:has(.hero) .navbar {
   padding: clamp(24px, 3vw, 36px);
   background: var(--elm-bg-surface);
   border: 1px solid var(--elm-border);
-  border-top: 2px solid transparent;
-  @include elm-brand-edge-top(2px);
 
   border-radius: var(--elm-radius);
   box-shadow: 0 12px 32px var(--elm-shadow);
@@ -2092,8 +2064,6 @@ table.elm-table {
   &__body {
     display: block;
     padding: 18px 20px 20px;
-    border-top: 2px solid transparent;
-    @include elm-brand-edge-top(2px);
 
     strong {
       display: block;
@@ -3064,8 +3034,6 @@ table.elm-table {
     padding: clamp(28px, 4vw, 44px);
     background: var(--elm-bg-surface);
     border: 1px solid var(--elm-border);
-    border-top: 2px solid transparent;
-    @include elm-brand-edge-top(2px);
 
     &__eyebrow {
       @include elm-section-eyebrow;
@@ -3137,8 +3105,6 @@ table.elm-table {
   padding: clamp(28px, 3.5vw, 44px) clamp(32px, 4vw, 52px);
   background: var(--elm-bg-surface);
   border: 1px solid var(--elm-border);
-  border-top: 2px solid transparent;
-  @include elm-brand-edge-top(2px);
 
   box-shadow: 0 16px 48px var(--elm-shadow);
 
@@ -4198,9 +4164,14 @@ table.elm-table {
     letter-spacing: var(--elm-tracking-display);
     color: #fff;
     white-space: nowrap;
+    /* text-shadow + background-clip:text = black glyphs; keep shadow off the number */
+    text-shadow: none;
 
     span {
       @include elm-brand-text;
+      text-shadow: none;
+      /* Readable glow without breaking the gradient fill */
+      filter: drop-shadow(0 2px 14px rgba($color-dark, 0.65));
     }
   }
 
@@ -4393,8 +4364,6 @@ table.elm-table {
   z-index: calc(var(--stack-index, 0) + 1);
   background: var(--elm-bg-surface);
   border: 1px solid var(--elm-border);
-  border-top: 2px solid transparent;
-  @include elm-brand-edge-top(2px);
 
   box-shadow: 0 8px 28px rgba($color-dark, 0.1);
   @include elm-smooth-hover;
@@ -4931,8 +4900,6 @@ table.elm-table {
   overflow: hidden;
   background: $color-dark;
   border: 1px solid rgba(#fff, 0.1);
-  border-top: 2px solid transparent;
-  @include elm-brand-edge-top(2px);
 
   color: #fff;
   @include elm-smooth-hover;
@@ -4996,24 +4963,33 @@ table.elm-table {
   }
 
   &__rows {
-    display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: clamp(10px, 1.2vw, 14px);
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    width: 100%;
     margin: 0 0 clamp(18px, 2vw, 22px);
     padding: clamp(14px, 1.6vw, 18px) 0 0;
     border-top: 1px solid rgba(#fff, 0.12);
+    text-align: start;
 
     div {
-      display: flex;
-      flex-direction: column;
-      gap: 6px;
+      display: grid;
+      grid-template-columns: 6.75rem minmax(0, 1fr);
+      align-items: baseline;
+      column-gap: 14px;
       min-width: 0;
-      padding: 0 clamp(10px, 1.2vw, 14px);
-      border-left: 1px solid rgba(#fff, 0.1);
+      margin: 0;
+      padding: 10px 0;
+      border: none;
+      border-bottom: 1px solid rgba(#fff, 0.08);
 
       &:first-child {
-        padding-left: 0;
-        border-left: none;
+        padding-top: 0;
+      }
+
+      &:last-child {
+        padding-bottom: 0;
+        border-bottom: none;
       }
     }
 
@@ -5023,15 +4999,20 @@ table.elm-table {
       font-weight: 700;
       letter-spacing: 0.1em;
       text-transform: uppercase;
-      @include elm-brand-text;
+      color: $color-main;
+      -webkit-text-fill-color: $color-main;
+      background: none;
+      background-image: none;
+      text-align: start;
     }
 
     dd {
       margin: 0;
-      font-size: clamp(12px, 1.1vw, 13px);
+      font-size: clamp(12px, 1.15vw, 14px);
       font-weight: 600;
       line-height: 1.45;
-      color: #fff;
+      color: rgba(#fff, 0.92);
+      text-align: start;
     }
   }
 
@@ -5087,17 +5068,8 @@ table.elm-table {
 
 @media (min-width: 992px) {
   .spec-card__rows {
-    grid-template-columns: 1fr;
-
     div {
-      padding: clamp(12px, 1.4vw, 14px) 0 0;
-      border-left: none;
-      border-top: 1px solid rgba(#fff, 0.1);
-
-      &:first-child {
-        padding-top: 0;
-        border-top: none;
-      }
+      grid-template-columns: 7rem minmax(0, 1fr);
     }
   }
 }
@@ -5191,8 +5163,6 @@ table.elm-table {
     padding: clamp(24px, 3vw, 36px);
     background: var(--elm-bg-surface);
     border: 1px solid var(--elm-border);
-    border-top: 3px solid transparent;
-    @include elm-brand-edge-top(3px);
 
     blockquote {
       margin: 0 0 20px;
@@ -5361,39 +5331,49 @@ table.elm-table {
 
   &__list {
     margin: auto 0 0;
-    padding-top: 16px;
+    padding-top: 18px;
     padding-bottom: clamp(20px, 2.5vw, 28px);
     list-style: none;
     border-top: 1px solid var(--elm-border);
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    width: 100%;
 
     li {
-      display: flex;
-      align-items: flex-start;
-      gap: 8px;
-      padding: 6px 0;
+      display: grid;
+      grid-template-columns: 1.35rem minmax(0, 1fr);
+      align-items: center;
+      column-gap: 10px;
+      padding: 7px 0;
       font-size: 13px;
-      line-height: 1.45;
+      font-weight: 600;
+      letter-spacing: 0.01em;
+      line-height: 1.4;
+      color: var(--elm-text);
+      text-align: start;
 
       i {
-        @include elm-brand-text;
-        margin-top: 2px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 1.35rem;
+        height: 1.35rem;
+        margin: 0;
+        border-radius: 50%;
+        background: color-mix(in srgb, #{$color-main} 18%, transparent);
+        color: $color-main;
+        -webkit-text-fill-color: $color-main;
+        background-image: none;
+        font-size: 11px;
+        line-height: 1;
         flex-shrink: 0;
-        font-size: 12px;
+      }
+
+      span {
+        min-width: 0;
       }
     }
-  }
-
-  &:not(:last-child)::after {
-    content: "";
-    position: absolute;
-    top: 50%;
-    right: -12px;
-    width: 24px;
-    height: 1px;
-    background: linear-gradient(90deg, $color-main 0%, transparent 100%);
-    transform: translateY(-50%);
-    pointer-events: none;
-    z-index: 1;
   }
 }
 
@@ -5410,10 +5390,6 @@ table.elm-table {
 
   .process-steps {
     grid-template-columns: 1fr;
-  }
-
-  .process-step:not(:last-child)::after {
-    display: none;
   }
 }
 
@@ -5451,8 +5427,6 @@ table.elm-table {
   padding: clamp(28px, 4vw, 48px);
   background: var(--elm-bg-surface);
   border: 1px solid var(--elm-border);
-  border-top: 3px solid transparent;
-  @include elm-brand-edge-top(3px);
 
   color: var(--elm-text);
 
@@ -5618,16 +5592,20 @@ table.elm-table {
 
   .spec-card {
     &__rows {
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-
       div {
-        padding: 0 10px;
-        border-top: none;
-        border-left: 1px solid rgba(#fff, 0.1);
+        grid-template-columns: 5.75rem minmax(0, 1fr);
+        column-gap: 12px;
+        padding: 10px 0;
+        border-left: none;
+        border-bottom: 1px solid rgba(#fff, 0.08);
 
         &:first-child {
-          padding-left: 0;
-          border-left: none;
+          padding-top: 0;
+        }
+
+        &:last-child {
+          padding-bottom: 0;
+          border-bottom: none;
         }
       }
     }
@@ -5962,17 +5940,6 @@ table.elm-table {
   isolation: isolate;
   @include elm-smooth-hover;
 
-  &::before {
-    content: "";
-    position: absolute;
-    inset-block: 0;
-    inset-inline-start: 0;
-    width: 3px;
-    background: linear-gradient(180deg, $color-main, $color-accent, $color-secondary);
-    opacity: 0.55;
-    transition: opacity 0.3s ease, width 0.3s ease;
-  }
-
   &:hover,
   &:focus-visible {
     text-decoration: none;
@@ -5980,11 +5947,6 @@ table.elm-table {
     border-color: rgba($color-main, 0.35);
     box-shadow: 0 14px 36px var(--elm-shadow);
     transform: translateY(-2px);
-
-    &::before {
-      width: 4px;
-      opacity: 1;
-    }
 
     .tech-routes__icon {
       background: linear-gradient(135deg, rgba($color-main, 0.16), rgba($color-secondary, 0.14));
@@ -6098,6 +6060,27 @@ table.elm-table {
   filter: grayscale(1) !important;
 }
 
+/* Dark page eats grayscale photos — lift so detail stays readable */
+[data-theme="dark"] {
+  .about-intro__media img,
+  .sectors-grid__media img,
+  .tech-preview-card figure img,
+  .spec-card__media img,
+  .process-step__media img,
+  .sticky-stack__media img,
+  .project-card img,
+  .case-study-card__media img,
+  .portfolio-card__media img,
+  .news-box figure img,
+  .director-team figure img,
+  .sales-team figure img,
+  .certificate figure img,
+  .side-image img,
+  .contact-box figure img {
+    filter: grayscale(1) brightness(1.35) contrast(1.08) !important;
+  }
+}
+
 .page-header--project .project-box img,
 .metric-stage__media img,
 .video-quote video {
@@ -6130,7 +6113,6 @@ table.elm-table {
   .compare-section__head,
   .compare-section__lede,
   .compare-section__foot,
-  .compare-section__link,
   .compare-table,
   .compare-table__row,
   .compare-table__row > span,
@@ -6144,9 +6126,6 @@ table.elm-table {
   .counter-box__desc,
   .spec-card__body,
   .spec-card__blurb,
-  .spec-card__rows,
-  .spec-card__rows dt,
-  .spec-card__rows dd,
   .spec-card__link,
   .sectors-index__item,
   .sectors-index__body,
@@ -6218,7 +6197,14 @@ table.elm-table {
 
   .process-step__list li,
   .sticky-stack__features ul li {
-    justify-content: center;
+    justify-content: flex-start;
+  }
+
+  .process-step__list {
+    width: max-content;
+    max-width: 100%;
+    margin-inline: auto;
+    text-align: start;
   }
 
   .elm-title-pill {
@@ -6298,13 +6284,18 @@ table.elm-table {
     min-height: 100%;
 
     &--featured {
-      background:
+      background-image:
+        $gradient-brand,
         linear-gradient(
           165deg,
           color-mix(in srgb, #{$color-main} 10%, var(--elm-bg-surface)) 0%,
           var(--elm-bg-surface) 55%
         );
-      border-top-color: transparent;
+      background-size:
+        calc(100% - 2 * var(--elm-radius, 10px)) 2px,
+        auto;
+      background-position: top center, 0 0;
+      background-repeat: no-repeat, no-repeat;
       box-shadow: 0 12px 36px color-mix(in srgb, #{$color-main} 12%, transparent);
 
       .sustainability-commitment__num {
@@ -6444,7 +6435,6 @@ table.elm-table {
     --elm-radius: 14px;
     border-radius: var(--elm-radius);
     @include elm-smooth-hover;
-    @include elm-brand-edge-top(2px);
 
     &:hover {
       background: color-mix(in srgb, $color-main 5%, var(--elm-bg-surface));
@@ -6792,7 +6782,6 @@ table.elm-table {
 .widget-title,
 .footer .widget-title,
 .footer-bar .sales-representive b,
-.compare-section__link,
 .compare-win__side--elm .compare-win__label,
 .certificate-box h6,
 .info-box-dark h6,

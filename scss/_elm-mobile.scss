@@ -488,21 +488,21 @@
   }
 
   .contact-cards .contact-box {
-    padding: 16px 18px 18px;
-    gap: 8px;
+    padding: 5px 5px 5px 18px;
+    column-gap: 10px;
+
+    .contact-box__copy {
+      padding: 6px 0;
+      gap: 1px;
+    }
 
     .contact-box__label {
       font-size: 12px;
     }
 
-    .elm-icon {
-      width: 24px;
-      height: 24px;
-    }
-
     p {
       font-size: 13px;
-      line-height: 1.45;
+      line-height: 1.2;
     }
   }
 
