@@ -4,7 +4,7 @@
  * purple → blue, left→right) baked across its surface, exactly like the topbar
  * logo. It turns on 3 axes following the mouse; click it for a full spin + glow.
  *
- * Mounts into `.hero__logo3d` inside the centered `.hero__mark` slot on the home
+ * Mounts into `.hero__logo3d` as a full-bleed right-biased overlay on the home
  * page. Desktop-only (the container is display:none below the lg breakpoint, so
  * this bails out when it has no size). The container is pointer-events:none so
  * the hero CTAs stay clickable, clicks are caught on `window` and raycast
@@ -126,7 +126,10 @@ function initHeroLogo3D(el) {
   const group = new THREE.Group();
   scene.add(group);
   const positionGroup = () => {
-    group.position.x = 0;
+    // Bias into the open hero field opposite the copy (LTR → right, RTL → left).
+    const wide = el.clientWidth / el.clientHeight > 1;
+    const rtl = document.documentElement.getAttribute('dir') === 'rtl';
+    group.position.x = wide ? (rtl ? -2.4 : 2.4) : 0;
   };
   positionGroup();
 
@@ -168,7 +171,7 @@ function initHeroLogo3D(el) {
     const size = box.getSize(new THREE.Vector3());
     logo.children.forEach((m) => m.position.sub(center));
     applyGradientColors(logo); // bake magenta→purple→blue across the mark
-    const fit = 3.6 / Math.max(size.x, size.y);
+    const fit = 3.55 / Math.max(size.x, size.y);
     logo.scale.set(fit, -fit, fit); // flip Y: SVG space is Y-down, three is Y-up
     group.add(logo);
     signalHero3dReady();

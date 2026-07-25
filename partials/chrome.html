@@ -48,6 +48,24 @@
       <div class="site-menu">
         {{> nav-menu mobile=true}}
       </div>
+      <div class="side-widget__tools">
+        <div class="locale-switch locale-switch--menu" role="group" aria-label="Language">
+          <button type="button" class="locale-switch__btn" data-locale="en" aria-pressed="true" data-i18n-aria="locale.switchToEn"><span data-i18n="locale.en">EN</span></button>
+          <span class="locale-switch__sep" aria-hidden="true">|</span>
+          <button type="button" class="locale-switch__btn" data-locale="ar" aria-pressed="false" data-i18n-aria="locale.switchToAr"><span data-i18n="locale.ar">عربي</span></button>
+        </div>
+        <button type="button" class="side-widget__tool search search-toggle" data-i18n-aria="search.open" aria-label="Open search" aria-expanded="false" aria-controls="site-search">
+          <i class="lni lni-search-alt" aria-hidden="true"></i>
+          <span data-i18n="search.label">Search</span>
+        </button>
+        <button type="button" class="theme-toggle theme-toggle--menu" aria-pressed="false" data-i18n-aria="chrome.themeDark" aria-label="Switch to dark mode">
+          <i class="lni lni-sun theme-icon-light" aria-hidden="true"></i>
+          <i class="lni lni-night theme-icon-dark" hidden aria-hidden="true"></i>
+          <span class="theme-toggle__label theme-toggle__label--to-light" data-i18n="chrome.themeLight">Switch to light mode</span>
+          <span class="theme-toggle__label theme-toggle__label--to-dark" hidden data-i18n="chrome.themeDark">Switch to dark mode</span>
+        </button>
+        <a href="contact.html#consultation-form" class="custom-button side-widget__cta"><span data-i18n="nav.consultation">Consultation</span> <span class="elm-go elm-go--sm" aria-hidden="true"></span></a>
+      </div>
     </div>
     <small>&copy; {{year}} ELM Media Design</small>
   </div>
@@ -69,11 +87,11 @@
         <i class="lni lni-night theme-icon-dark" hidden aria-hidden="true"></i>
       </button>
       <button type="button" class="search search-toggle" data-i18n-aria="search.open" aria-label="Open search" aria-expanded="false" aria-controls="site-search"><i class="lni lni-search-alt" aria-hidden="true"></i></button>
+      <a href="contact.html#consultation-form" class="navbar-button"><span data-i18n="nav.consultation">Consultation</span><span class="elm-go elm-go--sm" aria-hidden="true"></span></a>
       <div class="hamburger">
         <div id="hamburger"><span></span><span></span><span></span></div>
         <div id="cross"><span></span><span></span></div>
       </div>
-      <a href="contact.html#consultation-form" class="navbar-button"><span data-i18n="nav.consultation">Consultation</span><span class="elm-go elm-go--sm" aria-hidden="true"></span></a>
     </div>
   </div>
 </nav>

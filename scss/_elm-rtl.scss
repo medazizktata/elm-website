@@ -50,6 +50,7 @@ html[dir="rtl"] {
 .capability-card::before,
 .counter-box::before,
 .sector-card::before {
+  /* wrap ring; keep origin token for any leftover scale transforms */
   transform-origin: var(--elm-origin-x);
 }
 
@@ -224,22 +225,19 @@ html[dir="rtl"] {
   }
 
   .hero > .container {
-    justify-content: center;
+    justify-content: flex-start;
   }
 
   .hero__inner,
+  .hero__eyebrow,
   .hero h1,
   .hero__lede {
-    text-align: center;
-  }
-
-  .hero__shade {
-    background: #000;
+    text-align: var(--elm-align);
   }
 
   .hero__actions {
-    justify-content: center;
-    text-align: center;
+    justify-content: flex-start;
+    text-align: var(--elm-align);
   }
 
   .navbar__tools {
@@ -511,21 +509,13 @@ html[dir="rtl"] {
   }
 
   .contact-box {
-    text-align: var(--elm-align);
+    text-align: center;
 
     p a[href^="tel:"],
     p a[href^="mailto:"] {
       display: inline-block;
       direction: ltr;
       unicode-bidi: isolate;
-      text-align: var(--elm-align);
-    }
-
-    &::after {
-      right: auto;
-      left: 4px;
-      border-width: 0 14px 14px 0;
-      border-color: transparent var(--elm-border) transparent transparent;
     }
   }
 

@@ -173,10 +173,17 @@
   }
 
   function openSearch() {
+    var side = document.querySelector(".side-widget");
+    var burger = document.querySelector(".hamburger");
+    if (side) side.classList.remove("active");
+    if (burger) burger.classList.remove("open");
+
     loadIndex().then(function () {
       els.box.classList.add("active");
       els.box.setAttribute("aria-hidden", "false");
-      els.trigger.setAttribute("aria-expanded", "true");
+      els.triggers.forEach(function (btn) {
+        btn.setAttribute("aria-expanded", "true");
+      });
       document.body.classList.add("overflow");
       renderResults("");
       window.setTimeout(function () {
@@ -189,12 +196,14 @@
   function closeSearch() {
     els.box.classList.remove("active");
     els.box.setAttribute("aria-hidden", "true");
-    els.trigger.setAttribute("aria-expanded", "false");
+    els.triggers.forEach(function (btn) {
+      btn.setAttribute("aria-expanded", "false");
+    });
     document.body.classList.remove("overflow");
     els.input.value = "";
     activeIndex = -1;
     lastResults = [];
-    els.trigger.focus();
+    if (els.triggers[0]) els.triggers[0].focus();
   }
 
   function navigateToActive() {
@@ -218,17 +227,21 @@
     els.box = $("#site-search");
     if (!els.box) return;
 
-    els.trigger = $(".navbar .search-toggle");
+    els.triggers = Array.prototype.slice.call(document.querySelectorAll(".search-toggle"));
+    if (!els.triggers.length) return;
+
     els.input = $("#site-search-input");
     els.results = $("#site-search-results");
     els.panel = $(".search-panel");
     els.close = $(".search-close");
     els.backdrop = $(".search-backdrop");
 
-    els.trigger.addEventListener("click", function (e) {
-      e.preventDefault();
-      if (els.box.classList.contains("active")) closeSearch();
-      else openSearch();
+    els.triggers.forEach(function (btn) {
+      btn.addEventListener("click", function (e) {
+        e.preventDefault();
+        if (els.box.classList.contains("active")) closeSearch();
+        else openSearch();
+      });
     });
 
     els.close.addEventListener("click", closeSearch);

@@ -17,7 +17,6 @@
   </div>
   <div class="page-header__scrim" aria-hidden="true"></div>
   <div class="container">
-    <h1 data-i18n="pages.{{pageKey}}.header.title">{{title}}</h1>
     <nav class="page-breadcrumb" aria-label="Breadcrumb">
       <ul>
         <li><a href="index.html" data-i18n="breadcrumb.home">Home</a></li>
@@ -25,6 +24,7 @@
         <li aria-current="page" data-i18n="pages.{{pageKey}}.header.crumb">{{crumb}}</li>
       </ul>
     </nav>
+    <h1 data-i18n="pages.{{pageKey}}.header.title">{{title}}</h1>
     {{#if subtitle}}<p class="page-header__lede" data-i18n="pages.{{pageKey}}.header.subtitle">{{subtitle}}</p>{{/if}}
   </div>
 </header>

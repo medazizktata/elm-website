@@ -168,11 +168,11 @@
     if (!header) return;
 
     var parts = [];
-    var h1 = header.querySelector("h1");
-    if (h1) parts.push(h1);
     header.querySelectorAll(".page-breadcrumb a, .page-breadcrumb [aria-current='page']").forEach(function (el) {
       parts.push(el);
     });
+    var h1 = header.querySelector("h1");
+    if (h1) parts.push(h1);
     var lede = header.querySelector(".page-header__lede");
     if (lede) parts.push(lede);
 

@@ -542,8 +542,10 @@
  });
 
 
- // DATA BACKGROUND (color or photo + overlay)
- var bgOverlay = "linear-gradient(180deg, rgba(18,18,18,0.6) 0%, rgba(18,18,18,0.5) 100%)";
+ // DATA BACKGROUND (color or photo + brand gradient overlay — text sits on photo)
+ var bgOverlay =
+  "linear-gradient(180deg, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0.22) 42%, rgba(0,0,0,0.78) 100%)," +
+  "linear-gradient(135deg, rgba(189,31,113,0.42) 0%, rgba(89,44,123,0.22) 48%, rgba(10,118,181,0.38) 100%)";
  $("[data-background]").each(function () {
  var bg = $(this).attr("data-background");
  if (!bg) return;

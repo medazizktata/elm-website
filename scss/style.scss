@@ -88,12 +88,13 @@ theme.
 
 @mixin transition{
 	transition:
-		background-color 0.25s ease-in-out,
-		border-color 0.25s ease-in-out,
-		box-shadow 0.25s ease-in-out,
-		transform 0.25s ease-in-out,
-		opacity 0.25s ease-in-out,
-		filter 0.25s ease-in-out;
+		background-color var(--elm-hover-duration, 0.42s) var(--elm-hover-ease, cubic-bezier(0.22, 1, 0.36, 1)),
+		border-color var(--elm-hover-duration, 0.42s) var(--elm-hover-ease, cubic-bezier(0.22, 1, 0.36, 1)),
+		box-shadow var(--elm-hover-duration, 0.42s) var(--elm-hover-ease, cubic-bezier(0.22, 1, 0.36, 1)),
+		transform var(--elm-hover-duration, 0.42s) var(--elm-hover-ease, cubic-bezier(0.22, 1, 0.36, 1)),
+		opacity var(--elm-hover-duration, 0.42s) var(--elm-hover-ease, cubic-bezier(0.22, 1, 0.36, 1)),
+		filter var(--elm-hover-duration, 0.42s) var(--elm-hover-ease, cubic-bezier(0.22, 1, 0.36, 1)),
+		color var(--elm-hover-duration, 0.42s) var(--elm-hover-ease, cubic-bezier(0.22, 1, 0.36, 1));
 }
 
 
@@ -126,13 +127,51 @@ $bg-photo-overlay-heavy: linear-gradient(180deg, rgba($color-dark, 0.75) 0%, rgb
 $on-rose: $color-white;
 
 @mixin rose-bg {
-  background-color: $color-main;
-  color: $on-rose;
+  @include brand-gradient-bg;
 }
 
 @mixin brand-gradient-bg {
   background: $gradient-brand;
   color: $on-rose;
+}
+
+/* Brand gradient as text fill (eyebrows, numbers, labels) */
+@mixin elm-brand-text {
+  background-image: $gradient-brand;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent !important;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Brand gradient top edge — inset so it never cuts across rounded corners */
+@mixin elm-brand-edge-top($h: 2px) {
+  border-top-color: transparent !important;
+  background-image: $gradient-brand;
+  background-size: calc(100% - 2 * var(--elm-radius, 10px)) $h;
+  background-position: top center;
+  background-repeat: no-repeat;
+}
+
+/* Photo rule: text-on-photo → brand gradient scrim; else B&W */
+@mixin elm-photo-text-scrim {
+  background:
+    linear-gradient(
+      180deg,
+      rgba(#000, 0.55) 0%,
+      rgba(#000, 0.22) 42%,
+      rgba(#000, 0.78) 100%
+    ),
+    linear-gradient(
+      135deg,
+      rgba($color-main, 0.42) 0%,
+      rgba($color-accent, 0.22) 48%,
+      rgba($color-secondary, 0.38) 100%
+    );
+}
+
+@mixin elm-photo-bw {
+  filter: grayscale(1);
 }
 
 @mixin elm-btn {
@@ -242,7 +281,7 @@ $font-ar: 'Readex Pro', $font-en;
 
 
 *{box-sizing: border-box;}
-html{overflow-x: clip;}
+html{overflow-x: clip; scroll-behavior: smooth;}
 body{margin: 0; padding: 0; font-family: $font-en; font-weight: 400; font-size: 17px; letter-spacing: var(--elm-tracking-body, 0.03em); color: var(--elm-text); background-color: var(--elm-bg-page); text-align: var(--elm-align, start); @include font-smoothing; overflow-x: clip;}
 ::selection{background: $color-main; color: $color-white;}
 
@@ -362,7 +401,7 @@ $section-whitespace: 120px;
 	color: var(--elm-text-muted);
 	font-variant-numeric: tabular-nums;
 	.swiper-pagination-bullet{width: 28px; height: 4px; margin: 0 !important; opacity: 1 !important; background: var(--elm-border); @include transition;
-		&-active{background: $color-main; width: 36px;}}
+		&-active{background: $gradient-brand; width: 36px;}}
 	.swiper-pagination-current{color: var(--elm-text); font-weight: 700;}
 	.swiper-pagination-total{color: var(--elm-text-muted); font-weight: 600;}}
 
@@ -422,7 +461,7 @@ $section-whitespace: 120px;
 .search-result{display: block; position: relative; padding: 10px 28px 10px 10px; border: 1px solid transparent; text-decoration: none; color: var(--elm-text); @include transition;
 	& + &{margin-top: 2px;}
 	&:hover, &.is-active{border-color: rgba($color-main, 0.28); background: rgba($color-main, 0.05); text-decoration: none; color: var(--elm-text);
-		.search-result__arrow{opacity: 1; background: $color-main; color: #fff; transform: translateY(-50%);}}
+		.search-result__arrow{opacity: 1; background: $gradient-brand; color: #fff; transform: translateY(-50%);}}
 	&__meta{display: none;}
 	&__category{display: none;}
 	&__title{display: block; font-size: 14px; font-weight: 600; line-height: 1.35;
@@ -439,7 +478,7 @@ $section-whitespace: 120px;
 
 
 /* SIDE WIDGET */
-.side-widget{width: 400px; height: 100vh; max-width: 100%; display: flex; flex-wrap: wrap; align-items: center; position: fixed; left: -100%; top: 0; @include transition-cubic; background-color: $color-dark; z-index: 5; box-shadow: 0 0 60px rgba($color-dark, 0.4); padding:20px 30px; color: #fff; border-radius: 0 20px 20px 0; overflow: hidden;
+.side-widget{width: 400px; height: 100vh; max-width: 100%; display: flex; flex-wrap: wrap; align-items: stretch; position: fixed; left: -100%; top: 0; @include transition-cubic; background-color: $color-dark; z-index: 5; box-shadow: 0 0 60px rgba($color-dark, 0.4); padding:20px 30px; color: #fff; border-radius: 0 20px 20px 0; overflow: hidden;
 	&-close{position: absolute; top: 16px; right: 16px; z-index: 2; width: 40px; height: 40px; display: inline-flex; align-items: center; justify-content: center; border: none; background: rgba(#fff, 0.08); color: rgba(#fff, 0.88); font-size: 18px; cursor: pointer; padding: 0; line-height: 1; border-radius: var(--elm-radius); @include transition;
 		&:hover{color: #fff; background: rgba(#fff, 0.14);}}
 	.inner{display: inline-block; overflow-y: auto; width: 100%; padding-top: 36px;}
@@ -536,13 +575,13 @@ $section-whitespace: 120px;
 					&:hover{color: #fff; background: rgba(#fff, 0.1); text-decoration: none;}}}}}
 	&__tools{display: flex; align-items: center; gap: 12px; flex-shrink: 0; margin-left: auto;}
 	.theme-toggle,
-	.search{display: inline-flex; align-items: center; justify-content: center; width: 40px; height: 40px; color: rgba(#fff, 0.88); font-size: 18px; cursor: pointer; border: none; background: rgba(#fff, 0.05); padding: 0; line-height: 1; border-radius: var(--elm-radius); @include transition;
+	.search{display: inline-flex; align-items: center; justify-content: center; width: 44px; height: 44px; color: rgba(#fff, 0.88); font-size: 22px; cursor: pointer; border: none; background: rgba(#fff, 0.05); padding: 0; line-height: 1; border-radius: var(--elm-radius); @include transition;
 		&:hover{color: #fff; background: rgba(#fff, 0.12);}}
 	.theme-toggle [hidden]{display: none !important;}
-	.hamburger{display: inline-flex; align-items: center; justify-content: center; width: 40px; height: 40px; color: #fff; border: none; background: rgba(#fff, 0.05); position: relative; border-radius: var(--elm-radius);
-		#hamburger, #cross{transform: scale(0.82); transform-origin: center;}}
-	.navbar-button{@include elm-btn; color: $color-white; background: $color-main; border: none;
-		&:hover{background: lighten($color-main, 4%); box-shadow: 0 10px 28px rgba($color-main, 0.32);}}
+	.hamburger{display: inline-flex; align-items: center; justify-content: center; width: 44px; height: 44px; color: #fff; border: none; background: rgba(#fff, 0.05); position: relative; border-radius: var(--elm-radius);
+		#hamburger, #cross{transform: scale(1); transform-origin: center;}}
+	.navbar-button{@include elm-btn; @include brand-gradient-bg; border: none;
+		&:hover{background: $gradient-brand; filter: brightness(1.08); color: $color-white; box-shadow: 0 10px 28px rgba($color-main, 0.32);}}
 	.languages{display: inline-block; margin: 0 20px;
 		ul{display: block; margin: 0; padding: 0;
 			li{display: inline-block; margin: 0 5px; padding: 0; list-style: none;
@@ -553,13 +592,42 @@ $section-whitespace: 120px;
 
 
 /* PAGE HEADER */
-.page-header{width: 100%; min-height: 420px; height: auto; display: flex; flex-wrap: wrap; align-items: flex-end; padding-bottom: clamp(88px, 12vw, 128px); background: #000; position: relative;
-	/* Short lip only — full hero feather is taller than this header and washed white titles */
-	&::after{content: ""; position: absolute; left: 0; right: 0; bottom: -1px; height: clamp(72px, 10vw, 120px); background: var(--elm-feather-hero); pointer-events: none; z-index: 1;}
-	.container{position: relative; z-index: 2; color: #fff; padding-top: clamp(108px, 14vh, 128px); padding-bottom: clamp(8px, 1.5vw, 16px);
-		h1{ width: 100%; display: block; font-size: clamp(38px, 5.5vw, 68px); font-weight: 800; line-height: 1.02; letter-spacing: var(--elm-tracking-display, 0.02em); margin: 0; color: #fff; max-width: none;}
-		.page-header__lede{ width: 100%; display: block; margin: 14px 0 0; max-width: 42rem; line-height: 1.55; font-size: clamp(15px, 1.5vw, 17px); font-weight: 400; color: rgba(255, 255, 255, 0.82);}
-		.page-breadcrumb{display: block; margin: 12px 0 0; padding: 0; background: none; border-radius: 0; user-select: text; -webkit-user-select: text; text-align: var(--elm-align);
+.page-header{
+	--elm-header-abstract: url("../images/hero-abstract-elm.png");
+	--elm-header-abstract-pos: center 40%;
+	width: 100%;
+	min-height: 420px;
+	height: auto;
+	display: flex;
+	flex-wrap: wrap;
+	align-items: flex-end;
+	padding-bottom: clamp(48px, 6vw, 72px);
+	background-color: #000;
+	background-image: var(--elm-header-abstract);
+	background-size: cover;
+	background-position: var(--elm-header-abstract-pos);
+	background-repeat: no-repeat;
+	position: relative;
+	isolation: isolate;
+
+	/* Keep type readable over vivid abstracts */
+	&::before{
+		content: "";
+		position: absolute;
+		inset: 0;
+		z-index: 0;
+		pointer-events: none;
+		background:
+			radial-gradient(ellipse 90% 70% at 30% 55%, rgba(#000, 0.28) 0%, rgba(#000, 0.55) 55%, rgba(#000, 0.78) 100%),
+			linear-gradient(180deg, rgba(#000, 0.62) 0%, rgba(#000, 0.28) 42%, rgba(#000, 0.72) 100%);
+	}
+
+	/* Short crisp lip — soft home hero feather looks muddy over cream in light mode */
+	&::after{content: ""; position: absolute; left: 0; right: 0; bottom: -1px; height: clamp(36px, 5vw, 56px); background: linear-gradient(to bottom, transparent 0%, color-mix(in srgb, var(--elm-bg-page) 40%, transparent) 45%, var(--elm-bg-page) 100%); pointer-events: none; z-index: 1;}
+	.container{position: relative; z-index: 2; color: #fff; text-align: var(--elm-align); padding-top: clamp(108px, 14vh, 128px); padding-bottom: clamp(8px, 1.5vw, 16px);
+		h1{ width: 100%; display: block; font-size: clamp(38px, 5.5vw, 68px); font-weight: 800; line-height: 1.02; letter-spacing: var(--elm-tracking-display, 0.02em); margin: 0; color: #fff; max-width: none; text-align: var(--elm-align);}
+		.page-header__lede{ width: 100%; display: block; margin: 14px 0 0; max-width: 42rem; line-height: 1.55; font-size: clamp(15px, 1.5vw, 17px); font-weight: 400; color: rgba(255, 255, 255, 0.82); text-align: var(--elm-align);}
+		.page-breadcrumb{display: block; margin: 0 0 14px; padding: 0; background: none; border-radius: 0; user-select: text; -webkit-user-select: text; text-align: var(--elm-align);
 			ul{display: block; margin: 0; padding: 0; list-style: none;
 				li{display: inline; margin: 0; padding: 0; font-size: 13px; font-weight: 600; letter-spacing: 0.04em; text-transform: uppercase;
 					&:last-child:after{display: none;}
@@ -571,7 +639,61 @@ $section-whitespace: 120px;
 			a::selection,
 			li::selection{background: rgba($color-main, 0.55); color: #fff;}}}}}
 
+/* Analogous interior pages — same abstract language, rotated assets */
+[data-page="who-we-are"],
+[data-page="why-elm"],
+[data-page="our-story"],
+[data-page="uae-compliance"] {
+	.page-header {
+		--elm-header-abstract: url("../images/hero-abstract-elm.png");
+		--elm-header-abstract-pos: center 38%;
+	}
+}
+
+[data-page="technologies"],
+[data-page="technology-robotic-concrete"],
+[data-page="technology-polymer-lfam"],
+[data-page="technology-architectural-manufacturing"] {
+	.page-header {
+		--elm-header-abstract: url("../images/bg-gradient-05.jpg");
+		--elm-header-abstract-pos: center 45%;
+	}
+}
+
+[data-page="solutions"],
+[data-page="solution-property-infrastructure"],
+[data-page="solution-hospitality-leisure"],
+[data-page="solution-creative-culture"],
+[data-page="solution-industrial-mobility"],
+[data-page="solution-ooh-the-loop"] {
+	.page-header {
+		--elm-header-abstract: url("../images/bg-gradient-03.jpg");
+		--elm-header-abstract-pos: center 42%;
+	}
+}
+
+[data-page="projects"] {
+	.page-header {
+		--elm-header-abstract: url("../images/bg-gradient-01.jpg");
+		--elm-header-abstract-pos: center 35%;
+	}
+}
+
+[data-page="contact"],
+[data-page="offices"] {
+	.page-header {
+		--elm-header-abstract: url("../images/bg-gradient-06.jpg");
+		--elm-header-abstract-pos: center 40%;
+	}
+}
+
 .page-header--project{
+	/* Photo hero owns the plane — kill abstract fill */
+	background-image: none;
+	background-color: #000;
+
+	&::before{display: none;}
+
 	min-height: min(78vh, 720px);
 	padding-bottom: clamp(96px, 12vw, 140px);
 	overflow: hidden;
@@ -588,9 +710,7 @@ $section-whitespace: 120px;
 		inset: 0;
 		z-index: 1;
 		pointer-events: none;
-		background:
-			linear-gradient(180deg, rgba(0, 0, 0, 0.55) 0%, rgba(0, 0, 0, 0.22) 38%, rgba(0, 0, 0, 0.55) 72%, rgba(0, 0, 0, 0.78) 100%),
-			linear-gradient(90deg, rgba(0, 0, 0, 0.55) 0%, rgba(0, 0, 0, 0.18) 55%, rgba(0, 0, 0, 0.08) 100%);
+		@include elm-photo-text-scrim;
 	}
 
 	&::after{z-index: 2;}
@@ -650,7 +770,8 @@ $section-whitespace: 120px;
 			box-shadow: none;
 
 			&:hover{
-				background: $color-main;
+				@include brand-gradient-bg;
+
 				border-color: $color-main;
 			}
 
@@ -734,7 +855,7 @@ $section-whitespace: 120px;
 	p{margin: 0; font-size: 16px; line-height: 1.35; display: flex; align-items: flex-start; gap: 8px;
 		.compare-win__side--old &{color: var(--elm-text-muted); font-weight: 600;}
 		.compare-win__side--elm &{color: var(--elm-text); font-weight: 700;}
-		i{flex-shrink: 0; width: 22px; height: 22px; display: inline-flex; align-items: center; justify-content: center; background: $color-main; color: var(--elm-on-accent); font-size: 12px; margin-top: 1px;}}}
+		i{flex-shrink: 0; width: 22px; height: 22px; display: inline-flex; align-items: center; justify-content: center; background: $gradient-brand; color: var(--elm-on-accent); font-size: 12px; margin-top: 1px;}}}
 
 @media (min-width: 992px){
 	.compare-wins{grid-template-columns: repeat(2, 1fr); gap: 16px;
@@ -757,7 +878,7 @@ $section-whitespace: 120px;
 	&__foot{margin-top: 16px; text-align: center;}}
 
 .capability-card{
-	width: 100%; display: flex; flex-direction: column; height: 100%; padding: 28px 24px 24px; border: 1px solid var(--elm-border); border-top: 3px solid $color-main; background: var(--elm-bg-surface); color: var(--elm-text); text-decoration: none; @include transition;
+	width: 100%; display: flex; flex-direction: column; height: 100%; padding: 28px 24px 24px; border: 1px solid var(--elm-border); border-top: 3px solid transparent; background-color: var(--elm-bg-surface); background-image: $gradient-brand; background-size: 100% 3px; background-position: top left; background-repeat: no-repeat; color: var(--elm-text); text-decoration: none; @include transition;
 	&:hover{transform: translateY(-4px); box-shadow: 0 20px 40px var(--elm-shadow); border-color: rgba($color-main, 0.45); color: var(--elm-text); text-decoration: none;
 		.capability-card__link{color: $color-main; i{transform: translateX(var(--elm-nudge));}}}
 	.elm-title-pill{margin-bottom: 16px;}
@@ -772,7 +893,8 @@ $section-whitespace: 120px;
 	height: 1em;
 	flex-shrink: 0;
 	vertical-align: middle;
-	background-color: currentColor;
+	background-color: transparent;
+	background-image: $gradient-brand;
 	-webkit-mask: var(--elm-icon) center / contain no-repeat;
 	mask: var(--elm-icon) center / contain no-repeat;
 }
@@ -800,8 +922,8 @@ $section-whitespace: 120px;
 	display: inline-flex;
 	align-items: center;
 	justify-content: center;
-	width: 2.5rem;
-	height: 2.5rem;
+	width: 2.75rem;
+	height: 2.75rem;
 	flex-shrink: 0;
 	border-radius: var(--elm-radius);
 	background: color-mix(in srgb, #{$color-main} 12%, transparent);
@@ -810,21 +932,21 @@ $section-whitespace: 120px;
 	@include transition;
 	&::before{
 		content: "";
-		width: 0.42em;
-		height: 0.42em;
+		width: 0.48em;
+		height: 0.48em;
 		margin-inline-start: -0.08em;
 		border-block-start: 2px solid currentColor;
 		border-inline-end: 2px solid currentColor;
 		transform: rotate(45deg);
 	}
 	&--solid{
-		background: $color-main;
-		color: #fff;
+		@include brand-gradient-bg;
+		filter: none;
 	}
 	&--sm{
-		width: 1.35rem;
-		height: 1.35rem;
-		&::before{width: 0.32em; height: 0.32em; border-width: 1.5px;}
+		width: 1.55rem;
+		height: 1.55rem;
+		&::before{width: 0.36em; height: 0.36em; border-width: 1.5px;}
 	}
 	&--prev::before{
 		margin-inline-start: 0.08em;
@@ -838,7 +960,8 @@ a:hover .elm-go:not(.search-result__arrow),
 .sticky-stack__item:hover .elm-go,
 .portfolio-card:hover .elm-go,
 .also-explore__card:hover .elm-go{
-	background: $color-main;
+	@include brand-gradient-bg;
+
 	color: #fff;
 	transform: translateX(var(--elm-nudge));
 }
@@ -846,24 +969,30 @@ a:hover .elm-go:not(.search-result__arrow),
 .custom-button .elm-go,
 .navbar-button .elm-go,
 .footer .button .elm-go,
+.footer-bar .button .elm-go,
 .footer__cta .elm-go,
 .slider-controls__btn .elm-go,
 .testimonials-slider__arrow .elm-go,
 .project-slider__arrow .elm-go{
-	background: transparent;
+	background: transparent !important;
+	background-image: none !important;
 	color: currentColor;
 	border-radius: 0;
+	box-shadow: none;
+	filter: none;
 }
 .custom-button .elm-go--sm,
 .navbar-button .elm-go--sm,
 .footer .button .elm-go--sm,
+.footer-bar .button .elm-go--sm,
 .footer__cta .elm-go--sm{
-	width: 0.85rem;
-	height: 0.85rem;
+	width: 1.15rem;
+	height: 1.15rem;
 }
 .custom-button:hover .elm-go,
 .navbar-button:hover .elm-go,
 .footer .button:hover .elm-go,
+.footer-bar .button:hover .elm-go,
 .footer__cta:hover .elm-go,
 .slider-controls__btn:hover .elm-go,
 .testimonials-slider__arrow:hover .elm-go,
@@ -871,21 +1000,25 @@ a:hover .elm-go:not(.search-result__arrow),
 a.custom-button:hover .elm-go,
 a.navbar-button:hover .elm-go,
 a.footer__cta:hover .elm-go,
+.footer-bar a.button:hover .elm-go,
 button:hover > .elm-go{
-	background: transparent;
+	background: transparent !important;
+	background-image: none !important;
 	color: currentColor;
 	transform: translateX(var(--elm-nudge));
+	filter: none;
 }
 
-/* Company-profile title pill: label + ring icon inside gradient stadium */
-	.elm-title-pill{
+/* Company-profile title pill: label + large ring glyph (matches brand stadium) */
+.elm-title-pill{
 	display: flex;
 	align-items: center;
 	justify-content: flex-start;
 	gap: 12px;
 	width: 100%;
-	min-height: 44px;
-	padding: 10px 18px;
+	min-height: 56px;
+	/* Tight trailing pad so the ring reads ~full pill height */
+	padding: 5px 5px 5px 20px;
 	border-radius: 999px;
 	border: 1.5px solid transparent;
 	background:
@@ -906,8 +1039,21 @@ button:hover > .elm-go{
 	}
 
 	.elm-icon{
-		display: none;
+		display: block;
+		width: 46px;
+		height: 46px;
+		flex-shrink: 0;
+		margin-inline-start: auto;
+		background-image: $gradient-brand;
+		background-color: transparent;
+		color: transparent;
 	}
+}
+
+/* Process step title pills stay text-only — icons fight the stadium layout */
+.process-step .elm-title-pill .elm-icon,
+.sticky-stack__copy .elm-title-pill .elm-icon {
+	display: none;
 }
 
 .content-section:has(.capability-section__grid) + .stats-row{padding-top: 48px !important;}
@@ -932,7 +1078,7 @@ button:hover > .elm-go{
 		.tech-preview-card__link{color: $color-main; i{transform: translateX(var(--elm-nudge));}}}
 	figure{margin: 0; aspect-ratio: 4 / 3; overflow: hidden; background: $color-dark;
 		img{width: 100%; height: 100%; object-fit: cover; display: block; @include transition;}}
-	&__body{display: flex; flex-direction: column; flex: 1; padding: 22px 20px 20px; border-top: 3px solid $color-main;}
+	&__body{display: flex; flex-direction: column; flex: 1; padding: 22px 20px 20px; border-top: 3px solid transparent; background-image: $gradient-brand; background-size: 100% 3px; background-position: top left; background-repeat: no-repeat;}
 	h3{margin: 0 0 10px; font-size: 18px; line-height: 1.25;}
 	p{flex: 1; margin: 0 0 18px; font-size: 14px; line-height: 1.5; color: var(--elm-text-muted);}
 	&__link{display: inline-flex; align-items: center; gap: 6px; margin-top: auto; margin-inline-start: auto; font-size: 12px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--elm-text);
@@ -949,8 +1095,8 @@ button:hover > .elm-go{
 .stats-row .row{align-items: stretch;}
 .stats-row .col-lg-3,
 .stats-row .col-md-6{margin-bottom: 0;}
-.counter-box{width:100%; min-height: 172px; height: 100%; display: flex; flex-direction: column; padding: 32px 28px; position: relative; @include transition; background: var(--elm-bg-surface); border: 1px solid var(--elm-border); border-top: 2px solid $color-main;
-	&:hover{box-shadow: 0 8px 24px var(--elm-shadow); border-color: var(--elm-border); border-top-color: $color-main;}
+.counter-box{width:100%; min-height: 172px; height: 100%; display: flex; flex-direction: column; padding: 32px 28px; position: relative; @include transition; background-color: var(--elm-bg-surface); background-image: $gradient-brand; background-size: 100% 2px; background-position: top left; background-repeat: no-repeat; border: 1px solid var(--elm-border); border-top: 2px solid transparent; border-radius: 18px;
+	&:hover{box-shadow: 0 8px 24px var(--elm-shadow); border-color: var(--elm-border); border-top-color: transparent;}
 	&__figure{display: flex; align-items: baseline; gap: 4px; margin-bottom: 14px; line-height: 1;}
 	.odometer{display: inline-block; font-size: 56px; font-weight: 800; color: var(--elm-text);}
 	.value{font-size: 22px; font-weight: 700; color: var(--elm-text-muted);}
@@ -960,14 +1106,66 @@ button:hover > .elm-go{
 
 
 
-/* CONTACT BOX */
-.contact-box{width:100%; display:block; border: 1px solid var(--elm-border); padding: 20px; position: relative; @include transition; background: var(--elm-bg-surface);
-	&:hover{transform: translateY(-4px); box-shadow: 0 16px 32px var(--elm-shadow);}
-	&:after{content: ""; width: 0; height: 0; border-style: solid; border-width: 0 0 14px 14px; border-color: transparent transparent var(--elm-border) transparent; position: absolute; right: 4px; bottom: 4px;}
-	.elm-title-pill{margin-bottom: 14px;}
-	p{font-size: 15px; line-height: 1.5; padding-right: 0; margin: 0;
-		a{color: var(--elm-text);
-			&:hover{color: var(--elm-link-hover); text-decoration: none;}}}}
+/* CONTACT BOX — single stadium shell (no outer card) */
+.contact-box{
+	width:100%;
+	display:flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 10px;
+	padding: 18px 22px 20px;
+	position: relative;
+	text-align: center;
+	border-radius: 999px;
+	border: 1.5px solid transparent;
+	background:
+		linear-gradient(var(--elm-bg-surface), var(--elm-bg-surface)) padding-box,
+		$gradient-brand border-box;
+	box-sizing: border-box;
+	@include transition;
+
+	&:hover{
+		filter: brightness(1.04);
+	}
+
+	&__head{
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		gap: 12px;
+		width: 100%;
+	}
+
+	&__label{
+		margin: 0;
+		font-size: clamp(13px, 1.25vw, 15px);
+		font-weight: 700;
+		line-height: 1.25;
+		letter-spacing: var(--elm-tracking-caps);
+		text-transform: uppercase;
+		color: var(--elm-text);
+	}
+
+	.elm-icon{
+		width: 28px;
+		height: 28px;
+		flex-shrink: 0;
+		background-image: $gradient-brand;
+		background-color: transparent;
+		color: transparent;
+	}
+
+	p{
+		font-size: 14px;
+		line-height: 1.5;
+		margin: 0;
+		color: var(--elm-text-muted);
+		a{
+			color: var(--elm-text);
+			&:hover{color: var(--elm-link-hover); text-decoration: none;}
+		}
+	}
+}
 
 
 /* GOOGLE MAPS */
@@ -1013,12 +1211,12 @@ button:hover > .elm-go{
 	padding-bottom: 64px !important;
 	&__head{text-align: center; max-width: 520px; margin: 0 auto 28px;}
 	&__grid{display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px;}
-	&__card{display: flex; align-items: center; justify-content: space-between; gap: 12px; min-height: 72px; padding: 18px 20px; border: 1px solid var(--elm-border); border-top: 3px solid $color-main; background: var(--elm-bg-surface); color: var(--elm-text); text-decoration: none; @include transition;
+	&__card{display: flex; align-items: center; justify-content: space-between; gap: 12px; min-height: 72px; padding: 18px 20px; border: 1px solid var(--elm-border); border-top: 3px solid transparent; background-color: var(--elm-bg-surface); background-image: $gradient-brand; background-size: 100% 3px; background-position: top left; background-repeat: no-repeat; color: var(--elm-text); text-decoration: none; @include transition;
 		span{font-size: 14px; font-weight: 700; line-height: 1.3;}
-		i{flex-shrink: 0; width: 34px; height: 34px; display: inline-flex; align-items: center; justify-content: center; border: 1px solid var(--elm-border); font-size: 14px; @include transition;}
+		i{flex-shrink: 0; width: 42px; height: 42px; display: inline-flex; align-items: center; justify-content: center; border: 1px solid var(--elm-border); font-size: 18px; @include transition;}
 		&:hover{transform: translateY(-3px); box-shadow: 0 16px 32px var(--elm-shadow); border-color: rgba($color-main, 0.45); color: var(--elm-text); text-decoration: none;
 			span{color: $color-main;}
-			i{background: $color-main; border-color: $color-main; color: var(--elm-on-accent); transform: translateX(2px);}}
+			i{background: $gradient-brand; border-color: $color-main; color: var(--elm-on-accent); transform: translateX(2px);}}
 		&--all{border-top-color: $color-secondary;
 			&:hover span{color: $color-secondary;}
 			&:hover i{background: $color-secondary; border-color: $color-secondary;}}}}
@@ -1034,7 +1232,65 @@ button:hover > .elm-go{
 .solutions-section{
 	padding-top: 72px !important;
 	padding-bottom: 72px !important;
-	&__foot{margin-top: 36px; text-align: center;}}
+
+	&__head{
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		text-align: center;
+		max-width: none;
+		margin-left: auto;
+		margin-right: auto;
+		margin-bottom: clamp(28px, 4vw, 36px);
+	}
+
+	.section-title{
+		text-align: center;
+
+		h6{
+			justify-content: center;
+		}
+	}
+
+	&__lede{
+		margin-left: auto;
+		margin-right: auto;
+		text-align: center;
+		max-width: 52ch;
+	}
+
+	.solutions-grid{
+		justify-content: center;
+	}
+
+	.capability-card{
+		text-align: center;
+
+		.elm-title-pill{
+			justify-content: center;
+			text-align: center;
+		}
+
+		.elm-title-pill__label{
+			flex: 0 1 auto;
+		}
+
+		.elm-icon{
+			margin-inline-start: 0;
+		}
+
+		p{
+			margin-left: auto;
+			margin-right: auto;
+		}
+
+		.capability-card__link{
+			margin-inline: auto;
+		}
+	}
+
+	&__foot{margin-top: 36px; text-align: center;}
+}
 
 
 /* SECTORS GRID */
@@ -1042,16 +1298,14 @@ button:hover > .elm-go{
 	&__cards{display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px;}}
 
 .sector-card{display: flex; align-items: center; gap: 12px; padding: 16px 18px; background: var(--elm-bg-surface); border: 1px solid var(--elm-border); position: relative; overflow: hidden; text-decoration: none; color: var(--elm-text); @include transition;
-	&::before{content: ""; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: var(--elm-sector-accent-line); transform: scaleX(0); transform-origin: var(--elm-origin-x); @include transition;}
 	&:hover{transform: translateY(-3px); box-shadow: 0 14px 32px var(--elm-shadow); border-color: rgba($color-main, 0.28); text-decoration: none; color: var(--elm-text);
-		&::before{transform: scaleX(1);}
 		.sector-card__icon{background: rgba($color-main, 0.12); color: $color-main;}
-		.sector-card__go{background: $color-main; border-color: $color-main; color: var(--elm-on-accent); transform: translateX(var(--elm-nudge));}}
-	&__icon{flex-shrink: 0; width: 44px; height: 44px; display: flex; align-items: center; justify-content: center; background: var(--elm-sector-icon-bg); color: var(--elm-sector-icon-color); font-size: 18px; @include transition;}
+		.sector-card__go{background: $gradient-brand; border-color: $color-main; color: var(--elm-on-accent); transform: translateX(var(--elm-nudge));}}
+	&__icon{flex-shrink: 0; width: 52px; height: 52px; display: flex; align-items: center; justify-content: center; background: var(--elm-sector-icon-bg); color: var(--elm-sector-icon-color); font-size: 22px; @include transition;}
 	&__text{flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 3px;
 		strong{font-size: 15px; font-weight: 700; display: block; line-height: 1.25;}
 		small{font-size: 12px; line-height: 1.4; color: var(--elm-text-muted); font-weight: 600;}}
-	&__go{flex-shrink: 0; width: 34px; height: 34px; display: flex; align-items: center; justify-content: center; border: 1px solid var(--elm-border); font-size: 14px; @include transition;}}
+	&__go{flex-shrink: 0; width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; border: 1px solid var(--elm-border); font-size: 18px; @include transition;}}
 
 
 
@@ -1085,8 +1339,8 @@ button:hover > .elm-go{
 /* OUR HISTORY */
 .our-history{width: 100%; display: block; overflow: hidden; position: relative;
 	.swiper-pagination{position: absolute; height: 3px; left: 0; right: 0; top: 50px; background: var(--elm-border);}
-	.swiper-pagination-progressbar-fill{background: $color-main;}
-	.swiper-slide:hover b:after{background: $color-main;}
+	.swiper-pagination-progressbar-fill{background: $gradient-brand;}
+	.swiper-slide:hover b:after{background: $gradient-brand;}
 	.swiper-slide{z-index: 1;}
 	figure{width: 100%; padding: 0 15px;}
 	p{width: 100%; display: block; padding: 0 15px; font-size: 14px;}
@@ -1113,11 +1367,11 @@ button:hover > .elm-go{
 /* SALES TEAM */
 .social-x{display: inline-block; font-weight: 800; font-size: 14px; line-height: 1; letter-spacing: -0.04em;}
 .sales-team{width: 100%; display: block; @include transition; position: relative; background: var(--elm-bg-surface);
-	&:hover {background: $color-main; color: var(--elm-on-accent); transform: translateY(-8px); box-shadow: 0 24px 40px var(--elm-shadow); z-index: 1;
+	&:hover {background: $gradient-brand; color: var(--elm-on-accent); transform: translateY(-8px); box-shadow: 0 24px 40px var(--elm-shadow); z-index: 1;
 		ul li a{color: var(--elm-on-accent);}}
 	&:hover:after{content: ""; width: 80px; height: 70px; background: url("../images/pattern-dot.png"); background-size: 12px 12px;  position: absolute; left: -30px; top: 30px; opacity: 0.15;}
 	&:hover .infos:after{content: ""; width: 0; height: 0; border-style: solid; border-width: 0 0 14px 14px; border-color: transparent transparent $color-dark transparent; position: absolute; right: 4px; bottom: 4px;}
-	&:hover figure img{mix-blend-mode: normal; filter: grayscale(0);}
+	&:hover figure img{mix-blend-mode: normal; filter: grayscale(1);}
 	figure{width: 100%; display: block; margin: 0;
 		img{width: 100%; filter: grayscale(1); @include transition;}}
 	.infos{width: 100%; display: block; text-align: center; padding: 15px 0; position: relative;}
@@ -1132,8 +1386,8 @@ button:hover > .elm-go{
 /* VIDEO BOX */
 .video-box{width: 100%; display: block; margin: 0; background: $color-dark; position: relative; overflow: hidden; min-height: 480px;
 	.play-btn{width: 70px; height: 70px; line-height: 66px; display: inline-block; position: absolute; right: 50px; top: 100px; z-index: 2; text-align: center; border-radius: var(--elm-radius); border: 2px solid #fff; color: #fff; font-size: 20px; text-indent: 2px;
-		&:hover{background: $color-main; border-color: $color-main; color: $on-rose;}}
-	video{width: 100%; min-height: 480px; display: block; margin: 0; object-fit: cover; opacity: 0.85; filter: grayscale(0.35);}}
+		&:hover{background: $gradient-brand; border-color: $color-main; color: $on-rose;}}
+	video{width: 100%; min-height: 480px; display: block; margin: 0; object-fit: cover; opacity: 0.85; filter: none;}}
 
 
 
@@ -1147,7 +1401,7 @@ button:hover > .elm-go{
 .news-box{width: 100%; display: block; position: relative; @include transition; margin-bottom: 48px;
 	&:last-child{margin-bottom: 0;}
 	&:after{content: ""; width: 70%; height: 70px; background: url("../images/pattern-dot.png"); background-size: 12px 12px;  position: absolute; right: -25px; bottom: -25px; z-index: -1; opacity: 0.2;}
-	figure{width: 100%; display: block; margin: 0; position: relative; overflow: hidden; background: $color-main;
+	figure{width: 100%; display: block; margin: 0; position: relative; overflow: hidden; background: $gradient-brand;
 		img{ width: 100%; max-width: inherit;  }}
 	.content{ width: 100%; height: 100%; display: block; padding: 18px 20px; background: var(--elm-bg-surface); border: 1px solid var(--elm-border); border-top: none;
 		small{display: inline-block; padding: 3px 7px; font-size: 10px; @include rose-bg; margin-bottom: 10px;}
@@ -1205,7 +1459,21 @@ button:hover > .elm-go{
 		b{color: $color-main; @include transition; cursor: default;
 			&:hover{color: $color-main;}}}
 	.button{@include elm-btn; @include brand-gradient-bg; border: none;
-		&:hover{background: $gradient-brand; filter: brightness(1.08); box-shadow: 0 10px 28px rgba($color-main, 0.25);}}
+		height: clamp(52px, 5.5vw, 60px);
+		padding: 0 clamp(26px, 3vw, 36px);
+		font-size: clamp(12px, 1.15vw, 14px);
+		letter-spacing: 0.1em;
+		gap: 12px;
+		border-radius: 999px;
+		.elm-go{
+			width: 0.9rem;
+			height: 0.9rem;
+			background: transparent !important;
+			background-image: none !important;
+			border-radius: 0;
+			box-shadow: none;
+		}
+		&:hover{background: $gradient-brand; filter: brightness(1.08); box-shadow: 0 12px 32px rgba($color-main, 0.32);}}
 	.sales-representive{display: inline-block; margin-left: 5vw; line-height: 44px;
 		figure{float: left; margin-right: 10px;
 			img{height: 60px; border-radius: 0;}}
@@ -1229,8 +1497,8 @@ button:hover > .elm-go{
 		input[type="email"]{width: 100%; height: 44px; border: 1px solid var(--elm-border); background: var(--elm-bg-surface); color: var(--elm-text); padding: 0 16px; margin-bottom: 10px; font-size: 14px;
 			&::placeholder{color: var(--elm-text-muted);}
 			&:focus{border-color: var(--elm-text); outline: none;}}
-		input[type="submit"]{width: 100%; @include elm-btn; @include brand-gradient-bg; border: none; cursor: pointer;
-			&:hover{background: $color-secondary;}}}
+		input[type="submit"]{width: 100%; @include elm-btn; @include brand-gradient-bg; border: none; cursor: pointer; @include transition;
+			&:hover{background: $gradient-brand; filter: brightness(1.08); color: $color-white; box-shadow: 0 10px 28px rgba($color-main, 0.25); transform: translateY(-1px);}}}
 	.footer-bottom{width: 100%; display: flex; flex-direction: row; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px 16px; margin-top: 36px; border-top: 1px solid var(--elm-footer-border); padding: 20px 0 24px;
 		span{color: var(--elm-footer-text-muted); font-size: 12px;}
 		.footer__credit{margin: 0; color: var(--elm-footer-text-muted); opacity: 0.85; font-size: 11px; letter-spacing: 0.02em;}
@@ -1248,8 +1516,6 @@ button:hover > .elm-go{
 
 /* RESPONSIVE MEDIUM  */
 @media only screen and (max-width: 1199px), only screen and (max-device-width: 1199px) {
-	.navbar .navbar-button{padding: 0 16px;}
-	.navbar .navbar-button span{display: none;}
 	.counter-box .odometer{font-size: 48px;}
 	.footer-bar h2{padding: 0;}
 	.footer-bar__row{align-items: center;}
@@ -1276,7 +1542,11 @@ button:hover > .elm-go{
 	.project-specifications{width: 100%; margin-top: 30px; margin-left: 0;}
 	.sidebar{padding-left: 0; margin-top: 50px;}
 	.navbar .site-menu{display: none;}
-	.navbar .navbar-button span{display: inline;}
+	.navbar .locale-switch,
+	.navbar .theme-toggle,
+	.navbar .search{display: none !important;}
+	.navbar .navbar-button{display: inline-flex !important;}
+	.navbar .hamburger{display: inline-flex !important;}
 	.counter-box{margin: 15px 0;}
 	.row.no-gutters .col{width: 33%; flex-basis: 33%; flex-grow: inherit; margin: 0 auto;}
 	.sales-team{margin: 15px 0;}
@@ -1304,20 +1574,11 @@ button:hover > .elm-go{
 	.navbar{padding: 14px 0;}
 	.navbar.sticky{padding: 10px 0;}
 	.navbar .logo a img{height: 34px;}
-	.navbar .theme-toggle{
-		display: inline-flex;
-		width: 40px;
-		height: 40px;
-		min-width: 40px;
-		min-height: 40px;}
-	.navbar .navbar-button span{display: none;}
-	.navbar .navbar-button{padding: 0 14px; width: auto; justify-content: center;
-		i{transform: none; margin: 0;}}
 	.page-header{min-height: 320px; padding-bottom: 40px;}
 	.page-header--project{min-height: min(70vh, 560px); padding-bottom: 72px;}
 	.page-header .container{padding-top: 96px;}
 	.page-header .container h1{font-size: clamp(32px, 8vw, 48px); max-width: none;}
-	.page-header .page-breadcrumb{margin-top: 10px;}
+	.page-header .page-breadcrumb{margin: 0 0 10px;}
 	.page-header .page-header__lede{font-size: 15px; margin-top: 12px;}
 	.sectors-grid__intro{margin-bottom: 24px;}
 	.sectors-grid__cards{grid-template-columns: 1fr; gap: 10px;}
@@ -1363,7 +1624,6 @@ button:hover > .elm-go{
 /* Soft corners on stroked surfaces + media frames (pills/circles keep own radii) */
 .capability-card,
 .counter-box,
-.contact-box,
 .tech-preview-card,
 .sector-card,
 .also-explore__card,
@@ -1390,6 +1650,7 @@ button:hover > .elm-go{
 .metric-index__item,
 .glass-panel,
 .engagement-timeline__step,
+.engagement-timeline,
 .print-capabilities__item,
 .applications-panel,
 .technology-partners__inner,
@@ -1415,6 +1676,11 @@ button:hover > .elm-go{
 .site-menu__subtoggle,
 .sustainability-commitment__card {
 	border-radius: var(--elm-radius);
+}
+
+.counter-box,
+.print-capabilities__item {
+	border-radius: 18px;
 }
 
 /* Beat Bootstrap `button{border-radius:0}` — always rounded, not only on focus/click */

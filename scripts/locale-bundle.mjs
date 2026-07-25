@@ -35,7 +35,8 @@ export const en = {
  "closeMenu": "Close menu",
  "sideTagline": "Industrial 3D printing at architectural scale. Dubai, UAE.",
  "addressTitle": "ADDRESS",
- "themeDark": "Switch to dark mode"
+    "themeDark": "Switch to dark mode",
+    "themeLight": "Switch to light mode"
  },
  "locale": {
  "en": "EN",
@@ -74,8 +75,7 @@ export const en = {
  "title": "UAE's Premier Platform for Commercial-Scale Industrial 3D Printing",
  "lede": "We bridge the gap between ambitious design and architectural reality, local, agile LFAM manufacturing at commercial scale across the UAE built environment.",
  "exploreTech": "Explore Technologies",
- "requestConsultation": "Request Consultation",
- "basedIn": "Based in: Dubai, UAE"
+ "requestConsultation": "Request Consultation"
  },
  "facility": {
  "label": "FACILITY",
@@ -1147,7 +1147,8 @@ export const ar = {
  "closeMenu": "إغلاق القائمة",
  "sideTagline": "طباعة ثلاثية الأبعاد صناعية على نطاق معماري. دبي، الإمارات.",
  "addressTitle": "العنوان",
- "themeDark": "التبديل إلى الوضع الداكن"
+ "themeDark": "التبديل إلى الوضع الداكن",
+ "themeLight": "التبديل إلى الوضع الفاتح"
  },
  "locale": {
  "en": "EN",
@@ -1186,8 +1187,7 @@ export const ar = {
  "title": "المنصة الرائدة في الإمارات للطباعة الصناعية ثلاثية الأبعاد على نطاق تجاري",
  "lede": "خرسانة وبوليمر LFAM روبوتية للمباني والواجهات والضيافة والمشاريع الحكومية من الفكرة إلى التركيب في الموقع.",
  "exploreTech": "استكشف التقنيات",
- "requestConsultation": "طلب استشارة",
- "basedIn": "المقر: دبي، الإمارات"
+ "requestConsultation": "طلب استشارة"
  },
  "facility": {
  "label": "المنشأة",
