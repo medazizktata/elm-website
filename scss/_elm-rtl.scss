@@ -421,30 +421,20 @@ html[dir="rtl"] {
   }
 
   .about-intro__media {
-    padding: 0 0 clamp(16px, 2.5vw, 28px) clamp(16px, 2.5vw, 28px);
-
-    &::before {
-      left: 0;
-      right: clamp(16px, 2.5vw, 28px);
-    }
+    @include elm-photo-offset-frame-flip;
   }
 
   .about-intro--reverse .about-intro__media {
-    padding: 0 clamp(16px, 2.5vw, 28px) clamp(16px, 2.5vw, 28px) 0;
-
     &::before {
-      left: clamp(16px, 2.5vw, 28px);
-      right: 0;
+      top: var(--elm-photo-pad);
+      right: calc(-1 * var(--elm-photo-pad));
+      bottom: calc(-1 * var(--elm-photo-pad));
+      left: var(--elm-photo-pad);
     }
   }
 
   .sectors-grid__media {
-    padding: 0 0 clamp(12px, 2vw, 20px) clamp(12px, 2vw, 20px);
-
-    &::before {
-      left: 0;
-      right: clamp(12px, 2vw, 20px);
-    }
+    @include elm-photo-offset-frame-flip;
   }
 
   .policy-rail {

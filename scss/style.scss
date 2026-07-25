@@ -102,9 +102,10 @@ $color-dark : #121212;
 $color-main : #BD1F71;
 $color-secondary : #0A76B5;
 $color-accent : #592C7B;
-$color-bg : #ECEBE4;
+/* Cool mid-grey page plane — not warm cream */
+$color-bg : #C2C2BE;
 $color-white : #FFFFFF;
-$color-border : darken($color-bg, 9%);
+$color-border : darken($color-bg, 10%);
 
 @import 'theme';
 
@@ -113,14 +114,6 @@ $gradient-brand: linear-gradient(
   $color-main 0%,
   $color-accent 48%,
   $color-secondary 100%
-);
-/* Brighter brand fill for large type on dark surfaces (KPI / odometer) */
-$gradient-brand-on-dark: linear-gradient(
-  115deg in oklab,
-  #e84598 0%,
-  #{$color-main} 32%,
-  #7b4a9a 58%,
-  #3da0e0 100%
 );
 $bg-photo-overlay: linear-gradient(180deg, rgba($color-dark, 0.6) 0%, rgba($color-dark, 0.5) 100%);
 $bg-photo-overlay-heavy: linear-gradient(180deg, rgba($color-dark, 0.75) 0%, rgba($color-dark, 0.55) 100%);
@@ -143,9 +136,23 @@ $on-rose: $color-white;
   color: $on-rose;
 }
 
-/* Brand gradient as text fill (eyebrows, numbers, labels) */
+/* Brand gradient as text fill (eyebrows, numbers, labels).
+   Light page needs a slightly denser gradient so clipped glyphs stay readable. */
+:root {
+  --elm-brand-text-gradient: #{$gradient-brand};
+}
+
+:root:not([data-theme="dark"]) {
+  --elm-brand-text-gradient: linear-gradient(
+    135deg in oklab,
+    #{mix(#000, $color-main, 14%)} 0%,
+    #{mix(#000, $color-accent, 12%)} 48%,
+    #{mix(#000, $color-secondary, 14%)} 100%
+  );
+}
+
 @mixin elm-brand-text {
-  background-image: $gradient-brand;
+  background-image: var(--elm-brand-text-gradient, #{$gradient-brand});
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent !important;
@@ -166,16 +173,125 @@ $on-rose: $color-white;
   background:
     linear-gradient(
       180deg,
-      rgba(#000, 0.55) 0%,
-      rgba(#000, 0.22) 42%,
-      rgba(#000, 0.78) 100%
+      rgba(#000, 0.28) 0%,
+      rgba(#000, 0.1) 42%,
+      rgba(#000, 0.42) 100%
     ),
     linear-gradient(
       135deg,
-      rgba($color-main, 0.42) 0%,
-      rgba($color-accent, 0.22) 48%,
-      rgba($color-secondary, 0.38) 100%
+      rgba($color-main, 0.18) 0%,
+      rgba($color-accent, 0.08) 48%,
+      rgba($color-secondary, 0.14) 100%
     );
+}
+
+/* Soft top wash when a title sits on the photo (about / sectors) */
+@mixin elm-photo-title-scrim {
+  background:
+    linear-gradient(
+      180deg,
+      rgba(#000, 0.28) 0%,
+      rgba(#000, 0.06) 38%,
+      transparent 70%
+    ),
+    linear-gradient(
+      135deg,
+      rgba($color-main, 0.06) 0%,
+      rgba($color-accent, 0.03) 48%,
+      rgba($color-secondary, 0.05) 100%
+    );
+}
+
+/* Brand wash — always covers the full photo plane (inset 0) */
+@mixin elm-photo-brand-tile {
+  &::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+    pointer-events: none;
+    border-radius: var(--elm-radius);
+    background: linear-gradient(
+      135deg,
+      rgba($color-main, 0.04) 0%,
+      rgba($color-accent, 0.02) 48%,
+      rgba($color-secondary, 0.035) 100%
+    );
+  }
+}
+
+/* Offset border behind the photo — peeks bottom/inline-end via negative inset.
+   Photo (img) + wash (::after) stay inset:0 so they always match. */
+@mixin elm-photo-offset-frame($pad: clamp(16px, 2.5vw, 28px)) {
+  --elm-photo-pad: #{$pad};
+  --elm-wrap: 0deg;
+  position: relative;
+  overflow: visible;
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: var(--elm-photo-pad);
+    right: calc(-1 * var(--elm-photo-pad));
+    bottom: calc(-1 * var(--elm-photo-pad));
+    left: var(--elm-photo-pad);
+    z-index: 0;
+    border-radius: var(--elm-radius);
+    padding: 1.5px;
+    box-sizing: border-box;
+    pointer-events: none;
+    box-shadow: 0 0 0 1.5px color-mix(in srgb, var(--elm-text) 28%, transparent);
+    background: conic-gradient(
+      from 315deg,
+      #{$color-main} 0deg,
+      #{$color-accent},
+      #{$color-secondary},
+      #{$color-main} var(--elm-wrap),
+      transparent var(--elm-wrap)
+    );
+    -webkit-mask:
+      linear-gradient(#fff 0 0) content-box,
+      linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask:
+      linear-gradient(#fff 0 0) content-box,
+      linear-gradient(#fff 0 0);
+    mask-composite: exclude;
+    transition:
+      --elm-wrap 0.9s var(--elm-hover-ease, cubic-bezier(0.22, 1, 0.36, 1)),
+      box-shadow 0.35s var(--elm-hover-ease, cubic-bezier(0.22, 1, 0.36, 1));
+  }
+
+  &:hover::before,
+  &:focus-within::before {
+    --elm-wrap: 360deg;
+    box-shadow: none;
+  }
+}
+
+/* Peek bottom/inline-start (RTL + reverse layouts) */
+@mixin elm-photo-offset-frame-flip {
+  &::before {
+    top: var(--elm-photo-pad);
+    right: var(--elm-photo-pad);
+    bottom: calc(-1 * var(--elm-photo-pad));
+    left: calc(-1 * var(--elm-photo-pad));
+  }
+}
+
+@mixin elm-photo-fill {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  max-width: none;
+  min-height: 0;
+  aspect-ratio: auto;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+  border-radius: var(--elm-radius);
 }
 
 @mixin elm-photo-bw {
@@ -626,8 +742,8 @@ $section-whitespace: 120px;
 		z-index: 0;
 		pointer-events: none;
 		background:
-			radial-gradient(ellipse 90% 70% at 30% 55%, rgba(#000, 0.28) 0%, rgba(#000, 0.55) 55%, rgba(#000, 0.78) 100%),
-			linear-gradient(180deg, rgba(#000, 0.62) 0%, rgba(#000, 0.28) 42%, rgba(#000, 0.72) 100%);
+			radial-gradient(ellipse 90% 70% at 30% 55%, rgba(#000, 0.16) 0%, rgba(#000, 0.32) 55%, rgba(#000, 0.48) 100%),
+			linear-gradient(180deg, rgba(#000, 0.36) 0%, rgba(#000, 0.14) 42%, rgba(#000, 0.4) 100%);
 	}
 
 	/* Short crisp lip — soft home hero feather looks muddy over cream in light mode */
@@ -1719,14 +1835,15 @@ input[type="reset"],
 	border-radius: var(--elm-radius, 10px) !important;
 }
 
+.about-intro__media,
 .about-intro__media img,
-.about-intro__media::before,
+.sectors-grid__media,
 .sectors-grid__media img,
-.sectors-grid__media::before,
 .tech-preview-card figure,
 .spec-card__media,
 .process-step__media,
 .sticky-stack__media,
+.side-image,
 .project-card img,
 .case-study-card__media,
 .portfolio-card__media {

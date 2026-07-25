@@ -551,7 +551,7 @@
  if (!bg) return;
  var isColor = bg.charAt(0) === "#" || bg.indexOf("rgb") === 0;
  if (isColor) {
- if (/^#ecebe4$/i.test(bg)) return;
+ if (/^#(ecebe4|c2c2be)$/i.test(bg)) return;
  $(this).css("background", bg);
  } else {
  var pos = $(this).attr("data-background-position") || "center";
