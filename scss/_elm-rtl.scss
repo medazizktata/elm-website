@@ -420,6 +420,14 @@ html[dir="rtl"] {
     text-align: var(--elm-align);
   }
 
+  /* Photo-facing: reverse keeps logical end (toward the media) */
+  .about-intro--reverse .about-intro__content {
+    @media (min-width: 992px) {
+      text-align: end;
+      align-items: flex-end;
+    }
+  }
+
   .about-intro__media {
     @include elm-photo-offset-frame-flip;
   }
@@ -466,14 +474,6 @@ html[dir="rtl"] {
 
   .metric-index__item {
     text-align: var(--elm-align);
-    border-left: none;
-    border-right: 2px solid transparent;
-    border-radius: var(--elm-radius);
-
-    &.is-active {
-      border-right-color: $color-main;
-      border-left-color: transparent;
-    }
   }
 
   .metric-stage__caption {

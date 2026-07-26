@@ -371,6 +371,9 @@ p, li, td, th, label, input, textarea, select, button, blockquote, figcaption {
     gap: clamp(16px, 2vw, 22px);
     min-width: 0;
     min-height: 0;
+    /* Photo is on the left → copy faces it */
+    text-align: start;
+    align-items: flex-start;
   }
 
   &__intro {
@@ -448,15 +451,17 @@ p, li, td, th, label, input, textarea, select, button, blockquote, figcaption {
 .sectors-index {
   display: flex;
   flex-direction: column;
-  gap: 4px;
+  gap: 0;
+  border-top: 1px solid var(--elm-border);
 
   &__item {
     display: grid;
     grid-template-columns: auto minmax(0, 1fr) auto;
     align-items: center;
     gap: clamp(16px, 2.4vw, 24px);
-    padding: clamp(16px, 2vw, 22px) clamp(12px, 1.5vw, 16px);
-    border-radius: var(--elm-radius);
+    padding: clamp(16px, 2vw, 22px) 0;
+    border-radius: 0;
+    border-bottom: 1px solid var(--elm-border);
     text-decoration: none;
     color: var(--elm-text);
     @include elm-smooth-hover;
@@ -464,9 +469,11 @@ p, li, td, th, label, input, textarea, select, button, blockquote, figcaption {
     &:hover {
       text-decoration: none;
       color: var(--elm-text);
-      background: color-mix(in srgb, #{$color-main} 6%, transparent);
+      background: transparent;
 
       .sectors-index__num {
+        color: $color-main !important;
+        -webkit-text-fill-color: $color-main !important;
         opacity: 1;
       }
 
@@ -475,6 +482,10 @@ p, li, td, th, label, input, textarea, select, button, blockquote, figcaption {
 
         color: #fff;
       }
+    }
+
+    &:last-child {
+      border-bottom-color: transparent;
     }
 
     &--all .sectors-index__num {
@@ -547,7 +558,7 @@ p, li, td, th, label, input, textarea, select, button, blockquote, figcaption {
   .sectors-index__item {
     grid-template-columns: auto minmax(0, 1fr);
     gap: 12px;
-    padding-inline: 12px;
+    padding-inline: 0;
   }
 
   .sectors-index__item .elm-go {
@@ -2628,7 +2639,9 @@ table.elm-table {
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
+    align-items: flex-start;
     min-height: 0;
+    text-align: start;
   }
 
   &__eyebrow {
@@ -2650,10 +2663,61 @@ table.elm-table {
 
   &__facts {
     margin: clamp(28px, 3.5vw, 40px) 0 clamp(32px, 4vw, 44px);
+    width: 100%;
   }
 
   .custom-button {
     align-self: flex-start;
+  }
+
+  /* Photo on the right → copy faces it (end-aligned) */
+  &--reverse &__content {
+    @media (min-width: 992px) {
+      align-items: flex-end;
+      text-align: end;
+
+      .about-intro__lede {
+        margin-inline-start: auto;
+        margin-inline-end: 0;
+      }
+
+      .custom-button {
+        align-self: flex-end;
+      }
+
+      .about-intro__eyebrow {
+        justify-content: flex-end;
+      }
+
+      .tech-routes {
+        width: 100%;
+        text-align: end;
+      }
+
+      .tech-routes__item {
+        justify-content: flex-end;
+        text-align: end;
+      }
+
+      .tech-routes__copy {
+        text-align: end;
+        align-items: flex-end;
+      }
+
+      .about-intro__facts li {
+        grid-template-columns: minmax(0, 1fr) auto;
+        text-align: end;
+
+        .about-intro__fact-body {
+          order: 1;
+          text-align: end;
+        }
+
+        .about-intro__fact-num {
+          order: 2;
+        }
+      }
+    }
   }
 }
 
@@ -2662,37 +2726,21 @@ table.elm-table {
   list-style: none;
   display: flex;
   flex-direction: column;
-  gap: 4px;
-  border-top: none;
+  gap: 0;
+  border-top: 1px solid var(--elm-border);
 
   li {
-    position: relative;
     display: grid;
     grid-template-columns: auto minmax(0, 1fr);
     gap: clamp(16px, 2.5vw, 28px);
     align-items: start;
     margin: 0;
-    padding: clamp(18px, 2.2vw, 24px) clamp(12px, 1.5vw, 16px);
-    border: 1px solid transparent;
-    border-bottom-color: var(--elm-border);
-    border-radius: var(--elm-radius);
+    padding: clamp(18px, 2.2vw, 24px) 0;
+    border: none;
+    border-bottom: 1px solid var(--elm-border);
+    border-radius: 0;
     background: transparent;
-    isolation: isolate;
-    overflow: hidden;
     @include elm-smooth-hover;
-
-    &::before {
-      content: "";
-      position: absolute;
-      inset: 0 auto 0 0;
-      width: 0;
-      background: linear-gradient(180deg, $color-main, $color-accent, $color-secondary);
-      opacity: 0;
-      transition:
-        width var(--elm-hover-duration) var(--elm-hover-ease),
-        opacity var(--elm-hover-duration) var(--elm-hover-ease);
-      pointer-events: none;
-    }
 
     &:last-child {
       border-bottom-color: transparent;
@@ -2700,16 +2748,7 @@ table.elm-table {
 
     &:hover,
     &:focus-within {
-      background: color-mix(in srgb, #{$color-main} 8%, transparent);
-      border-color: color-mix(in srgb, #{$color-main} 22%, transparent);
-
-      &::before {
-        width: 3px;
-        opacity: 1;
-      }
-
       .about-intro__fact-num {
-        transform: translateX(var(--elm-nudge, 3px));
         color: $color-main !important;
         -webkit-text-fill-color: $color-main !important;
       }
@@ -2719,7 +2758,7 @@ table.elm-table {
       }
 
       .about-intro__fact-value {
-        color: $color-main;
+        color: var(--elm-text);
       }
     }
   }
@@ -4291,35 +4330,42 @@ table.elm-table {
 .metric-index {
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 0;
   margin-top: auto;
+  border-top: 1px solid var(--elm-border);
 
   &__item {
     display: flex;
     align-items: flex-start;
-    gap: clamp(12px, 1.5vw, 16px);
+    gap: clamp(14px, 1.6vw, 20px);
     width: 100%;
     margin: 0;
-    padding: clamp(16px, 1.8vw, 20px) clamp(18px, 2vw, 22px);
+    padding: clamp(16px, 1.8vw, 20px) 0;
     border: none;
-    border-left: 2px solid transparent;
-    border-radius: var(--elm-radius);
+    border-bottom: 1px solid var(--elm-border);
+    border-radius: 0;
     background: transparent;
     text-align: left;
     cursor: pointer;
-    opacity: 0.42;
+    opacity: 0.48;
     color: var(--elm-text);
     @include elm-smooth-hover;
 
     &:hover {
-      opacity: 0.78;
-      background: color-mix(in srgb, var(--elm-text) 4%, transparent);
+      opacity: 0.82;
     }
 
     &.is-active {
       opacity: 1;
-      border-left-color: $color-main;
-      background: color-mix(in srgb, $color-main 7%, transparent);
+
+      .metric-index__title {
+        color: var(--elm-text);
+      }
+
+      .metric-index__num {
+        color: $color-main;
+        -webkit-text-fill-color: $color-main;
+      }
     }
 
     &:focus {
@@ -4328,31 +4374,33 @@ table.elm-table {
 
     &:focus-visible {
       outline: 2px solid $color-main;
-      outline-offset: 2px;
+      outline-offset: 4px;
     }
   }
 
   &__num {
     flex-shrink: 0;
     font-size: 13px;
-    font-weight: 600;
+    font-weight: 700;
     font-variant-numeric: tabular-nums;
-    letter-spacing: inherit;
-    color: var(--elm-text);
-    -webkit-text-fill-color: var(--elm-text);
-    padding-top: 2px;
+    letter-spacing: 0.06em;
+    color: var(--elm-text-muted);
+    -webkit-text-fill-color: var(--elm-text-muted);
+    padding-top: 3px;
+    min-width: 1.6em;
+    @include elm-smooth-hover;
   }
 
   &__body {
     display: flex;
     flex-direction: column;
-    gap: 3px;
+    gap: 4px;
     min-width: 0;
   }
 
   &__title {
     font-size: clamp(15px, 1.5vw, 18px);
-    line-height: 1.2;
+    line-height: 1.25;
     font-weight: 700;
     letter-spacing: var(--elm-tracking-heading);
     color: var(--elm-text);
@@ -5020,9 +5068,9 @@ table.elm-table {
 
     div {
       display: grid;
-      grid-template-columns: 6.75rem minmax(0, 1fr);
+      grid-template-columns: 5.5rem minmax(0, 1fr);
       align-items: baseline;
-      column-gap: 14px;
+      column-gap: 12px;
       min-width: 0;
       margin: 0;
       padding: 10px 0;
@@ -5050,15 +5098,20 @@ table.elm-table {
       background: none;
       background-image: none;
       text-align: start;
+      white-space: nowrap;
     }
 
     dd {
       margin: 0;
-      font-size: clamp(12px, 1.15vw, 14px);
+      min-width: 0;
+      font-size: clamp(12px, 1.1vw, 13px);
       font-weight: 600;
-      line-height: 1.45;
+      line-height: 1.2;
       color: rgba(#fff, 0.92);
       text-align: start;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
     }
   }
 
@@ -5115,7 +5168,7 @@ table.elm-table {
 @media (min-width: 992px) {
   .spec-card__rows {
     div {
-      grid-template-columns: 7rem minmax(0, 1fr);
+      grid-template-columns: 5.5rem minmax(0, 1fr);
     }
   }
 }
@@ -5387,43 +5440,45 @@ table.elm-table {
 
   &__list {
     margin: auto 0 0;
-    padding-top: 18px;
+    padding-top: 0;
     padding-bottom: clamp(20px, 2.5vw, 28px);
     list-style: none;
+    counter-reset: process-item;
     border-top: 1px solid var(--elm-border);
     display: flex;
     flex-direction: column;
-    gap: 2px;
+    gap: 0;
     width: 100%;
 
     li {
       display: grid;
-      grid-template-columns: 1.35rem minmax(0, 1fr);
-      align-items: center;
-      column-gap: 10px;
-      padding: 7px 0;
+      grid-template-columns: 2rem minmax(0, 1fr);
+      align-items: baseline;
+      column-gap: 12px;
+      margin: 0;
+      padding: 12px 0;
+      border-bottom: 1px solid var(--elm-border);
       font-size: 13px;
       font-weight: 600;
-      letter-spacing: 0.01em;
-      line-height: 1.4;
+      letter-spacing: 0.02em;
+      line-height: 1.35;
       color: var(--elm-text);
       text-align: start;
+      counter-increment: process-item;
 
-      i {
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        width: 1.35rem;
-        height: 1.35rem;
-        margin: 0;
-        border-radius: 50%;
-        background: color-mix(in srgb, #{$color-main} 18%, transparent);
-        color: $color-main;
-        -webkit-text-fill-color: $color-main;
-        background-image: none;
+      &:last-child {
+        border-bottom: none;
+        padding-bottom: 0;
+      }
+
+      &::before {
+        content: counter(process-item, decimal-leading-zero);
         font-size: 11px;
-        line-height: 1;
-        flex-shrink: 0;
+        font-weight: 700;
+        font-variant-numeric: tabular-nums;
+        letter-spacing: 0.08em;
+        line-height: 1.35;
+        color: var(--elm-text-muted);
       }
 
       span {
@@ -5605,6 +5660,7 @@ table.elm-table {
     gap: 0;
     padding: 0 0 4px;
     margin: 0 -4px;
+    border-top: none;
     scrollbar-width: none;
 
     &::-webkit-scrollbar {
@@ -5614,12 +5670,11 @@ table.elm-table {
     &__item {
       flex: 0 0 auto;
       min-width: min(72vw, 260px);
-      border-left: none;
-      border-bottom: 2px solid transparent;
+      border-bottom: 1px solid var(--elm-border);
       padding: 12px 16px;
 
       &.is-active {
-        border-bottom-color: $color-main;
+        border-bottom-color: var(--elm-text);
       }
     }
 
@@ -5853,7 +5908,7 @@ table.elm-table {
 
   &__head {
     max-width: 36rem;
-    margin: 0 auto clamp(28px, 3.5vw, 40px);
+    margin: 0 auto clamp(36px, 4.5vw, 52px);
   }
 
   &__eyebrow {
@@ -5879,57 +5934,54 @@ table.elm-table {
   &__grid {
     list-style: none;
     margin: 0;
-    padding: clamp(24px, 3vw, 36px) 0 0;
+    padding: 0;
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 0;
-    border-top: 1px solid rgba(#fff, 0.18);
-    text-align: center;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: clamp(28px, 4vw, 48px) clamp(40px, 6vw, 80px);
+    max-width: 52rem;
+    margin-inline: auto;
+    text-align: start;
   }
 
   &__item {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 10px;
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr);
+    gap: 4px clamp(14px, 2vw, 20px);
+    align-items: start;
     margin: 0;
-    padding: clamp(24px, 3vw, 32px) clamp(16px, 2.5vw, 28px);
+    padding: 0;
     border: 0;
     background: transparent;
     box-shadow: none;
-    backdrop-filter: none;
-    text-align: center;
-
-    &:first-child {
-      border-inline-end: 1px solid rgba(#fff, 0.18);
-    }
+    text-align: start;
   }
 
   &__index {
     margin: 0;
-    font-size: 11px;
+    padding-top: 6px;
+    font-size: clamp(11px, 1.1vw, 12px);
     font-weight: 800;
     letter-spacing: 0.14em;
     line-height: 1;
+    color: $color-main !important;
+    -webkit-text-fill-color: $color-main !important;
     background: none !important;
     background-image: none !important;
     -webkit-background-clip: border-box !important;
     background-clip: border-box !important;
-    color: #fff !important;
-    -webkit-text-fill-color: #fff !important;
   }
 
   &__body {
     min-width: 0;
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: flex-start;
     gap: 0;
   }
 
   &__name {
-    margin: 0 0 8px;
-    font-size: clamp(26px, 3.2vw, 36px);
+    margin: 0 0 6px;
+    font-size: clamp(24px, 2.8vw, 32px);
     font-weight: 800;
     line-height: 1.05;
     letter-spacing: var(--elm-tracking-heading);
@@ -5937,40 +5989,28 @@ table.elm-table {
   }
 
   &__system {
-    margin: 0 0 12px;
-    font-size: 12px;
+    margin: 0 0 10px;
+    font-size: 11px;
     font-weight: 700;
     letter-spacing: 0.14em;
     text-transform: uppercase;
-    color: rgba(#fff, 0.92);
+    color: rgba(#fff, 0.88);
   }
 
   &__meta {
     margin: 0;
-    max-width: 32ch;
+    max-width: 34ch;
     font-size: clamp(13px, 1.2vw, 15px);
-    line-height: 1.55;
-    color: rgba(#fff, 0.7);
+    line-height: 1.5;
+    color: rgba(#fff, 0.68);
   }
 }
 
 @media (max-width: 767px) {
   .technology-partners__grid {
     grid-template-columns: 1fr;
-  }
-
-  .technology-partners__item {
-    padding-inline: 0 !important;
-
-    &:first-child {
-      border-inline-end: 0 !important;
-      border-bottom: 1px solid rgba(#fff, 0.18);
-      padding-bottom: clamp(24px, 5vw, 32px);
-    }
-
-    &:last-child {
-      padding-top: clamp(24px, 5vw, 32px);
-    }
+    gap: clamp(28px, 6vw, 36px);
+    max-width: 28rem;
   }
 }
 
@@ -6089,16 +6129,6 @@ table.elm-table {
     transform 0.3s ease;
 }
 
-[data-page="technologies"] {
-  .tech-routes {
-    text-align: start;
-  }
-
-  .tech-routes__item {
-    text-align: start;
-  }
-}
-
 /* ============================================================
    PHOTO RULE
    - Text on photo → color + brand gradient scrim
@@ -6168,22 +6198,13 @@ table.elm-table {
   }
 }
 
-/* Technologies page — all copy centered (photos already B&W via global rule) */
+/* Technologies page — center standalone section heads; split panels face the photo */
 [data-page="technologies"] {
-  .content-section,
   .content-section .section-title,
   .content-section .section-title.text-left,
-  .about-intro__content,
-  .about-intro__eyebrow,
-  .about-intro__lede,
-  .tech-routes,
-  .tech-routes__copy,
-  .tech-routes__label,
-  .tech-routes__title,
   .process-section__head,
   .process-section__lede,
   .process-step,
-  .process-step__list,
   .tech-spec-section__head,
   .tech-spec-section__lede,
   .sticky-stack-section__head,
@@ -6200,18 +6221,12 @@ table.elm-table {
   .compare-table__metric,
   .compare-table__old,
   .compare-table__elm,
-  .sectors-grid__intro,
-  .sectors-grid__lede,
   .counter-box,
   .counter-box__label,
   .counter-box__desc,
   .spec-card__body,
   .spec-card__blurb,
-  .spec-card__link,
-  .sectors-index__item,
-  .sectors-index__body,
-  .sectors-index__title,
-  .sectors-index__meta {
+  .spec-card__link {
     text-align: center;
   }
 
@@ -6222,8 +6237,7 @@ table.elm-table {
     text-align: var(--elm-align);
   }
 
-  .content-section .section-title h6,
-  .about-intro__eyebrow {
+  .content-section .section-title h6 {
     justify-content: center;
   }
 
@@ -6251,8 +6265,7 @@ table.elm-table {
   .compare-section__head,
   .sticky-stack-section__head,
   .tech-spec-section__head,
-  .process-section__head,
-  .sectors-grid__intro {
+  .process-section__head {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -6263,17 +6276,10 @@ table.elm-table {
 
   .compare-section__lede,
   .sticky-stack-section__lede,
-  .tech-spec-section__lede,
-  .about-intro__lede,
-  .sectors-grid__lede {
+  .tech-spec-section__lede {
     margin-left: auto;
     margin-right: auto;
     max-width: 52ch;
-  }
-
-  .tech-routes {
-    margin-left: auto;
-    margin-right: auto;
   }
 
   .process-step__list li,
@@ -6282,9 +6288,9 @@ table.elm-table {
   }
 
   .process-step__list {
-    width: max-content;
-    max-width: 100%;
-    margin-inline: auto;
+    width: 100%;
+    max-width: none;
+    margin-inline: 0;
     text-align: start;
   }
 
@@ -6897,8 +6903,7 @@ table.elm-table {
   background-clip: border-box !important;
 }
 
-.process-step__num,
-.technology-partners__index {
+.process-step__num {
   background: none !important;
   background-image: none !important;
   -webkit-background-clip: border-box !important;
