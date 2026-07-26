@@ -159,18 +159,15 @@ html[dir="rtl"] {
 
   .side-widget {
     left: auto;
-    right: -100%;
+    right: 0;
     border-radius: 20px 0 0 20px;
+    transform: translate3d(105%, 0, 0);
 
     &.active {
       left: auto;
       right: 0;
+      transform: translate3d(0, 0, 0);
     }
-  }
-
-  .side-widget-close {
-    right: auto;
-    left: 16px;
   }
 
   .side-widget .site-menu ul ul {
@@ -240,6 +237,19 @@ html[dir="rtl"] {
     text-align: var(--elm-align);
   }
 
+  @media (max-width: 1023px) {
+    .hero__inner,
+    .hero__eyebrow,
+    .hero h1,
+    .hero__lede {
+      text-align: center;
+    }
+
+    .hero__actions {
+      justify-content: center;
+    }
+  }
+
   .navbar__tools {
     margin-left: 0;
     margin-right: auto;
@@ -250,7 +260,6 @@ html[dir="rtl"] {
     margin-right: clamp(4px, 0.8vw, 8px);
   }
 
-  .capability-card,
   .tech-preview-card,
   .contact-box,
   .spec-card,
@@ -259,16 +268,12 @@ html[dir="rtl"] {
   }
 
   .capability-card {
-    align-items: flex-start;
-
-    &__icon {
-      align-self: flex-start;
-      text-align: var(--elm-align);
-      width: auto;
-    }
+    text-align: center;
+    align-items: center;
 
     &__link {
-      align-self: flex-start;
+      align-self: center;
+      margin-inline: auto;
     }
   }
 
@@ -334,11 +339,15 @@ html[dir="rtl"] {
     &__rows {
       div {
         border-left: none;
-        border-right: 1px solid rgba(#fff, 0.1);
+        border-right: none;
+      }
 
-        &:first-child {
-          border-right: none;
-        }
+      dt {
+        text-align: end;
+      }
+
+      dd {
+        text-align: start;
       }
     }
   }
@@ -382,8 +391,9 @@ html[dir="rtl"] {
 
   .capability-section__foot,
   .solutions-section__foot,
-  .home-why-hub__foot {
-    text-align: var(--elm-align);
+  .home-why-hub__foot,
+  .compare-section__foot {
+    text-align: end;
   }
 
   .engagement-process__head,
@@ -464,6 +474,33 @@ html[dir="rtl"] {
     direction: rtl;
   }
 
+  @media (max-width: 767px) {
+    .compare-table {
+      padding: 0 clamp(18px, 4vw, 24px) 0 0;
+      border-left: none;
+      border-right: 2px solid var(--elm-border);
+    }
+
+    .compare-table__row {
+      padding: 0 clamp(16px, 3.5vw, 20px) clamp(18px, 4vw, 24px) 0;
+
+      &::before {
+        left: auto;
+        right: calc(-1 * clamp(18px, 4vw, 24px) - 5px);
+      }
+
+      &:last-child {
+        padding-bottom: 0;
+      }
+    }
+
+    .home-why-hub__foot,
+    .compare-section__foot {
+      justify-content: flex-end;
+      text-align: end;
+    }
+  }
+
   .metric-stage__layout {
     direction: rtl;
   }
@@ -477,9 +514,7 @@ html[dir="rtl"] {
   }
 
   .metric-stage__caption {
-    left: auto;
-    right: clamp(24px, 4vw, 40px);
-    align-items: flex-end;
+    inset-inline: clamp(20px, 3.5vw, 36px);
   }
 
   .metric-stage__watermark {
@@ -491,11 +526,9 @@ html[dir="rtl"] {
     direction: rtl;
   }
 
-  .sticky-stack__features {
-    border-left: none;
-    border-right: 1px solid var(--elm-border);
-    padding-left: 0;
-    padding-right: clamp(16px, 2vw, 24px);
+  .sticky-stack__body,
+  .sticky-stack__copy {
+    text-align: start;
   }
 
   .contact-box {
@@ -509,17 +542,13 @@ html[dir="rtl"] {
 
   .video-box .play-btn {
     right: auto;
-    left: 50px;
+    left: clamp(16px, 2.5vw, 28px);
   }
 
-  .engagement-section .testimonials-slider__arrow--prev {
-    left: auto;
-    right: 12px;
-  }
-
+  .engagement-section .testimonials-slider__arrow--prev,
   .engagement-section .testimonials-slider__arrow--next {
+    left: auto;
     right: auto;
-    left: 12px;
   }
 
   .project-slider__arrow--prev {
@@ -633,6 +662,48 @@ html[dir="rtl"] {
     }
   }
 
+  @media (max-width: 767px) {
+    .footer-bar {
+      text-align: center;
+    }
+
+    .footer {
+      text-align: center;
+
+      .widget-title,
+      p,
+      address,
+      address p,
+      address a,
+      .footer__map-link,
+      .footer-bottom,
+      .footer-bottom > span,
+      .footer__credit {
+        text-align: center;
+      }
+
+      address {
+        align-items: center;
+
+        p,
+        a[href^="tel:"],
+        a[href^="mailto:"] {
+          text-align: center;
+        }
+      }
+
+      &__map-link,
+      &__cta {
+        align-self: center;
+      }
+
+      .footer-bottom {
+        flex-direction: column;
+        align-items: center;
+      }
+    }
+  }
+
   .footer-bar .scroll-top {
     right: auto;
     left: 24px;
@@ -662,8 +733,10 @@ html[dir="rtl"] {
 
 @media (max-width: 991px) {
   [dir="rtl"] {
-    .home-why-hub__foot {
-      text-align: var(--elm-align);
+    .home-why-hub__foot,
+    .compare-section__foot {
+      text-align: end;
+      justify-content: flex-end;
     }
 
     .footer-bar .col-lg-4.text-lg-right {

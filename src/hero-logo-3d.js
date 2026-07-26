@@ -2,13 +2,13 @@
  * ELM monogram (images/logo.svg) extruded into 3D, ported from the Propagenda
  * hero logo (raw three.js). The mark carries the ELM brand gradient (magenta →
  * purple → blue, left→right) baked across its surface, exactly like the topbar
- * logo. It turns on 3 axes following the mouse; click it for a full spin + glow.
+ * logo. Desktop: turns on 3 axes following the mouse. Mobile / no-hover: slow
+ * continuous idle rotation. Click it for a full spin + glow on either.
  *
- * Mounts into `.hero__logo3d` as a full-bleed right-biased overlay on the home
- * page. Desktop-only (the container is display:none below the lg breakpoint, so
- * this bails out when it has no size). The container is pointer-events:none so
- * the hero CTAs stay clickable, clicks are caught on `window` and raycast
- * against the logo, so only hits on the mark spin it.
+ * Mounts into `.hero__logo3d`. Desktop: full-bleed right-biased overlay. Mobile /
+ * tablet: centered square above the hero copy. The container is
+ * pointer-events:none so the hero CTAs stay clickable; clicks are caught on
+ * `window` and raycast against the logo, so only hits on the mark spin it.
  */
 import * as THREE from 'three';
 import { SVGLoader } from 'three/examples/jsm/loaders/SVGLoader.js';
@@ -81,7 +81,7 @@ function signalHero3dReady() {
 function initHeroLogo3D(el) {
   const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-  // Bail out if the container is collapsed (mobile/tablet: display:none → 0×0).
+  // Bail out if the container is collapsed (no layout size yet).
   if (!el.clientWidth || !el.clientHeight) {
     signalHero3dReady();
     return;
@@ -126,10 +126,13 @@ function initHeroLogo3D(el) {
   const group = new THREE.Group();
   scene.add(group);
   const positionGroup = () => {
-    // Bias into the open hero field opposite the copy (LTR → right, RTL → left).
-    const wide = el.clientWidth / el.clientHeight > 1;
+    // Desktop wide: bias opposite the copy. Mobile square mount: stay centered.
+    const wide = el.clientWidth / el.clientHeight > 1.15;
     const rtl = document.documentElement.getAttribute('dir') === 'rtl';
     group.position.x = wide ? (rtl ? -2.4 : 2.4) : 0;
+    group.position.y = wide ? 0 : -0.1;
+    // Square mounts: slightly closer than desktop, not frame-filling.
+    camera.position.z = wide ? 9.5 : 8.4;
   };
   positionGroup();
 
@@ -171,7 +174,8 @@ function initHeroLogo3D(el) {
     const size = box.getSize(new THREE.Vector3());
     logo.children.forEach((m) => m.position.sub(center));
     applyGradientColors(logo); // bake magenta→purple→blue across the mark
-    const fit = 3.1 / Math.max(size.x, size.y);
+    const wide = el.clientWidth / el.clientHeight > 1.15;
+    const fit = (wide ? 3.1 : 3.35) / Math.max(size.x, size.y);
     logo.scale.set(fit, -fit, fit); // flip Y: SVG space is Y-down, three is Y-up
     group.add(logo);
     signalHero3dReady();
@@ -179,10 +183,12 @@ function initHeroLogo3D(el) {
     signalHero3dReady();
   });
 
-  // --- Mouse-driven rotation ---
+  // --- Rotation: mouse on desktop; continuous idle on mobile mount / no-hover ---
+  const idleMq = window.matchMedia('(max-width: 1023px), (hover: none)');
   const target = { x: 0, y: 0 };
   const cur = { x: 0, y: 0 };
   const onMove = (e) => {
+    if (idleMq.matches) return;
     target.x = (e.clientX / window.innerWidth - 0.5) * 2;
     target.y = (e.clientY / window.innerHeight - 0.5) * 2;
   };
@@ -213,12 +219,20 @@ function initHeroLogo3D(el) {
   let raf = 0;
   const render = () => {
     const t = (performance.now() - start) / 1000;
-    cur.x += (target.x - cur.x) * 0.05;
-    cur.y += (target.y - cur.y) * 0.05;
     spin += (spinTarget - spin) * 0.06;
-    group.rotation.y = cur.x * 0.9 + Math.sin(t * 0.25) * 0.12 + spin;
-    group.rotation.x = cur.y * 0.7 + Math.sin(t * 0.3) * 0.06;
-    group.rotation.z = cur.x * 0.12;
+
+    if (idleMq.matches) {
+      // Constant 3-axis idle drift — readable brand mark, never flat.
+      group.rotation.y = t * 0.45 + spin;
+      group.rotation.x = Math.sin(t * 0.38) * 0.28 + Math.cos(t * 0.17) * 0.08;
+      group.rotation.z = Math.sin(t * 0.22) * 0.12;
+    } else {
+      cur.x += (target.x - cur.x) * 0.05;
+      cur.y += (target.y - cur.y) * 0.05;
+      group.rotation.y = cur.x * 0.9 + Math.sin(t * 0.25) * 0.12 + spin;
+      group.rotation.x = cur.y * 0.7 + Math.sin(t * 0.3) * 0.06;
+      group.rotation.z = cur.x * 0.12;
+    }
 
     if (glowStart >= 0 && logoMaterial) {
       const p = Math.min((t - glowStart) / 1.0, 1);

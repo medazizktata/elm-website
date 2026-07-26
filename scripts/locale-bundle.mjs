@@ -1086,26 +1086,14 @@ export const en = {
  "techStickyStack": {
  "label": "DEEP DIVE",
  "title": "Explore Each Technology",
- "lede": "Three manufacturing routes on one LFAM platform scroll through capabilities, then open the dedicated technology page for specs and engagement.",
- "capabilitiesLabel": "Capabilities",
+ "lede": "Three manufacturing routes on one LFAM platform open the dedicated technology page for specs and engagement.",
+ "explore": "Explore",
  "card1Title": "Robotic Concrete 3D Printing",
  "card1Copy": "Structural printing for buildings, infrastructure and regulated environments no conventional formwork for bespoke geometry.",
- "card1Item1": "On-site or off-site deposition",
- "card1Item2": "Up to 60% material waste reduction",
- "card1Item3": "Lime-based and structural mortars",
- "card1Item4": "Airport & infrastructure proven",
  "card2Title": "Polymer Large-Format 3D Printing",
  "card2Copy": "6-axis robotic extrusion for facades, retail, hospitality and branded environments complex forms without mould tooling.",
- "card2Item1": "Full geometric freedom",
- "card2Item2": "Lighting & facade integration",
- "card2Item3": "Rapid bespoke production",
- "card2Item4": "Retail & hospitality scale",
  "card3Title": "Architectural Manufacturing",
- "card3Copy": "End-to-end design-to-site delivery for landmark hospitality, retail and public projects one team from file to installation.",
- "card3Item1": "Digital design & feasibility",
- "card3Item2": "Fabrication QC & finishing",
- "card3Item3": "Site installation support",
- "card3Item4": "Programme handover docs"
+ "card3Copy": "End-to-end design-to-site delivery for landmark hospitality, retail and public projects one team from file to installation."
  }
  }
 };
@@ -2198,26 +2186,14 @@ export const ar = {
  "techStickyStack": {
  "label": "تعمّق",
  "title": "استكشف كل تقنية",
- "lede": "ثلاثة مسارات تصنيع على منصة LFAM واحدة تصفّح القدرات ثم افتح صفحة التقنية المخصصة للمواصفات والتعامل.",
- "capabilitiesLabel": "القدرات",
+ "lede": "ثلاثة مسارات تصنيع على منصة LFAM واحدة افتح صفحة التقنية المخصصة للمواصفات والتعامل.",
+ "explore": "استكشف",
  "card1Title": "طباعة خرسانة روبوتية ثلاثية الأبعاد",
  "card1Copy": "طباعة إنشائية للمباني والبنية التحتية والبيئات المنظمة دون قوالب تقليدية للهندسة المخصصة.",
- "card1Item1": "ترسيب في الموقع أو خارجه",
- "card1Item2": "تقليل هدر المواد بنسبة تصل إلى 60%",
- "card1Item3": "ملاطس جيرية وإنشائية",
- "card1Item4": "مثبت في المطارات والبنية التحتية",
  "card2Title": "طباعة بوليمر بتنسيق كبير",
  "card2Copy": "بثق روبوتي بست محاور للواجهات والتجزئة والضيافة والبيئات ذات العلامة التجارية أشكال معقدة دون قوالب.",
- "card2Item1": "حرية هندسية كاملة",
- "card2Item2": "تكامل الإضاءة والواجهات",
- "card2Item3": "إنتاج مخصص سريع",
- "card2Item4": "نطاق التجزئة والضيافة",
  "card3Title": "التصنيع المعماري",
- "card3Copy": "تسليم متكامل من التصميم إلى الموقع لمشاريع الضيافة والتجزئة والمشاريع العامة فريق واحد من الملف إلى التركيب.",
- "card3Item1": "التصميم الرقمي والجدوى",
- "card3Item2": "مراقبة جودة التصنيع والتشطيب",
- "card3Item3": "دعم التركيب في الموقع",
- "card3Item4": "مستندات تسليم البرنامج"
+ "card3Copy": "تسليم متكامل من التصميم إلى الموقع لمشاريع الضيافة والتجزئة والمشاريع العامة فريق واحد من الملف إلى التركيب."
  }
  }
 };

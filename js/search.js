@@ -175,8 +175,13 @@
   function openSearch() {
     var side = document.querySelector(".side-widget");
     var burger = document.querySelector(".hamburger");
+    var backdrop = document.querySelector(".side-widget-backdrop");
     if (side) side.classList.remove("active");
     if (burger) burger.classList.remove("open");
+    if (backdrop) {
+      backdrop.classList.remove("is-active");
+      backdrop.setAttribute("aria-hidden", "true");
+    }
 
     loadIndex().then(function () {
       els.box.classList.add("active");

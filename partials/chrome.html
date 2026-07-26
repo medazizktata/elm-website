@@ -30,10 +30,13 @@
     <div class="search-results" id="site-search-results" role="listbox" data-i18n-aria="search.results" aria-label="Search results"></div>
   </div>
 </div>
+<div class="side-widget-backdrop" aria-hidden="true"></div>
 <aside class="side-widget">
-  <button type="button" class="side-widget-close" data-i18n-aria="chrome.closeMenu" aria-label="Close menu"><i class="lni lni-close" aria-hidden="true"></i></button>
-  <div class="inner">
+  <div class="side-widget__head">
     <div class="logo"><a href="index.html"><img src="images/logo.svg" alt="ELM Media Design"></a></div>
+    <button type="button" class="side-widget-close" data-i18n-aria="chrome.closeMenu" aria-label="Close menu"><i class="lni lni-close" aria-hidden="true"></i></button>
+  </div>
+  <div class="side-widget__scroll">
     <div class="hide-mobile">
       <p data-i18n="chrome.sideTagline">Industrial 3D printing at architectural scale. Dubai, UAE.</p>
       <figure class="gallery"><img src="images/step01.jpg" alt="Digital design and material specification"></figure>
@@ -48,24 +51,25 @@
       <div class="site-menu">
         {{> nav-menu mobile=true}}
       </div>
-      <div class="side-widget__tools">
-        <div class="locale-switch locale-switch--menu" role="group" aria-label="Language">
-          <button type="button" class="locale-switch__btn" data-locale="en" aria-pressed="true" data-i18n-aria="locale.switchToEn"><span data-i18n="locale.en">EN</span></button>
-          <span class="locale-switch__sep" aria-hidden="true">|</span>
-          <button type="button" class="locale-switch__btn" data-locale="ar" aria-pressed="false" data-i18n-aria="locale.switchToAr"><span data-i18n="locale.ar">عربي</span></button>
-        </div>
-        <button type="button" class="side-widget__tool search search-toggle" data-i18n-aria="search.open" aria-label="Open search" aria-expanded="false" aria-controls="site-search">
-          <i class="lni lni-search-alt" aria-hidden="true"></i>
-          <span data-i18n="search.label">Search</span>
+    </div>
+  </div>
+  <div class="side-widget__foot">
+    <div class="side-widget__tools show-mobile">
+      <div class="side-widget__tool-row">
+        <button type="button" class="side-widget__icon-btn locale-switch--toggle" data-locale-toggle data-locale="ar" aria-label="Switch to Arabic" title="عربي">
+          <span class="locale-switch__next" data-locale-next aria-hidden="true">ع</span>
         </button>
-        <button type="button" class="theme-toggle theme-toggle--menu" aria-pressed="false" data-i18n-aria="chrome.themeDark" aria-label="Switch to dark mode">
+        <button type="button" class="side-widget__icon-btn search search-toggle" data-i18n-aria="search.open" aria-label="Open search" aria-expanded="false" aria-controls="site-search">
+          <i class="lni lni-search-alt" aria-hidden="true"></i>
+        </button>
+        <button type="button" class="theme-toggle theme-toggle--menu side-widget__icon-btn" aria-pressed="false" data-i18n-aria="chrome.themeDark" aria-label="Switch to dark mode">
           <i class="lni lni-sun theme-icon-light" aria-hidden="true"></i>
           <i class="lni lni-night theme-icon-dark" hidden aria-hidden="true"></i>
-          <span class="theme-toggle__label theme-toggle__label--to-light" data-i18n="chrome.themeLight">Switch to light mode</span>
-          <span class="theme-toggle__label theme-toggle__label--to-dark" hidden data-i18n="chrome.themeDark">Switch to dark mode</span>
+          <span class="theme-toggle__label theme-toggle__label--to-light visually-hidden" data-i18n="chrome.themeLight">Switch to light mode</span>
+          <span class="theme-toggle__label theme-toggle__label--to-dark visually-hidden" hidden data-i18n="chrome.themeDark">Switch to dark mode</span>
         </button>
-        <a href="contact.html#consultation-form" class="custom-button side-widget__cta"><span data-i18n="nav.consultation">Consultation</span> <span class="elm-go elm-go--sm" aria-hidden="true"></span></a>
       </div>
+      <a href="contact.html#consultation-form" class="custom-button side-widget__cta"><span data-i18n="nav.consultation">Consultation</span> <span class="elm-go elm-go--sm" aria-hidden="true"></span></a>
     </div>
     <small>&copy; {{year}} ELM Media Design</small>
   </div>

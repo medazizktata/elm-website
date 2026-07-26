@@ -207,11 +207,28 @@
   }
 
   function updateSwitcher() {
-    document.querySelectorAll("[data-locale]").forEach(function (btn) {
+    document.querySelectorAll("[data-locale]:not([data-locale-toggle])").forEach(function (btn) {
       var loc = btn.getAttribute("data-locale");
       var isActive = loc === currentLocale;
       btn.setAttribute("aria-pressed", isActive ? "true" : "false");
       btn.classList.toggle("is-active", isActive);
+    });
+
+    /* Mobile drawer: one button — label/target = the other locale */
+    document.querySelectorAll("[data-locale-toggle]").forEach(function (btn) {
+      var next = currentLocale === "ar" ? "en" : "ar";
+      var nextLabel = next === "ar" ? "ع" : "EN";
+      var aria =
+        t(next === "ar" ? "locale.switchToAr" : "locale.switchToEn") ||
+        (next === "ar" ? "Switch to Arabic" : "Switch to English");
+
+      btn.setAttribute("data-locale", next);
+      btn.setAttribute("aria-label", aria);
+      btn.setAttribute("title", nextLabel);
+      btn.removeAttribute("aria-pressed");
+
+      var label = btn.querySelector("[data-locale-next]");
+      if (label) label.textContent = nextLabel;
     });
   }
 
