@@ -4,7 +4,7 @@ import { resolve } from "path";
 const root = resolve(".");
 const dist = resolve("dist");
 const dirs = ["css", "images"];
-const rootFiles = ["robots.txt", "sitemap.xml", "llms.txt"];
+const rootFiles = ["robots.txt", "sitemap.xml", "llms.txt", "BingSiteAuth.xml"];
 
 if (!existsSync(dist)) mkdirSync(dist, { recursive: true });
 
