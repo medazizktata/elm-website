@@ -1,0 +1,6 @@
+name = "elm-website"
+compatibility_date = "2026-07-27"
+compatibility_flags = ["nodejs_compat"]
+
+[assets]
+directory = "./dist"

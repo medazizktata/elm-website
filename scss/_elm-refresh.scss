@@ -3023,12 +3023,12 @@ table.elm-table {
     bottom: auto;
     transform: translate(-50%, -50%);
     margin: 0;
-    padding: clamp(22px, 3vw, 36px);
+    padding: clamp(16px, 2.5vw, 28px);
     width: max-content;
-    max-width: min(14ch, calc(100% - 40px));
-    font-size: clamp(26px, 3.2vw, 42px);
+    max-width: min(12ch, calc(100% - 48px));
+    font-size: clamp(20px, 2.2vw, 30px);
     font-weight: 800;
-    line-height: 1.08;
+    line-height: 1.15;
     letter-spacing: var(--elm-tracking-caps);
     text-transform: uppercase;
     text-align: center;

@@ -292,7 +292,7 @@ export const en = {
  "parent": "Technologies"
  },
  "introEyebrow": "Robotic concrete",
- "introTitle": "Structural and decorative concrete at architectural scale",
+ "introTitle": "Robotic concrete LFAM",
  "introLede1": "Same principle, different material. The robot extrudes concrete layer by layer, structural or decorative, depending on what the project needs. No formwork means we can print on site, often in days rather than months, with up to 60% less material waste than conventional methods.",
  "introLede2": "Our concrete systems use lime-based mortars that absorb CO₂ while they cure. These are measurable numbers we can provide per project, in a format that works for ESG reporting.",
  "benefitsEyebrow": "Benefits",
@@ -335,7 +335,7 @@ export const en = {
  "parent": "Technologies"
  },
  "introEyebrow": "Polymer LFAM",
- "introTitle": "Architectural polymer without geometric limits",
+ "introTitle": "Polymer LFAM",
  "introLede1": "A multi-axis robotic arm extrudes polymer in precise layers, building architectural features, facade elements, furniture, branded installations and lighting fixtures straight from a digital file. No mould, no formwork, no geometric constraint.",
  "introLede2": "We mostly use recycled and bio-based materials including rPET-G, recycled polypropylene and PLA bioplastics. Build volume scales with the project, from a single statement piece to an entire floor fit-out.",
  "benefitsEyebrow": "Benefits",
@@ -379,7 +379,7 @@ export const en = {
  "parent": "Technologies"
  },
  "introEyebrow": "Architectural manufacturing",
- "introTitle": "Custom architectural fabrication",
+ "introTitle": "Architectural manufacturing",
  "introLede1": "Some projects don't fit a category. For those, we handle the whole thing, digital design, material selection, fabrication and on-site installation. Hospitality environments, luxury retail, public art, government landmarks.",
  "introLede2": "We move from approved digital model to site-ready components in days, providing UAE-ready solutions for landmark hospitality, luxury retail, government and cultural projects.",
  "capEyebrow": "Capability",
@@ -1409,7 +1409,7 @@ export const ar = {
  "parent": "التقنيات"
  },
  "introEyebrow": "الخرسانة الروبوتية",
- "introTitle": "خرسانة إنشائية وزخرفية على نطاق معماري",
+ "introTitle": "خرسانة روبوتية LFAM",
  "introLede1": "ذراع روبوتية صناعية تبثق الخرسانة طبقة بطبقة إنشائية أو زخرفية حسب متطلبات البرنامج. غياب القوالب يجعل الهندسة المعقدة قابلة للبناء، غالباً في الموقع، خلال أيام لا أشهر.",
  "introLede2": "ملاطسنا الإنشائية الجيرية تمتص CO₂ أثناء المعالجة ميزة استدامة قابلة للقياس لتقارير ESG ومواءمة الإمارات صافي الصفر 2050.",
  "benefitsEyebrow": "الفوائد",
@@ -1452,7 +1452,7 @@ export const ar = {
  "parent": "التقنيات"
  },
  "introEyebrow": "بوليمر LFAM",
- "introTitle": "بوليمر معماري بلا حدود هندسية",
+ "introTitle": "بوليمر LFAM",
  "introLede1": "ذراع روبوتية متعددة المحاور تبثق البوليمر بطبقات دقيقة واجهات وأثاث وتركيبات ذات علامة تجارية ووحدات إضاءة مباشرة من ملف رقمي. لا قالب، لا قالب بناء، لا قيد هندسي.",
  "introLede2": "نستخدم أساساً مواد معاد تدويرها وبيولوجية بما في ذلك rPET-G وبولي بروبيلين المعاد تدويره وPLA الحيوي. يتوسع حجم البناء من قطعة واحدة بارزة إلى تجهيز طابق كامل.",
  "benefitsEyebrow": "الفوائد",
@@ -1496,7 +1496,7 @@ export const ar = {
  "parent": "التقنيات"
  },
  "introEyebrow": "التصنيع المعماري",
- "introTitle": "عندما لا يناسب المشروع فئة واحدة",
+ "introTitle": "تصنيع معماري",
  "introLede1": "بعض البرامج تتطلب أكثر من مسار تقني واحد. التصنيع المعماري هو خدمة ELM المتكاملة تصميم رقمي واختيار مواد وتصنيع روبوتي وتركيب في الموقع بعقد تجاري واحد.",
  "introLede2": "ننتقل من النموذج الرقمي المعتمد إلى مكونات جاهزة للموقع خلال أيام، مع حلول جاهزة للإمارات لمشاريع الضيافة والتجزئة الفاخرة والحكومة والثقافة.",
  "capEyebrow": "القدرة",
