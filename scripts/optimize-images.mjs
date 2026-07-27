@@ -64,6 +64,11 @@ const jobs = [
     "lfam-robot-gradient",
     "tab01-gradient",
     "tab05",
+    "spec-concrete",
+    "spec-polymer",
+    "spec-architecture",
+    "tech-platform",
+    "tech-stack-concrete",
   ].flatMap((base) => [
     {
       input: `${base}.jpg`,
@@ -81,6 +86,14 @@ const jobs = [
   {
     input: "logo-full-dark.png",
     outputs: [{ file: "logo-full-dark.webp", width: 416, format: "webp", quality: 88 }],
+  },
+  {
+    input: "background/branding-elm-18.jpg",
+    outputs: [
+      { file: "background/branding-elm-18-400.webp", width: 400, format: "webp", quality: 80 },
+      { file: "background/branding-elm-18-800.webp", width: 800, format: "webp", quality: 82 },
+      { file: "background/branding-elm-18-1200.webp", width: 1200, format: "webp", quality: 82 },
+    ],
   },
 ];
 
