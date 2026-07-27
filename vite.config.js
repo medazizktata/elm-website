@@ -13,6 +13,17 @@ const htmlInputs = sync("./*.html").filter(
 
 const base = process.env.SITE_BASE || "/";
 
+const deferOptionalCss = {
+  name: "defer-optional-css",
+  transformIndexHtml(html) {
+    // Vite re-injects discovered CSS without media=print; make those non-blocking.
+    return html.replace(
+      /<link rel="stylesheet" crossorigin href="(\/assets\/(?:odometer|fancybox|swiper)[^"]+\.css)">/g,
+      '<link rel="stylesheet" crossorigin href="$1" media="print" onload="this.media=\'all\'">'
+    );
+  },
+};
+
 export default defineConfig({
   base,
   root: ".",
@@ -37,6 +48,7 @@ export default defineConfig({
         },
       },
     }),
+    deferOptionalCss,
   ],
   build: {
     outDir: "dist",

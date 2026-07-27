@@ -103,6 +103,10 @@
  }
 
  function hideLoaderWhenHeroReady() {
+ if (isMobileViewport()) {
+ hidePageLoader(PAGE_LOADER_MOBILE_MIN_MS);
+ return;
+ }
  var heroImg = document.querySelector('.hero__media-img');
  if (!heroImg) {
  hidePageLoader(homeLoaderMinMs());
@@ -191,6 +195,11 @@
  "use strict";
 
  // Cold load: fade loader in. Mid-nav: already covered via html.is-page-loading
+ if (isMobileViewport()) {
+ // Mobile: never block LCP with the loader
+ pageLoaderShownAt = Date.now();
+ hidePageLoader(0);
+ } else {
  setPageLoader(true);
  if (isContinuingPageTransition()) {
  // Restore fade-out transition after first paint
@@ -199,10 +208,11 @@
  });
  }
  pageLoaderShownAt = Date.now();
+ }
  setActiveNav();
  deferVideoPosters();
 
- if (document.querySelector('.hero__media-img') && !shouldWaitForHero3d()) {
+ if (!isMobileViewport() && document.querySelector('.hero__media-img') && !shouldWaitForHero3d()) {
  hideLoaderWhenHeroReady();
  }
 
