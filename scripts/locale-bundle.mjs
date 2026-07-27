@@ -102,6 +102,23 @@ export const en = {
  "label": "Solutions",
  "title": "Industry Verticals",
  "subtitle": "Tailored LFAM programmes across property, hospitality, government, industrial, OOH media and cultural projects."
+ },
+ "faq": {
+ "label": "FAQ",
+ "title": "Commercial LFAM in Dubai",
+ "lede": "Clear answers about ELM Media Design, our technologies and how we work in the UAE.",
+ "q1": "What is ELM Media Design?",
+ "a1": "ELM Media Design is a Dubai-based commercial LFAM company. We deliver robotic concrete and polymer 3D printing for buildings, facades, hospitality and government projects across the UAE — from design through fabrication to site installation.",
+ "q2": "What is LFAM?",
+ "a2": "LFAM (large-format additive manufacturing) is industrial 3D printing at architectural scale. Robotic systems extrude concrete or polymer layer by layer to produce components without conventional moulds or formwork.",
+ "q3": "What technologies does ELM offer?",
+ "a3": "Three core capabilities: robotic concrete 3D printing, industrial 6-axis polymer LFAM, and end-to-end architectural manufacturing covering digital design, fabrication and rapid site installation.",
+ "q4": "Who does ELM work with?",
+ "a4": "Property developers, contractors, government entities, hospitality brands and cultural institutions across the UAE — spanning infrastructure, leisure, industrial, creative and OOH programmes.",
+ "q5": "How fast is your RFQ response?",
+ "a5": "We offer a 30-minute initial briefing, facility tours and a 72-hour RFQ turnaround as part of our standard commercial engagement.",
+ "q6": "Are you aligned with UAE government strategies?",
+ "a6": "Yes — Dubai 3D Printing Strategy 2030, UAE Industrial Strategy 2031, ICV and Net Zero 2050. Robotic concrete LFAM can reduce waste by up to 60% versus conventional formwork."
  }
  },
  "who-we-are": {
@@ -1202,6 +1219,23 @@ export const ar = {
  "label": "القطاعات",
  "title": "القطاعات التي نخدمها",
  "subtitle": "تطبيقات LFAM التجارية عبر البيئة المبنية في الإمارات."
+ },
+ "faq": {
+ "label": "الأسئلة الشائعة",
+ "title": "LFAM التجاري في دبي",
+ "lede": "إجابات واضحة عن ELM Media Design وتقنياتنا وطريقة عملنا في الإمارات.",
+ "q1": "ما هي ELM Media Design؟",
+ "a1": "ELM Media Design شركة LFAM تجارية مقرها دبي. نقدّم الطباعة الروبوتية للخرسانة والبوليمر للمباني والواجهات والضيافة والمشاريع الحكومية في الإمارات — من التصميم إلى التصنيع والتركيب في الموقع.",
+ "q2": "ما هو LFAM؟",
+ "a2": "LFAM (التصنيع الإضافي كبير الحجم) هو الطباعة الصناعية ثلاثية الأبعاد على نطاق معماري. أنظمة روبوتية تبثّ الخرسانة أو البوليمر طبقة فوق طبقة لإنتاج مكونات دون قوالب أو سقالات تقليدية.",
+ "q3": "ما التقنيات التي تقدّمها ELM؟",
+ "a3": "ثلاث قدرات أساسية: الطباعة الروبوتية للخرسانة، وLFAM البوليمري الصناعي بست محاور، والتصنيع المعماري الشامل من التصميم الرقمي إلى التصنيع والتركيب السريع في الموقع.",
+ "q4": "مع من تعمل ELM؟",
+ "a4": "مطوّري العقارات والمقاولين والجهات الحكومية وعلامات الضيافة والمؤسسات الثقافية في الإمارات — عبر البنية التحتية والترفيه والصناعة والإبداع وبرامج الإعلان الخارجي.",
+ "q5": "ما سرعة الرد على طلبات العروض؟",
+ "a5": "نقدّم إحاطة أولية لمدة 30 دقيقة وجولات في المنشأة ورداً على طلب العرض خلال 72 ساعة ضمن مسار التعامل التجاري المعتاد.",
+ "q6": "هل أنتم متوافقون مع استراتيجيات الحكومة الإماراتية؟",
+ "a6": "نعم — استراتيجية دبي للطباعة ثلاثية الأبعاد 2030، والاستراتيجية الصناعية الإماراتية 2031، وICV وصافي الصفر 2050. يمكن لخرسانة LFAM الروبوتية تقليل الهدر بنسبة تصل إلى 60% مقارنة بالسقالات التقليدية."
  }
  },
  "who-we-are": {

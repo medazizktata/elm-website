@@ -1,10 +1,10 @@
 # ELM Media Design, Website
 
-Marketing website for **ELM Media Design**, a Dubai-based large-format additive manufacturing (LFAM) company. Built on the [Consto](https://themezinho.net) industrial HTML template, customized to ELM brand guidelines and content requirements.
+Marketing website for **ELM Media Design**, a Dubai-based large-format additive manufacturing (LFAM) company.
 
 **Live repo:** [github.com/medazizktata/elm-website](https://github.com/medazizktata/elm-website) (private)
 
-**Production domain:** [elmmdesign.com](https://www.elmmdesign.com)
+**Production domain:** [theelmdesign.com](https://www.theelmdesign.com)
 
 ---
 
@@ -75,7 +75,7 @@ pnpm run images:placeholders
 ```
 ├── index.html              # Home
 ├── who-we-are.html      # About
-├── technologies.html           # Technologies (base template)
+├── technologies.html           # Technologies overview
 ├── projects.html           # Portfolio grid
 ├── project-recarlo-milan.html
 ├── project-bergamo-airport.html
@@ -95,7 +95,7 @@ pnpm run images:placeholders
 
 ## Assets
 
-Template ships with placeholder images. Replace files in `images/` with ELM photography, robot/process video, THE LOOP visuals, and logo (`images/logo.png`) as they become available.
+Replace files in `images/` with ELM photography, robot/process video, THE LOOP visuals, and logo (`images/logo.png`) as they become available.
 
 ---
 
@@ -103,7 +103,7 @@ Template ships with placeholder images. Replace files in `images/` with ELM phot
 
 - **Mobile:** +971 56 466 3334
 - **Email:** amin@letsadsmedia.com
-- **Website:** www.elmmdesign.com
+- **Website:** www.theelmdesign.com
 - **Location:** Dubai, UAE
 
 ---
@@ -121,4 +121,4 @@ Stored in the parent ELM project `Docs/` folder (not in this repo):
 
 ## License
 
-Consto template © Themezinho. ELM content and customizations © ELM Media Design / Propagenda.
+© ELM Media Design / Propagenda.

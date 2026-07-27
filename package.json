@@ -6,7 +6,7 @@
   "packageManager": "pnpm@10.13.1",
   "scripts": {
     "dev": "node scripts/setup-fonts.mjs && vite",
-    "build": "node scripts/setup-fonts.mjs && node scripts/build-search-index.mjs && node scripts/generate-sitemap.mjs && node scripts/build-locales.mjs && pnpm sass && vite build && node scripts/copy-static.mjs",
+    "build": "node scripts/setup-fonts.mjs && node scripts/build-search-index.mjs && node scripts/generate-sitemap.mjs && node scripts/generate-llms.mjs && node scripts/generate-robots.mjs && node scripts/build-locales.mjs && pnpm sass && vite build && node scripts/copy-static.mjs",
     "wrap": "node scripts/wrap-partials.mjs",
     "fonts:setup": "node scripts/setup-fonts.mjs",
     "images:placeholders": "node scripts/fetch-placeholders.mjs",

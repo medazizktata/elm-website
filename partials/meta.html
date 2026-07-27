@@ -6,19 +6,24 @@
 <meta name="author" content="{{siteName}}">
 <meta name="description" content="{{description}}">
 <meta name="robots" content="{{#if noindex}}noindex, follow{{else}}index, follow{{/if}}">
+<meta name="geo.region" content="AE-DU">
+<meta name="geo.placename" content="Dubai">
 
 <meta property="og:title" content="{{documentTitle pageTitle}}">
 <meta property="og:description" content="{{description}}">
 <meta property="og:site_name" content="{{siteName}}">
 <meta property="og:type" content="website">
-<meta property="og:url" content="https://www.elmmdesign.com/{{ogPath}}">
-<meta property="og:image" content="https://www.elmmdesign.com/images/logo.png">
+<meta property="og:locale" content="en_AE">
+<meta property="og:url" content="{{siteUrl}}/{{ogPath}}">
+<meta property="og:image" content="{{#if ogImage}}{{siteUrl}}/{{ogImage}}{{else}}{{siteUrl}}/images/tab01-gradient.jpg{{/if}}">
 
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="{{documentTitle pageTitle}}">
 <meta name="twitter:description" content="{{description}}">
-<meta name="twitter:image" content="https://www.elmmdesign.com/images/logo.png">
+<meta name="twitter:image" content="{{#if ogImage}}{{siteUrl}}/{{ogImage}}{{else}}{{siteUrl}}/images/tab01-gradient.jpg{{/if}}">
 
-<link rel="canonical" href="https://www.elmmdesign.com/{{ogPath}}">
+<link rel="canonical" href="{{siteUrl}}/{{ogPath}}">
+<link rel="alternate" hreflang="en" href="{{siteUrl}}/{{ogPath}}">
+<link rel="alternate" hreflang="x-default" href="{{siteUrl}}/{{ogPath}}">
 {{> theme-init}}
 {{> locale-init}}

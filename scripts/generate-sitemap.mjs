@@ -1,9 +1,10 @@
 import { readFileSync, writeFileSync } from "fs";
 import { globSync } from "glob";
 import { basename, resolve } from "path";
+import { SITE_URL } from "./site-config.mjs";
 
 const root = resolve(".");
-const baseUrl = "https://www.elmmdesign.com";
+const baseUrl = SITE_URL;
 const outPath = resolve(root, "sitemap.xml");
 
 const priorityByFile = {
