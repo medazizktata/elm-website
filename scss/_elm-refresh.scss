@@ -778,8 +778,8 @@ p, li, td, th, label, input, textarea, select, button, blockquote, figcaption {
       position: relative;
       inset: auto;
       transform: none;
-      width: min(200px, 46vw);
-      height: min(200px, 46vw);
+      width: min(240px, 52vw);
+      height: min(240px, 52vw);
       margin: clamp(20px, 5vh, 40px) auto clamp(28px, 5vh, 44px);
       z-index: 2;
       flex-shrink: 0;
@@ -842,8 +842,8 @@ p, li, td, th, label, input, textarea, select, button, blockquote, figcaption {
 
   @media (max-width: 767px) {
     &__logo3d {
-      width: min(168px, 42vw);
-      height: min(168px, 42vw);
+      width: min(210px, 50vw);
+      height: min(210px, 50vw);
     }
   }
 
