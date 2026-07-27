@@ -1,0 +1,55 @@
+<div class="search-box" id="site-search" role="dialog" aria-modal="true" data-i18n-aria="search.label" aria-label="Search" aria-hidden="true">
+  <div class="search-backdrop" tabindex="-1"></div>
+  <div class="search-panel">
+    <div class="search-field">
+      <i class="lni lni-search-alt" aria-hidden="true"></i>
+      <input type="text" id="site-search-input" autocomplete="off" spellcheck="false" data-i18n-placeholder="search.placeholder" placeholder="Search pages, projects…" aria-controls="site-search-results" aria-autocomplete="list">
+      <button type="button" class="search-close" data-i18n-aria="search.close" aria-label="Close search"><i class="lni lni-close" aria-hidden="true"></i></button>
+    </div>
+    <div class="search-results" id="site-search-results" role="listbox" data-i18n-aria="search.results" aria-label="Search results"></div>
+  </div>
+</div>
+<div class="side-widget-backdrop" aria-hidden="true"></div>
+<aside class="side-widget">
+  <div class="side-widget__head">
+    <div class="logo"><a href="index.html"><img src="images/logo.svg" alt="ELM Media Design" width="40" height="37" loading="lazy" decoding="async"></a></div>
+    <button type="button" class="side-widget-close" data-i18n-aria="chrome.closeMenu" aria-label="Close menu"><i class="lni lni-close" aria-hidden="true"></i></button>
+  </div>
+  <div class="side-widget__scroll">
+    <div class="hide-mobile">
+      <p data-i18n="chrome.sideTagline">Industrial 3D printing at architectural scale. Dubai, UAE.</p>
+      <figure class="gallery"><img src="images/step01-800.webp" alt="Digital design and material specification" width="800" height="1000" loading="lazy" decoding="async"></figure>
+      <h6 class="widget-title" data-i18n="chrome.addressTitle">ADDRESS</h6>
+      <address class="address">
+        <p>Office 203, API Business Suites<br>Al Barsha 1, Dubai, UAE</p>
+        <p><a href="tel:+971564663334">+971 56 466 3334</a></p>
+        <p><a href="mailto:amin@letsadsmedia.com">amin@letsadsmedia.com</a></p>
+      </address>
+    </div>
+    <div class="show-mobile">
+      <div class="site-menu">
+        {{> nav-menu mobile=true}}
+      </div>
+    </div>
+  </div>
+  <div class="side-widget__foot">
+    <div class="side-widget__tools show-mobile">
+      <div class="side-widget__tool-row">
+        <button type="button" class="side-widget__icon-btn locale-switch--toggle" data-locale-toggle data-locale="ar" aria-label="Switch to Arabic" title="عربي">
+          <span class="locale-switch__next" data-locale-next aria-hidden="true">ع</span>
+        </button>
+        <button type="button" class="side-widget__icon-btn search search-toggle" data-i18n-aria="search.open" aria-label="Open search" aria-expanded="false" aria-controls="site-search">
+          <i class="lni lni-search-alt" aria-hidden="true"></i>
+        </button>
+        <button type="button" class="theme-toggle theme-toggle--menu side-widget__icon-btn" aria-pressed="false" data-i18n-aria="chrome.themeDark" aria-label="Switch to dark mode">
+          <i class="lni lni-sun theme-icon-light" aria-hidden="true"></i>
+          <i class="lni lni-night theme-icon-dark" hidden aria-hidden="true"></i>
+          <span class="theme-toggle__label theme-toggle__label--to-light visually-hidden" data-i18n="chrome.themeLight">Switch to light mode</span>
+          <span class="theme-toggle__label theme-toggle__label--to-dark visually-hidden" hidden data-i18n="chrome.themeDark">Switch to dark mode</span>
+        </button>
+      </div>
+      <a href="contact.html#consultation-form" class="custom-button side-widget__cta"><span data-i18n="nav.consultation">Consultation</span> <span class="elm-go elm-go--sm" aria-hidden="true"></span></a>
+    </div>
+    <small>&copy; {{year}} ELM Media Design</small>
+  </div>
+</aside>

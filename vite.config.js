@@ -81,6 +81,7 @@ export default defineConfig({
     outDir: "dist",
     emptyOutDir: true,
     chunkSizeWarningLimit: 600,
+    assetsInlineLimit: 0,
     rollupOptions: {
       input: htmlInputs,
       output: {

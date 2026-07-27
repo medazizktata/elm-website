@@ -147,6 +147,45 @@
  });
  }
 
+ function loadStylesheet(href) {
+ if (document.querySelector('link[href="' + href + '"]')) return;
+ var link = document.createElement('link');
+ link.rel = 'stylesheet';
+ link.href = href;
+ document.head.appendChild(link);
+ }
+
+ function loadScript(src) {
+ return new Promise(function (resolve, reject) {
+ if (document.querySelector('script[src="' + src + '"]')) {
+ resolve();
+ return;
+ }
+ var s = document.createElement('script');
+ s.src = src;
+ s.onload = function () { resolve(); };
+ s.onerror = reject;
+ document.body.appendChild(s);
+ });
+ }
+
+ function whenNear(el, cb, rootMargin) {
+ if (!el) {
+ cb();
+ return;
+ }
+ if (!('IntersectionObserver' in window)) {
+ cb();
+ return;
+ }
+ var io = new IntersectionObserver(function (entries) {
+ if (!entries[0].isIntersecting) return;
+ io.disconnect();
+ cb();
+ }, { rootMargin: rootMargin || '240px' });
+ io.observe(el);
+ }
+
  function resolveNavPage(current) {
  if (current.indexOf('project-') === 0 || current === 'project-single.html') {
  return 'projects.html';
@@ -540,25 +579,29 @@
  });
  }
  function loadSwiperThenStart() {
+ loadStylesheet('/css/swiper.min.css');
  if (typeof Swiper !== 'undefined') {
  startTestimonialsSwiper();
  return;
  }
- var s = document.createElement('script');
- s.src = '/js/swiper.min.js';
- s.onload = startTestimonialsSwiper;
- document.body.appendChild(s);
+ loadScript('/js/swiper.min.js').then(startTestimonialsSwiper);
  }
- if ('IntersectionObserver' in window) {
- var swiperIo = new IntersectionObserver(function (entries) {
- if (!entries[0].isIntersecting) return;
- swiperIo.disconnect();
- loadSwiperThenStart();
- }, { rootMargin: '240px' });
- swiperIo.observe($engagement[0]);
- } else {
- loadSwiperThenStart();
+ whenNear($engagement[0], loadSwiperThenStart);
  }
+
+ // Fancybox — load on first lightbox click (skip if already present)
+ if (document.querySelector('[data-fancybox]') && !(window.jQuery && jQuery.fancybox)) {
+ document.addEventListener('click', function fancyboxGate(e) {
+ var trigger = e.target.closest('[data-fancybox]');
+ if (!trigger) return;
+ e.preventDefault();
+ e.stopPropagation();
+ document.removeEventListener('click', fancyboxGate, true);
+ loadStylesheet('/css/fancybox.min.css');
+ loadScript('/js/fancybox.min.js').then(function () {
+ trigger.dispatchEvent(new MouseEvent('click', { bubbles: true, cancelable: true, view: window }));
+ });
+ }, true);
  }
 
  // METRIC PROJECT STAGE
@@ -688,8 +731,24 @@
    }
   });
  }
- $(window).on('scroll resize', runCounters);
- runCounters();
+ var odometerReady = typeof window.Odometer !== 'undefined' || !$('.odometer').length;
+ function ensureOdometerThen(cb) {
+  if (odometerReady || !$('.odometer').length) {
+   cb();
+   return;
+  }
+  loadStylesheet('/css/odometer.min.css');
+  loadScript('/js/odometer.min.js').then(function () {
+   odometerReady = true;
+   cb();
+  });
+ }
+ whenNear(document.querySelector('.odometer'), function () {
+  ensureOdometerThen(function () {
+   runCounters();
+   $(window).on('scroll resize', runCounters);
+  });
+ });
 
 
  // STICKY NAVBAR transparent at top, solid bg on scroll

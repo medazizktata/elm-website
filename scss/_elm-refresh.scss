@@ -187,6 +187,14 @@
   visibility: visible;
 }
 
+/* Skip below-fold layout work so LCP can paint sooner */
+#main-content > section,
+.footer-bar,
+.footer {
+  content-visibility: auto;
+  contain-intrinsic-size: 1px 720px;
+}
+
 @media (max-width: 1023px) {
   .page-loader {
     background: transparent;

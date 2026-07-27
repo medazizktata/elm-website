@@ -2,11 +2,9 @@
 <html lang="en" dir="ltr" data-page="index">
 <head>
 {{> meta description="Commercial-scale LFAM in UAE. Robotic concrete and polymer 3D printing for buildings, facades, hospitality and government projects." ogPath=""}}
-{{> json-ld-home}}
-{{> json-ld-faq}}
 <link rel="preload" as="image" href="images/hero-abstract-elm.avif" type="image/avif" fetchpriority="high">
 {{> head-critical-hero}}
-{{> head-css swiper=true fancybox=true odometer=true deferMain=true}}
+{{> head-css deferMain=true}}
 </head>
 <body>
 {{> chrome year="2026"}}
@@ -119,7 +117,9 @@
 </main>
 
 {{> footer year="2026"}}
-{{> scripts fancybox=true odometer=true}}
+{{> scripts}}
 <script type="module" src="/src/hero-3d-loader.js"></script>
+{{> json-ld-home}}
+{{> json-ld-faq}}
 </body>
 </html>
