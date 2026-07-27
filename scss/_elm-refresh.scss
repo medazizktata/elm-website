@@ -786,8 +786,8 @@ p, li, td, th, label, input, textarea, select, button, blockquote, figcaption {
       position: relative;
       inset: auto;
       transform: none;
-      width: min(240px, 52vw);
-      height: min(240px, 52vw);
+      width: min(280px, 58vw);
+      height: min(280px, 58vw);
       margin: clamp(20px, 5vh, 40px) auto clamp(28px, 5vh, 44px);
       z-index: 2;
       flex-shrink: 0;
@@ -850,8 +850,8 @@ p, li, td, th, label, input, textarea, select, button, blockquote, figcaption {
 
   @media (max-width: 767px) {
     &__logo3d {
-      width: min(210px, 50vw);
-      height: min(210px, 50vw);
+      width: min(260px, 62vw);
+      height: min(260px, 62vw);
     }
   }
 
@@ -1134,11 +1134,11 @@ body:has(.hero) .navbar.sticky {
   }
 
   .navbar .logo a img {
-    height: 52px;
+    height: 64px;
   }
 
   .navbar.sticky .logo a img {
-    height: 48px;
+    height: 56px;
   }
 
   .navbar .container {
