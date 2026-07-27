@@ -780,15 +780,20 @@ p, li, td, th, label, input, textarea, select, button, blockquote, figcaption {
       transform: none;
       width: min(280px, 62vw);
       height: min(280px, 62vw);
-      margin: clamp(24px, 8vh, 56px) auto clamp(10px, 2.5vh, 18px);
+      margin: clamp(24px, 8vh, 56px) auto clamp(28px, 5vh, 44px);
       z-index: 2;
       flex-shrink: 0;
+      align-self: center;
 
       &--static {
         display: flex;
-        align-items: flex-end;
+        align-items: center;
         justify-content: center;
-        padding-bottom: 8px;
+      }
+
+      &--static .hero__logo-static {
+        width: 70%;
+        margin: 0 auto;
       }
     }
 
@@ -806,7 +811,8 @@ p, li, td, th, label, input, textarea, select, button, blockquote, figcaption {
       width: 100%;
       padding-top: 0;
       padding-bottom: clamp(40px, 6vh, 72px);
-      align-items: flex-end;
+      align-items: center;
+      justify-content: center;
     }
 
     &__inner {
@@ -860,6 +866,11 @@ p, li, td, th, label, input, textarea, select, button, blockquote, figcaption {
     margin: 0;
     text-align: left;
     color: #fff;
+
+    @media (max-width: 1023px) {
+      text-align: center;
+      margin-inline: auto;
+    }
   }
 
   &__eyebrow {
