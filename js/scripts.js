@@ -22,6 +22,13 @@
  }
 
  function setPageLoader(active) {
+ if (active) {
+ document.querySelectorAll('img[data-loader-src]').forEach(function (img) {
+ if (!img.getAttribute('src')) {
+ img.setAttribute('src', img.getAttribute('data-loader-src'));
+ }
+ });
+ }
  $('.page-loader').toggleClass('is-active', active);
  }
 
@@ -512,10 +519,12 @@
  })();
 
 
- // TESTIMONIALS SLIDER
+ // TESTIMONIALS SLIDER — load Swiper only when section nears viewport
  var $engagement = $(".engagement-section");
  var $testimonials = $engagement.find(".testimonials-slider");
- if ($testimonials.length && typeof Swiper !== 'undefined') {
+ if ($testimonials.length) {
+ function startTestimonialsSwiper() {
+ if (typeof Swiper === 'undefined') return;
  new Swiper($testimonials[0], {
  speed: SWIPER_SPEED,
  slidesPerView: 1,
@@ -529,6 +538,27 @@
  prevEl: $engagement.find(".button-prev")[0],
  },
  });
+ }
+ function loadSwiperThenStart() {
+ if (typeof Swiper !== 'undefined') {
+ startTestimonialsSwiper();
+ return;
+ }
+ var s = document.createElement('script');
+ s.src = '/js/swiper.min.js';
+ s.onload = startTestimonialsSwiper;
+ document.body.appendChild(s);
+ }
+ if ('IntersectionObserver' in window) {
+ var swiperIo = new IntersectionObserver(function (entries) {
+ if (!entries[0].isIntersecting) return;
+ swiperIo.disconnect();
+ loadSwiperThenStart();
+ }, { rootMargin: '240px' });
+ swiperIo.observe($engagement[0]);
+ } else {
+ loadSwiperThenStart();
+ }
  }
 
  // METRIC PROJECT STAGE
