@@ -3,7 +3,7 @@ import { globSync } from "glob";
 import { basename, resolve } from "path";
 
 const root = resolve(".");
-const outPath = resolve(root, "js/search-index.json");
+const outPath = resolve(root, "src/js/search-index.json");
 
 const categoryByFile = {
   "index.html": "Home",
@@ -155,7 +155,7 @@ function extractProjects(content, file) {
 
 const items = [];
 
-for (const filePath of globSync("*.html", { cwd: root })) {
+for (const filePath of globSync("pages/*.html", { cwd: root })) {
   const file = basename(filePath);
   const content = readFileSync(resolve(root, filePath), "utf8");
   const meta = extractMeta(content);
@@ -191,4 +191,4 @@ const payload = {
 };
 
 writeFileSync(outPath, `${JSON.stringify(payload, null, 2)}\n`, "utf8");
-console.log(`Wrote ${items.filter((i) => !i.noindex).length} search entries to js/search-index.json`);
+console.log(`Wrote ${items.filter((i) => !i.noindex).length} search entries to src/js/search-index.json`);

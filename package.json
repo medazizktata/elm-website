@@ -23,7 +23,7 @@
     "preview": "vite preview",
     "tunnel": "node scripts/tunnel.mjs",
     "tunnel:1h": "node scripts/tunnel.mjs --timeout=1h",
-    "sass": "sass scss/style.scss css/style.css --style=compressed --no-source-map --silence-deprecation=import",
+    "sass": "sass src/scss/style.scss css/style.css --style=compressed --no-source-map --silence-deprecation=import",
     "deploy": "pnpm build && pnpm exec wrangler deploy",
     "deploy:ci": "pnpm exec wrangler deploy"
   },

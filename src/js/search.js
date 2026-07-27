@@ -20,7 +20,7 @@
     if (index) return Promise.resolve(index);
     if (indexPromise) return indexPromise;
 
-    indexPromise = fetch("js/search-index.json", { cache: "no-cache" })
+    indexPromise = fetch("/js/search-index.json", { cache: "no-cache" })
       .then(function (res) {
         if (!res.ok) throw new Error("Search index unavailable");
         return res.json();

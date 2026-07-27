@@ -1,4 +1,5 @@
 import fs from "fs";
+import { basename } from "path";
 import { globSync } from "glob";
 
 const year = new Date().getFullYear();
@@ -69,7 +70,7 @@ const defaultMeta = {
   ogPath: "",
 };
 
-for (const file of globSync("*.html")) {
+for (const file of globSync("pages/*.html")) {
   const html = fs.readFileSync(file, "utf8");
   if (html.includes("{{> meta")) continue;
 
@@ -81,7 +82,7 @@ for (const file of globSync("*.html")) {
   }
 
   const body = html.slice(navEnd + "<!-- end navbar -->".length, footerStart);
-  const meta = pageMeta[file] ?? defaultMeta;
+  const meta = pageMeta[basename(file)] ?? defaultMeta;
   const noindexAttr = meta.noindex ? " noindex=true" : "";
 
   const wrapped = `<!doctype html>

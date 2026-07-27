@@ -1,17 +1,63 @@
 import { sync } from "glob";
-import { resolve } from "path";
+import { basename, resolve } from "path";
 import { defineConfig } from "vite";
 import handlebars from "vite-plugin-handlebars";
 import { SITE_NAME, SITE_URL } from "./scripts/site-config.mjs";
 
-const htmlInputs = sync("./*.html").filter(
-  (file) =>
-    !file.includes("dist/") &&
-    !file.includes("node_modules/") &&
-    !/\.report\.html$/i.test(file)
+const pageFiles = sync("pages/**/*.html").filter(
+  (file) => !file.includes("node_modules/") && !/\.report\.html$/i.test(file)
+);
+
+const htmlInputs = Object.fromEntries(
+  pageFiles.map((file) => [basename(file, ".html"), resolve(file)])
 );
 
 const base = process.env.SITE_BASE || "/";
+
+/** Emit pages/*.html as dist/*.html so production URLs stay flat. */
+function flattenPagesOutput() {
+  return {
+    name: "flatten-pages-output",
+    enforce: "post",
+    generateBundle(_options, bundle) {
+      for (const fileName of Object.keys(bundle)) {
+        if (!fileName.startsWith("pages/") || !fileName.endsWith(".html")) continue;
+        const chunk = bundle[fileName];
+        const flat = fileName.slice("pages/".length);
+        delete bundle[fileName];
+        chunk.fileName = flat;
+        if (chunk.type === "asset" && typeof chunk.source === "string") {
+          chunk.source = chunk.source
+            .replaceAll('href="../assets/', 'href="/assets/')
+            .replaceAll('src="../assets/', 'src="/assets/')
+            .replaceAll("href='../assets/", "href='/assets/")
+            .replaceAll("src='../assets/", "src='/assets/");
+        }
+        bundle[flat] = chunk;
+      }
+    },
+  };
+}
+
+/** Dev: serve /contact.html from pages/contact.html (flat URLs like prod). */
+function pagesDevRewrite() {
+  return {
+    name: "pages-dev-rewrite",
+    configureServer(server) {
+      server.middlewares.use((req, _res, next) => {
+        if (!req.url) return next();
+        const [pathname, query = ""] = req.url.split("?");
+        const qs = query ? `?${query}` : "";
+        if (pathname === "/" || pathname === "/index.html") {
+          req.url = `/pages/index.html${qs}`;
+        } else if (/^\/[^/]+\.html$/.test(pathname)) {
+          req.url = `/pages${pathname}${qs}`;
+        }
+        next();
+      });
+    },
+  };
+}
 
 const deferOptionalCss = {
   name: "defer-optional-css",
@@ -19,11 +65,14 @@ const deferOptionalCss = {
     order: "post",
     enforce: "post",
     handler(html) {
-      let out = html.replace(
+      let out = html
+        .replaceAll('href="../assets/', 'href="/assets/')
+        .replaceAll('src="../assets/', 'src="/assets/');
+
+      out = out.replace(
         /<link rel="stylesheet" crossorigin href="(\/assets\/(?:odometer|fancybox|swiper)[^"]+\.css)">/g,
         '<link rel="stylesheet" crossorigin href="$1" media="print" onload="this.media=\'all\'">'
       );
-      // Homepage: defer main CSS (marked via data-elm-main-css or injected style-*.css when critical CSS present)
       if (out.includes("data-elm-main-css") || out.includes("head-critical") || out.includes(".hero__media-img")) {
         out = out.replace(
           /<link([^>]*href="\/assets\/(?:style|bootstrap)[^"]+\.css"[^>]*)>/g,
@@ -32,7 +81,6 @@ const deferOptionalCss = {
             return `<link${attrs} media="print" onload="this.media='all'">`;
           }
         );
-        // Keep a single style-*.css link
         let keptStyle = false;
         out = out.replace(
           /<link[^>]*href="\/assets\/style-[^"]+\.css"[^>]*>/g,
@@ -75,6 +123,8 @@ export default defineConfig({
         },
       },
     }),
+    flattenPagesOutput(),
+    pagesDevRewrite(),
     deferOptionalCss,
   ],
   build: {
@@ -98,6 +148,6 @@ export default defineConfig({
     port: 5173,
     strictPort: true,
     allowedHosts: true,
-    open: "/index.html",
+    open: "/",
   },
 });

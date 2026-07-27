@@ -328,7 +328,7 @@ $font-ar: 'Readex Pro', $font-en;
 /* ELM brand fonts */
 @font-face {
   font-family: 'Nohemi';
-  src: url('../fonts/nohemi/Nohemi-SemiBold.woff2') format('woff2');
+  src: url('/fonts/nohemi/Nohemi-SemiBold.woff2') format('woff2');
   font-weight: 600;
   font-style: normal;
   font-display: swap;
@@ -336,7 +336,7 @@ $font-ar: 'Readex Pro', $font-en;
 
 @font-face {
   font-family: 'Nohemi';
-  src: url('../fonts/nohemi/Nohemi-Bold.woff2') format('woff2');
+  src: url('/fonts/nohemi/Nohemi-Bold.woff2') format('woff2');
   font-weight: 700;
   font-style: normal;
   font-display: swap;
@@ -344,7 +344,7 @@ $font-ar: 'Readex Pro', $font-en;
 
 @font-face {
   font-family: 'Nohemi';
-  src: url('../fonts/nohemi/Nohemi-Bold.woff2') format('woff2');
+  src: url('/fonts/nohemi/Nohemi-Bold.woff2') format('woff2');
   font-weight: 800;
   font-style: normal;
   font-display: swap;
@@ -352,7 +352,7 @@ $font-ar: 'Readex Pro', $font-en;
 
 @font-face {
   font-family: 'Readex Pro';
-  src: url('../fonts/readex-pro/readex-pro-latin-400-normal.woff2') format('woff2');
+  src: url('/fonts/readex-pro/readex-pro-latin-400-normal.woff2') format('woff2');
   font-weight: 400;
   font-style: normal;
   font-display: swap;
@@ -361,7 +361,7 @@ $font-ar: 'Readex Pro', $font-en;
 
 @font-face {
   font-family: 'Readex Pro';
-  src: url('../fonts/readex-pro/readex-pro-arabic-400-normal.woff2') format('woff2');
+  src: url('/fonts/readex-pro/readex-pro-arabic-400-normal.woff2') format('woff2');
   font-weight: 400;
   font-style: normal;
   font-display: swap;
@@ -370,7 +370,7 @@ $font-ar: 'Readex Pro', $font-en;
 
 @font-face {
   font-family: 'Readex Pro';
-  src: url('../fonts/readex-pro/readex-pro-latin-600-normal.woff2') format('woff2');
+  src: url('/fonts/readex-pro/readex-pro-latin-600-normal.woff2') format('woff2');
   font-weight: 600;
   font-style: normal;
   font-display: swap;
@@ -379,7 +379,7 @@ $font-ar: 'Readex Pro', $font-en;
 
 @font-face {
   font-family: 'Readex Pro';
-  src: url('../fonts/readex-pro/readex-pro-arabic-600-normal.woff2') format('woff2');
+  src: url('/fonts/readex-pro/readex-pro-arabic-600-normal.woff2') format('woff2');
   font-weight: 600;
   font-style: normal;
   font-display: swap;
@@ -388,7 +388,7 @@ $font-ar: 'Readex Pro', $font-en;
 
 @font-face {
   font-family: 'Readex Pro';
-  src: url('../fonts/readex-pro/readex-pro-latin-700-normal.woff2') format('woff2');
+  src: url('/fonts/readex-pro/readex-pro-latin-700-normal.woff2') format('woff2');
   font-weight: 700;
   font-style: normal;
   font-display: swap;
@@ -397,7 +397,7 @@ $font-ar: 'Readex Pro', $font-en;
 
 @font-face {
   font-family: 'Readex Pro';
-  src: url('../fonts/readex-pro/readex-pro-arabic-700-normal.woff2') format('woff2');
+  src: url('/fonts/readex-pro/readex-pro-arabic-700-normal.woff2') format('woff2');
   font-weight: 700;
   font-style: normal;
   font-display: swap;
@@ -832,7 +832,7 @@ $section-whitespace: 120px;
 
 /* PAGE HEADER */
 .page-header{
-	--elm-header-abstract: url("../images/hero-abstract-elm.webp");
+	--elm-header-abstract: url("/images/hero-abstract-elm.webp");
 	--elm-header-abstract-pos: center 40%;
 	width: 100%;
 	min-height: clamp(480px, 68vh, 620px);
@@ -918,7 +918,7 @@ $section-whitespace: 120px;
 [data-page="our-story"],
 [data-page="uae-compliance"] {
 	.page-header {
-		--elm-header-abstract: url("../images/hero-abstract-elm.webp");
+		--elm-header-abstract: url("/images/hero-abstract-elm.webp");
 		--elm-header-abstract-pos: center 38%;
 	}
 }
@@ -928,7 +928,7 @@ $section-whitespace: 120px;
 [data-page="technology-polymer-lfam"],
 [data-page="technology-architectural-manufacturing"] {
 	.page-header {
-		--elm-header-abstract: url("../images/bg-gradient-05.webp");
+		--elm-header-abstract: url("/images/bg-gradient-05.webp");
 		--elm-header-abstract-pos: center 45%;
 	}
 }
@@ -940,14 +940,14 @@ $section-whitespace: 120px;
 [data-page="solution-industrial-mobility"],
 [data-page="solution-ooh-the-loop"] {
 	.page-header {
-		--elm-header-abstract: url("../images/bg-gradient-03.webp");
+		--elm-header-abstract: url("/images/bg-gradient-03.webp");
 		--elm-header-abstract-pos: center 42%;
 	}
 }
 
 [data-page="projects"] {
 	.page-header {
-		--elm-header-abstract: url("../images/bg-gradient-01.webp");
+		--elm-header-abstract: url("/images/bg-gradient-01.webp");
 		--elm-header-abstract-pos: center 35%;
 	}
 }
@@ -956,7 +956,7 @@ $section-whitespace: 120px;
 [data-page="privacy"],
 [data-page="offices"] {
 	.page-header {
-		--elm-header-abstract: url("../images/bg-gradient-06.webp");
+		--elm-header-abstract: url("/images/bg-gradient-06.webp");
 		--elm-header-abstract-pos: center 40%;
 	}
 }
@@ -1186,24 +1186,24 @@ $section-whitespace: 120px;
 	-webkit-mask: var(--elm-icon) center / contain no-repeat;
 	mask: var(--elm-icon) center / contain no-repeat;
 }
-.elm-icon--facebook{--elm-icon: url("../ico/SVG/facebook.svg");}
-.elm-icon--instagram{--elm-icon: url("../ico/SVG/instagram.svg");}
-.elm-icon--youtube{--elm-icon: url("../ico/SVG/youtube.svg");}
-.elm-icon--linkedin{--elm-icon: url("../ico/SVG/linkedin.svg");}
-.elm-icon--mobile{--elm-icon: url("../ico/SVG/mobile.svg");}
-.elm-icon--phone{--elm-icon: url("../ico/SVG/phone.svg");}
-.elm-icon--email{--elm-icon: url("../ico/SVG/email.svg");}
-.elm-icon--location{--elm-icon: url("../ico/SVG/location.svg");}
-.elm-icon--apartment{--elm-icon: url("../ico/SVG/apartment.svg");}
-.elm-icon--diamond{--elm-icon: url("../ico/SVG/diamond.svg");}
-.elm-icon--bridge{--elm-icon: url("../ico/SVG/bridge.svg");}
-.elm-icon--layers{--elm-icon: url("../ico/SVG/layers.svg");}
-.elm-icon--brush{--elm-icon: url("../ico/SVG/brush.svg");}
-.elm-icon--construction{--elm-icon: url("../ico/SVG/construction.svg");}
-.elm-icon--world{--elm-icon: url("../ico/SVG/world.svg");}
-.elm-icon--design{--elm-icon: url("../ico/SVG/design.svg");}
-.elm-icon--cog{--elm-icon: url("../ico/SVG/cog.svg");}
-.elm-icon--delivery{--elm-icon: url("../ico/SVG/delivery.svg");}
+.elm-icon--facebook{--elm-icon: url("/ico/SVG/facebook.svg");}
+.elm-icon--instagram{--elm-icon: url("/ico/SVG/instagram.svg");}
+.elm-icon--youtube{--elm-icon: url("/ico/SVG/youtube.svg");}
+.elm-icon--linkedin{--elm-icon: url("/ico/SVG/linkedin.svg");}
+.elm-icon--mobile{--elm-icon: url("/ico/SVG/mobile.svg");}
+.elm-icon--phone{--elm-icon: url("/ico/SVG/phone.svg");}
+.elm-icon--email{--elm-icon: url("/ico/SVG/email.svg");}
+.elm-icon--location{--elm-icon: url("/ico/SVG/location.svg");}
+.elm-icon--apartment{--elm-icon: url("/ico/SVG/apartment.svg");}
+.elm-icon--diamond{--elm-icon: url("/ico/SVG/diamond.svg");}
+.elm-icon--bridge{--elm-icon: url("/ico/SVG/bridge.svg");}
+.elm-icon--layers{--elm-icon: url("/ico/SVG/layers.svg");}
+.elm-icon--brush{--elm-icon: url("/ico/SVG/brush.svg");}
+.elm-icon--construction{--elm-icon: url("/ico/SVG/construction.svg");}
+.elm-icon--world{--elm-icon: url("/ico/SVG/world.svg");}
+.elm-icon--design{--elm-icon: url("/ico/SVG/design.svg");}
+.elm-icon--cog{--elm-icon: url("/ico/SVG/cog.svg");}
+.elm-icon--delivery{--elm-icon: url("/ico/SVG/delivery.svg");}
 
 /* Brand go-chip - replaces LineIcons arrows */
 .elm-go{
@@ -1668,7 +1668,7 @@ button:hover > .elm-go{
 .sales-team{width: 100%; display: block; @include transition; position: relative; background: var(--elm-bg-surface);
 	&:hover {background: $gradient-brand; color: var(--elm-on-accent); transform: translateY(-8px); box-shadow: 0 24px 40px var(--elm-shadow); z-index: 1;
 		ul li a{color: var(--elm-on-accent);}}
-	&:hover:after{content: ""; width: 80px; height: 70px; background: url("../images/pattern-dot.png"); background-size: 12px 12px;  position: absolute; left: -30px; top: 30px; opacity: 0.15;}
+	&:hover:after{content: ""; width: 80px; height: 70px; background: url("/images/pattern-dot.png"); background-size: 12px 12px;  position: absolute; left: -30px; top: 30px; opacity: 0.15;}
 	&:hover .infos:after{content: ""; width: 0; height: 0; border-style: solid; border-width: 0 0 14px 14px; border-color: transparent transparent $color-dark transparent; position: absolute; right: 4px; bottom: 4px;}
 	&:hover figure img{mix-blend-mode: normal; filter: grayscale(1);}
 	figure{width: 100%; display: block; margin: 0;
@@ -1699,7 +1699,7 @@ button:hover > .elm-go{
 /* NEWS BOX */
 .news-box{width: 100%; display: block; position: relative; @include transition; margin-bottom: 48px;
 	&:last-child{margin-bottom: 0;}
-	&:after{content: ""; width: 70%; height: 70px; background: url("../images/pattern-dot.png"); background-size: 12px 12px;  position: absolute; right: -25px; bottom: -25px; z-index: -1; opacity: 0.2;}
+	&:after{content: ""; width: 70%; height: 70px; background: url("/images/pattern-dot.png"); background-size: 12px 12px;  position: absolute; right: -25px; bottom: -25px; z-index: -1; opacity: 0.2;}
 	figure{width: 100%; display: block; margin: 0; position: relative; overflow: hidden; background: $gradient-brand;
 		img{ width: 100%; max-width: inherit;  }}
 	.content{ width: 100%; height: 100%; display: block; padding: 18px 20px; background: var(--elm-bg-surface); border: 1px solid var(--elm-border); border-top: none;

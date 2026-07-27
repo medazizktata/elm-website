@@ -7,10 +7,10 @@ const root = resolve(".");
 const cssPath = resolve(root, "css/style.css");
 
 const content = [
-  ...sync("*.html", { cwd: root, ignore: ["**/dist/**", "**/*.report.html"] }),
+  ...sync("pages/**/*.html", { cwd: root }),
   ...sync("partials/**/*.html", { cwd: root }),
-  ...sync("js/**/*.js", { cwd: root, ignore: ["**/*.min.js"] }),
-  ...sync("src/**/*.js", { cwd: root }),
+  ...sync("src/js/**/*.js", { cwd: root }),
+  ...sync("src/hero-3d/**/*.js", { cwd: root }),
 ].map((f) => resolve(root, f));
 
 const result = await new PurgeCSS().purge({

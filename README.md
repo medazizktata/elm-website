@@ -34,7 +34,7 @@ Content and IA are defined in the project `Docs/website_proposal.pdf`.
 - Static HTML, CSS, JavaScript
 - Bootstrap 4
 - Swiper, Isotope, Fancybox, Odometer
-- SCSS (`scss/style.scss` → `css/style.css`)
+- SCSS (`src/scss/style.scss` → `css/style.css`)
 
 ---
 
@@ -53,7 +53,7 @@ From `Docs/branding elm.pdf`:
 
 **Typography:** Nohemi Bold / SemiBold (EN) · Readex Pro Bold / SemiBold / Regular (AR), `pnpm run fonts:setup` after install.
 
-Edit brand tokens in `scss/style.scss` (`$color-dark`, `$color-main`, etc.), then recompile.
+Edit brand tokens in `src/scss/style.scss` (`$color-dark`, `$color-main`, etc.), then recompile.
 
 ---
 
@@ -98,22 +98,19 @@ pnpm exec wrangler deploy   # deploy dist/ only
 ## Project layout
 
 ```
-├── index.html              # Home
-├── who-we-are.html      # About
-├── technologies.html           # Technologies overview
-├── projects.html           # Portfolio grid
-├── project-recarlo-milan.html
-├── project-bergamo-airport.html
-├── project-single.html     # Redirect → projects (noindex)
-├── contact.html
-├── robots.txt              # Crawl rules (copied to dist/)
-├── sitemap.xml             # Generated on build (19 indexable URLs)
-├── css/                    # Compiled styles
-├── scss/                   # Source styles (edit here)
-├── js/                     # Scripts
-├── images/                 # Site images (replace with ELM assets)
-├── fonts/
-└── videos/
+├── pages/                  # HTML pages (flat URLs in dist/)
+├── partials/               # Handlebars partials
+├── src/
+│   ├── scss/               # Source styles → css/style.css
+│   ├── js/                 # App scripts (synced to public/js)
+│   └── hero-3d/            # Three.js hero (Vite module)
+├── vendor/js/              # Third-party JS (synced to public/js)
+├── css/                    # Compiled + vendor CSS
+├── images/ fonts/ videos/ ico/ locales/
+├── scripts/                # Build tooling
+├── worker/                 # Cloudflare Worker
+├── robots.txt sitemap.xml  # Generated / static SEO
+└── wrangler.toml
 ```
 
 ---

@@ -22,7 +22,7 @@ function isNoindex(content) {
 
 const urls = [];
 
-for (const filePath of globSync("*.html", { cwd: root })) {
+for (const filePath of globSync("pages/*.html", { cwd: root })) {
   const file = basename(filePath);
   const content = readFileSync(resolve(root, filePath), "utf8");
   if (!/\{\{>\s*meta/.test(content) || isNoindex(content)) continue;
