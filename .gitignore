@@ -10,6 +10,7 @@ public/
 .sass-cache/
 *.css.map
 *.report.html
+reports/
 
 # --- Secrets ---
 .env
@@ -32,11 +33,14 @@ ehthumbs.db
 *.log
 tmp/
 temp/
+.tmp/
 *.tmp
 *.bak
 
 # --- Local tooling ---
 .cursor/
+.agent-browser/
+.agent-browser-home/
 
 # --- Raw media extract (curated copies live in images/projects/) ---
 images/elm-source/
