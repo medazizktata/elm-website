@@ -152,6 +152,8 @@
  var link = document.createElement('link');
  link.rel = 'stylesheet';
  link.href = href;
+ link.media = 'print';
+ link.onload = function () { this.media = 'all'; };
  document.head.appendChild(link);
  }
 
@@ -743,12 +745,20 @@
    cb();
   });
  }
- whenNear(document.querySelector('.odometer'), function () {
-  ensureOdometerThen(function () {
-   runCounters();
-   $(window).on('scroll resize', runCounters);
-  });
- });
+ // After load + actually in view — keep odometer off the LCP critical chain
+ function armOdometer() {
+  whenNear(document.querySelector('.odometer'), function () {
+   ensureOdometerThen(function () {
+    runCounters();
+    $(window).on('scroll resize', runCounters);
+   });
+  }, '0px');
+ }
+ if (document.readyState === 'complete') {
+  armOdometer();
+ } else {
+  window.addEventListener('load', armOdometer);
+ }
 
 
  // STICKY NAVBAR transparent at top, solid bg on scroll

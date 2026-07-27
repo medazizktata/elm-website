@@ -219,12 +219,7 @@
 
     targets.forEach(function (t) {
       if (t.el.closest(".hero") || t.el.closest(".page-header")) return;
-      // Already in view on load - reveal immediately so first fold isn't blank
-      var rect = t.el.getBoundingClientRect();
-      if (rect.top < window.innerHeight * 0.92 && rect.bottom > 0) {
-        revealNow(t.el);
-        return;
-      }
+      // IO fires sync for already-visible targets — no getBoundingClientRect (avoids reflow)
       observer.observe(t.el);
     });
   }
