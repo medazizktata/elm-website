@@ -95,6 +95,18 @@ const jobs = [
       { file: "background/branding-elm-18-1200.webp", width: 1200, format: "webp", quality: 82 },
     ],
   },
+  {
+    input: "section-bg02.jpg",
+    outputs: [{ file: "section-bg02.webp", width: 1920, format: "webp", quality: 82 }],
+  },
+  {
+    input: "section-bg-industrial.jpg",
+    outputs: [{ file: "section-bg-industrial.webp", width: 1920, format: "webp", quality: 82 }],
+  },
+  {
+    input: "bg-partners-gradient.jpg",
+    outputs: [{ file: "bg-partners-gradient.webp", width: 1920, format: "webp", quality: 82 }],
+  },
 ];
 
 async function encode(inputPath, outPath, { width, format, quality }) {
