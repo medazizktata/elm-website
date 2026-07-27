@@ -84,7 +84,9 @@ Production runs on **Cloudflare Workers** (`elm-website`), not GitHub Pages.
 | Deploy command | `pnpm run deploy:ci` |
 | Node | 22 |
 
-Apex → www redirect is handled in `worker/index.js` (301 to `www.theelmdesign.com`).
+Apex → www redirect is handled in `worker/index.js` (301 to `www.theelmdesign.com`). Requires `run_worker_first = true` in `wrangler.toml` so the worker runs before static assets.
+
+**Fallback (dashboard only if worker redirect fails):** Rules → Redirect Rules → When `(http.host eq "theelmdesign.com")` → 301 to `concat("https://www.theelmdesign.com", http.request.uri.path)`.
 
 ```bash
 pnpm run deploy        # local: build + deploy
