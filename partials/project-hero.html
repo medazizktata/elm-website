@@ -3,13 +3,28 @@
     <div class="swiper-container project-slider project-slider--hero">
       <div class="swiper-wrapper">
         <div class="swiper-slide">
-          <figure class="project-box"><img src="{{slide1}}" alt="{{slide1Alt}}"></figure>
+          <figure class="project-box">
+            <picture>
+              <source type="image/webp" srcset="{{webpSrc slide1 1200}}">
+              <img src="{{webpSrc slide1 800}}" alt="{{slide1Alt}}" width="1920" height="1080" decoding="async">
+            </picture>
+          </figure>
         </div>
         <div class="swiper-slide">
-          <figure class="project-box"><img src="{{slide2}}" alt="{{slide2Alt}}"></figure>
+          <figure class="project-box">
+            <picture>
+              <source type="image/webp" srcset="{{webpSrc slide2 1200}}">
+              <img src="{{webpSrc slide2 800}}" alt="{{slide2Alt}}" width="1920" height="1080" decoding="async">
+            </picture>
+          </figure>
         </div>
         <div class="swiper-slide">
-          <figure class="project-box"><img src="{{slide3}}" alt="{{slide3Alt}}"></figure>
+          <figure class="project-box">
+            <picture>
+              <source type="image/webp" srcset="{{webpSrc slide3 1200}}">
+              <img src="{{webpSrc slide3 800}}" alt="{{slide3Alt}}" width="1920" height="1080" decoding="async">
+            </picture>
+          </figure>
         </div>
       </div>
     </div>

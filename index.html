@@ -5,7 +5,7 @@
 {{> json-ld-home}}
 {{> json-ld-faq}}
 <link rel="preload" as="image" href="images/hero-abstract-elm.webp" type="image/webp" fetchpriority="high">
-{{> head-css}}
+{{> head-css swiper=true fancybox=true odometer=true}}
 </head>
 <body>
 {{> chrome year="2026"}}
@@ -15,7 +15,7 @@
   <picture>
    <source type="image/avif" srcset="images/hero-abstract-elm.avif">
    <source type="image/webp" srcset="images/hero-abstract-elm.webp">
-   <img src="images/hero-abstract-elm.png" alt="" width="1920" height="1080" fetchpriority="high" decoding="async" class="hero__media-img">
+   <img src="images/hero-abstract-elm.webp" alt="" width="1920" height="1080" fetchpriority="high" decoding="async" class="hero__media-img">
   </picture>
  </div>
  <div class="hero__shade" aria-hidden="true"></div>
@@ -49,7 +49,7 @@
 {{> presentation-verticals}}
 {{> home-why-hub}}
 {{> home-metric-projects}}
-{{> sectors-grid label="Solutions" title="Industry verticals" subtitle="Tailored LFAM programmes across the UAE built environment." mediaSrc="images/tab01-gradient.jpg" mediaAlt="Robotic concrete LFAM production across UAE industry sectors" i18nLabel="pages.index.sectors.label" i18nTitle="pages.index.sectors.title" i18nSubtitle="pages.index.sectors.subtitle" compact=true}}
+{{> sectors-grid label="Solutions" title="Industry verticals" subtitle="Tailored LFAM programmes across the UAE built environment." mediaSrc="images/tab01-gradient-800.webp" mediaAlt="Robotic concrete LFAM production across UAE industry sectors" i18nLabel="pages.index.sectors.label" i18nTitle="pages.index.sectors.title" i18nSubtitle="pages.index.sectors.subtitle" compact=true}}
 {{> sustainability-commitment compact=true}}
 {{> client-engagement-process compact=true}}
 <section class="content-section section-compact engagement-section">
@@ -118,7 +118,7 @@
 </main>
 
 {{> footer year="2026"}}
-{{> scripts}}
+{{> scripts swiper=true fancybox=true odometer=true}}
 <script type="module" src="/src/hero-3d-loader.js"></script>
 </body>
 </html>

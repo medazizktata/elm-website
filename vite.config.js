@@ -28,6 +28,13 @@ export default defineConfig({
           if (!pageTitle) return SITE_NAME;
           return `${pageTitle} | ${SITE_NAME}`;
         },
+        webpSrc(path, width = 800) {
+          if (!path) return "";
+          const base = String(path)
+            .replace(/^images\//, "")
+            .replace(/\.(jpe?g|png|webp|avif)$/i, "");
+          return `images/${base}-${width}.webp`;
+        },
       },
     }),
   ],

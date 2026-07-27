@@ -326,14 +326,12 @@
  var $container = $('.projects');
 
  $(window).on('load', function () {
- if ($container.length) {
+ if (!$container.length || typeof $.fn.isotope !== 'function') return;
  $container.isotope(elmIsotopeOpts());
- }
  });
 
- if ($container.length) {
+ if ($container.length && typeof $.fn.isotope === 'function') {
  $container.isotope(elmIsotopeOpts({ filter: '*' }));
- }
 
  $('.isotope-filter li').on('click', function () {
  $('.isotope-filter li.current').removeClass('current');
@@ -347,6 +345,7 @@
  $container.isotope('option', { originLeft: !elmIsRtl() });
  $container.isotope('layout');
  });
+ }
 
 
  var SWIPER_SPEED = 220;
@@ -445,7 +444,7 @@
  // TESTIMONIALS SLIDER
  var $engagement = $(".engagement-section");
  var $testimonials = $engagement.find(".testimonials-slider");
- if ($testimonials.length) {
+ if ($testimonials.length && typeof Swiper !== 'undefined') {
  new Swiper($testimonials[0], {
  speed: SWIPER_SPEED,
  slidesPerView: 1,
@@ -501,6 +500,7 @@
  });
 
  // PROJECT SLIDER
+ if (typeof Swiper !== 'undefined') {
  $(".project-slider").each(function () {
  var $slider = $(this);
  var isHero = $slider.hasClass("project-slider--hero");
@@ -543,6 +543,7 @@
  },
  });
  });
+ }
 
 
  // DATA BACKGROUND (color or photo + brand gradient overlay - text sits on photo)
@@ -571,6 +572,7 @@
 
  // COUNTER, animate when stats enter viewport
  function runCounters() {
+  if (!$('.odometer').length) return;
   var scrollY = $(window).scrollTop();
   var triggerAt = scrollY + $(window).height() * 0.85;
   $('.odometer').each(function () {

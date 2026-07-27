@@ -832,7 +832,7 @@ $section-whitespace: 120px;
 
 /* PAGE HEADER */
 .page-header{
-	--elm-header-abstract: url("../images/hero-abstract-elm.png");
+	--elm-header-abstract: url("../images/hero-abstract-elm.webp");
 	--elm-header-abstract-pos: center 40%;
 	width: 100%;
 	min-height: clamp(480px, 68vh, 620px);
@@ -918,7 +918,7 @@ $section-whitespace: 120px;
 [data-page="our-story"],
 [data-page="uae-compliance"] {
 	.page-header {
-		--elm-header-abstract: url("../images/hero-abstract-elm.png");
+		--elm-header-abstract: url("../images/hero-abstract-elm.webp");
 		--elm-header-abstract-pos: center 38%;
 	}
 }
@@ -928,7 +928,7 @@ $section-whitespace: 120px;
 [data-page="technology-polymer-lfam"],
 [data-page="technology-architectural-manufacturing"] {
 	.page-header {
-		--elm-header-abstract: url("../images/bg-gradient-05.jpg");
+		--elm-header-abstract: url("../images/bg-gradient-05.webp");
 		--elm-header-abstract-pos: center 45%;
 	}
 }
@@ -940,14 +940,14 @@ $section-whitespace: 120px;
 [data-page="solution-industrial-mobility"],
 [data-page="solution-ooh-the-loop"] {
 	.page-header {
-		--elm-header-abstract: url("../images/bg-gradient-03.jpg");
+		--elm-header-abstract: url("../images/bg-gradient-03.webp");
 		--elm-header-abstract-pos: center 42%;
 	}
 }
 
 [data-page="projects"] {
 	.page-header {
-		--elm-header-abstract: url("../images/bg-gradient-01.jpg");
+		--elm-header-abstract: url("../images/bg-gradient-01.webp");
 		--elm-header-abstract-pos: center 35%;
 	}
 }
@@ -956,7 +956,7 @@ $section-whitespace: 120px;
 [data-page="privacy"],
 [data-page="offices"] {
 	.page-header {
-		--elm-header-abstract: url("../images/bg-gradient-06.jpg");
+		--elm-header-abstract: url("../images/bg-gradient-06.webp");
 		--elm-header-abstract-pos: center 40%;
 	}
 }
