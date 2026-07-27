@@ -11,13 +11,8 @@
   var meta = document.querySelector('meta[name="theme-color"]');
   if (meta) meta.setAttribute("content", theme === "dark" ? "#121212" : "#BD1F71");
 
-  // Always cover first paint (hard refresh + cold load). Nav transitions keep this via sessionStorage.
+  // Always cover first paint (hard refresh + cold load).
   root.classList.add("is-page-loading");
-  try {
-    if (sessionStorage.getItem("elm-page-transition") === "1") {
-      // already covered; flag consumed when scripts hide the loader
-    }
-  } catch (e) {}
 })();
 </script>
 <style>
@@ -52,22 +47,14 @@
     transition: none;
   }
   .page-loader__brand {
-    width: clamp(160px, 28vw, 280px);
+    width: clamp(72px, 18vw, 120px);
     animation: elm-loader-logo 2s cubic-bezier(0.4, 0, 0.2, 1) infinite;
   }
   .page-loader__logo {
     width: 100%;
     height: auto;
     display: block;
-  }
-  .page-loader__logo--dark {
-    display: none;
-  }
-  [data-theme="dark"] .page-loader__logo--light {
-    display: none;
-  }
-  [data-theme="dark"] .page-loader__logo--dark {
-    display: block;
+    filter: drop-shadow(0 0 28px rgba(189, 31, 113, 0.35));
   }
   @keyframes elm-loader-logo {
     0% {

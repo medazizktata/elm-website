@@ -70,12 +70,19 @@ const deferOptionalCss = {
         .replaceAll('src="../assets/', 'src="/assets/');
 
       out = out.replace(
-        /<link rel="stylesheet" crossorigin href="(\/assets\/(?:odometer|fancybox|swiper)[^"]+\.css)">/g,
+        /<link rel="stylesheet" crossorigin href="(\/(?:assets\/)?(?:odometer|fancybox|swiper)[^"]+\.css)">/g,
         '<link rel="stylesheet" crossorigin href="$1" media="print" onload="this.media=\'all\'">'
       );
       if (out.includes("data-elm-main-css") || out.includes("head-critical") || out.includes(".hero__media-img")) {
         out = out.replace(
-          /<link([^>]*href="\/assets\/(?:style|bootstrap)[^"]+\.css"[^>]*)>/g,
+          /<link([^>]*href="\/(?:assets\/)?(?:style|bootstrap)[^"]+\.css"[^>]*)>/g,
+          (full, attrs) => {
+            if (/media=/.test(attrs)) return full;
+            return `<link${attrs} media="print" onload="this.media='all'">`;
+          }
+        );
+        out = out.replace(
+          /<link([^>]*href="css\/(?:style|bootstrap)[^"]+\.css"[^>]*)>/g,
           (full, attrs) => {
             if (/media=/.test(attrs)) return full;
             return `<link${attrs} media="print" onload="this.media='all'">`;
@@ -83,7 +90,7 @@ const deferOptionalCss = {
         );
         let keptStyle = false;
         out = out.replace(
-          /<link[^>]*href="\/assets\/style-[^"]+\.css"[^>]*>/g,
+          /<link[^>]*href="(?:\/(?:assets\/)?|css\/)style[^"]*\.css"[^>]*>/g,
           (tag) => {
             if (keptStyle) return "";
             keptStyle = true;

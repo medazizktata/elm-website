@@ -32,9 +32,9 @@
 
  var pageLoaderShownAt = Date.now();
  var PAGE_LOADER_NAV_DELAY_MS = 520;
- var PAGE_LOADER_MIN_VISIBLE_MS = 450;
- var PAGE_LOADER_HOME_MIN_MS = 900;
- var PAGE_LOADER_HOME_TIMEOUT_MS = 4500;
+ var PAGE_LOADER_MIN_VISIBLE_MS = 280;
+ var PAGE_LOADER_HOME_MIN_MS = 280;
+ var PAGE_LOADER_HOME_TIMEOUT_MS = 3500;
  var pageLoaderHidden = false;
  var PAGE_TRANSITION_KEY = 'elm-page-transition';
 
@@ -111,6 +111,10 @@
  }
  heroImg.addEventListener('load', done, { once: true });
  heroImg.addEventListener('error', done, { once: true });
+ // Decode path: image may be complete from cache before listeners attach
+ if (heroImg.decode) {
+ heroImg.decode().then(done).catch(function () {});
+ }
  }
 
  function revealPageWhenReady() {
@@ -133,12 +137,13 @@
  setTimeout(scrollToHash, 350);
  }
  }
- // Homepage deferCore can bind after window.load already fired
- if (document.readyState === 'complete') {
+ // Don't wait for full window.load — hero is ready much earlier
  go();
- return;
+ if (document.readyState !== 'complete') {
+ $(window).one('load', function () {
+ if (!pageLoaderHidden) go();
+ });
  }
- $(window).one('load', go);
  }
 
  function deferVideoPosters() {

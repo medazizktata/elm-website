@@ -204,7 +204,7 @@ html.is-page-loading .page-loader {
 }
 
 .page-loader__brand {
-  width: clamp(160px, 28vw, 280px);
+  width: clamp(72px, 18vw, 120px);
   animation: elm-loader-logo 2s cubic-bezier(0.4, 0, 0.2, 1) infinite;
 }
 
@@ -213,20 +213,6 @@ html.is-page-loading .page-loader {
   height: auto;
   display: block;
   filter: drop-shadow(0 0 28px rgba($color-main, 0.35));
-}
-
-.page-loader__logo--dark {
-  display: none;
-}
-
-[data-theme="dark"] {
-  .page-loader__logo--light {
-    display: none;
-  }
-
-  .page-loader__logo--dark {
-    display: block;
-  }
 }
 
 @keyframes elm-loader-logo {
