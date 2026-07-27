@@ -3,11 +3,12 @@
 </div>
 <script>
 (function () {
-  // Reveal as soon as hero is ready — do not wait for deferred jquery/scripts.js
+  // Reveal when hero + fonts are ready — avoid CLS from late CSS/font swap
   if (window.__elmPageLoaderHidden) return;
   var shownAt = Date.now();
   var MIN_MS = 100;
   var MAX_MS = 3500;
+  var FONT_WAIT_MS = 1200;
   var done = false;
 
   function hide() {
@@ -24,9 +25,23 @@
     }, wait);
   }
 
+  function fontsReady() {
+    if (!document.fonts || !document.fonts.ready) return Promise.resolve();
+    return Promise.race([
+      document.fonts.ready,
+      new Promise(function (resolve) {
+        setTimeout(resolve, FONT_WAIT_MS);
+      }),
+    ]);
+  }
+
+  function afterReady() {
+    fontsReady().then(hide);
+  }
+
   function armHero(img) {
     function go() {
-      hide();
+      afterReady();
     }
     if (img.complete && img.naturalWidth) {
       go();
@@ -40,8 +55,8 @@
   function start() {
     var img = document.querySelector(".hero__media-img");
     if (img) armHero(img);
-    else if (document.readyState === "complete") hide();
-    else window.addEventListener("load", hide, { once: true });
+    else if (document.readyState === "complete") afterReady();
+    else window.addEventListener("load", afterReady, { once: true });
     setTimeout(hide, MAX_MS);
   }
 

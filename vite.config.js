@@ -74,15 +74,16 @@ const deferOptionalCss = {
         '<link rel="stylesheet" crossorigin href="$1" media="print" onload="this.media=\'all\'">'
       );
       if (out.includes("data-elm-main-css") || out.includes("head-critical") || out.includes(".hero__media-img")) {
+        // Only defer main style.css — keep bootstrap-grid blocking to avoid hero CLS
         out = out.replace(
-          /<link([^>]*href="\/(?:assets\/)?(?:style|bootstrap)[^"]+\.css"[^>]*)>/g,
+          /<link([^>]*href="\/(?:assets\/)?style[^"]+\.css"[^>]*)>/g,
           (full, attrs) => {
             if (/media=/.test(attrs)) return full;
             return `<link${attrs} media="print" onload="this.media='all'">`;
           }
         );
         out = out.replace(
-          /<link([^>]*href="css\/(?:style|bootstrap)[^"]+\.css"[^>]*)>/g,
+          /<link([^>]*href="css\/style[^"]+\.css"[^>]*)>/g,
           (full, attrs) => {
             if (/media=/.test(attrs)) return full;
             return `<link${attrs} media="print" onload="this.media='all'">`;
