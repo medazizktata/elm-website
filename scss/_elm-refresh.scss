@@ -187,6 +187,17 @@
   visibility: visible;
 }
 
+@media (max-width: 1023px) {
+  .page-loader {
+    background: transparent;
+    pointer-events: none;
+  }
+
+  .page-loader.is-active {
+    pointer-events: none;
+  }
+}
+
 // Arriving mid-transition: stay covered, no second fade-in
 html.is-page-loading .page-loader {
   opacity: 1;
@@ -769,9 +780,16 @@ p, li, td, th, label, input, textarea, select, button, blockquote, figcaption {
       transform: none;
       width: min(280px, 62vw);
       height: min(280px, 62vw);
-      margin: 0 auto 4px;
+      margin: clamp(24px, 8vh, 56px) auto clamp(10px, 2.5vh, 18px);
       z-index: 2;
       flex-shrink: 0;
+
+      &--static {
+        display: flex;
+        align-items: flex-end;
+        justify-content: center;
+        padding-bottom: 8px;
+      }
     }
 
     &__copy-desk {

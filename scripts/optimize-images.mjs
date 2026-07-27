@@ -16,8 +16,9 @@ const jobs = [
   {
     input: "video-poster01.jpg",
     outputs: [
-      { file: "video-poster01.webp", width: 800, format: "webp", quality: 80 },
-      { file: "video-poster01.avif", width: 800, format: "avif", quality: 50 },
+      { file: "video-poster01-400.webp", width: 640, format: "webp", quality: 68 },
+      { file: "video-poster01.webp", width: 800, format: "webp", quality: 72 },
+      { file: "video-poster01.avif", width: 800, format: "avif", quality: 48 },
     ],
   },
   {

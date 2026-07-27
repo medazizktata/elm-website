@@ -30,6 +30,7 @@
  var PAGE_LOADER_MIN_VISIBLE_MS = 450;
  var PAGE_LOADER_HOME_MIN_MS = 1200;
  var PAGE_LOADER_HOME_TIMEOUT_MS = 4500;
+ var PAGE_LOADER_MOBILE_MIN_MS = 0;
  var pageLoaderHidden = false;
  var PAGE_TRANSITION_KEY = 'elm-page-transition';
 
@@ -50,11 +51,26 @@
  return document.documentElement.classList.contains('is-page-loading');
  }
 
+ function isMobileViewport() {
+ return window.matchMedia('(max-width: 1023px)').matches;
+ }
+
+ function homeLoaderMinMs() {
+ if (isMobileViewport()) return PAGE_LOADER_MOBILE_MIN_MS;
+ return PAGE_LOADER_HOME_MIN_MS;
+ }
+
+ function pageLoaderMinMs() {
+ if (isMobileViewport()) return PAGE_LOADER_MOBILE_MIN_MS;
+ return PAGE_LOADER_MIN_VISIBLE_MS;
+ }
+
  function hidePageLoader(minMs) {
  if (pageLoaderHidden) return;
  pageLoaderHidden = true;
  var elapsed = Date.now() - pageLoaderShownAt;
- var hideDelay = Math.max(0, (minMs || PAGE_LOADER_MIN_VISIBLE_MS) - elapsed);
+ var resolvedMin = minMs == null ? pageLoaderMinMs() : minMs;
+ var hideDelay = Math.max(0, resolvedMin - elapsed);
  setTimeout(function () {
  clearPageTransition();
  setPageLoader(false);
@@ -63,7 +79,7 @@
 
  function waitForHomeHero3dThenHide() {
  if (window.__elmHero3dReady) {
- hidePageLoader(PAGE_LOADER_HOME_MIN_MS);
+ hidePageLoader(homeLoaderMinMs());
  return;
  }
  var settled = false;
@@ -71,7 +87,7 @@
  if (settled) return;
  settled = true;
  window.removeEventListener('elm:hero3dready', onReady);
- hidePageLoader(PAGE_LOADER_HOME_MIN_MS);
+ hidePageLoader(homeLoaderMinMs());
  }
  function onReady() {
  finish();
@@ -84,6 +100,40 @@
  if (!window.matchMedia('(min-width: 1024px)').matches) return false;
  var mount = document.querySelector('.hero__logo3d');
  return !!(mount && mount.clientWidth && mount.clientHeight);
+ }
+
+ function hideLoaderWhenHeroReady() {
+ var heroImg = document.querySelector('.hero__media-img');
+ if (!heroImg) {
+ hidePageLoader(homeLoaderMinMs());
+ return;
+ }
+ function done() {
+ hidePageLoader(homeLoaderMinMs());
+ }
+ if (heroImg.complete && heroImg.naturalWidth) {
+ done();
+ return;
+ }
+ heroImg.addEventListener('load', done, { once: true });
+ heroImg.addEventListener('error', done, { once: true });
+ }
+
+ function deferVideoPosters() {
+ if (!('IntersectionObserver' in window)) return;
+ document.querySelectorAll('video[data-deferred-poster]').forEach(function (video) {
+ var narrow = window.matchMedia('(max-width: 767px)').matches;
+ var poster = narrow
+ ? video.getAttribute('data-deferred-poster')
+ : (video.getAttribute('data-deferred-poster-wide') || video.getAttribute('data-deferred-poster'));
+ if (!poster) return;
+ var io = new IntersectionObserver(function (entries) {
+ if (!entries[0].isIntersecting) return;
+ video.setAttribute('poster', poster);
+ io.disconnect();
+ }, { rootMargin: '240px' });
+ io.observe(video);
+ });
  }
 
  function resolveNavPage(current) {
@@ -150,6 +200,11 @@
  }
  pageLoaderShownAt = Date.now();
  setActiveNav();
+ deferVideoPosters();
+
+ if (document.querySelector('.hero__media-img') && !shouldWaitForHero3d()) {
+ hideLoaderWhenHeroReady();
+ }
 
 
  // BACK BUTTON RELOAD
@@ -281,10 +336,16 @@
  // END DOCUMENT READY
 
  $(window).on('load', function () {
+ if (pageLoaderHidden) {
+ if (window.location.hash) {
+ setTimeout(scrollToHash, 350);
+ }
+ return;
+ }
  if (shouldWaitForHero3d()) {
  waitForHomeHero3dThenHide();
  } else {
- hidePageLoader(PAGE_LOADER_MIN_VISIBLE_MS);
+ hidePageLoader(pageLoaderMinMs());
  }
  if (window.location.hash) {
  setTimeout(scrollToHash, 350);
@@ -299,7 +360,7 @@
  if (shouldWaitForHero3d()) {
  waitForHomeHero3dThenHide();
  } else {
- hidePageLoader(PAGE_LOADER_MIN_VISIBLE_MS);
+ hidePageLoader(pageLoaderMinMs());
  }
  }
  });
