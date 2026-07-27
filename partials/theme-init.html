@@ -1,19 +1,96 @@
 <script>
 (function () {
-  var key = 'elm-theme';
+  var key = "elm-theme";
   var root = document.documentElement;
   var stored = null;
-  try { stored = localStorage.getItem(key); } catch (e) {}
-  var theme = stored || 'dark';
-  root.setAttribute('data-theme', theme);
-  var meta = document.querySelector('meta[name="theme-color"]');
-  if (meta) meta.setAttribute('content', theme === 'dark' ? '#121212' : '#BD1F71');
-
-  // Continue page-transition loader across navigations (skip second fade-in)
   try {
-    if (sessionStorage.getItem('elm-page-transition') === '1') {
-      root.classList.add('is-page-loading');
+    stored = localStorage.getItem(key);
+  } catch (e) {}
+  var theme = stored || "dark";
+  root.setAttribute("data-theme", theme);
+  var meta = document.querySelector('meta[name="theme-color"]');
+  if (meta) meta.setAttribute("content", theme === "dark" ? "#121212" : "#BD1F71");
+
+  // Always cover first paint (hard refresh + cold load). Nav transitions keep this via sessionStorage.
+  root.classList.add("is-page-loading");
+  try {
+    if (sessionStorage.getItem("elm-page-transition") === "1") {
+      // already covered; flag consumed when scripts hide the loader
     }
   } catch (e) {}
 })();
 </script>
+<style>
+  html.is-page-loading body {
+    overflow: hidden;
+  }
+  .page-loader {
+    position: fixed;
+    inset: 0;
+    z-index: 99999;
+    display: grid;
+    place-items: center;
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    background:
+      radial-gradient(ellipse 70% 55% at 50% 42%, rgba(189, 31, 113, 0.16), transparent 62%),
+      #ebebe9;
+  }
+  [data-theme="dark"] .page-loader {
+    background:
+      radial-gradient(ellipse 70% 55% at 50% 42%, rgba(189, 31, 113, 0.16), transparent 62%),
+      #121212;
+  }
+  html.is-page-loading .page-loader,
+  .page-loader.is-active {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+  }
+  html.is-page-loading .page-loader {
+    transition: none;
+  }
+  .page-loader__brand {
+    width: clamp(160px, 28vw, 280px);
+    animation: elm-loader-logo 2s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+  }
+  .page-loader__logo {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+  .page-loader__logo--dark {
+    display: none;
+  }
+  [data-theme="dark"] .page-loader__logo--light {
+    display: none;
+  }
+  [data-theme="dark"] .page-loader__logo--dark {
+    display: block;
+  }
+  @keyframes elm-loader-logo {
+    0% {
+      transform: scale(0.92);
+      opacity: 0.65;
+    }
+    45% {
+      transform: scale(1.06);
+      opacity: 1;
+    }
+    100% {
+      transform: scale(0.92);
+      opacity: 0.65;
+    }
+  }
+</style>
+<noscript>
+  <style>
+    html.is-page-loading .page-loader {
+      display: none !important;
+    }
+    html.is-page-loading body {
+      overflow: auto;
+    }
+  </style>
+</noscript>

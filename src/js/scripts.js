@@ -22,22 +22,19 @@
  }
 
  function setPageLoader(active) {
- if (active) {
- document.querySelectorAll('img[data-loader-src]').forEach(function (img) {
- if (!img.getAttribute('src')) {
- img.setAttribute('src', img.getAttribute('data-loader-src'));
- }
- });
- }
  $('.page-loader').toggleClass('is-active', active);
+ if (active) {
+ document.body.style.overflow = 'hidden';
+ } else {
+ document.body.style.removeProperty('overflow');
+ }
  }
 
  var pageLoaderShownAt = Date.now();
  var PAGE_LOADER_NAV_DELAY_MS = 520;
  var PAGE_LOADER_MIN_VISIBLE_MS = 450;
- var PAGE_LOADER_HOME_MIN_MS = 1200;
+ var PAGE_LOADER_HOME_MIN_MS = 900;
  var PAGE_LOADER_HOME_TIMEOUT_MS = 4500;
- var PAGE_LOADER_MOBILE_MIN_MS = 0;
  var pageLoaderHidden = false;
  var PAGE_TRANSITION_KEY = 'elm-page-transition';
 
@@ -54,21 +51,11 @@
  document.documentElement.classList.remove('is-page-loading');
  }
 
- function isContinuingPageTransition() {
- return document.documentElement.classList.contains('is-page-loading');
- }
-
- function isMobileViewport() {
- return window.matchMedia('(max-width: 1023px)').matches;
- }
-
  function homeLoaderMinMs() {
- if (isMobileViewport()) return PAGE_LOADER_MOBILE_MIN_MS;
  return PAGE_LOADER_HOME_MIN_MS;
  }
 
  function pageLoaderMinMs() {
- if (isMobileViewport()) return PAGE_LOADER_MOBILE_MIN_MS;
  return PAGE_LOADER_MIN_VISIBLE_MS;
  }
 
@@ -110,10 +97,6 @@
  }
 
  function hideLoaderWhenHeroReady() {
- if (isMobileViewport()) {
- hidePageLoader(PAGE_LOADER_MOBILE_MIN_MS);
- return;
- }
  var heroImg = document.querySelector('.hero__media-img');
  if (!heroImg) {
  hidePageLoader(homeLoaderMinMs());
@@ -128,6 +111,34 @@
  }
  heroImg.addEventListener('load', done, { once: true });
  heroImg.addEventListener('error', done, { once: true });
+ }
+
+ function revealPageWhenReady() {
+ if (pageLoaderHidden) return;
+ if (shouldWaitForHero3d()) {
+ waitForHomeHero3dThenHide();
+ return;
+ }
+ if (document.querySelector('.hero__media-img')) {
+ hideLoaderWhenHeroReady();
+ return;
+ }
+ hidePageLoader(pageLoaderMinMs());
+ }
+
+ function armPageLoaderReveal() {
+ function go() {
+ revealPageWhenReady();
+ if (window.location.hash) {
+ setTimeout(scrollToHash, 350);
+ }
+ }
+ // Homepage deferCore can bind after window.load already fired
+ if (document.readyState === 'complete') {
+ go();
+ return;
+ }
+ $(window).one('load', go);
  }
 
  function deferVideoPosters() {
@@ -242,27 +253,20 @@
  $(document).ready(function () {
  "use strict";
 
- // Cold load: fade loader in. Mid-nav: already covered via html.is-page-loading
- if (isMobileViewport()) {
- // Mobile: never block LCP with the loader
- pageLoaderShownAt = Date.now();
- hidePageLoader(0);
- } else {
+ // Keep cover from first paint; hand off is-page-loading → is-active for fade-out later
  setPageLoader(true);
- if (isContinuingPageTransition()) {
- // Restore fade-out transition after first paint
- requestAnimationFrame(function () {
- requestAnimationFrame(clearPageTransition);
- });
- }
  pageLoaderShownAt = Date.now();
+ requestAnimationFrame(function () {
+ requestAnimationFrame(function () {
+ // Keep is-active; drop hard-cover class so hide can transition
+ if (document.querySelector('.page-loader.is-active')) {
+ document.documentElement.classList.remove('is-page-loading');
  }
+ });
+ });
+ armPageLoaderReveal();
  setActiveNav();
  deferVideoPosters();
-
- if (!isMobileViewport() && document.querySelector('.hero__media-img') && !shouldWaitForHero3d()) {
- hideLoaderWhenHeroReady();
- }
 
 
  // BACK BUTTON RELOAD
@@ -393,33 +397,13 @@
  });
  // END DOCUMENT READY
 
- $(window).on('load', function () {
- if (pageLoaderHidden) {
- if (window.location.hash) {
- setTimeout(scrollToHash, 350);
- }
- return;
- }
- if (shouldWaitForHero3d()) {
- waitForHomeHero3dThenHide();
- } else {
- hidePageLoader(pageLoaderMinMs());
- }
- if (window.location.hash) {
- setTimeout(scrollToHash, 350);
- }
- });
-
  $(window).on('pageshow', function (event) {
  if (event.originalEvent && event.originalEvent.persisted) {
  pageLoaderHidden = false;
+ document.documentElement.classList.add('is-page-loading');
  setPageLoader(true);
  pageLoaderShownAt = Date.now();
- if (shouldWaitForHero3d()) {
- waitForHomeHero3dThenHide();
- } else {
- hidePageLoader(pageLoaderMinMs());
- }
+ armPageLoaderReveal();
  }
  });
 

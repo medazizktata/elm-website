@@ -195,18 +195,7 @@
   contain-intrinsic-size: 1px 720px;
 }
 
-@media (max-width: 1023px) {
-  .page-loader {
-    background: transparent;
-    pointer-events: none;
-  }
-
-  .page-loader.is-active {
-    pointer-events: none;
-  }
-}
-
-// Arriving mid-transition: stay covered, no second fade-in
+// First paint / hard refresh / in-nav: stay covered (critical CSS in theme-init mirrors this)
 html.is-page-loading .page-loader {
   opacity: 1;
   pointer-events: auto;
