@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generated": "2026-07-27T11:29:46.242Z",
+  "generated": "2026-07-27T11:49:21.448Z",
   "items": [
     {
       "id": "why-elm",
@@ -255,6 +255,26 @@
         "concrete",
         "WASP",
         "infrastructure"
+      ],
+      "noindex": false
+    },
+    {
+      "id": "privacy",
+      "title": "Privacy Policy",
+      "heading": "Privacy Policy",
+      "subtitle": "",
+      "description": "How ELM Media Design collects, uses and protects personal data on theelmdesign.com — contact forms, analytics and your rights under UAE law.",
+      "excerpt": "ELM Media Design (&ldquo;ELM&rdquo;, &ldquo;we&rdquo;, &ldquo;us&rdquo;) operates {{siteUrl}}/ . This policy explains what personal data we collect through the website, why we collect it, who we share it with, and the choices you have. We do not sell personal data. We do not use contact details for unrelated marketing without your consent. Cloudflare Web Analytics uses a lightweight beacon and may set first-party cookies or use similar storage to distinguish visits. These are used for aggregated statistics, not cross-site advertising profiles.",
+      "url": "privacy.html",
+      "category": "Legal",
+      "keywords": [
+        "privacy",
+        "personal data",
+        "cookies",
+        "analytics",
+        "FormSubmit",
+        "PDPL",
+        "GDPR"
       ],
       "noindex": false
     },

@@ -248,6 +248,17 @@ export const en = {
  "complianceTitle": "Built for sovereign programmes",
  "complianceLede": "We can print service buildings on-site in a week. Urban furniture for smart-city programmes. Monuments and public art installations. Infrastructure elements that would typically take months through conventional supply chains, with demonstrable alignment to UAE Industrial Strategy 2031, ICV, Net Zero 2050 and Dubai 2040.",
  },
+ "privacy": {
+ "meta": {
+ "title": "Privacy Policy",
+ "description": "How ELM Media Design collects, uses and protects personal data on theelmdesign.com."
+ },
+ "header": {
+ "title": "PRIVACY POLICY",
+ "subtitle": "How we handle personal data on this website",
+ "crumb": "Privacy Policy"
+ },
+ },
  "technologies": {
  "meta": {
  "title": "Technologies",
@@ -1364,6 +1375,17 @@ export const ar = {
  "complianceEyebrow": "الامتثال",
  "complianceTitle": "الامتثال كميزة تنافسية",
  "complianceLede": "تتطلب البرامج الحكومية وشبه الحكومية بشكل متزايد مواءمة واضحة مع الاستراتيجيات الصناعية والاستدامة الوطنية بما في ذلك الاستراتيجية الصناعية 2031 التي تصنّف LFAM كتصنيع متقدم. توثّق ELM كيف يدعم التسليم مسارات التصنيع المحلي والتوطين، وترخيص ICV قيد الإنجاز للمناقصات الحكومية، وتقليل الهدر في الموقع مقارنة بالقوالب التقليدية، وتسريع الجداول الزمنية للهندسة المعقدة."
+ },
+ "privacy": {
+ "meta": {
+ "title": "سياسة الخصوصية",
+ "description": "كيف تجمع ELM Media Design وتستخدم وتحمي البيانات الشخصية على theelmdesign.com."
+ },
+ "header": {
+ "title": "سياسة الخصوصية",
+ "subtitle": "كيف نتعامل مع البيانات الشخصية على هذا الموقع",
+ "crumb": "سياسة الخصوصية"
+ },
  },
  "technologies": {
  "meta": {

@@ -1,0 +1,25 @@
+/* Minimal Bootstrap 4 utilities still used in markup (grid comes from bootstrap-grid.min.css). */
+.row.no-gutters {
+  margin-right: 0;
+  margin-left: 0;
+
+  > .col,
+  > [class*="col-"] {
+    padding-right: 0;
+    padding-left: 0;
+  }
+}
+
+.align-items-end {
+  align-items: flex-end !important;
+}
+
+.text-center {
+  text-align: center !important;
+}
+
+@media (min-width: 992px) {
+  .text-lg-right {
+    text-align: right !important;
+  }
+}

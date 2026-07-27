@@ -248,6 +248,17 @@
       "complianceTitle": "Built for sovereign programmes",
       "complianceLede": "We can print service buildings on-site in a week. Urban furniture for smart-city programmes. Monuments and public art installations. Infrastructure elements that would typically take months through conventional supply chains, with demonstrable alignment to UAE Industrial Strategy 2031, ICV, Net Zero 2050 and Dubai 2040."
     },
+    "privacy": {
+      "meta": {
+        "title": "Privacy Policy",
+        "description": "How ELM Media Design collects, uses and protects personal data on theelmdesign.com."
+      },
+      "header": {
+        "title": "PRIVACY POLICY",
+        "subtitle": "How we handle personal data on this website",
+        "crumb": "Privacy Policy"
+      }
+    },
     "technologies": {
       "meta": {
         "title": "Technologies",

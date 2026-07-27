@@ -26,6 +26,7 @@ const categoryByFile = {
   "project-bergamo-airport.html": "Projects",
   "contact.html": "Contact",
   "offices.html": "Contact",
+  "privacy.html": "Legal",
 };
 
 const keywordExtras = {
@@ -53,6 +54,7 @@ const keywordExtras = {
   "project-recarlo-milan.html": ["Recarlo", "Milan", "retail", "polymer", "Caracol"],
   "project-bergamo-airport.html": ["Bergamo", "airport", "concrete", "WASP", "infrastructure"],
   "contact.html": ["consultation", "RFQ", "phone", "email", "facility tour", "Dubai HQ", "Al Barsha", "API Business Suites", "+971"],
+  "privacy.html": ["privacy", "personal data", "cookies", "analytics", "FormSubmit", "PDPL", "GDPR"],
   "offices.html": ["office", "location", "Dubai"],
 };
 

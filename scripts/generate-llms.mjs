@@ -33,6 +33,7 @@ ELM Media Design is a Dubai-based commercial LFAM provider. We deliver design-to
 - Projects: ${SITE_URL}/projects.html
 - UAE compliance: ${SITE_URL}/uae-compliance.html
 - Contact: ${SITE_URL}/contact.html
+- Privacy policy: ${SITE_URL}/privacy.html
 
 ## Notable projects
 
