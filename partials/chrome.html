@@ -1,15 +1,57 @@
 <div class="page-loader" aria-hidden="true">
-  <div class="page-loader__brand">
-    <img
-      class="page-loader__logo"
-      src="/images/logo.svg"
-      alt=""
-      width="200"
-      height="184"
-      decoding="async"
-    >
-  </div>
+  <div class="page-loader__brand"></div>
 </div>
+<script>
+(function () {
+  // Reveal as soon as hero is ready — do not wait for deferred jquery/scripts.js
+  if (window.__elmPageLoaderHidden) return;
+  var shownAt = Date.now();
+  var MIN_MS = 100;
+  var MAX_MS = 3500;
+  var done = false;
+
+  function hide() {
+    if (done || window.__elmPageLoaderHidden) return;
+    done = true;
+    window.__elmPageLoaderHidden = true;
+    var wait = Math.max(0, MIN_MS - (Date.now() - shownAt));
+    setTimeout(function () {
+      var root = document.documentElement;
+      var loader = document.querySelector(".page-loader");
+      root.classList.remove("is-page-loading");
+      if (loader) loader.classList.remove("is-active");
+      document.body.style.removeProperty("overflow");
+    }, wait);
+  }
+
+  function armHero(img) {
+    function go() {
+      hide();
+    }
+    if (img.complete && img.naturalWidth) {
+      go();
+      return;
+    }
+    img.addEventListener("load", go, { once: true });
+    img.addEventListener("error", go, { once: true });
+    if (img.decode) img.decode().then(go).catch(function () {});
+  }
+
+  function start() {
+    var img = document.querySelector(".hero__media-img");
+    if (img) armHero(img);
+    else if (document.readyState === "complete") hide();
+    else window.addEventListener("load", hide, { once: true });
+    setTimeout(hide, MAX_MS);
+  }
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", start);
+  } else {
+    start();
+  }
+})();
+</script>
 
 <nav class="navbar">
   <div class="container">

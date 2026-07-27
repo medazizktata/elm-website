@@ -32,16 +32,18 @@
 
  var pageLoaderShownAt = Date.now();
  var PAGE_LOADER_NAV_DELAY_MS = 520;
- var PAGE_LOADER_MIN_VISIBLE_MS = 280;
- var PAGE_LOADER_HOME_MIN_MS = 280;
+ var PAGE_LOADER_MIN_VISIBLE_MS = 100;
+ var PAGE_LOADER_HOME_MIN_MS = 100;
  var PAGE_LOADER_HOME_TIMEOUT_MS = 3500;
- var pageLoaderHidden = false;
+ var pageLoaderHidden = !!window.__elmPageLoaderHidden;
  var PAGE_TRANSITION_KEY = 'elm-page-transition';
 
  function markPageTransition() {
  try {
  sessionStorage.setItem(PAGE_TRANSITION_KEY, '1');
  } catch (e) {}
+ window.__elmPageLoaderHidden = false;
+ pageLoaderHidden = false;
  }
 
  function clearPageTransition() {
@@ -60,8 +62,13 @@
  }
 
  function hidePageLoader(minMs) {
- if (pageLoaderHidden) return;
+ if (pageLoaderHidden || window.__elmPageLoaderHidden) {
  pageLoaderHidden = true;
+ window.__elmPageLoaderHidden = true;
+ return;
+ }
+ pageLoaderHidden = true;
+ window.__elmPageLoaderHidden = true;
  var elapsed = Date.now() - pageLoaderShownAt;
  var resolvedMin = minMs == null ? pageLoaderMinMs() : minMs;
  var hideDelay = Math.max(0, resolvedMin - elapsed);
@@ -111,14 +118,16 @@
  }
  heroImg.addEventListener('load', done, { once: true });
  heroImg.addEventListener('error', done, { once: true });
- // Decode path: image may be complete from cache before listeners attach
  if (heroImg.decode) {
  heroImg.decode().then(done).catch(function () {});
  }
  }
 
  function revealPageWhenReady() {
- if (pageLoaderHidden) return;
+ if (pageLoaderHidden || window.__elmPageLoaderHidden) {
+ pageLoaderHidden = true;
+ return;
+ }
  if (shouldWaitForHero3d()) {
  waitForHomeHero3dThenHide();
  return;
@@ -137,7 +146,6 @@
  setTimeout(scrollToHash, 350);
  }
  }
- // Don't wait for full window.load — hero is ready much earlier
  go();
  if (document.readyState !== 'complete') {
  $(window).one('load', function () {
@@ -258,18 +266,23 @@
  $(document).ready(function () {
  "use strict";
 
- // Keep cover from first paint; hand off is-page-loading → is-active for fade-out later
+ // Inline chrome script may already have dismissed the hard-refresh cover
+ if (window.__elmPageLoaderHidden) {
+ pageLoaderHidden = true;
+ clearPageTransition();
+ setPageLoader(false);
+ } else {
  setPageLoader(true);
  pageLoaderShownAt = Date.now();
  requestAnimationFrame(function () {
  requestAnimationFrame(function () {
- // Keep is-active; drop hard-cover class so hide can transition
  if (document.querySelector('.page-loader.is-active')) {
  document.documentElement.classList.remove('is-page-loading');
  }
  });
  });
  armPageLoaderReveal();
+ }
  setActiveNav();
  deferVideoPosters();
 
@@ -405,6 +418,7 @@
  $(window).on('pageshow', function (event) {
  if (event.originalEvent && event.originalEvent.persisted) {
  pageLoaderHidden = false;
+ window.__elmPageLoaderHidden = false;
  document.documentElement.classList.add('is-page-loading');
  setPageLoader(true);
  pageLoaderShownAt = Date.now();
