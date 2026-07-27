@@ -4,9 +4,12 @@
   "private": true,
   "type": "module",
   "packageManager": "pnpm@10.13.1",
+  "engines": {
+    "node": ">=22.0.0"
+  },
   "scripts": {
-    "dev": "node scripts/setup-fonts.mjs && vite",
-    "build": "node scripts/setup-fonts.mjs && node scripts/build-search-index.mjs && node scripts/generate-sitemap.mjs && node scripts/generate-llms.mjs && node scripts/generate-robots.mjs && node scripts/build-locales.mjs && pnpm sass && vite build && node scripts/copy-static.mjs",
+    "dev": "node scripts/setup-fonts.mjs && node scripts/sync-public.mjs && vite",
+    "build": "node scripts/setup-fonts.mjs && node scripts/build-search-index.mjs && node scripts/generate-sitemap.mjs && node scripts/generate-llms.mjs && node scripts/generate-robots.mjs && node scripts/build-locales.mjs && pnpm sass && node scripts/sync-public.mjs && vite build && node scripts/copy-static.mjs",
     "wrap": "node scripts/wrap-partials.mjs",
     "fonts:setup": "node scripts/setup-fonts.mjs",
     "images:placeholders": "node scripts/fetch-placeholders.mjs",
@@ -18,7 +21,7 @@
     "tunnel": "node scripts/tunnel.mjs",
     "tunnel:1h": "node scripts/tunnel.mjs --timeout=1h",
     "sass": "sass scss/style.scss css/style.css --no-source-map",
-    "deploy": "pnpm build && wrangler deploy"
+    "deploy": "pnpm build && pnpm exec wrangler deploy"
   },
   "dependencies": {
     "@fontsource/readex-pro": "^5.2.11",

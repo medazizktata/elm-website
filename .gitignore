@@ -6,6 +6,7 @@ npm-shrinkwrap.json
 
 # --- Build / compile ---
 dist/
+public/
 .sass-cache/
 *.css.map
 

@@ -7619,7 +7619,7 @@ table.elm-table tr:hover td:first-child {
   box-shadow: var(--elm-hover-glow);
   border-top-color: transparent;
 }
-.feature-cards > li::before {
+.feature-cards > li::after {
   content: "✓";
   display: inline-flex;
   align-items: center;
@@ -7638,6 +7638,7 @@ table.elm-table tr:hover td:first-child {
   -webkit-text-fill-color: transparent;
   background: rgba(189, 31, 113, 0.08);
   border: 1px solid rgba(189, 31, 113, 0.18);
+  border-radius: var(--elm-radius-sm, 8px);
 }
 .feature-cards--quad {
   grid-template-columns: repeat(4, minmax(0, 1fr));
@@ -7648,6 +7649,10 @@ table.elm-table tr:hover td:first-child {
 .feature-cards--mandates > li {
   grid-template-columns: 1fr;
   gap: 10px;
+}
+.feature-cards--mandates > li::after {
+  content: none;
+  display: none;
 }
 .feature-cards--mandates > li strong {
   display: block;
@@ -7673,7 +7678,7 @@ table.elm-table tr:hover td:first-child {
     grid-column: 1/-1;
   }
 }
-.feature-cards--steps > li::before {
+.feature-cards--steps > li::after {
   content: counter(feature-step, decimal-leading-zero);
   counter-increment: feature-step;
   font-size: 11px;
@@ -9713,9 +9718,9 @@ table.elm-table tr:hover td:first-child {
 }
 .spec-card__rows div {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(0, 1.4fr);
-  align-items: baseline;
-  column-gap: clamp(12px, 2vw, 20px);
+  grid-template-columns: auto minmax(0, 1fr);
+  align-items: center;
+  column-gap: clamp(10px, 1.5vw, 16px);
   min-width: 0;
   margin: 0;
   padding: 9px 0;
@@ -9740,16 +9745,19 @@ table.elm-table tr:hover td:first-child {
   background: none;
   background-image: none;
   text-align: start;
+  white-space: nowrap;
 }
 .spec-card__rows dd {
   margin: 0;
   min-width: 0;
-  font-size: clamp(12px, 1.15vw, 14px);
+  font-size: clamp(11px, 1.05vw, 13px);
   font-weight: 600;
-  line-height: 1.3;
+  line-height: 1.2;
   color: var(--elm-text);
   text-align: end;
-  text-wrap: balance;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 .spec-card__link {
   display: inline-flex;
