@@ -20,8 +20,9 @@
     "preview": "vite preview",
     "tunnel": "node scripts/tunnel.mjs",
     "tunnel:1h": "node scripts/tunnel.mjs --timeout=1h",
-    "sass": "sass scss/style.scss css/style.css --no-source-map",
-    "deploy": "pnpm build && pnpm exec wrangler deploy"
+    "sass": "sass scss/style.scss css/style.css --no-source-map --silence-deprecation=import",
+    "deploy": "pnpm build && pnpm exec wrangler deploy",
+    "deploy:ci": "pnpm exec wrangler deploy"
   },
   "dependencies": {
     "@fontsource/readex-pro": "^5.2.11",

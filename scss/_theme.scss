@@ -1,3 +1,5 @@
+@use "sass:color";
+
 :root {
   --elm-bg-page: #{$color-bg};
   --elm-bg-surface: #{$color-white};
@@ -96,9 +98,9 @@
   --elm-shadow: #{rgba(0, 0, 0, 0.45)};
   --elm-divider: #{rgba(#ecebe4, 0.1)};
   --elm-on-accent: #{$color-white};
-  --elm-link-hover: #{lighten($color-secondary, 12%)};
+  --elm-link-hover: #{color.adjust($color-secondary, $lightness: 12%)};
   --elm-label: #{$color-main};
-  --elm-hover-alt: #{darken($color-main, 6%)};
+  --elm-hover-alt: #{color.adjust($color-main, $lightness: -6%)};
   --elm-card-hover-bg: #{$color-main};
   --elm-card-hover-shadow: #{rgba($color-main, 0.28)};
   --elm-sector-icon-bg: #{rgba($color-main, 0.12)};

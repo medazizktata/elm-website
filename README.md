@@ -65,7 +65,30 @@ pnpm run fonts:setup   # first time / after font deps update
 pnpm dev               # http://localhost:5173
 pnpm run build         # dist/
 pnpm run sass          # compile SCSS
+pnpm run deploy        # build + wrangler deploy (local)
+pnpm run deploy:ci     # wrangler deploy only (Cloudflare CI)
 pnpm run images:placeholders
+```
+
+---
+
+## Cloudflare Workers deployment
+
+Production runs on **Cloudflare Workers** (`elm-website`), not GitHub Pages.
+
+**Workers Builds settings** (Cloudflare dashboard → Workers → elm-website → Settings → Builds):
+
+| Setting | Value |
+|---------|-------|
+| Build command | `pnpm build` |
+| Deploy command | `pnpm run deploy:ci` |
+| Node | 22 |
+
+Apex → www redirect is handled in `worker/index.js` (301 to `www.theelmdesign.com`).
+
+```bash
+pnpm run deploy        # local: build + deploy
+pnpm exec wrangler deploy   # deploy dist/ only
 ```
 
 ---
