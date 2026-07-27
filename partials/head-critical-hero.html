@@ -17,7 +17,9 @@ html,body{margin:0;background:#121212;color:#fff}
 .hero h1{margin:0 0 20px;font-size:clamp(38px,5.2vw,60px);font-weight:700;line-height:1.04;color:#fff}
 .hero__lede{margin:0 0 clamp(36px,4.5vh,44px);max-width:520px;font-size:clamp(16px,1.5vw,18px);line-height:1.6;color:rgba(255,255,255,.88)}
 .hero__actions{display:flex;flex-wrap:wrap;gap:12px}
-/* Hide copy until fonts+loader settle — prevents swap CLS under the overlay */
+/* Keep shifting nodes invisible until reveal — CLS ignores visibility:hidden */
+html.is-page-loading .hero>.container,
+html.is-page-loading .hero__logo3d,
 html.is-page-loading .hero__inner{visibility:hidden}
 @media (max-width:1023px){
   .hero{flex-direction:column;justify-content:flex-end;align-items:center;padding-top:72px;min-height:min(100svh,780px)}
@@ -34,8 +36,18 @@ html.is-page-loading .hero__inner{visibility:hidden}
   .hero__actions{justify-content:center}
   .hero__shade{background:linear-gradient(180deg,rgba(18,18,18,.92) 0%,rgba(18,18,18,.72) 22%,rgba(18,18,18,.45) 42%,rgba(18,18,18,.78) 72%,rgba(18,18,18,.96) 100%)}
 }
+@media (max-width:991px){
+  .hero>.container{padding-bottom:clamp(40px,6vh,56px)}
+  .hero h1{font-size:clamp(28px,7vw,36px)}
+}
+/* Match _elm-mobile.scss final mobile geometry (LH mobile = 412px) */
 @media (max-width:767px){
+  .container{padding-left:40px;padding-right:40px;max-width:100%}
+  .hero{min-height:min(100svh,760px)}
+  .hero>.container{padding-bottom:clamp(32px,5vh,48px)}
   .hero__logo3d{width:min(260px,62vw);height:min(260px,62vw)}
-  .hero__actions{flex-direction:column;align-items:stretch}
+  .hero h1{font-size:clamp(26px,7.5vw,32px)}
+  .hero__lede{max-width:34ch}
+  .hero__actions{flex-direction:column;align-items:stretch;width:100%}
 }
 </style>

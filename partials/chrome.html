@@ -3,12 +3,13 @@
 </div>
 <script>
 (function () {
-  // Reveal when hero + fonts are ready — avoid CLS from late CSS/font swap
+  // Reveal only after hero + fonts + main CSS — kills deferred-CSS CLS race
   if (window.__elmPageLoaderHidden) return;
   var shownAt = Date.now();
   var MIN_MS = 100;
-  var MAX_MS = 3500;
+  var MAX_MS = 4000;
   var FONT_WAIT_MS = 1200;
+  var CSS_WAIT_MS = 2500;
   var done = false;
 
   function hide() {
@@ -35,8 +36,56 @@
     ]);
   }
 
+  function mainCssReady() {
+    return new Promise(function (resolve) {
+      function isApplied(link) {
+        if (!link) return false;
+        if (link.media && link.media !== "all" && link.media !== "screen") return false;
+        try {
+          return !!(link.sheet && link.sheet.cssRules && link.sheet.cssRules.length);
+        } catch (e) {
+          return link.sheet != null;
+        }
+      }
+
+      var link =
+        document.querySelector('link[href*="style.css"]') ||
+        document.querySelector('link[href*="/style-"]') ||
+        document.querySelector('link[data-elm-main-css]');
+
+      if (isApplied(link)) {
+        resolve();
+        return;
+      }
+
+      var settled = false;
+      function doneCss() {
+        if (settled) return;
+        settled = true;
+        requestAnimationFrame(function () {
+          requestAnimationFrame(resolve);
+        });
+      }
+
+      if (link) {
+        link.addEventListener("load", doneCss, { once: true });
+        link.addEventListener("error", doneCss, { once: true });
+        // media=print → all swap often happens in onload=; poll briefly
+        var n = 0;
+        (function poll() {
+          if (isApplied(link) || n++ > 50) doneCss();
+          else setTimeout(poll, 40);
+        })();
+      } else {
+        doneCss();
+      }
+
+      setTimeout(doneCss, CSS_WAIT_MS);
+    });
+  }
+
   function afterReady() {
-    fontsReady().then(hide);
+    Promise.all([fontsReady(), mainCssReady()]).then(hide);
   }
 
   function armHero(img) {
