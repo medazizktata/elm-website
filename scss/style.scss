@@ -328,7 +328,7 @@ $font-ar: 'Readex Pro', $font-en;
 /* ELM brand fonts */
 @font-face {
   font-family: 'Nohemi';
-  src: url('../fonts/nohemi/Nohemi-SemiBold.ttf') format('truetype');
+  src: url('../fonts/nohemi/Nohemi-SemiBold.woff2') format('woff2');
   font-weight: 600;
   font-style: normal;
   font-display: swap;
@@ -336,7 +336,7 @@ $font-ar: 'Readex Pro', $font-en;
 
 @font-face {
   font-family: 'Nohemi';
-  src: url('../fonts/nohemi/Nohemi-Bold.ttf') format('truetype');
+  src: url('../fonts/nohemi/Nohemi-Bold.woff2') format('woff2');
   font-weight: 700;
   font-style: normal;
   font-display: swap;
@@ -344,7 +344,7 @@ $font-ar: 'Readex Pro', $font-en;
 
 @font-face {
   font-family: 'Nohemi';
-  src: url('../fonts/nohemi/Nohemi-Bold.ttf') format('truetype');
+  src: url('../fonts/nohemi/Nohemi-Bold.woff2') format('woff2');
   font-weight: 800;
   font-style: normal;
   font-display: swap;
