@@ -73,12 +73,12 @@ function applyGradientColors(root) {
   });
 }
 
-function signalHero3dReady() {
+export function signalHero3dReady() {
   window.__elmHero3dReady = true;
   window.dispatchEvent(new CustomEvent('elm:hero3dready'));
 }
 
-function initHeroLogo3D(el) {
+export function initHeroLogo3D(el) {
   const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
   // Bail out if the container is collapsed (no layout size yet).
@@ -312,9 +312,3 @@ function initHeroLogo3D(el) {
   });
 }
 
-const mount = document.querySelector('.hero__logo3d');
-if (mount) {
-  initHeroLogo3D(mount);
-} else {
-  signalHero3dReady();
-}

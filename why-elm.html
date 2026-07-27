@@ -28,7 +28,10 @@
  <p class="glass-panel__lede" data-i18n="pages.why-elm.diffFootnote">Global LFAM proof points via Caracol AM and WASP platforms Recarlo Milan retail panels and Bergamo Airport service module.</p>
  </div>
  <figure class="glass-panel-section__media">
- <img src="images/step02.jpg" alt="Robotic LFAM fabrication in progress" width="800" height="600" loading="lazy">
+ <picture>
+  <source type="image/webp" srcset="images/step02-400.webp 400w, images/step02-800.webp 800w" sizes="(max-width: 991px) 100vw, 50vw">
+  <img src="images/step02.jpg" alt="Robotic LFAM fabrication in progress" width="800" height="600" loading="lazy">
+ </picture>
  </figure>
  </div>
  </div>
@@ -70,7 +73,7 @@
  <div class="container">
  <div class="video-box">
  <a href="videos/video01.mp4" data-fancybox data-width="1280" data-height="720" class="play-btn" data-i18n-aria="shared.playVideo" aria-label="Play facility video"><i class="lni lni-play" aria-hidden="true"></i></a>
- <video src="videos/video01.mp4" poster="images/video-poster01.jpg" autoplay muted loop playsinline></video>
+ <video poster="images/video-poster01.webp" preload="none" muted playsinline aria-hidden="true" tabindex="-1"></video>
  </div>
  </div>
 </section>

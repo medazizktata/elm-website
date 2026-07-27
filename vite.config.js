@@ -5,7 +5,10 @@ import handlebars from "vite-plugin-handlebars";
 import { SITE_NAME, SITE_URL } from "./scripts/site-config.mjs";
 
 const htmlInputs = sync("./*.html").filter(
-  (file) => !file.includes("dist/") && !file.includes("node_modules/")
+  (file) =>
+    !file.includes("dist/") &&
+    !file.includes("node_modules/") &&
+    !/\.report\.html$/i.test(file)
 );
 
 const base = process.env.SITE_BASE || "/";

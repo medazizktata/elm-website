@@ -81,6 +81,7 @@
  }
 
  function shouldWaitForHero3d() {
+ if (!window.matchMedia('(min-width: 1024px)').matches) return false;
  var mount = document.querySelector('.hero__logo3d');
  return !!(mount && mount.clientWidth && mount.clientHeight);
  }

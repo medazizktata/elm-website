@@ -9,7 +9,8 @@
   },
   "scripts": {
     "dev": "node scripts/setup-fonts.mjs && node scripts/sync-public.mjs && vite",
-    "build": "node scripts/setup-fonts.mjs && node scripts/build-search-index.mjs && node scripts/generate-sitemap.mjs && node scripts/generate-llms.mjs && node scripts/generate-robots.mjs && node scripts/build-locales.mjs && pnpm sass && node scripts/sync-public.mjs && vite build && node scripts/copy-static.mjs",
+    "images:optimize": "node scripts/optimize-images.mjs",
+    "build": "node scripts/setup-fonts.mjs && node scripts/build-search-index.mjs && node scripts/generate-sitemap.mjs && node scripts/generate-llms.mjs && node scripts/generate-robots.mjs && node scripts/build-locales.mjs && pnpm sass && node scripts/optimize-images.mjs && node scripts/sync-public.mjs && vite build && node scripts/copy-static.mjs",
     "wrap": "node scripts/wrap-partials.mjs",
     "fonts:setup": "node scripts/setup-fonts.mjs",
     "images:placeholders": "node scripts/fetch-placeholders.mjs",
@@ -33,6 +34,7 @@
     "bootstrap": "4.5.0",
     "glob": "^11.0.2",
     "sass": "^1.89.0",
+    "sharp": "^0.34.5",
     "vite": "^7.3.1",
     "vite-plugin-handlebars": "^2.0.0",
     "wrangler": "^4.34.0"
