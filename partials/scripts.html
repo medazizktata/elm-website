@@ -1,11 +1,105 @@
+{{#if deferCore}}
+<script>
+(function () {
+  function load(src) {
+    return new Promise(function (resolve, reject) {
+      if (document.querySelector('script[src="' + src + '"]')) {
+        resolve();
+        return;
+      }
+      var s = document.createElement("script");
+      s.src = src;
+      s.onload = function () { resolve(); };
+      s.onerror = reject;
+      document.body.appendChild(s);
+    });
+  }
+
+  function chain(urls) {
+    return urls.reduce(function (p, url) {
+      return p.then(function () { return load(url); });
+    }, Promise.resolve());
+  }
+
+  function idle(fn) {
+    if (window.requestIdleCallback) window.requestIdleCallback(fn, { timeout: 2000 });
+    else setTimeout(fn, 200);
+  }
+
+  function bootCore() {
+    chain(["/js/jquery.min.js", "/js/theme.js", "/js/scripts.js"]).then(function () {
+      idle(function () { load("/js/motion.js"); });
+    });
+  }
+
+  document.addEventListener(
+    "click",
+    function onSearchClick(e) {
+      var btn = e.target.closest(".search-toggle");
+      if (!btn) return;
+      e.preventDefault();
+      e.stopPropagation();
+      document.removeEventListener("click", onSearchClick, true);
+      load("/js/search.js").then(function () {
+        btn.dispatchEvent(new MouseEvent("click", { bubbles: true, cancelable: true, view: window }));
+      });
+    },
+    true
+  );
+
+  document.addEventListener(
+    "keydown",
+    function onSearchKey(e) {
+      if (!((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === "k")) return;
+      document.removeEventListener("keydown", onSearchKey, true);
+      load("/js/search.js");
+    },
+    true
+  );
+
+  requestAnimationFrame(function () {
+    requestAnimationFrame(bootCore);
+  });
+})();
+</script>
+{{else}}
 <script src="/js/jquery.min.js"></script>
-<script src="/js/bootstrap.min.js"></script>
 {{#if swiper}}<script src="/js/swiper.min.js"></script>{{/if}}
 {{#if fancybox}}<script src="/js/fancybox.min.js"></script>{{/if}}
 {{#if odometer}}<script src="/js/odometer.min.js"></script>{{/if}}
 {{#if isotope}}<script src="/js/isotope.min.js"></script>{{/if}}
 <script src="/js/theme.js"></script>
-<script src="/js/search.js"></script>
-<script src="/js/motion.js"></script>
 <script src="/js/scripts.js"></script>
+<script>
+(function () {
+  function load(src) {
+    var s = document.createElement("script");
+    s.src = src;
+    document.body.appendChild(s);
+  }
+  function idle(fn) {
+    if (window.requestIdleCallback) window.requestIdleCallback(fn, { timeout: 2000 });
+    else setTimeout(fn, 200);
+  }
+  document.addEventListener(
+    "click",
+    function onSearchClick(e) {
+      var btn = e.target.closest(".search-toggle");
+      if (!btn) return;
+      e.preventDefault();
+      e.stopPropagation();
+      document.removeEventListener("click", onSearchClick, true);
+      var s = document.createElement("script");
+      s.src = "/js/search.js";
+      s.onload = function () {
+        btn.dispatchEvent(new MouseEvent("click", { bubbles: true, cancelable: true, view: window }));
+      };
+      document.body.appendChild(s);
+    },
+    true
+  );
+  idle(function () { load("/js/motion.js"); });
+})();
+</script>
+{{/if}}
 <script src="https://static.cloudflareinsights.com/beacon.min.js" async data-cf-beacon='{"token": "07db17d7c3d748be978f6890ec4e0d41"}'></script>
