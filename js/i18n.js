@@ -214,7 +214,7 @@
       btn.classList.toggle("is-active", isActive);
     });
 
-    /* Mobile drawer: one button — label/target = the other locale */
+    /* Mobile drawer: one button - label/target = the other locale */
     document.querySelectorAll("[data-locale-toggle]").forEach(function (btn) {
       var next = currentLocale === "ar" ? "en" : "ar";
       var nextLabel = next === "ar" ? "ع" : "EN";

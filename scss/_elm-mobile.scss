@@ -6,8 +6,9 @@
     --elm-section-y: clamp(56px, 14vw, 84px);
     --elm-section-y-compact: clamp(40px, 10vw, 60px);
     --elm-section-title-size: clamp(28px, 7.5vw, 40px);
-    --elm-feather-hero-h: clamp(220px, 42vh, 340px);
-    --elm-feather-page-h: clamp(100px, 22vw, 160px);
+    --elm-feather-bottom-h: clamp(280px, 42vh, 420px);
+    --elm-feather-hero-h: var(--elm-feather-bottom-h);
+    --elm-feather-page-h: var(--elm-feather-bottom-h);
   }
 
   .container {
@@ -43,8 +44,8 @@
       gap: 8px;
       width: 100%;
       min-height: 44px;
-      padding-left: max(var(--elm-gutter), env(safe-area-inset-left, 0px));
-      padding-right: max(var(--elm-gutter), env(safe-area-inset-right, 0px));
+      padding-left: max(var(--elm-navbar-padding-x, 32px), env(safe-area-inset-left, 0px));
+      padding-right: max(var(--elm-navbar-padding-x, 32px), env(safe-area-inset-right, 0px));
     }
 
     .logo {
@@ -69,7 +70,7 @@
       height: 40px;
     }
 
-    /* Tools + Consultation live in the drawer — topbar keeps logo + hamburger */
+    /* Tools + Consultation live in the drawer - topbar keeps logo + hamburger */
     .locale-switch,
     .theme-toggle,
     .search {
@@ -139,7 +140,7 @@
   }
 
   .page-header {
-    min-height: 280px;
+    min-height: clamp(360px, 58vh, 480px);
     padding-bottom: clamp(72px, 16vw, 100px);
 
     .container {
@@ -171,7 +172,7 @@
         align-items: flex-start;
       }
 
-      /* Arrows hidden on mobile — don't leave an empty overlay/spacer */
+      /* Arrows hidden on mobile - don't leave an empty overlay/spacer */
       &__controls {
         display: none;
       }
@@ -293,14 +294,18 @@
   .hero + .stats-row,
   .stats-row--after-hero {
     margin-top: 0;
-    padding-top: clamp(12px, 3vw, 20px) !important;
+    padding-top: clamp(40px, 8vw, 56px) !important;
+
+    .stats-row__lede {
+      margin-bottom: clamp(24px, 5vw, 32px);
+    }
 
     .stats-row__grid {
-      margin-top: clamp(16px, 4vw, 20px);
+      margin-top: 0;
     }
   }
 
-  .project-slider {
+  .project-slider:not(.project-slider--hero) {
     margin-left: calc(var(--elm-gutter) * -1);
     margin-right: calc(var(--elm-gutter) * -1);
     padding-left: var(--elm-gutter);
@@ -491,7 +496,20 @@
       gap: 10px;
 
       .collage-main {
+        grid-column: auto;
         grid-row: auto;
+        aspect-ratio: 16 / 10;
+      }
+
+      img.collage-small:nth-of-type(2),
+      img.collage-small:nth-of-type(3) {
+        grid-column: auto;
+        grid-row: auto;
+      }
+
+      .about-intro__title {
+        grid-column: 1 / -1;
+        grid-row: 1;
       }
 
       img {
@@ -731,7 +749,8 @@
     }
 
     &__foot {
-      margin-top: 16px;
+      margin-top: 24px;
+      padding-top: clamp(24px, 5vw, 32px);
     }
   }
 
@@ -743,7 +762,7 @@
     font-size: 14px;
   }
 
-  // Lean mobile footer — one CTA + HQ + socials
+  // Lean mobile footer - one CTA + HQ + socials
   .footer-bar {
     padding: clamp(48px, 12vw, 72px) 0;
 
@@ -973,7 +992,7 @@
 }
 
 @media (max-width: 991px) and (min-width: 768px) {
-  .project-slider .swiper-slide {
+  .project-slider:not(.project-slider--hero) .swiper-slide {
     width: min(58vw, 420px) !important;
     max-width: min(58vw, 420px) !important;
   }

@@ -188,21 +188,24 @@ function initHeroLogo3D(el) {
   const target = { x: 0, y: 0 };
   const cur = { x: 0, y: 0 };
   const onMove = (e) => {
-    if (idleMq.matches) return;
+    if (idleMq.matches || !visible) return;
     target.x = (e.clientX / window.innerWidth - 0.5) * 2;
     target.y = (e.clientY / window.innerHeight - 0.5) * 2;
   };
-  window.addEventListener('mousemove', onMove);
+  window.addEventListener('mousemove', onMove, { passive: true });
 
   // --- Click for a full spin + glow pulse (gradient stays, it's the brand mark) ---
   let spinTarget = 0;
   let spin = 0;
   let glowStart = -1;
+  let animTime = 0;
+  let lastFrame = performance.now();
+  let visible = true;
   const raycaster = new THREE.Raycaster();
   // Listen on window (the container is pointer-events:none). Raycast so only a hit
   // on the mark spins it; clicks elsewhere fall through to the hero buttons.
   const onClick = (e) => {
-    if (!logoMaterial) return;
+    if (!logoMaterial || !visible) return;
     const rect = renderer.domElement.getBoundingClientRect();
     const ndc = new THREE.Vector2(
       ((e.clientX - rect.left) / rect.width) * 2 - 1,
@@ -210,19 +213,26 @@ function initHeroLogo3D(el) {
     );
     raycaster.setFromCamera(ndc, camera);
     if (raycaster.intersectObject(group, true).length === 0) return;
-    glowStart = (performance.now() - start) / 1000;
+    glowStart = animTime;
     spinTarget += Math.PI * 2; // one full turn per click
   };
   window.addEventListener('click', onClick);
 
-  const start = performance.now();
   let raf = 0;
   const render = () => {
-    const t = (performance.now() - start) / 1000;
+    if (!visible) {
+      raf = 0;
+      return;
+    }
+
+    const now = performance.now();
+    animTime += (now - lastFrame) / 1000;
+    lastFrame = now;
+    const t = animTime;
     spin += (spinTarget - spin) * 0.06;
 
     if (idleMq.matches) {
-      // Constant 3-axis idle drift — readable brand mark, never flat.
+      // Constant 3-axis idle drift - readable brand mark, never flat.
       group.rotation.y = t * 0.45 + spin;
       group.rotation.x = Math.sin(t * 0.38) * 0.28 + Math.cos(t * 0.17) * 0.08;
       group.rotation.z = Math.sin(t * 0.22) * 0.12;
@@ -248,6 +258,19 @@ function initHeroLogo3D(el) {
     raf = requestAnimationFrame(render);
   };
 
+  const stopLoop = () => {
+    if (raf) {
+      cancelAnimationFrame(raf);
+      raf = 0;
+    }
+  };
+
+  const startLoop = () => {
+    if (reducedMotion || raf) return;
+    lastFrame = performance.now();
+    render();
+  };
+
   if (reducedMotion) {
     // Render a static frame once the SVG has loaded and meshes exist.
     const once = window.setInterval(() => {
@@ -257,8 +280,20 @@ function initHeroLogo3D(el) {
       }
     }, 100);
   } else {
-    render();
+    startLoop();
   }
+
+  // Pause WebGL while the hero is off-screen so scroll stays smooth.
+  const heroRoot = el.closest('.hero') || el;
+  const visibilityObserver = new IntersectionObserver(
+    ([entry]) => {
+      visible = entry.isIntersecting;
+      if (visible) startLoop();
+      else stopLoop();
+    },
+    { threshold: 0, rootMargin: '0px 0px -8% 0px' },
+  );
+  visibilityObserver.observe(heroRoot);
 
   const onResize = () => {
     if (!el.clientWidth || !el.clientHeight) return;

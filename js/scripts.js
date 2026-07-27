@@ -159,7 +159,7 @@
  };
 
 
- /* MENU TOGGLE — smooth accordion for mobile drawer subpages */
+ /* MENU TOGGLE - smooth accordion for mobile drawer subpages */
  $('.side-widget .site-menu__subtoggle').on('click', function (e) {
  e.preventDefault();
  e.stopPropagation();
@@ -515,14 +515,6 @@
  },
  slidesPerView: 1,
  spaceBetween: 0,
- navigation: {
- nextEl: $slider.find(".project-slider__arrow--next")[0],
- prevEl: $slider.find(".project-slider__arrow--prev")[0],
- },
- pagination: {
- el: $slider.find(".swiper-pagination")[0],
- clickable: true,
- },
  }
  : {
  speed: SWIPER_SPEED,
@@ -552,7 +544,7 @@
  });
 
 
- // DATA BACKGROUND (color or photo + brand gradient overlay — text sits on photo)
+ // DATA BACKGROUND (color or photo + brand gradient overlay - text sits on photo)
  var bgOverlay =
   "linear-gradient(180deg, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0.22) 42%, rgba(0,0,0,0.78) 100%)," +
   "linear-gradient(135deg, rgba(189,31,113,0.42) 0%, rgba(89,44,123,0.22) 48%, rgba(10,118,181,0.38) 100%)";
@@ -602,6 +594,68 @@
  }
  $(window).on('scroll touchmove', updateNavbar);
  updateNavbar();
+
+ function initSiteFaqAccordion() {
+  var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var items = document.querySelectorAll('.site-faq__item');
+  if (!items.length) return;
+
+  items.forEach(function (details) {
+   var summary = details.querySelector('summary');
+   var panel = details.querySelector('.site-faq__panel');
+   if (!summary || !panel) return;
+
+   if (details.hasAttribute('open')) {
+    panel.style.height = 'auto';
+   }
+
+   if (reduced) return;
+
+   summary.addEventListener('click', function (e) {
+    e.preventDefault();
+    if (details.classList.contains('site-faq__item--animating')) return;
+
+    if (details.hasAttribute('open')) {
+     closeSiteFaqItem(details, panel);
+    } else {
+     openSiteFaqItem(details, panel);
+    }
+   });
+  });
+ }
+
+ function openSiteFaqItem(details, panel) {
+  details.classList.add('site-faq__item--animating');
+  panel.style.height = '0px';
+  details.setAttribute('open', '');
+  requestAnimationFrame(function () {
+   panel.style.height = panel.scrollHeight + 'px';
+  });
+
+  panel.addEventListener('transitionend', function onEnd(ev) {
+   if (ev.propertyName !== 'height') return;
+   panel.removeEventListener('transitionend', onEnd);
+   details.classList.remove('site-faq__item--animating');
+   panel.style.height = 'auto';
+  });
+ }
+
+ function closeSiteFaqItem(details, panel) {
+  details.classList.add('site-faq__item--animating');
+  panel.style.height = panel.scrollHeight + 'px';
+  panel.offsetHeight;
+  panel.style.height = '0px';
+
+  panel.addEventListener('transitionend', function onEnd(ev) {
+   if (ev.propertyName !== 'height') return;
+   panel.removeEventListener('transitionend', onEnd);
+   details.removeAttribute('open');
+   details.classList.remove('site-faq__item--animating');
+   panel.style.height = '';
+  });
+ }
+
+ initSiteFaqAccordion();
 
 
 })(jQuery);

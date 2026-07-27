@@ -3,6 +3,7 @@
 :root {
   --elm-section-y: clamp(72px, 8vw, 112px);
   --elm-section-y-compact: clamp(48px, 5vw, 72px);
+  --elm-brand-border-w: 2px;
   --elm-section-title-size: clamp(36px, 4.5vw, 56px);
   --elm-section-eyebrow-size: clamp(13px, 1.15vw, 15px);
   --elm-section-lede-size: clamp(16px, 1.5vw, 18px);
@@ -20,6 +21,7 @@
     0 6px 16px rgba(0, 0, 0, 0.22);
   --elm-wrap: 0deg;
   --elm-gutter: 15px;
+  --elm-navbar-padding-x: clamp(32px, 4.5vw, 64px);
 
   // Direction tokens, flipped in _elm-rtl.scss on [dir="rtl"]
   --elm-dir: 1;
@@ -58,8 +60,8 @@
 }
 
 /* Gradient border draws from top-left, clockwise; unwinds on leave.
-   Mask punches out the interior so only the stroke paints — never a fill.
-   Static top accent (elm-brand-edge-top) stays painted underneath — never cleared on hover. */
+   Mask punches out the interior so only the stroke paints - never a fill.
+   Static top accent (elm-brand-edge-top) stays painted underneath - never cleared on hover. */
 @mixin elm-border-wrap {
   --elm-wrap: 0deg;
 
@@ -69,7 +71,7 @@
     inset: 0;
     z-index: 2;
     border-radius: inherit;
-    padding: 1.5px;
+    padding: var(--elm-brand-border-w, 2px);
     box-sizing: border-box;
     pointer-events: none;
     opacity: 0;
@@ -415,11 +417,24 @@ p, li, td, th, label, input, textarea, select, button, blockquote, figcaption {
     @include elm-photo-brand-tile;
 
     &:has(.sectors-grid__title)::after {
-      @include elm-photo-title-scrim;
+      background:
+        radial-gradient(
+          ellipse 75% 60% at 50% 50%,
+          rgba(#000, 0.18) 0%,
+          rgba(#000, 0.06) 48%,
+          transparent 78%
+        ),
+        linear-gradient(
+          135deg,
+          rgba($color-main, 0.04) 0%,
+          rgba($color-accent, 0.02) 48%,
+          rgba($color-secondary, 0.03) 100%
+        );
     }
 
     img {
       @include elm-photo-fill;
+      filter: grayscale(1) brightness(1.42) contrast(1.04) !important;
     }
   }
 
@@ -604,7 +619,7 @@ p, li, td, th, label, input, textarea, select, button, blockquote, figcaption {
   padding-top: var(--elm-section-y);
 }
 
-/* HERO — left copy + right-side 3D mark */
+/* HERO - left copy + right-side 3D mark */
 .hero {
   position: relative;
   z-index: 1;
@@ -659,7 +674,7 @@ p, li, td, th, label, input, textarea, select, button, blockquote, figcaption {
     );
   }
 
-  /* Top scrim — kills the hard media edge under the sticky navbar */
+  /* Top scrim - kills the hard media edge under the sticky navbar */
   &::before {
     content: "";
     position: absolute;
@@ -679,7 +694,7 @@ p, li, td, th, label, input, textarea, select, button, blockquote, figcaption {
     z-index: 2;
   }
 
-  /* Extruded 3D monogram — desktop: full-bleed right overlay; mobile: centered above copy.
+  /* Extruded 3D monogram - desktop: full-bleed right overlay; mobile: centered above copy.
      Pointer-events off so CTAs stay clickable (raycast on window). */
   &__logo3d {
     position: absolute;
@@ -689,6 +704,8 @@ p, li, td, th, label, input, textarea, select, button, blockquote, figcaption {
     pointer-events: none;
     overflow: hidden;
     background: transparent;
+    -webkit-mask-image: linear-gradient(to bottom, transparent 0%, #000 10%, #000 100%);
+    mask-image: linear-gradient(to bottom, transparent 0%, #000 10%, #000 100%);
 
     canvas {
       display: block;
@@ -788,12 +805,11 @@ p, li, td, th, label, input, textarea, select, button, blockquote, figcaption {
     position: absolute;
     left: 0;
     right: 0;
-    bottom: -40px;
-    height: calc(var(--elm-feather-hero-h) + 40px);
-    background: var(--elm-feather-hero);
+    bottom: 0;
+    height: var(--elm-feather-bottom-h);
+    background: var(--elm-feather-bottom);
     pointer-events: none;
     z-index: 2;
-    /* No blur — blur + overflow clipping caused the hard seam */
     transform: translateZ(0);
   }
 
@@ -825,7 +841,7 @@ p, li, td, th, label, input, textarea, select, button, blockquote, figcaption {
   }
 
   &__lede {
-    margin: 0 0 28px;
+    margin: 0 0 clamp(36px, 4.5vh, 44px);
     max-width: 520px;
     font-size: clamp(16px, 1.5vw, 18px);
     line-height: 1.6;
@@ -950,6 +966,30 @@ body:has(.hero) .navbar.sticky {
     }
   }
 
+  @media (min-width: 992px) {
+    .site-menu > ul > li:has(> ul) > a {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+
+      .site-menu__caret {
+        font-size: 10px;
+        line-height: 1;
+        opacity: 0.72;
+        flex-shrink: 0;
+        transition: transform 0.2s ease, opacity 0.2s ease;
+      }
+
+      &:hover .site-menu__caret {
+        opacity: 1;
+      }
+    }
+
+    .site-menu > ul > li:hover > a .site-menu__caret {
+      transform: rotate(180deg);
+    }
+  }
+
   .site-menu ul li {
     > a.is-active,
     &.is-active-parent > a {
@@ -967,18 +1007,18 @@ body:has(.hero) .navbar.sticky {
   &.sticky .site-menu ul li {
     > a.is-active,
     &.is-active-parent > a {
-      /* Don't pair elm-brand-text with a pill bg — clip + solid bg = invisible glyphs */
-      color: #fff !important;
-      -webkit-text-fill-color: #fff;
+      color: var(--elm-text) !important;
+      -webkit-text-fill-color: var(--elm-text);
       background-image: none;
-      background-color: rgba($color-main, 0.38);
+      background-color: rgba($color-main, 0.14);
+      font-weight: 700;
     }
 
     ul li a.is-active {
-      color: #fff !important;
-      -webkit-text-fill-color: #fff;
+      color: var(--elm-text) !important;
+      -webkit-text-fill-color: var(--elm-text);
       background-image: none;
-      background-color: rgba($color-main, 0.42);
+      background-color: rgba($color-main, 0.18);
       font-weight: 700;
     }
   }
@@ -1043,12 +1083,12 @@ body:has(.hero) .navbar.sticky {
 
   .navbar .container {
     justify-content: space-between;
-    padding-left: max(28px, var(--elm-gutter, 28px), env(safe-area-inset-left, 0px));
-    padding-right: max(28px, var(--elm-gutter, 28px), env(safe-area-inset-right, 0px));
+    padding-left: max(var(--elm-navbar-padding-x, 32px), env(safe-area-inset-left, 0px));
+    padding-right: max(var(--elm-navbar-padding-x, 32px), env(safe-area-inset-right, 0px));
   }
 }
 
-/* Side-drawer tools (mobile) — icon row + CTA */
+/* Side-drawer tools (mobile) - icon row + CTA */
 .side-widget__tools {
   margin-top: 0;
   padding-top: 0;
@@ -1150,7 +1190,7 @@ body:has(.hero) .navbar.sticky {
   }
 }
 
-/* Mobile drawer — theme-aware surface + pinned head/foot */
+/* Mobile drawer - theme-aware surface + pinned head/foot */
 @media (max-width: 991px) {
   .side-widget {
     align-items: stretch;
@@ -1406,7 +1446,7 @@ body:has(.hero) .navbar.sticky {
   }
 }
 
-/* Gradient perimeter wrap — all card surfaces (elm-card-surface already includes it) */
+/* Gradient perimeter wrap - all card surfaces (elm-card-surface already includes it) */
 .sector-card,
 .also-explore__card,
 .tech-preview-card,
@@ -1443,16 +1483,19 @@ body:has(.hero) .navbar.sticky {
   align-items: center;
 
   .elm-title-pill {
-    justify-content: center;
-    text-align: center;
+    justify-content: space-between;
+    text-align: start;
+    width: 100%;
 
     .elm-title-pill__label {
-      flex: 0 1 auto;
-      text-align: center;
+      flex: 1;
+      min-width: 0;
+      text-align: start;
     }
 
     .elm-icon {
-      margin-inline-start: 0;
+      margin-inline-start: auto;
+      flex-shrink: 0;
     }
   }
 
@@ -1470,6 +1513,10 @@ body:has(.hero) .navbar.sticky {
     line-height: 1.55;
     text-align: center;
     margin-inline: auto;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
+    overflow: hidden;
   }
 }
 
@@ -1660,21 +1707,35 @@ body:has(.hero) .navbar.sticky {
 .hero + .stats-row,
 .stats-row--after-hero {
   position: relative;
-  z-index: 0;
+  z-index: 2;
   margin-top: 0;
-  padding-top: clamp(16px, 2vw, 24px) !important;
+  padding-top: clamp(48px, 6vw, 72px) !important;
   padding-bottom: clamp(56px, 7vw, 80px) !important;
-  background: transparent;
+  background: var(--elm-bg-page);
+
+  .stats-row__head {
+    margin-bottom: clamp(8px, 1vw, 12px);
+    overflow: visible;
+  }
+
+  .stats-row__title {
+    overflow: visible;
+    line-height: 1.12;
+  }
+
+  .stats-row__lede {
+    margin-bottom: clamp(32px, 4vw, 48px);
+  }
 
   .container,
   .stats-row__head,
   .stats-row__grid {
     position: relative;
-    z-index: 3;
+    z-index: 1;
   }
 
   .stats-row__grid {
-    margin-top: clamp(20px, 2.5vw, 28px);
+    margin-top: 0;
     box-shadow: none;
   }
 
@@ -1703,7 +1764,7 @@ body:has(.hero) .navbar.sticky {
   @include elm-card-surface;
 }
 
-/* Solutions grid — center last incomplete row */
+/* Solutions grid - center last incomplete row */
 .solutions-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -1764,13 +1825,14 @@ body:has(.hero) .navbar.sticky {
     display: grid;
     grid-template-columns: minmax(0, 1.3fr) minmax(0, 0.85fr);
     gap: clamp(28px, 4vw, 56px);
-    align-items: start;
+    align-items: stretch;
   }
 
   &__col {
     display: flex;
     flex-direction: column;
     min-width: 0;
+    height: 100%;
   }
 
   &__head {
@@ -1807,14 +1869,19 @@ body:has(.hero) .navbar.sticky {
   }
 
   .policy-rail {
-    flex: 0 0 auto;
-    gap: clamp(2px, 0.6vw, 6px);
+    flex: 1 1 auto;
+    justify-content: space-between;
+    min-height: 0;
+
+    .policy-rail__item {
+      padding-bottom: 0;
+    }
   }
 
   &__foot {
     flex-shrink: 0;
-    margin-top: clamp(18px, 2.2vw, 26px);
-    padding-top: 0;
+    margin-top: auto;
+    padding-top: clamp(32px, 4vw, 48px);
     text-align: end;
   }
 
@@ -2186,7 +2253,7 @@ table.elm-table {
 }
 
 @media (max-width: 767px) {
-  /* Home hub: drop the table — policy timeline carries the section */
+  /* Home hub: drop the table - policy timeline carries the section */
   .home-why-hub .compare-table {
     display: none;
   }
@@ -2430,7 +2497,7 @@ table.elm-table {
     display: none;
   }
 
-  &:not(:has(.project-card)) {
+  &:not(:has(.project-card)):not(.project-slider--hero) {
     &::before,
     &::after {
       display: none;
@@ -2452,6 +2519,49 @@ table.elm-table {
         object-fit: cover;
         aspect-ratio: 16 / 9;
         max-height: min(72vh, 640px);
+      }
+    }
+  }
+
+  &--hero {
+    padding-bottom: 0;
+    overflow: hidden;
+
+    &::before,
+    &::after {
+      display: none !important;
+    }
+
+    .project-slider__controls {
+      display: none !important;
+    }
+
+    .swiper-wrapper,
+    .swiper-slide {
+      height: 100%;
+    }
+
+    .swiper-slide {
+      max-width: 100% !important;
+      width: 100% !important;
+      opacity: 1 !important;
+      transform: none !important;
+    }
+
+    .project-box {
+      display: block;
+      height: 100%;
+      margin: 0;
+      overflow: hidden;
+
+      img {
+        width: 100%;
+        height: 100%;
+        max-height: none !important;
+        aspect-ratio: auto !important;
+        object-fit: cover;
+        object-position: center;
+        display: block;
       }
     }
   }
@@ -2600,6 +2710,7 @@ table.elm-table {
   color: var(--elm-text);
   background: var(--elm-bg-surface);
   border: 1px solid var(--elm-border);
+  border-bottom-width: 0;
   overflow: hidden;
   @include elm-smooth-hover;
 
@@ -2612,6 +2723,7 @@ table.elm-table {
     text-decoration: none;
     color: var(--elm-text);
     border-color: rgba($color-main, 0.35);
+    border-bottom-width: 0;
     box-shadow: 0 16px 40px var(--elm-shadow);
     transform: translateY(-3px);
 
@@ -2820,7 +2932,7 @@ table.elm-table {
     display: grid;
     grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
     gap: clamp(36px, 5.5vw, 72px);
-    align-items: stretch;
+    align-items: start;
   }
 
   &--reverse &__grid {
@@ -2851,10 +2963,12 @@ table.elm-table {
     &--collage {
       display: grid;
       grid-template-columns: 1.2fr 0.8fr;
-      grid-template-rows: 1fr 1fr;
+      grid-template-rows: minmax(0, 1fr) minmax(0, 1fr);
       gap: 12px;
-      min-height: clamp(360px, 42vw, 480px);
-      height: auto;
+      min-height: 0;
+      height: 100%;
+      overflow: hidden;
+      border-radius: var(--elm-radius);
 
       img {
         position: relative;
@@ -2864,10 +2978,23 @@ table.elm-table {
         aspect-ratio: auto;
         max-height: none;
         min-height: 0;
+        object-fit: cover;
+        object-position: center;
       }
 
       .collage-main {
+        grid-column: 1;
         grid-row: 1 / span 2;
+      }
+
+      img.collage-small:nth-of-type(2) {
+        grid-column: 2;
+        grid-row: 1;
+      }
+
+      img.collage-small:nth-of-type(3) {
+        grid-column: 2;
+        grid-row: 2;
       }
 
       .about-intro__title {
@@ -2882,6 +3009,7 @@ table.elm-table {
         width: max-content;
         max-width: min(14ch, calc(100% - 40px));
         text-align: center;
+        z-index: 3;
       }
     }
   }
@@ -3028,12 +3156,12 @@ table.elm-table {
         -webkit-text-fill-color: $color-main !important;
       }
 
-      .about-intro__fact-label {
+      .about-intro__fact-value {
         color: var(--elm-text);
       }
 
-      .about-intro__fact-value {
-        color: var(--elm-text);
+      .about-intro__fact-detail {
+        color: var(--elm-text-muted);
       }
     }
   }
@@ -3054,6 +3182,9 @@ table.elm-table {
 
 .about-intro__fact-body {
   min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
 }
 
 .about-intro__fact-value {
@@ -3067,21 +3198,8 @@ table.elm-table {
   @include elm-smooth-hover;
 }
 
-.about-intro__fact-label {
-  display: block;
-  margin-bottom: 6px;
-  font-size: 11px;
-  font-weight: 700;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  line-height: 1.2;
-  color: var(--elm-text-muted);
-  @include elm-smooth-hover;
-}
-
 .about-intro__fact-detail {
-  display: block;
-  margin-top: 6px;
+  margin: 0;
   font-size: clamp(13px, 1.2vw, 14px);
   font-weight: 500;
   line-height: 1.45;
@@ -3100,12 +3218,49 @@ table.elm-table {
       max-width: none;
       width: 100%;
       height: auto;
-      aspect-ratio: 16 / 10;
       --elm-photo-pad: #{clamp(12px, 3vw, 20px)};
+
+      &:not(.about-intro__media--collage) {
+        aspect-ratio: 16 / 10;
+      }
 
       img {
         max-height: none;
         aspect-ratio: auto;
+      }
+    }
+
+    &__media--collage {
+      aspect-ratio: auto;
+      min-height: 0;
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: auto auto;
+      gap: 10px;
+
+      .collage-main {
+        grid-column: 1 / -1;
+        grid-row: 1;
+        aspect-ratio: 16 / 10;
+        height: auto;
+      }
+
+      img.collage-small:nth-of-type(2) {
+        grid-column: 1;
+        grid-row: 2;
+      }
+
+      img.collage-small:nth-of-type(3) {
+        grid-column: 2;
+        grid-row: 2;
+      }
+
+      .about-intro__title {
+        grid-column: 1 / -1;
+        grid-row: 1;
+      }
+
+      img {
+        height: auto;
       }
     }
 
@@ -3318,6 +3473,7 @@ table.elm-table {
     max-width: min(100%, 840px);
     margin-left: auto;
     margin-right: auto;
+    padding-inline: clamp(52px, 6vw, 68px);
     overflow: visible;
 
     @media (max-width: 767px) {
@@ -3341,24 +3497,29 @@ table.elm-table {
     }
 
     &__controls {
-      position: static;
-      inset: auto;
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 50%;
+      transform: translateY(-50%);
       z-index: 3;
       display: flex;
-      justify-content: center;
+      justify-content: space-between;
       align-items: center;
-      gap: 12px;
-      margin: 18px 0 0;
-      pointer-events: auto;
+      gap: 0;
+      margin: 0;
+      padding: 0 clamp(4px, 0.8vw, 10px);
+      pointer-events: none;
     }
 
     &__arrow {
-      position: static;
+      position: relative;
       top: auto;
       left: auto;
       right: auto;
       transform: none;
       pointer-events: auto;
+      flex-shrink: 0;
       width: 44px;
       height: 44px;
       border-radius: var(--elm-radius);
@@ -3783,7 +3944,7 @@ table.elm-table {
       height: 26px;
       transition: transform var(--elm-hover-duration) var(--elm-hover-ease);
 
-      /* Secondary wash — opacity fades both ways (bg-image can't) */
+      /* Secondary wash - opacity fades both ways (bg-image can't) */
       &::after {
         content: "";
         position: absolute;
@@ -4254,13 +4415,44 @@ table.elm-table {
     padding-bottom: clamp(48px, 6vw, 80px) !important;
   }
 
+  .content-section.map-embed-section,
+  .content-section.no-spacing.map-embed-section {
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+  }
+
+  #consultation-form.content-section:has(+ .map-embed-section) {
+    padding-bottom: 0 !important;
+  }
+
+  .content-section.map-embed-section + .content-section {
+    padding-top: 0 !important;
+  }
+
   .engagement-process {
     padding-top: clamp(40px, 5vw, 64px) !important;
     padding-bottom: clamp(40px, 5vw, 64px) !important;
   }
 }
 
-/* CONTACT CARDS — stadium shells only */
+/* CONTACT CARDS - stadium shells only */
+#consultation-form.content-section.no-spacing {
+  padding-bottom: 0 !important;
+
+  > .container > .row > [class*="col-"]:first-child {
+    padding-bottom: clamp(48px, 6vw, 80px);
+  }
+}
+
+.map-embed-section {
+  padding: 0 !important;
+  margin: 0 !important;
+
+  + .footer-bar {
+    margin-top: 0;
+  }
+}
+
 .contact-cards {
   align-items: stretch;
   justify-content: center;
@@ -4278,7 +4470,7 @@ table.elm-table {
   }
 }
 
-/* Global smooth hover — cards + chrome that aren't on elm-card-surface */
+/* Global smooth hover - cards + chrome that aren't on elm-card-surface */
 .feature-cards > li,
 .case-study-card,
 .spec-card,
@@ -5727,7 +5919,7 @@ table.elm-table {
   }
 
   .elm-title-pill {
-    /* Inset from card edges — width:100% + overflow:hidden was clipping side margins */
+    /* Inset from card edges - width:100% + overflow:hidden was clipping side margins */
     width: calc(100% - 2 * clamp(16px, 2vw, 24px));
     max-width: calc(100% - 2 * clamp(16px, 2vw, 24px));
     align-self: center;
@@ -6102,7 +6294,7 @@ table.elm-table {
     }
   }
 
-  /* Tabs unused on mobile — all project cards stack vertically */
+  /* Tabs unused on mobile - all project cards stack vertically */
   .metric-index {
     display: none;
   }
@@ -6447,7 +6639,7 @@ table.elm-table {
   }
 }
 
-/* Technologies intro routes — divider list, not feature cards */
+/* Technologies intro routes - divider list, not feature cards */
 .tech-routes {
   display: flex;
   flex-direction: column;
@@ -6555,7 +6747,6 @@ table.elm-table {
    - Project / case-study / portfolio media → full color
    ============================================================ */
 .about-intro__media img,
-.sectors-grid__media img,
 .tech-preview-card figure img,
 .spec-card__media img,
 .process-step__media img,
@@ -6593,7 +6784,7 @@ table.elm-table {
   }
 }
 
-/* Text sits on photo — slightly deeper so numbers stay readable */
+/* Text sits on photo - slightly deeper so numbers stay readable */
 .process-step__media img {
   filter: grayscale(1) brightness(0.9) contrast(1.04) !important;
 }
@@ -6617,7 +6808,7 @@ table.elm-table {
   }
 }
 
-/* Technologies page — center standalone section heads; split panels face the photo */
+/* Technologies page - center standalone section heads; split panels face the photo */
 [data-page="technologies"] {
   .content-section .section-title,
   .content-section .section-title.text-left,
@@ -6826,7 +7017,7 @@ table.elm-table {
     font-variant-numeric: tabular-nums;
     letter-spacing: var(--elm-tracking-display, 0.02em);
     line-height: 0.9;
-    /* Equal watermark on every card — ink mix, never white / brand clip */
+    /* Equal watermark on every card - ink mix, never white / brand clip */
     background: none !important;
     background-image: none !important;
     -webkit-background-clip: border-box !important;
@@ -7094,7 +7285,7 @@ table.elm-table {
   }
 }
 
-/* Shared icon lift — transition both ways (animation snaps on exit) */
+/* Shared icon lift - transition both ways (animation snaps on exit) */
 .capability-card .elm-title-pill .elm-icon,
 .contact-box .elm-icon,
 .sustainability-commitment__card .elm-title-pill .elm-icon,
@@ -7173,7 +7364,7 @@ table.elm-table {
   animation: elm-arrow-bounce 0.7s ease infinite;
 }
 
-/* Footer links: underline slide-in (text only — not elm-icon spans) */
+/* Footer links: underline slide-in (text only - not elm-icon spans) */
 .footer__map-link > span:not(.elm-icon),
 .footer__social-link > span:not(.elm-icon) {
   background-image: linear-gradient(currentColor, currentColor);
@@ -7281,7 +7472,7 @@ table.elm-table {
 }
 
 /* ============================================================
-   BRAND ACCENTS — remaining solid pink text → gradient fill
+   BRAND ACCENTS - remaining solid pink text → gradient fill
    ============================================================ */
 .section-title h6,
 .section-title.text-left h6,
@@ -7307,7 +7498,7 @@ table.elm-table {
   @include elm-brand-text;
 }
 
-/* Index / KPI numbers — theme ink (never brand gradient). Photo / always-dark surfaces stay white. */
+/* Index / KPI numbers - theme ink (never brand gradient). Photo / always-dark surfaces stay white. */
 .sectors-index__num,
 .about-intro__fact-num,
 .metric-index__num,
@@ -7325,7 +7516,7 @@ table.elm-table {
   -webkit-text-fill-color: var(--elm-text) !important;
 }
 
-/* Watermark indexes — keep local color-mix, don't force full ink */
+/* Watermark indexes - keep local color-mix, don't force full ink */
 .sustainability-commitment__num {
   background: none !important;
   background-image: none !important;
@@ -7343,6 +7534,14 @@ table.elm-table {
 }
 
 .site-faq {
+  .section-title {
+    h2 {
+      font-size: clamp(42px, 5.2vw, 68px);
+      line-height: 1.06;
+      max-width: 16ch;
+    }
+  }
+
   &__lede {
     max-width: 52ch;
     margin: 0;
@@ -7356,40 +7555,122 @@ table.elm-table {
   }
 
   &__item {
+    --site-faq-pad-inline: 22px;
+    --site-faq-toggle-size: 32px;
+    --site-faq-gap: 16px;
+
     border: 1px solid var(--elm-border, rgba(255, 255, 255, 0.12));
     border-radius: var(--elm-radius-md, 16px);
     background: var(--elm-surface, rgba(255, 255, 255, 0.03));
     overflow: hidden;
+    transition: border-color 0.3s var(--elm-hover-ease), background-color 0.3s var(--elm-hover-ease);
+
+    &[open] {
+      background: var(--elm-bg-surface);
+      border-color: color-mix(in srgb, #{$color-main} 22%, var(--elm-border));
+    }
 
     summary {
+      display: flex;
+      align-items: center;
+      gap: var(--site-faq-gap);
       cursor: pointer;
       list-style: none;
-      padding: 18px 22px;
+      padding-block: 18px;
+      padding-inline: var(--site-faq-pad-inline);
       font-weight: 600;
-      line-height: 1.35;
+      line-height: 1.45;
 
       &::-webkit-details-marker {
         display: none;
       }
+    }
+
+    .site-faq__question {
+      flex: 1;
+      min-width: 0;
+      text-align: start;
+    }
+
+    .site-faq__toggle {
+      display: grid;
+      place-items: center;
+      flex-shrink: 0;
+      width: 32px;
+      height: 32px;
+      margin-inline-start: auto;
+      border: 1px solid var(--elm-border);
+      border-radius: var(--elm-radius, 10px);
+      background: var(--elm-bg-surface);
+      color: var(--elm-text);
+      transition:
+        border-color 0.3s var(--elm-hover-ease),
+        background-color 0.3s var(--elm-hover-ease),
+        color 0.3s var(--elm-hover-ease);
+    }
+
+    &[open] .site-faq__toggle {
+      border-color: color-mix(in srgb, #{$color-main} 35%, var(--elm-border));
+      color: $color-main;
+    }
+
+    .site-faq__toggle-icon {
+      position: relative;
+      width: 12px;
+      height: 12px;
+
+      &::before,
+      &::after {
+        content: "";
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        background: currentColor;
+        border-radius: 1px;
+        transition: transform 0.3s var(--elm-hover-ease), opacity 0.3s var(--elm-hover-ease);
+      }
+
+      &::before {
+        width: 12px;
+        height: 2px;
+        transform: translate(-50%, -50%);
+      }
 
       &::after {
-        content: "+";
-        float: right;
-        font-size: 1.1em;
-        line-height: 1;
-        opacity: 0.7;
+        width: 2px;
+        height: 12px;
+        transform: translate(-50%, -50%);
       }
     }
 
-    &[open] summary::after {
-      content: "−";
+    &[open] .site-faq__toggle-icon::after {
+      transform: translate(-50%, -50%) scaleY(0);
+      opacity: 0;
+    }
+
+    .site-faq__panel {
+      overflow: hidden;
+      height: 0;
+      transition: height 0.35s var(--elm-hover-ease);
+    }
+
+    /* No-JS fallback */
+    &[open] .site-faq__panel {
+      height: auto;
+    }
+
+    .site-faq__panel-inner {
+      overflow: hidden;
+      padding-block: 0 18px;
+      padding-inline: var(--site-faq-pad-inline);
     }
 
     p {
       margin: 0;
-      padding: 0 22px 18px;
+      padding: 0;
       color: var(--elm-text-muted, rgba(255, 255, 255, 0.72));
       max-width: 72ch;
+      line-height: 1.65;
     }
   }
 }

@@ -34,12 +34,12 @@ html[dir="rtl"] {
   .sticky-stack__go::before,
   .portfolio-card__go::before {
     margin-inline-start: 0.08em;
-    transform: rotate(-135deg);
+    transform: rotate(45deg) scaleX(-1);
   }
 
   .elm-go--prev::before {
     margin-inline-start: -0.08em;
-    transform: rotate(45deg);
+    transform: rotate(-135deg) scaleX(-1);
   }
 }
 
@@ -545,10 +545,40 @@ html[dir="rtl"] {
     left: clamp(16px, 2.5vw, 28px);
   }
 
-  .engagement-section .testimonials-slider__arrow--prev,
-  .engagement-section .testimonials-slider__arrow--next {
-    left: auto;
-    right: auto;
+  .engagement-section .testimonials-slider__controls {
+    flex-direction: row;
+  }
+
+  .site-faq {
+    .section-title h2 {
+      max-width: none;
+    }
+
+    &__lede {
+      text-align: var(--elm-align);
+    }
+  }
+
+  .site-faq__item {
+    summary {
+      flex-direction: row-reverse;
+    }
+
+    .site-faq__toggle {
+      margin-inline: 0;
+    }
+
+    .site-faq__question,
+    .site-faq__panel-inner p {
+      letter-spacing: normal;
+    }
+
+    .site-faq__panel-inner {
+      padding-inline-start: calc(
+        var(--site-faq-pad-inline) + var(--site-faq-toggle-size) + var(--site-faq-gap)
+      );
+      padding-inline-end: var(--site-faq-pad-inline);
+    }
   }
 
   .project-slider__arrow--prev {

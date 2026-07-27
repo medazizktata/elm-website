@@ -108,17 +108,17 @@
         "title": "Commercial LFAM in Dubai",
         "lede": "Clear answers about ELM Media Design, our technologies and how we work in the UAE.",
         "q1": "What is ELM Media Design?",
-        "a1": "ELM Media Design is a Dubai-based commercial LFAM company. We deliver robotic concrete and polymer 3D printing for buildings, facades, hospitality and government projects across the UAE — from design through fabrication to site installation.",
+        "a1": "ELM Media Design is a Dubai-based commercial LFAM company. We deliver robotic concrete and polymer 3D printing for buildings, facades, hospitality and government projects across the UAE - from design through fabrication to site installation.",
         "q2": "What is LFAM?",
         "a2": "LFAM (large-format additive manufacturing) is industrial 3D printing at architectural scale. Robotic systems extrude concrete or polymer layer by layer to produce components without conventional moulds or formwork.",
         "q3": "What technologies does ELM offer?",
         "a3": "Three core capabilities: robotic concrete 3D printing, industrial 6-axis polymer LFAM, and end-to-end architectural manufacturing covering digital design, fabrication and rapid site installation.",
         "q4": "Who does ELM work with?",
-        "a4": "Property developers, contractors, government entities, hospitality brands and cultural institutions across the UAE — spanning infrastructure, leisure, industrial, creative and OOH programmes.",
+        "a4": "Property developers, contractors, government entities, hospitality brands and cultural institutions across the UAE - spanning infrastructure, leisure, industrial, creative and OOH programmes.",
         "q5": "How fast is your RFQ response?",
         "a5": "We offer a 30-minute initial briefing, facility tours and a 72-hour RFQ turnaround as part of our standard commercial engagement.",
         "q6": "Are you aligned with UAE government strategies?",
-        "a6": "Yes — Dubai 3D Printing Strategy 2030, UAE Industrial Strategy 2031, ICV and Net Zero 2050. Robotic concrete LFAM can reduce waste by up to 60% versus conventional formwork."
+        "a6": "Yes - Dubai 3D Printing Strategy 2030, UAE Industrial Strategy 2031, ICV and Net Zero 2050. Robotic concrete LFAM can reduce waste by up to 60% versus conventional formwork."
       }
     },
     "who-we-are": {
@@ -818,11 +818,11 @@
     "title": "Commercial LFAM Platform",
     "lede": "We run multi manufacturing capabilities. They share the same underlying logic, robotic precision, digital-first design, on-demand production, but they serve genuinely different project types.",
     "card1Title": "Robotic Concrete 3D Printing",
-    "card1Copy": "Layer-by-layer structural or decorative printing without formwork, on-site in days, with up to 60% less material waste than conventional methods.",
+    "card1Copy": "Structural printing without formwork. On-site in days with up to 60% less material waste.",
     "card2Title": "Polymer Large-Format 3D Printing",
-    "card2Copy": "Multi-axis robotic extrusion for facades, furniture, branded installations and lighting, recycled and bio-based materials, no geometric constraint.",
+    "card2Copy": "Six-axis extrusion for facades, retail, lighting and branded environments without mould tooling.",
     "card3Title": "Custom Architectural Fabrication",
-    "card3Copy": "Some projects don't fit a category. Digital design, material selection, fabrication and on-site installation for hospitality, retail, public art and government landmarks.",
+    "card3Copy": "Digital design through fabrication to rapid site install for hospitality, retail and landmarks.",
     "explore": "Explore",
     "allTech": "ALL TECHNOLOGIES"
   },

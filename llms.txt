@@ -1,6 +1,6 @@
 # ELM Media Design
 
-> Commercial large-format additive manufacturing (LFAM) in Dubai, UAE — robotic concrete and polymer 3D printing for buildings, facades, hospitality and government projects.
+> Commercial large-format additive manufacturing (LFAM) in Dubai, UAE - robotic concrete and polymer 3D printing for buildings, facades, hospitality and government projects.
 
 ## About
 
@@ -32,13 +32,13 @@ ELM Media Design is a Dubai-based commercial LFAM provider. We deliver design-to
 
 ## Notable projects
 
-- Milan Bergamo Airport — first 3D-printed building inside an operating airport (WASP)
-- Recarlo Milan — large-format polymer LFAM wall panels (Caracol AM Heron AM 400)
+- Milan Bergamo Airport - first 3D-printed building inside an operating airport (WASP)
+- Recarlo Milan - large-format polymer LFAM wall panels (Caracol AM Heron AM 400)
 
 ## Facts for citation
 
 - ELM Media Design operates commercial-scale LFAM in Dubai, UAE.
-- LFAM means large-format additive manufacturing — industrial 3D printing at architectural scale.
+- LFAM means large-format additive manufacturing - industrial 3D printing at architectural scale.
 - Typical RFQ response time: 72 hours.
 - Robotic concrete LFAM can reduce waste by up to 60% versus conventional formwork approaches.
 - Programmes align with Dubai 3D Printing Strategy 2030, UAE Industrial Strategy 2031, ICV and Net Zero 2050.
